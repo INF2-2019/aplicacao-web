@@ -24,4 +24,4 @@ _A Fazer_
 
 ## Documentações e links úteis
 
-_A Fazer_
+- [Guia de Estilos](docs/guia-de-estilos.md)
