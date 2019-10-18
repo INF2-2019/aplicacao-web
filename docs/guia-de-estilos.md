@@ -1,6 +1,6 @@
 # Guia de Estilos
 
-Só pra lembrar, ela não está muito bem feita, mas deve da pra entender...
+Só pra lembrar, ela não está muito bem feita, mas deve dar pra entender...
 
 ## Links
 
