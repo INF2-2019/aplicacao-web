@@ -1,6 +1,6 @@
-# Apicação Web
+# Aplicação Web
 
-Esse repositório é dedicado a parte de `front-end` web da aplicação a ser der desenvolvida.
+Esse repositório é dedicado à parte de `front-end` web da aplicação a ser desenvolvida.
 
 ## Aviso
 
