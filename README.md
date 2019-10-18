@@ -71,7 +71,3 @@ Os padrões de estilização podem ser encontrados na [Guia de Estilos](docs/gui
 ## Documentações e links úteis
 
 Tutorial de Materialize: [aqui](https://www.youtube.com/playlist?list=PLwXQLZ3FdTVGJxKF3ShplF8nMuuxldlEk)
-
-```
-
-```
