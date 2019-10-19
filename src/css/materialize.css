@@ -2119,6 +2119,14 @@
   color: #29a58c !important;
 }
 
+.primary.alt {
+  background-color: #1c9980 !important;
+}
+
+.primary-text.text-alt {
+  color: #1c9980 !important;
+}
+
 .primary.lighten-5 {
   background-color: #e1f0ed !important;
 }
@@ -2197,6 +2205,14 @@
 
 .secondary-text {
   color: #2c46a5 !important;
+}
+
+.secondary.alt {
+  background-color: #1c3799 !important;
+}
+
+.secondary-text.text-alt {
+  color: #1c3799 !important;
 }
 
 .secondary.lighten-5 {
@@ -2352,11 +2368,11 @@
 }
 
 .background-dark {
-  background-color: #1f2524 !important;
+  background-color: #16171a !important;
 }
 
 .background-dark-text {
-  color: #1f2524 !important;
+  color: #16171a !important;
 }
 
 .text-light {
