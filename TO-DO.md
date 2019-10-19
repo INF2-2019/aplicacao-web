@@ -10,7 +10,7 @@ Essa é uma lista de afazeres globais do repositório.
   - [x] Instruções de editores
   - [x] Referência as documentações
 - [x] Adicionar o `css`/`scss` global
-- [ ] Adicionar documentações do css global
+- [x] Adicionar documentações do css global
 - [ ] Criar a master-page do projeto
 - [x] Criar `.editorconfig`
   - [x] Adicionar o `EditorConfig` para as instruções de editores
