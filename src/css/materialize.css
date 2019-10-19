@@ -2120,11 +2120,11 @@
 }
 
 .primary.alt {
-  background-color: #1c9980 !important;
+  background-color: #06755f !important;
 }
 
 .primary-text.text-alt {
-  color: #1c9980 !important;
+  color: #06755f !important;
 }
 
 .primary.lighten-5 {
@@ -2208,11 +2208,11 @@
 }
 
 .secondary.alt {
-  background-color: #1c3799 !important;
+  background-color: #0f2987 !important;
 }
 
 .secondary-text.text-alt {
-  color: #1c3799 !important;
+  color: #0f2987 !important;
 }
 
 .secondary.lighten-5 {
@@ -2288,11 +2288,11 @@
 }
 
 .tertiary {
-  background-color: #d8d7d5 !important;
+  background-color: #9E9E9E !important;
 }
 
 .tertiary-text {
-  color: #d8d7d5 !important;
+  color: #9E9E9E !important;
 }
 
 .utils {
@@ -2367,12 +2367,12 @@
   color: #00c853 !important;
 }
 
-.background-dark {
-  background-color: #16171a !important;
+.background {
+  background-color: #fafafa !important;
 }
 
-.background-dark-text {
-  color: #16171a !important;
+.background-text {
+  color: #fafafa !important;
 }
 
 .text-light {

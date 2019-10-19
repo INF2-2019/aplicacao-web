@@ -2,7 +2,7 @@
 
 $primary: (
 	"base": #29a58c,
-	"alt": #1c9980,
+	"alt": #06755f,
 	"lighten-5": #e1f0ed,
 	"lighten-4": #c5e5df,
 	"lighten-3": #abdbd1,
@@ -16,7 +16,7 @@ $primary: (
 
 $secondary: (
 	"base": #2c46a5,
-	"alt": #1c3799,
+	"alt": #0f2987,
 	"lighten-5": #e1e4f0,
 	"lighten-4": #c5cce5,
 	"lighten-3": #abb6db,
@@ -29,11 +29,11 @@ $secondary: (
 );
 
 $tertiary: (
-	"base": #d8d7d5
+	"base": #9E9E9E
 );
 
-$background-dark: (
-	"base": #16171a
+$background: (
+	"base": #fafafa
 );
 
 $text-light: (
@@ -418,7 +418,7 @@ $colors: (
 	"secondary": $secondary,
 	"tertiary": $tertiary,
 	"utils": $utils,
-	"background-dark": $background-dark,
+	"background": $background,
 	"text-light": $text-light,
 	"text-dark": $text-dark
 ) !default;
