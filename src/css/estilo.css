@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+body,html{
+	height: 100%;
+	font-family: 'Montserrat', sans-serif;
+}
+.row,.col{
+    padding: 0;
+    margin: 0;
+	height: 100%;
+}
+.btn{
+    text-align: center;
+    font-size: 8pt;
+    line-height: 36pt;
+    margin-top: 20pt;
+    height: 36pt;
+    width: 180pt;
+}
+.margin-0{
+    margin:0;
+}
+.quadro1.col{
+    padding: 24pt;
+}
+.img-esquerda{
+	margin-right: 7pt;
+    float: left;
+}
+.logo,.login-painel,.titulo2 {
+    width: 100%;
+}
+.titulo2{
+    margin-bottom: 69pt;
+    height: 32pt;
+    line-height: 32pt;
+}
+.link1{
+    font-size: 13pt;
+}
+.fundo1{
+    padding: 24pt;
+    background-color: rgba(31, 37, 36, 0.9);
+}
+.title-biblioteca.titulo2{
+    margin-bottom: 16pt;
+}
+.title-diario{
+	margin-bottom: 66pt;
+}
+.btn-cadastro{
+    margin-top: 66pt;
+}
