@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Editar Professores</title>
+    </head>
+    <body>
+
+        <label>SIAPE: <input type="number" name="id"></label><br><br>            
+        <label>Id-Depto: <input type="number" name="id-depto"></label><br><br>
+        <label>Nome: <input type="text" name="nome"></label><br><br>
+        <label>Senha: <input type="password" name="senha"></label><br><br>            
+        <label>E-mail: <input type="text" name="email"></label><br><br>
+        <label>Titulação:
+            <select name="titulacao">
+                <option value = "M" >M</option>
+                <option value = "D" >D</option>
+                <option value = "E" >E</option>
+                <option value = "G" >G</option>
+            </select></label><br><br>
+        <button name="deletar" onclick="deletar()">Deletar registro</button>
+        <button name="alterar" onclick="alterar()">Alterar registro</button>
+
+        <div id="saida"></div>
+        
+        <script src="../../js/diario/professores/consultar.js"></script>
+        <script src="../../js/diario/professores/editar.js"></script>
+    </body>
+</html>
