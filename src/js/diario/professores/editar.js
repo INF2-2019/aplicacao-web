@@ -10,7 +10,7 @@ function deletar(e) {
 	document.getElementById("saida").innerHTML = "Carregando...";
 	let xhttp = new XMLHttpRequest();
 	let url = "http://localhost:8080/app/diario/professores/deletar?id=" + id;
-	
+
 	xhttp.open(method, url, true);
 	xhttp.onreadystatechange = function() {
 		if(xhttp.readyState === xhttp.DONE && xhttp.status === 200) {
@@ -23,7 +23,7 @@ function deletar(e) {
 function alterar(e) {
 	document.getElementById("saida").innerHTML = "Carregando...";
 	let xhttp = new XMLHttpRequest();
-	
+
 	let url = "http://localhost:8080/app/diario/professores/atualizar";
 	let stringParams = "?";
 

@@ -14,7 +14,7 @@ function atualizarTabela() {
 			var xml = (new DOMParser()).parseFromString(this.responseText, "text/xml");
 			var elementos = xml.childNodes[0].children;
 			if(elementos.length == 1) {
-				document.getElementById("saida").innerHTML = "Ocorreu um erro: " + 
+				document.getElementById("saida").innerHTML = "Ocorreu um erro: " +
 						elementos[0].children[1].innerHTML;
 			}
 			else {
