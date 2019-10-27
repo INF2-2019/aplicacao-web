@@ -5,20 +5,21 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
 		<link rel="stylesheet" href="../../css/materialize.css" />
-		<title>Gerenciar Departamentos</title>
+		<title>Departamentos</title>
 	</head>
 	<body>
-		<h1>Departamentos</h1>
+		<header>
+			<h1>Departamentos</h1>
+		</header>
+		<button id="adicionar" type="button" onclick="modalAdicionar()">ADICIONAR</button>
 		<table>
 			<thead>
-				<th>ID</th>
-				<th>ID Campus</th>
 				<th>Nome</th>
-				<th>Editar/Deletar</th>
+				<th>Campus</th>
+				<th>Ações</th>
 			</thead>
 			<tbody></tbody>
 		</table>
-		<button id="inserirBut" type="button" onclick="inserirDepto()">Inserir Departamento</button>
 		<script src="../../js/materialize.js"></script>
 		<script src="../../js/diario/departamentos/departamentos.js"></script>
 	</body>

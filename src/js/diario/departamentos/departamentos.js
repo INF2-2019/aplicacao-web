@@ -1,4 +1,5 @@
 const servidor = "http://localhost:8080/app";
+let deptos = [];
 
 function consultaDepartamentos() {
 	const xhr = new XMLHttpRequest();
@@ -6,65 +7,98 @@ function consultaDepartamentos() {
 		if(this.readyState == 4 && this.status == 200) {
 			const parser = new DOMParser();
 			const doc = parser.parseFromString(xhr.response, "application/xml");
-			passaTabela(doc);
+			jsonDeptos(doc);
+			criaTabela();
 		}
 	};
-	xhr.open("POST", servidor  + "/diario/departamentos/consulta", true);
+	xhr.open("GET", servidor  + "/diario/departamentos/consulta", true);
 	xhr.send();
 }
 
-function passaTabela(doc) {
-	let tabela = document.querySelector('tbody');
-	let deptos = doc.getElementsByTagName('departamento');
-	for(let depto of deptos){
-		let novarow = document.createElement("tr");
-		novarow.setAttribute("class", "criada");
-		for(let x = 0; x<3; x++){
-			let novacell = document.createElement("td");
-			let textnode = document.createTextNode(depto.children[x].textContent);
-			novacell.appendChild(textnode);
-			novarow.appendChild(novacell);
+function info(id) {
+	
+}
+
+function editar(id, nome, idCampi) {
+	const xhr = new XMLHttpRequest();
+	xhr.onreadystatechange = function() {
+		if(this.readyState == 4 && this.status == 200) {
+			const parser = new DOMParser();
+			const doc = parser.parseFromString(xhr.response, "application/xml");
+			consultaDepartamentos();
 		}
-		tabela.appendChild(novarow);
+	};
+	xhr.open("POST", servidor  + "/diario/departamentos/editar?id=" + id + "&id-campi=" + idCampi + "&nome=" + nome, true);
+	xhr.send();
+}
+
+function deletar(id) {
+	const xhr = new XMLHttpRequest();
+	xhr.onreadystatechange = function() {
+		if(this.readyState == 4 && this.status == 200) {
+			const parser = new DOMParser();
+			const doc = parser.parseFromString(xhr.response, "application/xml");
+			consultaDepartamentos();
+		}
+	};
+	xhr.open("POST", servidor  + "/diario/departamentos/remove?id=" + id, true);
+	xhr.send();
+}
+
+function modalAdicionar() {
+
+}
+
+function modalEditar(id) {
+
+}
+
+function jsonDeptos(doc) {
+	deptos = [];
+	const docDeptos = doc.getElementsByTagName('departamento');
+	for(let docDepto of docDeptos) {
+		const depto = {
+			id:  docDepto.children[0].textContent,
+			idCampi: docDepto.children[1].textContent,
+			nome: docDepto.children[2].textContent
+		};
+		deptos.push(depto);
 	}
 }
 
-function addEditDelete() {
-	let linhas = document.getElementsByClassName("criada");
-	let newcell = document.createElement("td");
-	let editBut = document.createElement("button");
-	let delBut = document.createElement("button");
-	editBut.innerHTML = "Editar";
-	delBut.innerHTML = "Deletar";
-	editBut.setAttribute("type", "button");
-	delBut.setAttribute("type", "button");
-	editBut.setAttribute("onclick", "editarDepto()");
-	delBut.setAttribute("onclick", "deletarDepto()");
-	editBut.setAttribute("id", "botaoEdit");
-	delBut.setAttribute("id", "botaoDel");
-	newcell.appendChild(editBut);
-	newcell.appendChild(delBut);
-	for (let linha of linhas) {
-		linha.appendChild(newcell);
+function criaTabela() {
+	let tbody = document.querySelector('tbody');
+	tbody.innerHTML = "";
+	for(let depto of deptos) {
+		let tr = document.createElement("tr");
+		tr.appendChild(celula(depto.nome));
+		tr.appendChild(celula(depto.idCampi));
+		tr.appendChild(celulaAcoes(depto.id));
+		tbody.appendChild(tr);
 	}
-	console.log(newcell);
 }
 
-function inserirDepto(){
-
+function celula(txt) {
+	const td = document.createElement("td");
+	const txtNode = document.createTextNode(txt);
+	td.appendChild(txtNode);
+	return td;
 }
 
-function salvarDepto(){
-
+function celulaAcoes(id) {
+	const td = document.createElement("td");
+	td.appendChild(botaoAcao("info", info, id));
+	td.appendChild(botaoAcao("editar", modalEditar, id));
+	td.appendChild(botaoAcao("deletar", deletar, id));
+	return td;
 }
 
-function editarDepto() {
-
-}
-
-function deletarDepto() {
-
+function botaoAcao(txt, func, id) {
+	let botao = document.createElement("button");
+	botao.classList.add(txt);
+	botao.onclick = () => func(id);
+	botao.innerText = txt.toUpperCase();
+	return botao;
 }
 
 consultaDepartamentos();
-addEditDelete();
