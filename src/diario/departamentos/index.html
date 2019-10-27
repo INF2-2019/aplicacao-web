@@ -8,19 +8,24 @@
 		<title>Departamentos</title>
 	</head>
 	<body>
-		<header>
+		<main style="margin: 0 10%">
 			<h1>Departamentos</h1>
-		</header>
-		<button id="adicionar" type="button" onclick="modalAdicionar()">ADICIONAR</button>
-		<table>
-			<thead>
-				<th>Nome</th>
-				<th>Campus</th>
-				<th>Ações</th>
-			</thead>
-			<tbody></tbody>
-		</table>
-		<script src="../../js/materialize.js"></script>
-		<script src="../../js/diario/departamentos/departamentos.js"></script>
+			<button class="btn right primary">ADICIONAR</button>
+			<table>
+				<thead>
+					<th>Nome</th>
+					<th>Campus</th>
+					<th>Ações</th>
+				</thead>
+				<tbody></tbody>
+			</table>
+		</main>
+
+		<script src="../../js/materialize.min.js"></script>
+
+		<script src="../../js/diario/departamentos/View.js"></script>
+		<script src="../../js/diario/departamentos/Tabela.js"></script>
+		<script src="../../js/diario/departamentos/Controller.js"></script>
+		<script src="../../js/diario/departamentos/main.js"></script>
 	</body>
 </html>

@@ -1,4 +1,4 @@
-const servidor = "http://localhost:8080/app";
+/*const servidor = "http://localhost:8080/app";
 let deptos = [];
 
 function consultaDepartamentos() {
@@ -87,18 +87,36 @@ function celula(txt) {
 
 function celulaAcoes(id) {
 	const td = document.createElement("td");
-	td.appendChild(botaoAcao("info", info, id));
-	td.appendChild(botaoAcao("editar", modalEditar, id));
-	td.appendChild(botaoAcao("deletar", deletar, id));
+	td.appendChild(botaoAcao("info", "info", info, id));
+	td.appendChild(botaoAcao("editar", "secondary-alt", modalEditar, id));
+	td.appendChild(botaoAcao("deletar", "error", deletar, id));
 	return td;
 }
 
-function botaoAcao(txt, func, id) {
+function botaoAcao(txt, color, func, id) {
 	let botao = document.createElement("button");
-	botao.classList.add(txt);
+	botao.classList.add("btn");
+	botao.classList.add(color);
 	botao.onclick = () => func(id);
 	botao.innerText = txt.toUpperCase();
 	return botao;
 }
 
 consultaDepartamentos();
+*/
+
+function jsonDeptos(doc) {
+	const deptos = [];
+	const docDeptos = doc.getElementsByTagName('departamento');
+	for(let docDepto of docDeptos) {
+		const depto = {
+			id:  docDepto.children[0].textContent,
+			idCampi: docDepto.children[1].textContent,
+			nome: docDepto.children[2].textContent
+		};
+		deptos.push(depto);
+	}
+	return deptos;
+}
+
+Controller.consulta();
