@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<link rel="stylesheet" href="../../css/materialize.css" />
         <title>Editar Professores</title>
     </head>
     <body>
 
-        <label>SIAPE: <input type="number" name="id"></label><br><br>
-        <label>Id-Depto: <input type="number" name="id-depto"></label><br><br>
-        <label>Nome: <input type="text" name="nome"></label><br><br>
-        <label>Senha: <input type="password" name="senha"></label><br><br>
-        <label>E-mail: <input type="text" name="email"></label><br><br>
+		<!--
+        <label>SIAPE: <input type="number" name="id"></label>
+        <label>Id-Depto: <input type="number" name="id-depto"></label>
+        <label>Nome: <input type="text" name="nome"></label>
+        <label>Senha: <input type="password" name="senha"></label>
+        <label>E-mail: <input type="text" name="email"></label>
         <label>Titulação:
             <select name="titulacao">
                 <option value = "M" >M</option>
@@ -20,9 +24,24 @@
             </select></label><br><br>
         <button name="deletar" onclick="deletar()">Deletar registro</button>
         <button name="alterar" onclick="alterar()">Alterar registro</button>
+		-->
+		<header class="primary">S.A. Admin</header>
 
-        <div id="saida"></div>
+		<main style="margin: 0 10%">
+			<h1>Departamentos</h1>
+			<button class="btn right primary">ADICIONAR</button>
+			<table>
+				<thead>
+					<th>Nome</th>
+					<th>Departamento</th>
+					<th>SIAPE</th>
+					<th>Ações</th>
+				</thead>
+				<tbody></tbody>
+			</table>
+		</main>
 
+		<script src="../../js/materialize.min.js"></script>
         <script src="../../js/diario/professores/consultar.js"></script>
         <script src="../../js/diario/professores/editar.js"></script>
     </body>

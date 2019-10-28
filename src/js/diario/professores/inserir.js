@@ -1,4 +1,5 @@
 const method = "GET";
+const endereco = "http://localhost:8080/app/";
 
 function inserir(){
 	var xhttp = new XMLHttpRequest();
@@ -10,7 +11,7 @@ function inserir(){
 	let email = document.getElementsByName("email")[0].value;
 	let titulacao = document.getElementsByName("titulacao")[0].value;
 
-	url="http://localhost:8080/app/diario/professores/inserir";
+	url= endereco + "diario/professores/inserir";
 	let params = "?id="+id + "&id-depto="+idDepto + "&nome="+nome + "&senha="+senha
 		 	+"&email="+email + "&titulacao="+titulacao;
 

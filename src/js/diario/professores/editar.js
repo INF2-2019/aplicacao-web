@@ -3,13 +3,13 @@ const paramNomes = ["id", "id-depto", "nome", "senha", "email", "titulacao"];
 function deletar(e) {
 	let id = document.getElementsByName("id")[0].value;
 	if(id == ""){
-		document.getElementById("saida").innerHTML = "Insira ID";
+		//document.getElementById("saida").innerHTML = "Insira ID";
 		return;
 	}
 
-	document.getElementById("saida").innerHTML = "Carregando...";
+	//document.getElementById("saida").innerHTML = "Carregando...";
 	let xhttp = new XMLHttpRequest();
-	let url = "http://localhost:8080/app/diario/professores/deletar?id=" + id;
+	let url = endereco + "diario/professores/deletar?id=" + id;
 
 	xhttp.open(method, url, true);
 	xhttp.onreadystatechange = function() {
@@ -21,16 +21,16 @@ function deletar(e) {
 }
 
 function alterar(e) {
-	document.getElementById("saida").innerHTML = "Carregando...";
+	//document.getElementById("saida").innerHTML = "Carregando...";
 	let xhttp = new XMLHttpRequest();
 
-	let url = "http://localhost:8080/app/diario/professores/atualizar";
+	let url = endereco + "diario/professores/atualizar";
 	let stringParams = "?";
 
 	for(i in paramNomes) {
 		let conteudo = document.getElementsByName(paramNomes[i])[0].value;
 		if(conteudo == ""){
-			document.getElementById("saida").innerHTML = "Preencha todos os campos para alterar";
+			//document.getElementById("saida").innerHTML = "Preencha todos os campos para alterar";
 			return;
 		}
 		stringParams += "&" + paramNomes[i] + "=" + conteudo;
