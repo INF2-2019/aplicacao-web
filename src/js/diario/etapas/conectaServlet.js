@@ -149,7 +149,7 @@ function adiciona() {
 	//limpa inputs
 	limpaInputs();
 	//atualiza a tabela
-	consulta();
+	setTimeout(consulta, 10);
 }
 
 //pega o id a ser passado para deletar
@@ -192,8 +192,7 @@ function deleta() {
 	xhttp.send();
 
 	//atualiza a tabela
-	consulta();
-
+	setTimeout(consulta, 10);
 }
 
 
@@ -211,15 +210,14 @@ function atualiza() {
 	xhttp.open(method, url, true);
 	var parser = new DOMParser();
 	var exibido = 0;
+        var resp;
 
 	//recebe resposta em XML e manipula o XML
 	xhttp.onreadystatechange = function () {
 		if (xhttp.readyState === xhttp.DONE && xhttp.status === 200) {
 			var responseStr = xhttp.responseText;
 			var xmlDoc = parser.parseFromString(responseStr, "text/xml");
-                        console.log(xmlDoc.childNodes);
-			var resp = xmlDoc.childNodes[0].children[0].innerHTML;
-                        console.log(resp);
+			resp = xmlDoc.childNodes[0].children[0].innerHTML;
 			M.toast({
 				html: resp,
 				classes: "utils sucesso-2"
@@ -229,7 +227,7 @@ function atualiza() {
 			var responseStr = xhttp.responseText;
 			if (responseStr != "") {
 				var xmlDoc = parser.parseFromString(responseStr, "text/xml");
-				var resp = xmlDoc.childNodes[0].children[0].innerHTML;
+				resp = xmlDoc.childNodes[0].children[0].innerHTML;
 				if (exibido === 0) {
 					M.toast({
 						html: resp,
@@ -240,12 +238,12 @@ function atualiza() {
 			}
 		}
 	};
-	 qxhttp.send();
+	xhttp.send();
 
 	// limpa inputs
 	limpaInputs();
 	//atualiza a tabela
-	consulta();
+        setTimeout(consulta, 10);
 }
 
 function recarrega() {
