@@ -40,6 +40,8 @@ class View {
     static botaoInfo() {
         const button = document.createElement("button");
         button.classList.add("btn");
+        button.classList.add("modal-trigger");
+        button.setAttribute("data-target", "modal-info");
         button.style.backgroundColor = "#00B0FF";
         button.style.margin = "0 5px";
         button.innerText = "INFO";
@@ -49,6 +51,8 @@ class View {
     static botaoEditar() {
         const button = document.createElement("button");
         button.classList.add("btn");
+        button.classList.add("modal-trigger");
+        button.setAttribute("data-target", "modal-editar");
         button.style.margin = "0 5px";
         button.innerText = "EDITAR";
         return button;
@@ -57,10 +61,13 @@ class View {
     static botaoDeletar() {
         const button = document.createElement("button");
         button.classList.add("btn");
+        button.setAttribute("onclick", "View.deletaDepto()")
+
         button.style.backgroundColor = "#E53935";
         button.style.margin = "0 5px";
         button.innerText = "DELETAR";
         return button;
     }
 
+    
 }

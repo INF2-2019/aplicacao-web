@@ -19,5 +19,19 @@ class Controller {
         xhr.open("GET", url, true);
         xhr.send();
     }
+    static adicionarDepto(){
+        const depto = {
+            id: Tabela.tbody.children.length+1,
+            idCampi: document.querySelector('#campus_input').value,
+            nome: document.querySelector('#name_input').value
+        };
+        Tabela.insere(depto);
+        //Falta passar o departamento adicionado pro servidor
+        const xhr = new XMLHttpRequest();
+        const url = Controller.local + "insere";
+        xhr.open("GET", url, true);
+        xhr.send();
+
+    }
 
 }

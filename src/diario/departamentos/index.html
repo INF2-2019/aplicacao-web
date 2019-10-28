@@ -8,9 +8,13 @@
 		<title>Departamentos</title>
 	</head>
 	<body>
+		<nav class="navbar primary" style="padding-left: 10px">
+			<h2 style="margin: 0;">S.A.</h2>
+		</nav>
+
 		<main style="margin: 0 10%">
 			<h1>Departamentos</h1>
-			<button class="btn right primary">ADICIONAR</button>
+			<button class="btn right primary modal-trigger" data-target="modal-adicionar">ADICIONAR</button>
 			<table>
 				<thead>
 					<th>Nome</th>
@@ -20,6 +24,29 @@
 				<tbody></tbody>
 			</table>
 		</main>
+
+		<div id="modal-adicionar" class="modal">
+			<div class="modal-content">
+				<h2>Adicionar</h2>
+				<button class="btn right primary" onclick="Controller.adicionarDepto()">ADICIONAR</button>
+				<label for="name_input">Nome</label>
+				<input placeholder="Nome do departamento" id="name_input" type="text" class="validate">
+          <label for="campus_input">Campus</label>
+					<input placeholder="Campus do departamento" id="campus_input" type="text" class="validate">
+			</div>
+		</div>
+
+		<div id="modal-info" class="modal">
+			<div class="modal-content">
+				<h2>Info</h2>
+			</div>
+		</div>
+
+		<div id="modal-editar" class="modal">
+			<div class="modal-content">
+				<h2>Editar</h2>
+			</div>
+		</div>
 
 		<script src="../../js/materialize.min.js"></script>
 
