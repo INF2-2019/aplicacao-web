@@ -1,9 +1,7 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 body,html{
 	height: 100%;
-	font-family: 'Montserrat', sans-serif;
 }
-.row,.col{
+.content{
     padding: 0;
     margin: 0;
 	height: 100%;
@@ -26,27 +24,15 @@ body,html{
 	margin-right: 7pt;
     float: left;
 }
-.logo,.login-painel,.titulo2 {
+.logo,.login-painel {
     width: 100%;
 }
-.titulo2{
+.titulo-1{
     margin-bottom: 69pt;
     height: 32pt;
     line-height: 32pt;
+    margin-bottom: 66pt;
 }
-.link1{
-    font-size: 13pt;
-}
-.fundo1{
-    padding: 24pt;
-    background-color: rgba(31, 37, 36, 0.9);
-}
-.title-biblioteca.titulo2{
-    margin-bottom: 16pt;
-}
-.title-diario{
-	margin-bottom: 66pt;
-}
-.btn-cadastro{
+.btn-login{
     margin-top: 66pt;
 }
