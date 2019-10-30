@@ -3,26 +3,43 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Inserir Professor (Cadastro)</title>
+        <link rel="stylesheet" href="../../css/materialize.css" />
+        <style media="screen">
+          .espaco{
+            margin: 20px;
+          }
+        </style>
     </head>
     <body>
+      <div class="container secondary lighten-5">
+        <h5 class="primary white-text ">Cadastrar Novo Professor</h5>
+        <div class="modal-content row col s12">
 
-            <label>SIAPE: <input type="number" name="id"></label><br><br>
-            <label>Id-Depto: <input type="number" name="id-depto"></label><br><br>
-            <label>Nome: <input type="text" name="nome"></label><br><br>
-            <label>Senha: <input type="password" name="senha"></label><br><br>
-            <label>E-mail: <input type="text" name="email"></label><br><br>
-            <label>Titulação:
-                <select name="titulacao">
-                    <option value = "M" >M</option>
-                    <option value = "D" >D</option>
-                    <option value = "E" >E</option>
-                    <option value = "G" >G</option>
-                </select></label><br><br>
-            <button name="inserir" onclick="inserir()">Inserir</button>
+          <label class="primary-text text-lighten-1 short col s3" > SIAPE: <input type="number" name="id"></label>
+          <label class="primary-text text-lighten-1 short col s9">Id-Depto: <input type="number" name="id-depto"></label>
+          <label class="primary-text text-lighten-1 short col s9">Nome: <input type="text" name="nome"></label>
+
+          <label class="primary-text text-lighten-1 short col s3">Senha: <input type="password" name="senha"></label>
+          <label class="primary-text text-lighten-1 short col s12">E-mail: <input type="text" name="email"></label>
+          <label class="primary-text text-lighten-1 short col s12 input-field">Titulação:
+              <select name="titulacao" class="primary-text text-lighten-1 short col s12">
+                  <option value = "M" >M</option>
+                  <option value = "D" >D</option>
+                  <option value = "E" >E</option>
+                  <option value = "G" >G</option>
+              </select>
+            </label>
+
+          <button name="inserir" onclick="inserir()" class="btn primary short c espaco">Confirmar</button>
+          <a href="listagem.html" class=" btn secondary short ">Cancelar</a>
+          
+        </div>
+      </div>
 
         <div id="saida"></div>
 
+
         <script src="../../js/diario/professores/inserir.js"></script>
+
     </body>
 </html>
-

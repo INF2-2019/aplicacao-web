@@ -1,7 +1,9 @@
-const method = "GET";
-const endereco = "http://localhost:8080/app/";
+//const method = "GET";
+//const endereco = "http://localhost:8080/app/";
 
 function inserir(){
+	method = "GET";
+	endereco = "http://localhost:8080/app/";
 	var xhttp = new XMLHttpRequest();
 
 	let id = document.getElementsByName("id")[0].value;

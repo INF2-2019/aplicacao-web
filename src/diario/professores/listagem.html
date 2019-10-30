@@ -5,44 +5,92 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
 		<link rel="stylesheet" href="../../css/materialize.css" />
-        <title>Editar Professores</title>
+        <title>Listagem de Professores</title>
     </head>
     <body>
-
-		<!--
-        <label>SIAPE: <input type="number" name="id"></label>
-        <label>Id-Depto: <input type="number" name="id-depto"></label>
-        <label>Nome: <input type="text" name="nome"></label>
-        <label>Senha: <input type="password" name="senha"></label>
-        <label>E-mail: <input type="text" name="email"></label>
-        <label>Titulação:
-            <select name="titulacao">
-                <option value = "M" >M</option>
-                <option value = "D" >D</option>
-                <option value = "E" >E</option>
-                <option value = "G" >G</option>
-            </select></label><br><br>
-        <button name="deletar" onclick="deletar()">Deletar registro</button>
-        <button name="alterar" onclick="alterar()">Alterar registro</button>
-		-->
-		<header class="primary">S.A. Admin</header>
+		<nav style="padding-left: 5pt;">
+			<div class="nav-wrapper">
+				<a class="brand-logo">S.A. Admin</a>
+			</div>
+		</nav>
 
 		<main style="margin: 0 10%">
-			<h1>Departamentos</h1>
-			<button class="btn right primary">ADICIONAR</button>
+			<h1>Professores</h1>
+			<a href="inserir.html" class=" btn right primary ">Adicionar</a>
+
 			<table>
+				<colgroup>
+				   <col span="1" style="width: 25%;">
+				   <col span="1" style="width: 25%;">
+				   <col span="1" style="width: 25%;">
+				   <col span="1" style="width: 8.3%;">
+				   <col span="1" style="width: 8.4%;">
+				   <col span="1" style="width: 8.3%;">
+				</colgroup>
+			
 				<thead>
 					<th>Nome</th>
 					<th>Departamento</th>
 					<th>SIAPE</th>
 					<th>Ações</th>
+					<th></th>
+					<th></th>
 				</thead>
-				<tbody></tbody>
+				<tbody>
+        </tbody>
 			</table>
 		</main>
 
-		<script src="../../js/materialize.min.js"></script>
-        <script src="../../js/diario/professores/consultar.js"></script>
-        <script src="../../js/diario/professores/editar.js"></script>
+
+		<div class="container secondary lighten-5">
+			<div id="modalAltera" class="modal">
+				<div class="modal-content row col s12" style="padding:0;">
+					<h4 style="padding: 15pt;">Editar Professor</h4>
+					<div class="row modal-content" style="margin:0;">
+						<label class="primary-text text-lighten-1 short col s3"> SIAPE: <input type="number" name="id"></label>
+						<label class="primary-text text-lighten-1 short col s7">Nome: <input type="text" name="nome"></label>
+						<label class="primary-text text-lighten-1 short col s2">Id-Depto: <input type="number" name="id-depto"></label>
+						<label class="primary-text text-lighten-1 short validate col s3">Senha: <input type="password" name="senha"></label>
+						<label class="primary-text text-lighten-1 short col s6">E-mail: <input type="text" name="email"></label>
+						<label class="primary-text text-lighten-1 short col s3">Titulação:
+							<select name="titulacao">
+								<option value = "M" >Mestre</option>
+								<option value = "D" >Doutor</option>
+								<option value = "E" >Especialista</option>
+								<option value = "G" >Graduado</option>
+							</select>
+						</label>
+					</div>
+					<div class="row modal-content" style="margin:0;">
+						<button name="inserir" onclick="alterar()" class="btn primary espaco  waves-effect waves-ligth btn modal-close">Confirmar</button>
+						<a class="modal-close btn utils erro-2">Cancelar</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="container secondary lighten-5">
+			<div id="modalDeleta" class="modal bottom-sheet">
+				<div class="modal-content row col s12" style="padding:0;">
+					<h4 style="padding: 15pt;">Tem certeza que deseja deletar esse professor?</h4>
+					<div class="row modal-content" style="margin:0;">
+						<a name="confirmar" class="btn-large primary espaco waves-effect waves-ligth modal-close right">Cancelar</a>
+						<a name deletar class="modal-close btn-large utils erro-2 right">Deletar</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../../js/materialize.min.js"></script>
+    <script src="../../js/diario/professores/consultar.js"></script>
+    <script src="../../js/diario/professores/inserir.js"></script>
+    <script src="../../js/diario/professores/editar.js"></script>
+	<script>
+		$(document).ready(function(){
+			$('.modal').modal();
+			$('select').formSelect();
+		});
+    </script>
     </body>
 </html>

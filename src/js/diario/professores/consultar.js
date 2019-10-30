@@ -28,6 +28,9 @@ function atualizarTabela() {
 				linha.innerHTML += "<td>" + dados[2].textContent + "</td>";
 				linha.innerHTML += "<td>" + dados[1].textContent + "</td>";
 				linha.innerHTML += "<td>" + dados[0].textContent + "</td>";
+				linha.innerHTML += "<td><a href=\"#modalInfo\" class=\"btn utils info editar modal-trigger\">INFO</a></td>";
+				linha.innerHTML += "<td><a href=\"#modalAltera\" class=\"btn secondary editar modal-trigger\" >Editar</a></td>";
+				linha.innerHTML += "<td><a href=\"#modalDeleta\" class=\"btn utils erro editar modal-trigger\" >Deletar</a></td>";
 				tabelaCorpo.appendChild(linha);
 			}
 		}
