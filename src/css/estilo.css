@@ -1,0 +1,38 @@
+body,html{
+	height: 100%;
+}
+.content{
+    padding: 0;
+    margin: 0;
+	height: 100%;
+}
+.btn{
+    text-align: center;
+    font-size: 8pt;
+    line-height: 36pt;
+    margin-top: 20pt;
+    height: 36pt;
+    width: 180pt;
+}
+.margin-0{
+    margin:0;
+}
+.quadro1.col{
+    padding: 24pt;
+}
+.img-esquerda{
+	margin-right: 7pt;
+    float: left;
+}
+.logo,.login-painel {
+    width: 100%;
+}
+.titulo-1{
+    margin-bottom: 69pt;
+    height: 32pt;
+    line-height: 32pt;
+    margin-bottom: 66pt;
+}
+.btn-login{
+    margin-top: 66pt;
+}
