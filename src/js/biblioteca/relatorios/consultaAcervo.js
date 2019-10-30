@@ -28,7 +28,6 @@ function consulta() {
 				var tituloTabela = "<h5>" + titulos[a] + "</h5>";
 				var tabela = "<table class=\"highlight centered responsive-table\">";
 				tabela += tabelas[a];
-				console.log(tabela);
 
 				var elementos = xmlDoc.childNodes[0].children; //HTMLColletion etapa
 				console.log(elementos);
@@ -69,7 +68,7 @@ function consulta() {
 					tabela += linha;
 				}	
 
-				divResposta[a].innerHTML += tituloTabela;
+				divResposta[a].innerHTML += tituloTabela; 
 				divResposta[a].innerHTML += tabela;
 			}
 			
@@ -88,47 +87,3 @@ function consulta() {
 	};
 	xhttp.send();
 }
-
-function recarrega() {
-	location.reload();
-}
-
-
-/*
-var tabela = "<table class=\"highlight centered responsive-table\">";
-tabela += "<thead><th>Id</th><th>Campi</th><th>Nome</th><th>Local</th><th>Ano</th><th>Editora</th><th>Páginas</th><th>Edição</th><th>ISBN</th></thead>";
-var elementos = xmlDoc.childNodes[0].children; //HTMLColletion etapa
-console.log(elementos);
-for (let i = 0; i < elementos.length; i++) {
-	let linha = "<tr>";
-	for (let j = 0; j < (elementos[i].children.length); j++) {
-		let elemento = "";
-		if(elementos[i].children[j].children.length > 0){
-			for(let k = 1; k < elementos[i].children[j].children.length; k++){
-				elemento+= "<td>";
-				elemento += elementos[i].children[j].children[k].innerHTML; 
-				elemento += "</td>";
-			}
-		} else{
-			if (j === 0) {
-				elemento = "<td data-id=\"" + elementos[i].children[j].innerHTML + "\">";
-			} else if(j != 3){
-				elemento = "<td>"
-			}
-			if(j != 3){
-				elemento += elementos[i].children[j].innerHTML; 
-				elemento += "</td>";
-			}
-
-		}
-		
-		linha += elemento;
-	}
-	linha += "</tr>"
-	tabela += linha;
-}
-tabela += "</table>";
-
-divResposta[0].innerHTML += tabela;
-
-*/
