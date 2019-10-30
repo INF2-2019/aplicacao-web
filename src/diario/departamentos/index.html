@@ -31,8 +31,8 @@
 				<button class="btn right primary" onclick="Controller.adicionarDepto()">ADICIONAR</button>
 				<label for="name_input">Nome</label>
 				<input placeholder="Nome do departamento" id="name_input" type="text" class="validate">
-          <label for="campus_input">Campus</label>
-					<input placeholder="Campus do departamento" id="campus_input" type="text" class="validate">
+          		<label for="campus_input">Campus</label>
+				<input placeholder="Campus do departamento" id="campus_input" type="text" class="validate">
 			</div>
 		</div>
 
@@ -45,11 +45,16 @@
 		<div id="modal-editar" class="modal">
 			<div class="modal-content">
 				<h2>Editar</h2>
+				<h2>Adicionar</h2>
+				<button class="btn right primary" onclick="Controller.editarDepto()">SALVAR</button>
+				<label for="name_input">Novo Nome</label>
+				<input placeholder="Nome do departamento" id="name_input" type="text" class="validate">
+          		<label for="campus_input">Novo Campus</label>
+				<input placeholder="Campus do departamento" id="campus_input" type="text" class="validate">
 			</div>
 		</div>
 
 		<script src="../../js/materialize.min.js"></script>
-
 		<script src="../../js/diario/departamentos/View.js"></script>
 		<script src="../../js/diario/departamentos/Tabela.js"></script>
 		<script src="../../js/diario/departamentos/Controller.js"></script>

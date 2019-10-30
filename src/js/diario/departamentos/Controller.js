@@ -19,6 +19,7 @@ class Controller {
         xhr.open("GET", url, true);
         xhr.send();
     }
+
     static adicionarDepto(){
         const depto = {
             id: Tabela.tbody.children.length+1,
@@ -26,11 +27,22 @@ class Controller {
             nome: document.querySelector('#name_input').value
         };
         Tabela.insere(depto);
-        //Falta passar o departamento adicionado pro servidor
         const xhr = new XMLHttpRequest();
         const url = Controller.local + "insere";
-        xhr.open("GET", url, true);
+        const enviado = "?id-campi="+depto.idCampi+"&nome="+depto.nome;
+        xhr.open("GET", url + enviado, true);
         xhr.send();
+    }
+    
+    static deletaDepto(id){
+        const xhr = new XMLHttpRequest();
+        const url = Controller.local + "remove";
+        const enviado = "?id="+document.getElementById(id).getAttribute("Id");
+        xhr.open("GET", url + enviado, true);
+        xhr.send();
+        Tabela.tbody.removeChild(document.getElementById(id));
+    }
+    static editaDepto(id){
 
     }
 

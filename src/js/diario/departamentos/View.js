@@ -1,5 +1,5 @@
 class View {
-
+    static numerolinhas = 0;
     static deptos(doc) {
         const deptos = [];
         const docDeptos = doc.getElementsByTagName('departamento');
@@ -16,6 +16,8 @@ class View {
 
     static linhaTabela(depto) {
         const tr = document.createElement("tr");
+        View.numerolinhas++;
+        tr.setAttribute("id", View.numerolinhas)
         tr.appendChild(View.celulaTexto(depto.nome));
         tr.appendChild(View.celulaTexto(depto.idCampi));
         tr.appendChild(View.celulaAcoes());
@@ -52,6 +54,8 @@ class View {
         const button = document.createElement("button");
         button.classList.add("btn");
         button.classList.add("modal-trigger");
+        button.setAttribute("id", View.numerolinhas)
+        button.setAttribute("onclick", "Controller.editaDepto("+View.numerolinhas+")");
         button.setAttribute("data-target", "modal-editar");
         button.style.margin = "0 5px";
         button.innerText = "EDITAR";
@@ -61,13 +65,14 @@ class View {
     static botaoDeletar() {
         const button = document.createElement("button");
         button.classList.add("btn");
-        button.setAttribute("onclick", "View.deletaDepto()")
-
+        button.setAttribute("id", View.numerolinhas)
+        button.setAttribute("onclick", "Controller.deletaDepto("+View.numerolinhas+")");
         button.style.backgroundColor = "#E53935";
         button.style.margin = "0 5px";
         button.innerText = "DELETAR";
         return button;
     }
+}
 
     
-}
+
