@@ -8,31 +8,30 @@ body,html{
 }
 .btn{
     text-align: center;
-    font-size: 8pt;
-    line-height: 36pt;
-    margin-top: 20pt;
-    height: 36pt;
-    width: 180pt;
+    font-size: 14px;
+    line-height: 52px;
+    margin-top: 25px;
+    height: 52px;
+    width: 260px;
 }
 .margin-0{
     margin:0;
 }
 .quadro1.col{
-    padding: 24pt;
+    padding: 30px;
 }
 .img-esquerda{
-	margin-right: 7pt;
+	margin-right: 10px;
     float: left;
 }
 .logo,.login-painel {
     width: 100%;
 }
 .titulo-1{
-    margin-bottom: 69pt;
-    height: 32pt;
-    line-height: 32pt;
-    margin-bottom: 66pt;
+    height: 45px;
+    line-height: 45px;
+    margin-bottom: 100px;
 }
 .btn-login{
-    margin-top: 66pt;
+    margin-top: 100px;
 }
