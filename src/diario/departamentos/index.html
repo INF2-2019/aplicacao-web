@@ -9,8 +9,10 @@
 	</head>
 	<body>
 		<nav class="navbar primary" style="padding-left: 10px">
-			<h2 style="margin: 0;">S.A.</h2>
+			<h2 style="margin: 0">S.A.</h2>
 		</nav>
+
+		<label id="toast" class="toast right" style="margin-right: 5px; background-color: #00E676">Bem-vindo</label>
 
 		<main style="margin: 0 10%">
 			<h1>Departamentos</h1>
@@ -19,7 +21,7 @@
 				<thead>
 					<th>Nome</th>
 					<th>Campus</th>
-					<th>Ações</th>
+					<th></th>
 				</thead>
 				<tbody></tbody>
 			</table>
@@ -28,11 +30,11 @@
 		<div id="modal-adicionar" class="modal">
 			<div class="modal-content">
 				<h2>Adicionar</h2>
-				<button class="btn right primary" onclick="Controller.adicionarDepto()">ADICIONAR</button>
-				<label for="name_input">Nome</label>
-				<input placeholder="Nome do departamento" id="name_input" type="text" class="validate">
-          		<label for="campus_input">Campus</label>
-				<input placeholder="Campus do departamento" id="campus_input" type="text" class="validate">
+				<button class="btn right primary modal-close" data-target="modal-adicionar">ADICIONAR</button>
+				<label for="adicionar-nome">Nome</label>
+				<input placeholder="Nome do departamento" id="adicionar-nome" type="text" class="validate">
+          		<label for="adicionar-id-campi">Campus</label>
+				<input placeholder="Campus do departamento" id="adicionar-id-campi" type="text" class="validate">
 			</div>
 		</div>
 
@@ -45,12 +47,11 @@
 		<div id="modal-editar" class="modal">
 			<div class="modal-content">
 				<h2>Editar</h2>
-				<h2>Adicionar</h2>
-				<button class="btn right primary" onclick="Controller.editarDepto()">SALVAR</button>
-				<label for="name_input">Novo Nome</label>
-				<input placeholder="Nome do departamento" id="name_input" type="text" class="validate">
-          		<label for="campus_input">Novo Campus</label>
-				<input placeholder="Campus do departamento" id="campus_input" type="text" class="validate">
+				<button class="btn right primary modal-close" data-target="modal-editar">EDITAR</button>
+				<label for="editar-nome">Nome</label>
+				<input placeholder="Nome do departamento" id="editar-nome" type="text" class="validate">
+          		<label for="editar-id-campi">Campus</label>
+				<input placeholder="Campus do departamento" id="editar-id-campi" type="text" class="validate">
 			</div>
 		</div>
 
