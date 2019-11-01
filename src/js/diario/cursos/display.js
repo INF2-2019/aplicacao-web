@@ -9,9 +9,17 @@ function criaTabela(elementos) {
 		let linha = document.createElement("tr");
 		for (let j = 0; j < elementos[i].children.length; j++) {
 			let elemento = document.createElement("td")
-
 			elemento.classList.add(elementos[i].children[j].nodeName)
-			elemento.innerHTML = elementos[i].children[j].innerHTML
+
+			if (j == 1) {
+				let nomeDepartamento = nomeDepto(elementos[i].children[j].innerHTML)
+				nomeDepartamento.then(res => {
+					elemento.innerHTML = res
+					containerTabela.innerHTML = tabela.innerHTML;
+				})
+			} else {
+				elemento.innerHTML = elementos[i].children[j].innerHTML
+			}
 
 			linha.appendChild(elemento)
 		}

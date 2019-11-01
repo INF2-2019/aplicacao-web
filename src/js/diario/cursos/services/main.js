@@ -13,6 +13,15 @@ function postFetch(url, data) {
 		.then(str => (new window.DOMParser()).parseFromString(str, "text/xml"))
 }
 
+async function nomeDepto(id) {
+	return await fetch('http://localhost:8080/diario/departamentos/consulta?id=' + id)
+		.then(response => response.text())
+		.then(str => (new window.DOMParser()).parseFromString(str, "text/xml"))
+		.then(xml => {
+			//pega o nome do único departamento da consulta
+			return xml.getElementsByTagName("departamento")[0].getElementsByTagName("nome")[0].innerHTML
+		})
+}
 
 function retornaResposta(xml) {
 	let resposta = xml.childNodes[0].children[0].innerHTML;
