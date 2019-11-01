@@ -46,3 +46,23 @@ function limpaInputs(inputType) {
 
 	M.updateTextFields();
 }
+
+function pesquisarCursos() {
+	let input = document.querySelector("#search");
+	let filter = input.value.toUpperCase();
+	let table = document.querySelector("#tabela-cursos");
+	let tr = table.getElementsByTagName("tr");
+
+	for (let i = 1; i < tr.length; i++) {
+		// pega a coluna "Nome" da tabela
+		let td = tr[i].children[2];
+		if (td) {
+			let txtValue = td.innerHTML;
+			if (txtValue.toUpperCase().indexOf(filter) > -1) {
+				tr[i].style.display = "";
+			} else {
+				tr[i].style.display = "none";
+			}
+		}
+	}
+}

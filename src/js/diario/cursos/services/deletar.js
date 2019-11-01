@@ -10,4 +10,5 @@ function deletar() {
 				M.toast({ html: resposta, classes: 'utils erro-2 text-light-text' })
 			}
 		}).then(() => consultar())
+		.catch(err => console.log(err))
 }

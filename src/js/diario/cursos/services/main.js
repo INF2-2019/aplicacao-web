@@ -49,3 +49,5 @@ $(document).on('click', '#atualizar-curso', e => {
 	let modalidade = document.querySelector("#modalidade-atualizar").value;
 	atualizar(departamento, nome, horas, modalidade)
 })
+
+$("#search").on('keyup', () => pesquisarCursos())
