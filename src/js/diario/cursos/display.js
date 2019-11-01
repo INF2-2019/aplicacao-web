@@ -2,32 +2,49 @@ M.AutoInit();
 
 function criaTabela(elementos) {
 	elementos = elementos.childNodes[0].children;
-	let tabela = `<table class="highlight">`
+	let tabela = document.createElement("table")
+	tabela.classList.add("highlight")
 
 	for (let i = 0; i < elementos.length; i++) {
-		let linha = `<tr>`
+		let linha = document.createElement("tr");
 		for (let j = 0; j < elementos[i].children.length; j++) {
-			let elemento = "";
+			let elemento = document.createElement("td")
 
-			elemento = `<td class=${elementos[i].children[j].nodeName}>`
-			elemento += elementos[i].children[j].innerHTML
-			elemento += `</td>`
+			elemento.classList.add(elementos[i].children[j].nodeName)
+			elemento.innerHTML = elementos[i].children[j].innerHTML
 
-			linha += elemento
-
+			linha.appendChild(elemento)
 		}
-		linha +=
-			`<td>` +
-			`<a class="btn-small utils alerta-2 editar modal-trigger" href="#modal-atualizar" style="margin: 5pt"><i class="material-icons small">edit</i></a>` +
-			`<a class="btn-small utils erro deletar modal-trigger" href="#modal-confirmar"><i class="material-icons small">delete_forever</i></a>` +
-			`</td>`;
-		tabela += linha
+		let colunaAcoes = document.createElement("td")
+
+		let edit = document.createElement("a")
+		edit.setAttribute("href", "#modal-atualizar")
+		edit.classList = "btn-small utils alerta-2 editar modal-trigger"
+
+		let iconEdit = document.createElement("i")
+		iconEdit.classList = "material-icons small"
+		iconEdit.innerHTML = "edit"
+
+		edit.appendChild(iconEdit)
+		colunaAcoes.appendChild(edit)
+
+		let deletar = document.createElement("a")
+		deletar.setAttribute("href", "#modal-atualizar")
+		deletar.classList = "btn-small utils erro deletar modal-trigger"
+
+		let iconDel = document.createElement("i")
+		iconDel.classList = "material-icons small"
+		iconDel.innerHTML = "delete_forever"
+
+		deletar.appendChild(iconDel)
+		colunaAcoes.appendChild(deletar)
+		linha.appendChild(colunaAcoes)
+
+		tabela.appendChild(linha)
 	}
 
-
-	tabela += "</table>"
 	let containerTabela = document.querySelector("#cursos");
-	containerTabela.innerHTML = tabela;
+	containerTabela.innerHTML = tabela.innerHTML;
 }
 
 function limpaInputs(inputType) {
