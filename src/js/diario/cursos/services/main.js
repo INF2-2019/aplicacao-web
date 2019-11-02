@@ -30,16 +30,21 @@ function retornaResposta(xml) {
 
 $(document).on('click', '.deletar', e => {
 	e.preventDefault;
-	currentId = $(e)[0].currentTarget.parentElement.parentElement.childNodes[0].innerHTML;
+	currentId = e.currentTarget.parentElement.parentElement.childNodes[0].innerHTML;
 })
 
 $(document).on('click', '.editar', e => {
 	e.preventDefault;
-	currentId = $(e)[0].currentTarget.parentElement.parentElement.childNodes[0].innerHTML;
-	document.querySelector("#departamento-atualizar").value = $(e)[0].currentTarget.parentElement.parentElement.childNodes[1].innerHTML;
-	document.querySelector("#nome-atualizar").value = $(e)[0].currentTarget.parentElement.parentElement.childNodes[2].innerHTML;
-	document.querySelector("#horas-atualizar").value = $(e)[0].currentTarget.parentElement.parentElement.childNodes[3].innerHTML;
-	document.querySelector("#modalidade-atualizar").value = $(e)[0].currentTarget.parentElement.parentElement.childNodes[4].innerHTML;
+	currentId = e.currentTarget.parentElement.parentElement.childNodes[0].innerHTML;
+
+	// colocar a opção no atual no select
+	const val = e.currentTarget.parentElement.parentElement.childNodes[1].innerHTML;
+	$('#departamento-atualizar').find('option:contains(' + val + ')').prop('selected', true);
+	$("#departamento-atualizar").formSelect();
+
+	document.querySelector("#nome-atualizar").value = e.currentTarget.parentElement.parentElement.childNodes[2].innerHTML;
+	document.querySelector("#horas-atualizar").value = e.currentTarget.parentElement.parentElement.childNodes[3].innerHTML;
+	document.querySelector("#modalidade-atualizar").value = e.currentTarget.parentElement.parentElement.childNodes[4].innerHTML;
 	M.updateTextFields();
 })
 
@@ -60,7 +65,3 @@ $(document).on('click', '#atualizar-curso', e => {
 })
 
 $("#search").on('keyup', () => pesquisarCursos())
-
-$('select').on('contentChanged', function () {
-	$(this).formSelect()
-});

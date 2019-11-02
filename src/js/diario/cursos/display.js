@@ -97,10 +97,14 @@ function preencherInput() {
 				const id = departamento.getElementsByTagName("id")[0].innerHTML
 				const nome = departamento.getElementsByTagName("nome")[0].innerHTML
 
-				// cria novo option no select
-				const option = $("<option>").attr("value", id).text(nome)
-				$("#departamento-inserir").append(option);
-				$("#departamento-inserir").trigger('contentChanged');
+				// cria novo option no select para inserir
+				const inserirOption = $("<option>").attr("value", id).text(nome)
+				$("#departamento-inserir").append(inserirOption)
+				$("#departamento-inserir").formSelect()
+				// cira novo option no select para atualizar
+				const atualizarOption = $("<option>").attr("value", id).text(nome)
+				$("#departamento-atualizar").append(atualizarOption)
+				$("#departamento-atualizar").formSelect()
 			}
 		})
 }

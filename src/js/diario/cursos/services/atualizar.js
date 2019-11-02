@@ -11,7 +11,6 @@ function atualizar(departamento, nome, horas, modalidade) {
 	if (modalidade)
 		req.modalidade = modalidade;
 
-	console.log(req)
 	postFetch(baseURL + 'atualizar', req)
 		.then(data => (retornaResposta(data)))
 		.then(resposta => {
