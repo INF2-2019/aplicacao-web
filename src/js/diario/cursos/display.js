@@ -1,8 +1,10 @@
 M.AutoInit();
+let deptosConsultados;
 
 function criaTabela(elementos) {
-	elementos = elementos.childNodes[0].children;
 	const tabela = document.createElement("table")
+	deptosConsultados = 0
+	elementos = elementos.childNodes[0].children
 	tabela.classList.add("highlight")
 
 	for (let i = 0; i < elementos.length; i++) {
@@ -15,7 +17,9 @@ function criaTabela(elementos) {
 				let nomeDepartamento = nomeDepto(elementos[i].children[j].innerHTML)
 				nomeDepartamento.then(res => {
 					elemento.innerHTML = res
-					if (i == elementos.length - 1)
+					deptosConsultados++
+					// se for o último a carregar, recarrega o conteudo da tabela com os nomes dos deptos.
+					if (deptosConsultados == elementos.length)
 						containerTabela.innerHTML = tabela.innerHTML;
 				})
 			} else {
@@ -56,7 +60,7 @@ function criarBotaoEditar() {
 
 function criarBotaoDeletar() {
 	const deletar = document.createElement("a")
-	deletar.setAttribute("href", "#modal-atualizar")
+	deletar.setAttribute("href", "#modal-confirmar")
 	deletar.classList = "btn-small utils erro deletar modal-trigger"
 
 	const iconDel = document.createElement("i")
@@ -82,6 +86,23 @@ function limpaInputs(inputType) {
 	}
 
 	M.updateTextFields();
+}
+
+function preencherInput() {
+	fetch('http://localhost:8080/diario/departamentos/consulta')
+		.then(response => response.text())
+		.then(str => (new window.DOMParser()).parseFromString(str, "text/xml"))
+		.then(xml => {
+			for (departamento of xml.getElementsByTagName('departamento')) {
+				const id = departamento.getElementsByTagName("id")[0].innerHTML
+				const nome = departamento.getElementsByTagName("nome")[0].innerHTML
+
+				// cria novo option no select
+				const option = $("<option>").attr("value", id).text(nome)
+				$("#departamento-inserir").append(option);
+				$("#departamento-inserir").trigger('contentChanged');
+			}
+		})
 }
 
 function pesquisarCursos() {

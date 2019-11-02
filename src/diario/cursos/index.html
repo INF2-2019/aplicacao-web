@@ -61,7 +61,9 @@
 			<div class="row modal-content">
 				<h4>Inserir curso</h4>
 				<div class="input-field col s3">
-					<input id="departamento-inserir" type="number" />
+					<select id="departamento-inserir">
+						<option value="" disabled selected>Selecione</option>
+					</select>
 					<label for="departamento-inserir">Departamento</label>
 				</div>
 				<div class="input-field col s9">
@@ -123,6 +125,7 @@
 	<!-- Aparecer tabela ao abrir a pagina -->
 	<script>
 		consultar();
+		preencherInput();
 	</script>
 </body>
 

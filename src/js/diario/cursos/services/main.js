@@ -60,3 +60,7 @@ $(document).on('click', '#atualizar-curso', e => {
 })
 
 $("#search").on('keyup', () => pesquisarCursos())
+
+$('select').on('contentChanged', function () {
+	$(this).formSelect()
+});
