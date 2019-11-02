@@ -1,4 +1,3 @@
-// TODO: adicionar consultas e pesquisas seletivas
 function consultar() {
 	fetch(baseURL + 'consultar')
 		.then(response => response.text())
