@@ -19,6 +19,7 @@ function fazerTabela(doc){
         info.classList.add("btnAjuste");
         info.classList.add("blue");
         info.classList.add("modal-trigger");
+        info.classList.add("botaoInfo");
         info.href = "#modal-info";
         info.innerHTML = "INFO";
         var editar = document.createElement("a");
@@ -69,7 +70,9 @@ function fazerTabela(doc){
 
 
     }
-    prepareDeletar();
+    setTimeout(function(){ prepareDeletar(); }, 200);
+    setTimeout(function(){ prepareInfo(); }, 200);
+    setTimeout(function(){ prepareEditar(); }, 200);
 }
 
 listar();

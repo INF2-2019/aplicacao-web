@@ -31,7 +31,7 @@ function verificaCamposCadastro() {
     var tam = document.getElementsByClassName("obrigatorio-cadastro").length;
     var CampoObrVazio = false
     for(i=0;i<tam;i++){
-        if(a[i].value == null || a[i].value ==""){
+        if(a[i].value === null || a[i].value ===""){
             CampoObrVazio = true;
             break;
         }
@@ -46,43 +46,9 @@ function verificaCamposCadastro() {
 
     }
 }
-function verificaCamposEditar() {
-    var a = document.getElementsByClassName("obrigatorio-editar");
-    var tam = document.getElementsByClassName("obrigatorio-editar").length;
-    var CampoObrVazio = false
-    for(i=0;i<tam;i++){
-        if(a[i].value == null || a[i].value ==""){
-            CampoObrVazio = true;
-            break;
-        }
-    }
-    if(CampoObrVazio){
-        alert("Os campos com * são obrigatórios!");
-    }
-    else verificaCamposRecEditar();
-}
-function verificaCamposRecEditar() {
-    var b = document.getElementsByClassName("recomendado-editar");
-    var tam2 = document.getElementsByClassName("recomendado-editar").length;
-    var CampoRecVazio = false;
-    for(i=0;i<tam2;i++){
-        if(b[i].value == null || b[i].value ==""){
-            CampoRecVazio = true;
-            break;
-        }
-    }
-    if(CampoRecVazio){
-        if(confirm("Os campos em vazio não alterarão os valores antigos. Continuar?")){
 
-        }
-        else{
-
-        }
-    }
-}
 
 document.getElementById("btConfirmaCadastro").addEventListener("click",verificaCamposCadastro);
-document.getElementById("btConfirmaEditar").addEventListener("click",verificaCamposEditar);
 
 for(i=0; i<document.getElementsByClassName("botaoAdicionar").length ; i++){
     document.getElementsByClassName("botaoAdicionar")[i].addEventListener("click",Esvaziar);

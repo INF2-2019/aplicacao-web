@@ -34,6 +34,7 @@ function inserir() {
   "&foto="+foto+"";
   fetch(url)
     .then(resposta => {
+      responseStatus = resposta.status;
       return resposta.text();
     })
     .then(text => {
@@ -41,5 +42,5 @@ function inserir() {
       xmlDoc = parser.parseFromString(text, "text/xml");
     });
     setTimeout(function(){ listar(); }, 200);
-    setTimeout(function(){ status(xmlDoc); }, 200);
+    setTimeout(function(){ adicionaResult(responseStatus, xmlDoc); }, 200);
 }

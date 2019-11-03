@@ -26,6 +26,7 @@ function deletar() {
 let url = "http://localhost:8080/app/diario/alunos/deletar?id="+idParaDeletar;
 fetch(url)
   .then(resposta => {
+    responseStatus = resposta.status;
     return resposta.text();
   })
   .then(text => {
@@ -33,5 +34,5 @@ fetch(url)
     xmlDoc = parser.parseFromString(text, "text/xml");
   });
   setTimeout(function(){ listar(); }, 200);
-  setTimeout(function(){ status(xmlDoc); }, 200);
+  setTimeout(function(){ adicionaResult(responseStatus, xmlDoc); }, 200);
 }
