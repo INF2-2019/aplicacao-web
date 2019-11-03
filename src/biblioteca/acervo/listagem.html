@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+    <head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<link rel="stylesheet" href="../../css/materialize.css" />
+        <title>Listagem do Acervo</title>
+    </head>
+    <body>
+		<nav style="padding-left: 5pt;">
+			<div class="nav-wrapper">
+				<a class="brand-logo">S.A. Admin</a>
+			</div>
+		</nav>
+
+		<main style="margin: 0 10%">
+			<h1>Acervo</h1>
+			<p id="saida" class="flow-text red-text"></p>
+			<a href="#modalInsere" class=" btn right primary modal-trigger">Adicionar</a>
+
+			<table>
+				<colgroup>
+				   <col span="1" style="width: 25%;">
+				   <col span="1" style="width: 25%;">
+				   <col span="1" style="width: 25%;">
+				   <col span="1" style="width: 8.3%;">
+				   <col span="1" style="width: 8.4%;">
+				   <col span="1" style="width: 8.3%;">
+				</colgroup>
+
+				<thead>
+					<th>ID</th>
+					<th>Nome</th>
+					<th>Tipo</th>
+					<th>Ações</th>
+					<th></th>
+					<th></th>
+				</thead>
+				<tbody>
+        </tbody>
+			</table>
+		</main>
+
+		<!-- MODAL DE EDIÇÃO -->
+		<div class="container secondary lighten-5">
+			<div id="modalAltera" class="modal">
+				<div class="modal-content row col s15" style="padding:0;">
+					<h4 style="padding: 15pt;">Editar Item</h4>
+					<div class="row modal-content" style="margin:0;">
+						<label class="primary-text text-lighten-1 short col s2">ID: <input type="number" name="id"></label>
+						<label class="primary-text text-lighten-1 short col s7">Nome: <input type="text" name="nome"></label>
+						<label class="primary-text text-lighten-1 short col s3">Campus:
+							<select name="campus-id">
+								<option value = "1">I</option>
+								<option value = "2">II</option>
+							</select>
+						</label>
+						<label class="primary-text text-lighten-1 short col s6">Local: <input type="text" name="local"></label>
+						<label class="primary-text text-lighten-1 short col s6">Editora: <input type="text" name="editora"></label>
+						<label class="primary-text text-lighten-1 short col s3">Ano: <input type="number" name="ano"></label>
+						<label class="primary-text text-lighten-1 short col s3">Páginas: <input type="number" name="paginas"></label>
+						<label class="primary-text text-lighten-1 short col s6">Tipo:
+							<select name="tipo" onchange="alterarCampos()">
+								<option value = "invalido"> Escolha um tipo</option>
+								<option value = "academico">Acadêmico</option>
+								<option value = "livro">Livro</option>
+								<option value = "midia">Mídia</option>
+								<option value = "periodico">Periódico</option>
+							</select>
+						</label>
+						<div id='outrosParametros' class="row modal-content" style="margin:0;"></div>
+					</div>
+					<div class="row modal-content" style="margin:0;">
+						<button name="inserir" onclick="alterar()" class="btn primary espaco  waves-effect waves-ligth btn modal-close">Confirmar</button>
+						<a class="modal-close btn utils erro-2">Cancelar</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="container secondary lighten-5">
+			<div id="modalDeleta" class="modal bottom-sheet">
+				<div class="modal-content row col s12" style="padding:0;">
+					<h4 style="padding: 15pt;">Tem certeza que deseja deletar esse registro do acervo?</h4>
+					<div class="row modal-content" style="margin:0;">
+						<a name="confirmar" class="btn-large primary espaco waves-effect waves-ligth modal-close right">Cancelar</a>
+						<a name deletar class="modal-close btn-large utils erro-2 right">Deletar</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script type="text/javascript" src="../../js/materialize.min.js"></script>
+		<script src="../../js/biblioteca/acervo/consultar.js"></script>
+		<script src="../../js/biblioteca/acervo/inserir.js"></script>
+		<script src="../../js/biblioteca/acervo/editar.js"></script>
+		<script>
+			$(document).ready(function(){
+				$('.modal').modal();
+				$('select').formSelect();
+			});
+		</script>
+    </body>
+</html>
