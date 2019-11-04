@@ -41,14 +41,12 @@ function deleta() {
 		}else if(responseStatus === 403){
 		if (xmlResult != "") {
 			var xmlDoc = parser.parseFromString(xmlResult, "text/xml");
-			var resp = xmlDoc.childNodes[0]
-			if (exibido === 0) {
+			var resp = xmlDoc.childNodes[0];
 				M.toast({
 					html: resp,
 					classes: "red darken-2"
 				});
 				exibido += 1;
-			}
 		}
 	}
 	//atualiza a tabela
