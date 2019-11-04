@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt" dir="ltr">
+
+<head>
+	<link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="../../css/materialize.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+	<meta charset="utf-8">
+	<title>Relatório 5</title>
+</head>
+
+<body onload="consulta()">
+
+	<nav>
+		<div class="nav-wrapper">
+			<a class="brand-logo">S.A. Admin</a>
+		</div>
+	</nav>
+
+
+	<div class="container">
+		<h2>Relatório de Multas</h2>
+
+		<div class="row">
+			<div class="input-field col s12 m12 l4">
+				<i class="material-icons prefix">search</i>
+				<input id="search" type="text" autocomplete="off">
+				<label for="search">Pesquisar ID</label>
+			</div>
+			<a href="#modal-baixar" class="btn col primary s12 m12 l2 right modal-trigger">Imprimir</a>
+			<div id="" class="col s12">
+
+				<table id="tabela-atrasos" class="responsive-table centered highlight">
+					<thead>
+						<tr>
+							<th>ID Emprestimo</th>
+							<th>ID Aluno</th>
+							<th>Data do Emprestimo</th>
+							<th>Multa</th>
+							<th>Ações</th>
+						</tr>
+					</thead>
+					<tbody id="cursos">
+						<td>Lorem</td>
+						<td>Lorem</td>
+						<td>Lorem</td>
+						<td>Lorem</td>
+						<td>
+							<a href="#modal-info"
+								class="btn utils-info secondary s12 m5 l2 lighten modal-trigger waves-effect waves-teal">Info</a>
+						</td>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div id="modal-info" class="modal">
+			<div class="modal-content">
+				<h4>Informações</h4>
+
+				<h5>irmao, vai pagar as multa</h5>
+
+				<table class="responsive-table centered highlight">
+					<thead>
+						<tr>
+							<th>Dia do Emprestimo</th>
+							<th>Dia da Devolução</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Lorem</td>
+							<td>Lorem</td>
+						</tr>
+					</tbody>
+				</table>
+
+				<div class="modal-footer"><a class="btn utils waves-effect erro col s12 right modal-close">Cancelar</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+	<script src="../../js/biblioteca/relatorios/jquery-3.4.1.js"></script>
+	<!--  <script src="../../js/biblioteca/relatorios/consultaAcervo.js"></script>   -->
+	<script src="../../js/materialize.js"></script>
+	<script src="../../js/biblioteca/relatorios/custom.js"></script>
+</body>
+
+</html>

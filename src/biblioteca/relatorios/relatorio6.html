@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt" dir="ltr">
+
+<head>
+	<link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="../../css/materialize.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+	<meta charset="utf-8">
+	<title>Relatório 6</title>
+</head>
+
+<body onload="consulta()">
+
+	<nav>
+		<div class="nav-wrapper">
+			<a class="brand-logo">S.A. Admin</a>
+		</div>
+	</nav>
+
+
+	<div class="container">
+		<h2>Relatório de Obras Descartadas</h2>
+		<div class="row">
+			<div class="input-field col s12 m12 l4">
+				<i class="material-icons prefix">search</i>
+				<input id="search" type="text" autocomplete="off">
+				<label for="search">Pesquisar ID</label>
+			</div>
+			<a href="#modal-baixar" class="btn col primary s12 m12 l2 right modal-trigger">Imprimir</a>
+
+				<div class="col s12">
+					<table id="tabela-atrasos" class="responsive-table centered highlight">
+						<thead>
+							<tr>
+								<th>ID Do Acervo</th>
+								<th>ID Funcionario</th>
+								<th>Data de Descarte</th>
+								<th>Ações</th>
+							</tr>
+						</thead>
+						<tbody id="cursos">
+							<td>Lorem</td>
+							<td>Lorem</td>
+							<td>Lorem</td>
+							<td>
+								<a href="#modal-info"
+									class="btn utils-info secondary s12 m5 l2 lighten modal-trigger waves-effect waves-teal">Info</a>
+							</td>
+						</tbody>
+					</table>
+				</div>
+		</div>
+		<div id="modal-info" class=" modal z-depth-5">
+			<div class="container">
+				<h4 style="padding: 3pt">Informações</h4>
+				<h5>Motivos</h5>
+				<ul>
+					<li style="list-style-type: circle;">livro estava mal cheiroso</li>
+				</ul>
+
+
+				<a style="margin: 5pt;" class="btn utils waves-effect erro col offset-s9 right modal-close">Cancelar</a>
+			</div>
+		</div>
+	</div>
+
+	<script src="../../js/biblioteca/relatorios/jquery-3.4.1.js"></script>
+	<!--  <script src="../../js/biblioteca/relatorios/consultaAcervo.js"></script>   -->
+	<script src="../../js/materialize.js"></script>
+	<script src="../../js/biblioteca/relatorios/custom.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt" dir="ltr">
+
+<head>
+	<link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="../../css/materialize.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+	<meta charset="utf-8">
+	<title>Relatório 4</title>
+</head>
+
+<body onload="consulta()">
+
+	<nav>
+		<div class="nav-wrapper">
+			<a class="brand-logo">S.A. Admin</a>
+		</div>
+	</nav>
+
+
+	<div class="container">
+		<h2>Relatório de Atrasos</h2>
+		<div class="row">
+			<div class="input-field col s12 m12 l4">
+				<i class="material-icons prefix">search</i>
+				<input id="search" type="text" autocomplete="off">
+				<label for="search">Pesquisar ID</label>
+			</div>
+			<div class="row">
+					<a href="#modal-baixar" class="btn col primary s12 m12 l2 right modal-trigger">Imprimir</a>
+
+				<div id="" class="col s12">
+					<table id="tabela-atrasos" class="responsive-table centered highlight">
+						<thead>
+							<tr>
+								<th>ID Emprestimo</th>
+								<th>ID Aluno</th>
+								<th>Dias Atrasados</th>
+								<th>Ações</th>
+							</tr>
+						</thead>
+						<tbody id="cursos">
+
+							<td>Lorem</td>
+							<td>Lorem</td>
+							<td>Lorem</td>
+							<td>
+								<a href="#modal-info"
+								class="btn utils-info secondary s12 m5 l2 lighten modal-trigger waves-effect waves-teal">Info</a>
+							</td>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		<div id="modal-info" class="modal z-depth-5">
+			<div class="modal-content">
+				<h4>Informações</h4>
+
+				<h5>Mano, ta atrasado, vai la pagar sua multas</h5>
+
+
+				<div class="modal-footer"><a class="btn utils waves-effect erro col s12 right modal-close">Cancelar</a></div>
+			</div>
+		</div>
+
+
+		<!--
+		<div id="modal-atualizar" class="modal">
+			<h4 style="padding: 15pt;">Atualizar curso</h4>
+			<div class="row modal-content">
+				<div class="input-field col s4">
+					<select id="departamento-atualizar">
+						<option value="" disabled selected>Selecione</option>
+					</select>
+					<label for="departamento-atualizar">Departamento</label>
+				</div>
+				<div class="input-field col s8">
+					<input id="nome-atualizar" type="text" />
+					<label for="nome-atualizar">Novo nome do curso</label>
+				</div>
+				<div class="input-field col s5">
+					<input id="horas-atualizar" type="number" />
+					<label for="horas-atualizar">Nova horas totais</label>
+				</div>
+				<div class="input-field col s7">
+					<input id="modalidade-atualizar" type="text" />
+					<label for="modalidade-atualizar">Nova modalidade</label>
+				</div>
+			</div>
+			<div class="container modal-footer">
+				<a class="modal-close btn utils erro-2">Cancelar</a>
+				<a class="modal-close btn utils sucesso-2" id="atualizar-curso">Salvar</a>
+			</div>
+		</div>
+	-->
+
+	</div>
+
+	<script src="../../js/biblioteca/relatorios/jquery-3.4.1.js"></script>
+	<!--  <script src="../../js/biblioteca/relatorios/consultaAcervo.js"></script>   -->
+	<script src="../../js/materialize.js"></script>
+	<script src="../../js/biblioteca/relatorios/custom.js"></script>
+</body>
+
+</html>
