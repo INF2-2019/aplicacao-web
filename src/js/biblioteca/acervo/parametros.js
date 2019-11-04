@@ -5,7 +5,7 @@ const PARAMS_ACADEMICOS = [
 		paramNome:  "id-obra",
 		exibNome:  "Id da obra",
 		tipo: "number",
-		tamanho:  2
+		tamanho:  3
 	},
 	{
 		paramNome:  "programa",
@@ -20,19 +20,19 @@ const PARAMS_LIVROS = [
 		paramNome:  "id-obra",
 		exibNome:  "Id da obra",
 		tipo: "number",
-		tamanho:  2
+		tamanho:  3
 	},
 	{
 		paramNome:  "isbn",
 		exibNome:  "Código ISBN",
 		tipo: "number",
-		tamanho:  3
+		tamanho:  4
 	},
 	{
 		paramNome:  "edicao",
 		exibNome:  "Edição",
 		tipo: "number",
-		tamanho:  2
+		tamanho:  3
 	}
 ];
 
@@ -41,7 +41,7 @@ const PARAMS_MIDIAS = [
 		paramNome:  "id-obra",
 		exibNome:  "Id da obra",
 		tipo: "number",
-		tamanho:  2
+		tamanho:  3
 	},
 	{
 		paramNome:  "subtipo",
@@ -53,7 +53,7 @@ const PARAMS_MIDIAS = [
 		paramNome:  "tempo",
 		exibNome:  "Tempo",
 		tipo: "time",
-		tamanho:  2
+		tamanho:  3
 	}
 ];
 
@@ -62,7 +62,7 @@ const PARAMS_PERIODICOS = [
 		paramNome:  "id-obra",
 		exibNome:  "Id da obra",
 		tipo: "number",
-		tamanho:  2
+		tamanho:  3
 	},
 	{
 		paramNome:  "subtipo",
@@ -86,7 +86,7 @@ const PARAMS_PERIODICOS = [
 		paramNome:  "volume",
 		exibNome:  "Volume",
 		tipo: "number",
-		tamanho:  2
+		tamanho:  3
 	},
 	{
 		paramNome:  "issn",
