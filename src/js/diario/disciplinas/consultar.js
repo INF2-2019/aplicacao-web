@@ -2,7 +2,7 @@ function consulta() {
 	//cria conexão com o servlet consulta
 	let xmlResult;
 	let responseStatus;
-	 fetch("http://localhost:16558/app/diario/disciplinas/consultar")
+	 fetch("http://localhost:8080/app/diario/disciplinas/consultar")
 	 .then(function(response) {
 		responseStatus = response.status;
 		response.text()
@@ -36,7 +36,8 @@ function consulta() {
 					linha += elemento;
 				}
 				linha += "<td><button name=\"EditarEtapa\" class=\"edita waves-effect waves-light btn-small modal-trigger  \" href=\"#EditaForm\" id=\"Edita\" >EDITAR</button>    ";
-				linha += "<button class=\"deleta waves-effect waves-light btn-small modal-trigger \" href=\"#RemoveForm\" style=\"background-color:#D32F2F\">DELETAR</button></td>";
+				linha += "<button class=\"deleta waves-effect waves-light btn-small modal-trigger \" href=\"#RemoveForm\" style=\"background-color:#D32F2F\">DELETAR</button>";
+				linha += "<button   class=\" infoButton info waves-effect waves-light btn-small modal-trigger utils info \" href=\"#info\" >INFO</button></td>";
 				linha += "</tr>"
 				tabela += linha;
 			}

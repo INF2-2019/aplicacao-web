@@ -8,7 +8,7 @@ function deleta() {
 	//cria conexão com o servlet deleta
 	let xmlResult;
 	let responseStatus;
-	 fetch("http://localhost:16558/app/diario/disciplinas/deletar?id="+id)
+	 fetch("http://localhost:8080/app/diario/disciplinas/deletar?id="+id)
 	 .then(function(response) {
 		responseStatus = response.status;
 		response.text()

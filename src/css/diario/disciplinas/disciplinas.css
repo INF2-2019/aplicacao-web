@@ -25,7 +25,15 @@ td{
   margin-right: 1%;
 	padding-top: 1%;
 }
+#infodiv{
+  margin-left: 1%;
+  margin-right: 1%;
+	padding-top: 1%;
+}
 #Edita img {
   max-width: 50px;
   max-height: 50px;
+}
+.info {
+  margin-left: 5px;
 }

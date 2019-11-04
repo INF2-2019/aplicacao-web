@@ -21,7 +21,7 @@
 
 
 	<!-- FORMULÁRIO ADICIONAR -->
-	<div style="background-color: #E5E5E5" id="AdicionaForm" class="center-align modal modal-content">
+	<div style="background-color: #E5E5E5" id="AdicionaForm" class=" center-align modal modal-content">
 		<nav style="margin-top: 0;background-color: #29A58C">
 			<div id="navTexto" class="nav-wrapper white-text">
 				<h4>Adicionar Disciplinas</h4>
@@ -32,9 +32,11 @@
 				<!-- div para input ano -->
 				<div class="col">
 					<div class="input-field col s4">
-						<input placeholder="" type="number" name="ano" class="black-text "
-							id="AdicionarTurmaDis">
-						<label class="col" for="ano" style="color: #29A58C">id-Turma:</label>
+							<select id="filtros">
+
+									
+								</select>
+								<label>turma:</label>
 					</div>
 				</div>
 				<!-- div para input valor -->
@@ -69,7 +71,53 @@
 
 	<!-- FIM FORM ADICIONA ETAPA -->
 
-
+	<div style="background-color: #E5E5E5" id="info" class="center-align modal modal-content">
+			<nav style="margin-top: 0%;background-color: #29A58C">
+				<div id="navTexto" class="nav-wrapper white-text">
+					<h4>Informações</h4>
+				</div>
+			</nav>
+			<div>
+				<div id="infodiv" class="col s12" >
+				
+					<div class="col s4">
+						<div class="input-field col s4">
+							<input  disabled placeholder="" type="number" name="ano" class="black-text span0 center-align"
+								id="AdicionarTurmaDis">
+							<label class="col" for="ano" style="color: #29A58C">id:</label>
+						</div>
+					</div>
+				
+					<div class="col">
+						<div class="input-field col s4">
+							<input  disabled placeholder="" type="number" name="ano" class="black-text span1 center-align"
+								id="AdicionarTurmaDis">
+							<label class="col" for="ano" style="color: #29A58C">id-Turma:</label>
+						</div>
+					</div>
+					<!-- div para input valor -->
+					<div class="col">
+						<div class="input-field col s4">
+							<input disabled placeholder="" type="text" name="valor" class="black-text span2 center-align "
+								id="AdicionaNomeDis">
+							<label class="col" for="valorEtapa" style="color: #29A58C">nome:</label>
+	
+						</div>
+					</div>
+					<div class="col">
+						<div class="input-field col s4">
+							<input  disabled placeholder="" type="text" name="valor" class="black-text span3 center-align"
+								id="AdicionaCargaDis">
+							<label class="col" for="valorEtapa" style="color: #29A58C">Carga-horaria-min:</label>
+	
+						</div>
+					</div>
+					<div id="respostaAdiciona"></div>
+				</div>
+				
+			</div>
+			</div>
+	
 	<!-- FORMULÁRIO EDITA ETAPA -->
 	<div style="background-color: #E5E5E5" class="center-align modal modal-content" id="EditaForm">
 		<nav style="margin-top:0%;background-color: #29A58C">
@@ -118,7 +166,7 @@
 	</div>
 
 	<!-- FIM FORMULÁRIO EDITA ETAPAS -->
-
+	
 	<!--FORMULÁRIO REMOVER ETAPAS-->
 	<div style="background-color: #E5E5E5" class=" center-align modal" id="RemoveForm">
 		<nav style="margin-top: 0%;background-color: #29A58C">

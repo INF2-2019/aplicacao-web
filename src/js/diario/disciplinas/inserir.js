@@ -4,7 +4,7 @@ function adiciona() {
 	let horas = document.querySelector('#AdicionaCargaDis').value;
 	let xmlResult;
 	let responseStatus;
-	fetch("http://localhost:16558/app/diario/disciplinas/inserir", {
+	fetch("http://localhost:8080/app/diario/disciplinas/inserir", {
 		method: 'POST',
 		body: new URLSearchParams({turma, nome,horas}),
 		headers: new Headers({

@@ -22,7 +22,7 @@ function atualiza() {
 	}
 	let xmlResult;
 	let responseStatus;
-	fetch("http://localhost:16558/app/diario/disciplinas/atualizar", {
+	fetch("http://localhost:8080/app/diario/disciplinas/atualizar", {
 		method: 'POST',
 		body: new URLSearchParams(data),
 		headers: new Headers({
