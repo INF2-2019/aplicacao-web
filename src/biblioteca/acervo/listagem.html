@@ -17,7 +17,7 @@
 		<main style="margin: 0 10%">
 			<h1>Acervo</h1>
 			<p id="saida" class="flow-text red-text"></p>
-			<a href="#modalInsere" class=" btn right primary modal-trigger">Adicionar</a>
+			<a href="#modalAltera" class=" btn right primary modal-trigger" onclick="prepararInsercao();">Adicionar</a>
 
 			<table>
 				<colgroup>
@@ -49,31 +49,32 @@
 					<h4 style="padding: 15pt;">Editar Item</h4>
 					<div class="row modal-content" style="margin:0;">
 						<label class="primary-text text-lighten-1 short col s2">ID: <input type="number" name="id"></label>
-						<label class="primary-text text-lighten-1 short col s7">Nome: <input type="text" name="nome"></label>
-						<label class="primary-text text-lighten-1 short col s3">Campus:
-							<select name="campus-id">
+						<label class="primary-text text-lighten-1 short col s10">Nome: <input type="text" name="nome"></label>
+						<label class="primary-text text-lighten-1 short col s5">Campus:
+							<select name="id-campi">
+								<option value = "invalido">Escolha um campus</option>
 								<option value = "1">I</option>
 								<option value = "2">II</option>
 							</select>
 						</label>
-						<label class="primary-text text-lighten-1 short col s6">Local: <input type="text" name="local"></label>
+						<label class="primary-text text-lighten-1 short col s7">Local: <input type="text" name="local"></label>
 						<label class="primary-text text-lighten-1 short col s6">Editora: <input type="text" name="editora"></label>
 						<label class="primary-text text-lighten-1 short col s3">Ano: <input type="number" name="ano"></label>
 						<label class="primary-text text-lighten-1 short col s3">Páginas: <input type="number" name="paginas"></label>
 						<label class="primary-text text-lighten-1 short col s6">Tipo:
 							<select name="tipo" onchange="alterarCampos()">
-								<option value = "invalido"> Escolha um tipo</option>
+								<option value = "invalido">Escolha um tipo</option>
 								<option value = "academico">Acadêmico</option>
 								<option value = "livro">Livro</option>
 								<option value = "midia">Mídia</option>
 								<option value = "periodico">Periódico</option>
 							</select>
 						</label>
-						<div id='outrosParametros' class="row modal-content" style="margin:0;"></div>
+						<div id='outrosParametros' class="row modal-content" style="margin:0;padding-left:0;"></div>
 					</div>
 					<div class="row modal-content" style="margin:0;">
-						<button name="inserir" onclick="alterar()" class="btn primary espaco  waves-effect waves-ligth btn modal-close">Confirmar</button>
-						<a class="modal-close btn utils erro-2">Cancelar</a>
+						<button name="inserir" class="btn primary espaco  waves-effect waves-ligth btn modal-close">Confirmar</button>
+						<a class="modal-close btn utils erro-2" style="margin-right: 5%;">Cancelar</a>
 					</div>
 				</div>
 			</div>
@@ -93,9 +94,8 @@
 
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 		<script type="text/javascript" src="../../js/materialize.min.js"></script>
-		<script src="../../js/biblioteca/acervo/consultar.js"></script>
-		<script src="../../js/biblioteca/acervo/inserir.js"></script>
-		<script src="../../js/biblioteca/acervo/editar.js"></script>
+		<script src="../../js/biblioteca/acervo/parametros.js"></script>
+		<script src="../../js/biblioteca/acervo/main.js"></script>
 		<script>
 			$(document).ready(function(){
 				$('.modal').modal();
