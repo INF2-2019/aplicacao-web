@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="pt" dir="ltr">
+
+<head>
+	<link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="../../css/materialize.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/biblioteca/emprestimos/emprestimos.css">
+	<meta charset="utf-8">
+	<title>Manutenção de Disciplinas!</title>
+
+</head>
+
+<body onload="consulta()">
+	<nav class="nav-extended " style="background-color: #29A58C">
+		<div class="row s12 nav-content white-text">
+			<h4 style="margin:0 ;margin-left:0.5%;">S.A. Admin</h4>
+		</div>
+	</nav>
+	<!-- fim header -->
+
+
+	<!-- FORMULÁRIO ADICIONAR -->
+	<div style="background-color: #E5E5E5" id="AdicionaForm" class=" center-align modal modal-content">
+		<nav style="margin-top: 0;background-color: #29A58C">
+			<div id="navTexto" class="nav-wrapper white-text">
+				<h4>Adicionar Empréstimo</h4>
+			</div>
+		</nav>
+		<div>
+			<form id="formAdiciona" class="col s12">
+				<!-- div para input ano -->
+				<div class="col">
+					<div class="input-field col s4">
+						<input placeholder="" type="text" name="valor" class="black-text "
+							id="AdicionaAlunoDis">
+						<label class="col" for="valorEtapa" style="color: #29A58C">Id-aluno:</label>
+
+					</div>
+				</div>
+				<!-- div para input valor -->
+				<div class="col">
+					<div class="input-field col s4">
+						<input placeholder="" type="text" name="valor" class="black-text "
+							id="AdicionaAcervoDis">
+						<label class="col" for="valorEtapa" style="color: #29A58C">Id-acervo:</label>
+
+					</div>
+				</div>
+				<div class="col admin-campo">
+					<div class="input-field col s4">
+						<input type="date" 
+							id="AdicionaDataEmprestimoDis" onchange="getDataEmprestimo()">
+						<label class="col" for="valorEtapa" style="color: #29A58C">Data-Emprestimo:</label>
+
+					</div>
+        </div>
+        <div class="col admin-campo">
+					<div class="input-field col s4">
+						<input type="date" 
+							id="AdicionaDataPrevEmprestimoDis" onchange="getDataPrevEmprestimo()">
+						<label class="col" for="valorEtapa" style="color: #29A58C">Data-Emprestimo:</label>
+
+					</div>
+        </div>
+        <div class="col admin-campo">
+					<div class="input-field col s4">
+						<input type="date" 
+							id="AdicionaDataPrevEmprestimoDis" onchange="getDataPrevEmprestimo()">
+						<label class="col" for="valorEtapa" style="color: #29A58C">Data-Previa-Devolução:</label>
+
+					</div>
+        </div>
+        <div class="col admin-campo">
+					<div class="input-field col s4">
+						<input type="date" 
+							id="AdicionaDataDevolucaoDis" onchange="getDataDevolucao()">
+						<label class="col" for="valorEtapa" style="color: #29A58C">Data-Devolução:</label>
+
+					</div>
+        </div>
+        <div class="col admin-campo">
+					<div class="input-field col s4">
+						<input placeholder="" type="text" name="valor" class="black-text "
+							id="AdicionaMultaDis">
+						<label class="col" for="valorEtapa" style="color: #29A58C">Multa:</label>
+
+					</div>
+				</div>
+				<div id="respostaAdiciona"></div>
+			</form>
+			<div style="margin: 1%;">
+				<button type="button" onclick="recarrega()" name="CancelarAdc" class="modal-close waves-effect white-text btn-large"
+					id="CancelaAdc" style="margin-top: 3%; background-color:#29A58C">Cancelar</button>
+
+				<button onclick="adiciona()" name="EnviarAdc" class="waves-effect white-text btn-large"
+					id="EnviaAdc" style="margin-top: 3%;background-color:#3E56B0">Confirmar</button>
+
+			</div>
+		</div>
+	</div>
+
+	<!-- FIM FORM ADICIONA ETAPA -->
+
+	<div style="background-color: #E5E5E5" id="info" class="center-align modal modal-content">
+			<nav style="margin-top: 0%;background-color: #29A58C">
+				<div id="navTexto" class="nav-wrapper white-text">
+					<h4>Informações</h4>
+				</div>
+			</nav>
+			<div>
+				<div id="infodiv" class="col s12" >
+
+          
+
+					<div class="col">
+            <div class="input-field col s4">
+              <input placeholder="" type="text" name="valor" class="black-text span0 "
+               >
+              <label class="col" for="valorEtapa" style="color: #29A58C">Id-aluno:</label>
+  
+            </div>
+          </div>
+          <!-- div para input valor -->
+          <div class="col">
+            <div class="input-field col s4">
+              <input placeholder="" type="text" name="valor" class="black-text span1 "
+                >
+              <label class="col" for="valorEtapa" style="color: #29A58C">Id-acervo:</label>
+  
+            </div>
+          </div>
+          <div class="col">
+            <div class="input-field col s4">
+                <input placeholder="" type="text" name="valor" class="black-text span2 "
+                >
+              <label class="col" for="valorEtapa" style="color: #29A58C">Data-Emprestimo:</label>
+  
+            </div>
+          </div>
+          <div class="col">
+            <div class="input-field col s4">
+                <input placeholder="" type="text" name="valor" class="black-text span3 "
+                >
+              <label class="col" for="valorEtapa" style="color: #29A58C">Data-Emprestimo:</label>
+  
+            </div>
+          </div>
+          <div class="col">
+            <div class="input-field col s4">
+                <input placeholder="" type="text" name="valor" class="black-text span4 "
+                >
+              <label class="col" for="valorEtapa" style="color: #29A58C">Data-Previa-Devolução:</label>
+  
+            </div>
+          </div>
+          <div class="col">
+            <div class="input-field col s4">
+                <input placeholder="" type="text" name="valor" class="black-text span5 "
+                >
+              <label class="col" for="valorEtapa" style="color: #29A58C">Data-Devolução:</label>
+  
+            </div>
+          </div>
+          <div class="col">
+            <div class="input-field col s4">
+                <input placeholder="" type="text" name="valor" class="black-text span6 "
+                >
+              <label class="col" for="valorEtapa" style="color: #29A58C">Multa:</label>
+  
+            </div>
+          </div>
+					<div id="respostaAdiciona"></div>
+				</div>
+				
+			</div>
+			</div>
+	
+	<!-- FORMULÁRIO EDITA ETAPA -->
+	<div style="background-color: #E5E5E5" class="center-align modal modal-content" id="EditaForm">
+		<nav style="margin-top:0%;background-color: #29A58C">
+			<div class="nav-wrapper white-text center-align">
+				<h4>Editar Empréstimo</h4>
+			</div>
+		</nav>
+		<div>
+			<form id="formEdita" class="col s12">
+
+				<!-- div para input ano -->
+        <div class="col">
+					<div class="input-field col s4">
+						<input placeholder="" type="text" name="valor" class="black-text "
+							id="editaAlunoDis">
+						<label class="col" for="valorEtapa" style="color: #29A58C">Id-aluno:</label>
+
+					</div>
+				</div>
+				<!-- div para input valor -->
+				<div class="col">
+					<div class="input-field col s4">
+						<input placeholder="" type="text" name="valor" class="black-text "
+							id="editaAcervoDis">
+						<label class="col" for="valorEtapa" style="color: #29A58C">Id-acervo:</label>
+
+					</div>
+				</div>
+				<div class="col admin-campo">
+					<div class="input-field col s4">
+						<input type="date" 
+							id="editaDataEmprestimoDis" onchange="getDataEmprestimo()">
+						<label class="col" for="valorEtapa" style="color: #29A58C">Data-Emprestimo:</label>
+
+					</div>
+        </div>
+        <div class="col admin-campo">
+					<div class="input-field col s4">
+						<input type="date" 
+							id="editaDataPrevEmprestimoDis" onchange="getDataPrevEmprestimoEdita()">
+						<label class="col" for="valorEtapa" style="color: #29A58C">Data-Emprestimo:</label>
+
+					</div>
+        </div>
+        <div class="col admin-campo">
+					<div class="input-field col s4">
+						<input type="date" 
+							id="editaDataPrevEmprestimoDis" onchange="getDataPrevEmprestimoEdita()">
+						<label class="col" for="valorEtapa" style="color: #29A58C">Data-Previa-Devolução:</label>
+
+					</div>
+        </div>
+        <div class="col admin-campo">
+					<div class="input-field col s4">
+						<input type="date" 
+							id="editaDataDevolucaoDis" onchange="getDataDevolucaoEdita()">
+						<label class="col" for="valorEtapa" style="color: #29A58C">Data-Devolução:</label>
+
+					</div>
+        </div>
+        <div class="col admin-campo">
+					<div class="input-field col s4">
+						<input placeholder="" type="text" name="valor" class="black-text "
+							id="editaMultaDis">
+						<label class="col" for="valorEtapa" style="color: #29A58C">Multa:</label>
+
+					</div>
+        </div>
+        
+				<div id="respostaEdita"></div>
+			</form>
+			<!-- div para botões de ação  -->
+			<div style="margin: 1%;">
+				<button type="button" onclick="recarrega()" name="Enviar" class="modal-close waves-effect white-text btn-large" id="EnviaEdit"
+					style="background-color:#29A58C">Cancelar</button>
+				<button onclick="atualiza()" name="Salva" class="waves-effect white-text btn-large" id="CancelaEdit"
+					style="background-color:#3E56B0">Salvar</button>
+			</div>
+		</div>
+	</div>
+
+	<!-- FIM FORMULÁRIO EDITA ETAPAS -->
+	
+	<!--FORMULÁRIO REMOVER ETAPAS-->
+	<div style="background-color: #E5E5E5" class=" center-align modal" id="RemoveForm">
+		<nav style="margin-top: 0%;background-color: #29A58C">
+			<div class="nav-wrapper white-text">
+				<h4>Remover Empréstimo</h4>
+			</div>
+		</nav>
+		<div style="margin-top:0;">
+			<h5 class="col s4 red-text">Tem certeza de que deseja remover?</h5>
+			<!-- div para botões de ação -->
+			<div style="margin: 1%;">
+				<button type="button" onclick="recarrega()" name="Enviar"
+					class="modal-close waves-effect white-text btn-large" id="cancelaRemove"
+					style="background-color:#29A58C">Cancelar</button>
+
+				<button onclick="deleta()" name="Enviar" class=" waves-effect white-text btn-large" id="enviaRemove"
+					style="background-color:#D32F2F">Remover Empréstimo</button>
+			</div>
+			<div id="respostaDeleta"></div>
+		</div>
+	</div>
+
+  <div style="background-color: #E5E5E5" class=" center-align modal" id="DevolveForm">
+      <nav style="margin-top: 0%;background-color: #29A58C">
+        <div class="nav-wrapper white-text">
+          <h4>Devolver Empréstimo</h4>
+        </div>
+      </nav>
+      <div style="margin-top:0;">
+        <h5 class="col s4 red-text">Tem certeza de que deseja devolver?</h5>
+        <!-- div para botões de ação -->
+        <div style="margin: 1%;">
+          <button type="button" onclick="recarrega()" name="Enviar"
+            class="modal-close waves-effect white-text btn-large" id="cancelaRemove"
+            style="background-color:#29A58C">Cancelar</button>
+  
+          <button onclick="devolve()" name="Enviar" class=" waves-effect white-text btn-large" id="enviaRemove"
+            style="background-color:#D32F2F">Devolver Empréstimo</button>
+        </div>
+        <div id="respostaDeleta"></div>
+      </div>
+    </div>
+  
+	<!-- BOTÕES NAVEGAÇÃO -->
+	<div class="row">
+		<h3 style="margin:0" class="col push-s2">Empréstimos</h3>
+		<button name="AdicionarEtapa" class="col push-s7 waves-effect waves-light btn modal-trigger"
+			href="#AdicionaForm" id="Adiciona" style="background-color:#29A58C">Adicionar</button>
+	</div>
+	<!-- DIV PARA RESPOSTA CONSULTA -->
+
+	<div class="row"  style="margin-left:310px;">
+		<div class="col s4">
+				<div class="input-field col s12">
+						<select id="filtros">
+
+							<option value="1" selected>id</option>
+							<option value="2">id-aluno</option>
+							<option value="3">id-acervo</option>
+						</select>
+						<label>Filtrar por:</label>
+					</div>
+		</div>
+		<div class="col s4 center-align">
+			<nav>
+				<div class="nav-wrapper">
+					<form>
+						<div class="input-field">
+							<input id="search" style="background-color: #29A58C" type="search" oninput="pesquisa()" required>
+							<label class="label-icon" for="search"><i class="  material-icons">search</i></label>
+							<i class="material-icons">close</i>
+						</div>
+					</form>
+				</div>
+			</nav>
+		</div>
+	</div>
+	<div id="resposta" style="padding-left:220px; padding-right:310px">
+
+	</div>
+	<!-- IMPORTAÇÕES -->
+	<!--Conexao Servlets-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="../../js/materialize.js"></script>
+	<script src="../../js/biblioteca/emprestimos/atualizar.js"></script>
+	<script src="../../js/biblioteca/emprestimos/consultar.js"></script>
+	<script src="../../js/biblioteca/emprestimos/deletar.js"></script>
+	<script src="../../js/biblioteca/emprestimos/display.js"></script>
+	<script src="../../js/biblioteca/emprestimos/inserir.js"></script>
+  <script src="../../js/biblioteca/emprestimos/pesquisa.js"></script>
+  <script src="../../js/biblioteca/emprestimos/devolver.js"></script>
+  <script src="../../js/biblioteca/emprestimos/autentica.js"></script>
+</body>
+
+</html>
