@@ -21,6 +21,10 @@ function nomeDepto(id) {
 			//pega o nome do único departamento da consulta
 			return xml.getElementsByTagName("departamento")[0].getElementsByTagName("nome")[0].innerHTML
 		})
+		.catch(err => {
+			console.error("Não foi possível pegar o nome do departamento. Erro: " + err)
+			return id
+		})
 }
 
 function retornaResposta(xml) {
