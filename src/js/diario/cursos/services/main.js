@@ -1,4 +1,4 @@
-const baseURL = 'http://localhost:8080/diario/cursos/';
+const baseURL = 'http://localhost:8080/app/diario/cursos/';
 let currentId;
 
 function postFetch(url, data) {
@@ -14,7 +14,7 @@ function postFetch(url, data) {
 }
 
 function nomeDepto(id) {
-	return fetch('http://localhost:8080/diario/departamentos/consulta?id=' + id)
+	return fetch('http://localhost:8080/app/diario/departamentos/consulta?id=' + id)
 		.then(response => response.text())
 		.then(str => (new window.DOMParser()).parseFromString(str, "text/xml"))
 		.then(xml => {
