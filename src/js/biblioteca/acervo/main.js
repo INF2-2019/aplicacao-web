@@ -12,31 +12,36 @@ function atualizarTabela() {
 
 	xhttp.open(metodo, url, true);
 	xhttp.onreadystatechange = function() {
-		if(xhttp.readyState === xhttp.DONE && xhttp.status === 200) {
-			var xml = (new DOMParser()).parseFromString(this.responseText, "application/xml");
-			var raiz = xml.firstElementChild;
-			if(raiz.nodeName == "erro") {
-				console.error(raiz.firstElementChild.textContent);
-				return;
-			}
+		if(xhttp.readyState === xhttp.DONE) {
+			if(xhttp.status === 200) {
+				var xml = (new DOMParser()).parseFromString(this.responseText, "application/xml");
+				var raiz = xml.firstElementChild;
+				if(raiz.nodeName == "erro") {
+					console.error(raiz.firstElementChild.textContent);
+					return;
+				}
 
-			var elementos = raiz.children;
-			let tabelaCorpo = document.getElementsByTagName("tbody")[0];
-			tabelaCorpo.innerHTML = "";
-			for(let i = 0; i < elementos.length; i++) {
-				let dados = elementos[i].children;
-				linha = document.createElement("tr");
-				let id = dados[0].textContent;
-				linha.innerHTML += '<td>' + id + '</td>';
-				linha.innerHTML += '<td>' + dados[2].textContent + '</td>';
-				linha.innerHTML += '<td>' + dados[3].textContent + '</td>';
-				linha.innerHTML += '<td><a href="#modalAltera" class="btn utils info editar modal-trigger" onclick="prepararInfo('+id+')">INFO</a></td>';
-				linha.innerHTML += '<td><a href="#modalAltera" class="btn secondary editar modal-trigger"  onclick="prepararEdicao('+id+');">Editar</a></td>';
-				linha.innerHTML += '<td><a href="#modalDeleta" class="btn utils erro editar modal-trigger" onclick="deleteId='+id+';">Deletar</a></td>';
-				tabelaCorpo.appendChild(linha);
-			}
+				var elementos = raiz.children;
+				let tabelaCorpo = document.getElementsByTagName("tbody")[0];
+				tabelaCorpo.innerHTML = "";
+				for(let i = 0; i < elementos.length; i++) {
+					let dados = elementos[i].children;
+					linha = document.createElement("tr");
+					let id = dados[0].textContent;
+					linha.innerHTML += '<td>' + id + '</td>';
+					linha.innerHTML += '<td>' + dados[2].textContent + '</td>';
+					linha.innerHTML += '<td>' + dados[3].textContent + '</td>';
+					linha.innerHTML += '<td><a href="#modalAltera" class="btn utils info editar modal-trigger" onclick="prepararInfo('+id+')">INFO</a></td>';
+					linha.innerHTML += '<td><a href="#modalAltera" class="btn secondary editar modal-trigger"  onclick="prepararEdicao('+id+');">Editar</a></td>';
+					linha.innerHTML += '<td><a href="#modalDeleta" class="btn utils erro editar modal-trigger" onclick="deleteId='+id+';">Deletar</a></td>';
+					tabelaCorpo.appendChild(linha);
+				}
 
-			document.getElementById('saida').innerHTML = "";
+				document.getElementById('saida').innerHTML = "";
+			} else {
+				let resposta = xhttp.responseXML.firstElementChild.firstElementChild;
+				document.getElementById('saida').innerHTML = resposta.firstElementChild.textContent;
+			}
 		}
 	};
 	xhttp.send();
