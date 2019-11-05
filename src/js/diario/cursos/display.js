@@ -48,26 +48,29 @@ function criaTabela(elementos) {
 function criarBotaoEditar() {
 	const edit = document.createElement("a")
 	edit.setAttribute("href", "#modal-atualizar")
-	edit.classList = "btn-small utils alerta-2 editar modal-trigger"
+	edit.classList = "btn-small secondary editar modal-trigger"
+	edit.style = "margin-right: 20px"
 
-	const iconEdit = document.createElement("i")
+	/*const iconEdit = document.createElement("i")
 	iconEdit.classList = "material-icons small"
 	iconEdit.innerHTML = "edit"
 
-	edit.appendChild(iconEdit)
+	edit.appendChild(iconEdit)*/
+	edit.appendChild(document.createTextNode("EDITAR"))
 	return edit
 }
 
 function criarBotaoDeletar() {
 	const deletar = document.createElement("a")
 	deletar.setAttribute("href", "#modal-confirmar")
-	deletar.classList = "btn-small utils erro deletar modal-trigger"
+	deletar.classList = "btn-small utils erro-2 deletar modal-trigger"
 
-	const iconDel = document.createElement("i")
+	/*const iconDel = document.createElement("i")
 	iconDel.classList = "material-icons small"
 	iconDel.innerHTML = "delete_forever"
 
-	deletar.appendChild(iconDel)
+	deletar.appendChild(iconDel)*/
+	deletar.appendChild(document.createTextNode("DELETAR"))
 	return deletar
 }
 
