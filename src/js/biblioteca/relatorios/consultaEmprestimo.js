@@ -59,3 +59,12 @@ function consulta() {
 	};
 	xhttp.send();
 }
+
+document.getElementById('BotaoImprime').onclick = function() {
+	let divResposta = document.getElementById("resposta");
+	divResposta.style.paddingLeft = 0;
+	divResposta.style.paddingRight = 0;
+	window.print();
+	divResposta.style.paddingLeft = "10%";
+	divResposta.style.paddingRight = "10%";
+};

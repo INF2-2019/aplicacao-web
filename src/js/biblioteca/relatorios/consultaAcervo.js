@@ -13,6 +13,8 @@ function consulta() {
 			var responseStr = xhttp.responseText;
 			var xmlDoc = parser.parseFromString(responseStr, "text/xml");
 
+			let jaMostrouErro = false;
+
 			//cria tabelas
 			var tabelas = [
 				tabelaLivros = "<thead><th>Id</th><th>Campi</th><th>Nome</th><th>Local</th><th>Ano</th><th>Editora</th><th>Páginas</th><th>Edição</th><th>ISBN</th></thead>",
@@ -38,7 +40,13 @@ function consulta() {
 				for(let i = 0; i < elementos.length; i++){
 					let linha = "<tr>";
 					
-					if(tipoAtual == elementos[i].children[3].innerHTML){
+					let y = " ";
+
+					if(elementos[i].children[3] != undefined){
+						y = elementos[i].children[3].innerHTML;
+					}
+					
+					if(tipoAtual == y){
 						for (let j = 0; j < (elementos[i].children.length); j++) {
 							let elemento = "";
 							if(elementos[i].children[j].children.length > 0){
@@ -62,6 +70,14 @@ function consulta() {
 							
 							linha += elemento;
 						}
+					} else if(!jaMostrouErro){
+						console.log("chules de adidas");
+						var resp = xmlDoc.childNodes[0].children[0].innerHTML;
+						M.toast({
+							html: resp,
+							classes: "red darken-2"
+						});
+						jaMostrouErro = true;
 					}
 
 					linha += "</tr>"
@@ -77,6 +93,7 @@ function consulta() {
 			var responseStr = xhttp.responseText;
 			if (responseStr != "") {
 				var xmlDoc = parser.parseFromString(responseStr, "text/xml");
+				console.log(xmlDoc);
 				var resp = xmlDoc.childNodes[0].children[0].innerHTML;
 				M.toast({
 					html: resp,
@@ -87,3 +104,12 @@ function consulta() {
 	};
 	xhttp.send();
 }
+
+document.getElementById('BotaoImprime').onclick = function() {
+	let div2 = document.getElementById("div2");
+	div2.style.paddingLeft = 0;
+	div2.style.paddingRight = 0;
+	window.print();
+	div2.style.paddingLeft = "10%";
+	div2.style.paddingRight = "10%";
+};
