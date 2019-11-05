@@ -16,7 +16,7 @@
 
 		<main style="margin: 0 10%">
 			<h1>Professores</h1>
-			<a href="inserir.html" class=" btn right primary ">Adicionar</a>
+			<a href="#modalInsere" class="btn right primary editar modal-trigger" >Adicionar</a>
 
 			<table>
 				<colgroup>
@@ -62,35 +62,145 @@
 						</label>
 					</div>
 					<div class="row modal-content" style="margin:0;">
-						<button name="inserir" onclick="alterar()" class="btn primary espaco  waves-effect waves-ligth btn modal-close">Confirmar</button>
+						<button name="alterar" onclick="alterar()" class="btn primary espaco  waves-effect waves-ligth btn modal-close">Confirmar</button>
 						<a class="modal-close btn utils erro-2">Cancelar</a>
 					</div>
 				</div>
 			</div>
 		</div>
 		
-		<div class="container secondary lighten-5">
-			<div id="modalDeleta" class="modal bottom-sheet">
+                <div class="container secondary lighten-5">
+			<div id="modalDeleta" class="modal">
 				<div class="modal-content row col s12" style="padding:0;">
 					<h4 style="padding: 15pt;">Tem certeza que deseja deletar esse professor?</h4>
 					<div class="row modal-content" style="margin:0;">
-						<a name="confirmar" class="btn-large primary espaco waves-effect waves-ligth modal-close right">Cancelar</a>
-						<a name deletar class="modal-close btn-large utils erro-2 right">Deletar</a>
+						
+					</div>
+					<div class="row modal-content" style="margin:0;">
+						<button onclick="chamaDeletar()"  class="btn primary espaco  waves-effect waves-ligth btn modal-close">Confirmar</button>
+						<a class="modal-close btn utils erro-2">Cancelar</a>
+					</div>
+				</div>
+			</div>
+		</div>
+        
+                <div class="container secondary lighten-5">
+			<div id="modalInsere" class="modal">
+				<div class="modal-content row col s12" style="padding:0;">
+					<h4 style="padding: 15pt;">Insere Novo Professor</h4>
+					<div class="row modal-content" style="margin:0;">
+						<label class="primary-text text-lighten-1 short col s3"> SIAPE: <input type="number" name="idInsere"></label>
+						<label class="primary-text text-lighten-1 short col s7">Nome: <input type="text" name="nomeInsere"></label>
+						<label class="primary-text text-lighten-1 short col s2">Id-Depto: <input type="number" name="id-deptoInsere"></label>
+						<label class="primary-text text-lighten-1 short validate col s3">Senha: <input type="password" name="senhaInsere"></label>
+						<label class="primary-text text-lighten-1 short col s6">E-mail: <input type="text" name="emailInsere"></label>
+						<label class="primary-text text-lighten-1 short col s3">Titulação:
+							<select name="titulacaoInsere">
+								<option value = "M" >Mestre</option>
+								<option value = "D" >Doutor</option>
+								<option value = "E" >Especialista</option>
+								<option value = "G" >Graduado</option>
+							</select>
+						</label>
+					</div>
+					<div class="row modal-content" style="margin:0;">
+						<button name="inserir" onclick="inserir()" class="btn primary espaco  waves-effect waves-ligth btn modal-close">Confirmar</button>
+						<a class="modal-close btn utils erro-2">Cancelar</a>
 					</div>
 				</div>
 			</div>
 		</div>
 
+        
+                <div class="container secondary lighten-5">
+			<div id="modalInfo" class="modal">
+				<div class="modal-content row col s12" style="padding:0;">
+					<h4 style="padding: 15pt;">Informações do Professor</h4>
+					<div id="informacoes" class="row modal-content" style="margin:0;" >
+                                            
+					</div>
+					<div class="row modal-content" style="margin:0;">
+						<a class="modal-close btn utils erro-2">Ok</a>
+					</div>
+				</div>
+			</div>
+		</div>        
+        
+        
+        
+        
+        
+        
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript" src="../../js/materialize.min.js"></script>
     <script src="../../js/diario/professores/consultar.js"></script>
     <script src="../../js/diario/professores/inserir.js"></script>
     <script src="../../js/diario/professores/editar.js"></script>
-	<script>
+    <script>
+                var linhaDeletada=null;
+                var idDeletado=null;
+                var linhaInfo=null;
+                var idInfo=null;
 		$(document).ready(function(){
 			$('.modal').modal();
 			$('select').formSelect();
 		});
+                function linhaQueSeraDeletada(indice){
+                    linhaDeletada=indice;
+                    idDeletado=document.querySelectorAll("tr")[indice+1].children[2].textContent;
+                   
+                }
+                function chamaDeletar(){
+                    deletar(idDeletado);
+                }
+                function linhaQueSeraInformada(ind){
+                    linhaInfo=ind;
+                    idInfo=document.querySelectorAll("tr")[ind+1].children[2].textContent;
+                    info(idInfo);
+                }
+                function linhaQueSeraAlterada(ind){
+                    linhaAlterada=ind;
+                    idAlterado=document.querySelectorAll("tr")[ind+1].children[2].textContent;
+                    
+                    /*esssa primeira requisicao é so para obter as informações do que sera alterado e coloca-las nos inouts para facilitar a vida do usuario*/
+                    let xhttp1 = new XMLHttpRequest();
+                    xhttp1.open(method, endereco+"diario/professores/informacao?id="+idAlterado, true);
+                    xhttp1.onreadystatechange = function() {
+                            if(xhttp1.readyState === xhttp1.DONE && xhttp1.status === 200) {
+                                    var xml1 = (new DOMParser()).parseFromString(this.responseText, "application/xml");
+                                    var raiz1 = xml1.firstElementChild;
+                                    if(raiz1.nodeName == "erro") {
+                                            window.alert(raiz1.firstElementChild.textContent);
+                                            return;
+                                    }else{
+                                        var elementos1 = raiz1.children;
+                                        var dados1 = elementos1[0].children;
+                                            document.getElementsByName(paramNomes[0])[0].value = dados1[0].textContent;
+                                            document.getElementsByName(paramNomes[1])[0].value = dados1[1].textContent;
+                                            document.getElementsByName(paramNomes[2])[0].value = dados1[2].textContent;
+                                            document.getElementsByName(paramNomes[4])[0].value = dados1[3].textContent;
+                                            document.getElementsByName(paramNomes[5])[0].value = dados1[4].textContent;
+                                    }
+                                        //atualizarTabela();
+                                    }
+                            }
+                    xhttp1.send();
+                }
+                /*SCRIPT especifico para passar o id correto para a funcao de deletar*/
+                /*atualizarTabela().then;
+                var buttonDeletar=document.getElementsByName("deletar");
+                for(let indice=0;indice<buttonDeletar.length;indice++)
+                {//indice+1 porque o thead tem uma linha
+                    let id=document.querySelectorAll("tr")[indice+1];
+                    console.log(document.querySelectorAll("tr"));
+                    //console.log(id);
+                    if(id!=undefined)
+                    {
+                      id=id.firstElementChild;
+                    }
+                    //console.log(id);
+                    buttonDeletar[indice].addEventListener("click",deletar());
+                }*/
     </script>
     </body>
 </html>
