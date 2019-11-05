@@ -164,6 +164,8 @@ function alterarCampos() {
 
 function prepararInsercao() {
 	modalEstado = "insercao";
+	let nomeModal = document.getElementsByTagName("h4")[0];
+	nomeModal.innerHTML = "Adicionar item";
 
 	let inputs = document.getElementsByTagName('input');
 	for(let i = 0; i < inputs.length; i++) {
@@ -181,6 +183,8 @@ function prepararInsercao() {
 
 function prepararEdicao(id) {
 	modalEstado = "edicao";
+	let nomeModal = document.getElementsByTagName("h4")[0];
+	nomeModal.innerHTML = "Editar item";
 	let xhttp = new XMLHttpRequest();
 
 	url= endereco + "biblioteca/acervo/consultar?id=" + id;
@@ -226,6 +230,8 @@ function prepararEdicao(id) {
 
 function prepararInfo(id) {
 	modalEstado = "info";
+	let nomeModal = document.getElementsByTagName("h4")[0];
+	nomeModal.innerHTML = "Informações";
 	let xhttp = new XMLHttpRequest();
 
 	url= endereco + "biblioteca/acervo/consultar?id=" + id;
