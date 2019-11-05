@@ -15,8 +15,7 @@ function inserir() {
   let cidade = document.querySelector("#cidade").value;
   let cep = document.querySelector("#cep").value;
   let uf = document.querySelector("#uf").value;
-  //let foto = document.querySelector("#foto").value;
-  let foto = "exemplodefoto";
+  let foto = document.querySelector("#fototext").value;
   data = reformatDate(data.toString());
   let url = "http://localhost:8080/app/diario/alunos/inserir?id="+id
   +"&nome="+nome

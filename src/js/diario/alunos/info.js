@@ -46,6 +46,8 @@ function preencher(doc) {
     } else if (lineItems.childNodes[i].childNodes[0] != undefined)
       camposInfo[i].value = (lineItems.childNodes[i].childNodes[0].nodeValue);
   }
+  let foto = document.getElementById("foto2");
+  foto.src=camposInfo[(camposInfo.length)-1].value;
 }
 
 

@@ -1,6 +1,19 @@
 var modal = document.getElementById("modal-cadastro");
 var btn = document.getElementById("botaoAdicionar");
 
+function loadFoto() {
+  var link = document.querySelector("#fototext").value;
+  var output = document.getElementById('foto');
+  output.src = link;
+}
+
+function loadFoto2() {
+  var link = document.querySelector("#fototext3").value;
+  var output = document.getElementById('foto3');
+  output.src = link;
+}
+
+
 var loadFile = function(event) {
     var output = document.getElementById('foto');
      output.src = URL.createObjectURL(event.target.files[0]);

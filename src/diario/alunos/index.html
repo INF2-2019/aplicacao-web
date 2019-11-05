@@ -104,10 +104,15 @@
                                       <span class="span-cadastro">Bairro*</span><input class="obrigatorio-cadastro" name="bairro-cadastro" type="text" id="bairro">
                                   </div>
                               </div>
+                              <div class="row">
+                                  <div class="col s9">
+                                      <span class="span-cadastro">Link da foto*</span><input class="obrigatorio-cadastro" name="foto-cadastro" type="text" id="fototext" onchange="loadFoto()">
+                                  </div>
+                              </div>
                           </div>
                           <div id="divfoto" class="offset-l1 offset-s1 offset-m2 col l2 s2">
-                              <img id="foto" src="" >
-                              <span class="span-cadastro"><input class="recomendado-editar" type="file" accept=".jpg, .png, .jpeg" onchange="loadFile(event)"></span>
+                              <img id="foto" src="" alt="imagem nao encontrada" class="foto">
+                              <span class="span-cadastro">Não suportado<input class="recomendado-editar" type="file" accept=".jpg, .png, .jpeg" onchange="loadFile(event)"></span>
                           </div>
                       </div>
                   </div>
@@ -171,10 +176,14 @@
                                   </div>
 
                               </div>
+                              <div class="row">
+                                  <div class="col s9">
+                                      <span class="span-cadastro">Link da foto*</span><input readonly class="info" name="foto-cadastro" type="text">
+                                  </div>
+                              </div>
                           </div>
                           <div id="divfoto" class="offset-l1 offset-s1 offset-m2 col l2 s2">
-                              <img id="foto" src="" >
-                              <span class="span-cadastro"><input class="recomendado-editar" type="file" accept=".jpg, .png, .jpeg" onchange="loadFile(event)"></span>
+                              <img id="foto2" class="foto" src="" alt="imagem não encontrada">
                           </div>
                       </div>
                   </div>
@@ -242,10 +251,15 @@
                                       <span class="span-cadastro">Bairro</span><input class="recomendado-editar" name="bairro-cadastro" type="text" id="bairro1">
                                   </div>
                               </div>
+                              <div class="row">
+                                  <div class="col s9">
+                                      <span class="span-cadastro">Link da foto*</span><input name="foto-cadastro" type="text" id="fototext3" onchange="loadFoto2()">
+                                  </div>
+                              </div>
                           </div>
                           <div class="offset-l1 offset-s1 offset-m2 col l2 s2">
-                              <img id="foto" src="" >
-                              <span class="span-cadastro"><input class="recomendado-editar" type="file" accept=".jpg, .png, .jpeg" onchange="loadFile(event)"></span>
+                              <img id="foto3" src="" class="foto">
+                              <span class="span-cadastro">Não suportado<input class="recomendado-editar" type="file" accept=".jpg, .png, .jpeg" onchange="loadFile(event)"></span>
                           </div>
                       </div>
                   </div>
