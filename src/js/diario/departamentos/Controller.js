@@ -25,7 +25,7 @@ class Controller {
 		xhr.send();
 	}
 
-    static insere(depto) {
+	static insere(depto) {
 		const xhr = new XMLHttpRequest();
 		xhr.onreadystatechange = function() {
 			if(this.readyState == 4 && this.status == 200) {
