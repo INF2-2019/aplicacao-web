@@ -81,7 +81,8 @@ function preencherEmail(id) {
     .then(text => {
       parser = new DOMParser();
       xmlDoc = parser.parseFromString(text, "text/xml");
+      let lineItems = xmlDoc.getElementsByTagName("aluno")[0];
+      email.value = lineItems.childNodes[2].childNodes[0].nodeValue;
     });
-
 
   }

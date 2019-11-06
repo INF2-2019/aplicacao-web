@@ -42,7 +42,11 @@ function preencher(doc) {
       else
         camposInfo[i].value= "Feminino";
     } else if (i == 4) {
-      camposInfo[i].value = formataStringData(lineItems.childNodes[i].childNodes[0].nodeValue);
+      let a = lineItems.childNodes[i].childNodes[0].nodeValue;
+      var resultDate = stringToDate(a);
+      resultDate.setDate( resultDate.getDate()+1 );
+      var result = dateToString( resultDate );
+      camposInfo[i].value = formataStringData(result);
     } else if (lineItems.childNodes[i].childNodes[0] != undefined)
       camposInfo[i].value = (lineItems.childNodes[i].childNodes[0].nodeValue);
   }
@@ -58,4 +62,25 @@ function formataStringData(data) {
 
   return ano + '-' + ("0"+mes).slice(-2) + '-' + ("0"+dia).slice(-2);
   // Utilizo o .slice(-2) para garantir o formato com 2 digitos.
+}
+
+
+function stringToDate( aString )
+{
+    var dateArray = aString.split("/");
+    return new Date(dateArray[2],dateArray[1]-1,dateArray[0]);
+}
+
+function dateToString( aDate )
+{
+    var date = aDate.getDate();
+    date = (date > 9) ? date : "0"+date.toString();
+
+    var month = aDate.getMonth()+1;
+    month = (month > 9) ? month : "0"+month.toString();
+
+    var year = aDate.getFullYear();
+
+
+    return (date+"/"+month+"/"+year);
 }
