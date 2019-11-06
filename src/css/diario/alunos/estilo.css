@@ -1,13 +1,5 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
-body,.modal,.modal-content,.modal .modal-footer{
-    background: #E5E5E5;
-    font-family: 'Montserrat', sans-serif;
-    height: 100%;
-}
+
 .fontBTN{
-    font-family: 'Montserrat', sans-serif;
-    font-size: 9pt;
-    margin-top: 10pt;
     display: block;
     margin-right: auto;
     margin-left: auto;
