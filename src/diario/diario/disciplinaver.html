@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+<!DOC
+YPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
@@ -12,14 +13,14 @@
       <h1>Atividades e Conteúdos</h1>
 
       <div id="conteudo">
-        <h5>Conteúdos Ministrados</h5>
-        <p>Todos os conteúdos ministrados nesta disciplina.</p>
-        <table>
+        <h5 style="margin-left: 5%; color: #29a58c;">Conteúdos Ministrados</h5>
+        <p style="margin-left: 5%">Todos os conteúdos ministrados nesta disciplina.</p>
+        <table style="width: 90%; margin-left: 5%;">
              <thead>
                 <tr>
-                  <th>CONTEÚDO</th>
-                  <th>ETAPA</th>
-                  <th>DATA</th>
+                  <th style="width: 70%">CONTEÚDO</th>
+                  <th style="width: 15%">ETAPA</th>
+                  <th style="width: 15%">DATA</th>
                  </tr>
               </thead>
               
@@ -29,7 +30,7 @@
                     <td>1</td>
                     <td>29/10/2019</td>
                     <td><a class="waves-effect waves-light btn-small modal-trigger new">Faltas</a></td>
-                    <td><a class="waves-effect waves-light btn-small modal-trigger edit">Editar</a></td>
+                    <td><a href="#modalAlteraConteudos" class="waves-effect waves-light btn-small modal-trigger edit">Editar</a></td>
                     <td><a class="waves-effect waves-light btn-small modal-trigger delete">Deletar</a></td>
                   </tr>
                   <tr>
@@ -37,7 +38,7 @@
                     <td>2</td>
                     <td>29/10/2019</td>
                     <td><a class="waves-effect waves-light btn-small modal-trigger new">Faltas</a></td>
-                    <td><a class="waves-effect waves-light btn-small modal-trigger edit">Editar</td>
+                    <td><a href="#modalAlteraConteudos" class="waves-effect waves-light btn-small modal-trigger edit">Editar</a></td>
                     <td><a class="waves-effect waves-light btn-small modal-trigger delete">Deletar</a></td>
                   </tr>
                   <tr>
@@ -45,7 +46,7 @@
                     <td>3</td>
                     <td>29/10/2019</td>
                     <td><a class="waves-effect waves-light btn-small modal-trigger new">Faltas</a></td>
-                    <td><a class="waves-effect waves-light btn-small modal-trigger edit">Editar</a></td>
+                    <td><a href="#modalAlteraConteudos" class="waves-effect waves-light btn-small modal-trigger edit">Editar</a></td>
                     <td><a class="waves-effect waves-light btn-small modal-trigger delete">Deletar</a></td>
                   </tr>
                   <tr>
@@ -53,7 +54,7 @@
                     <td>4</td>
                     <td>29/10/2019</td>
                     <td><a class="waves-effect waves-light btn-small modal-trigger new">Faltas</a></td>
-                    <td><a class="waves-effect waves-light btn-small modal-trigger edit">Editar</a></td>
+                    <td><a href="#modalAlteraConteudos" class="waves-effect waves-light btn-small modal-trigger edit">Editar</a></td>
                     <td><a class="waves-effect waves-light btn-small modal-trigger delete">Deletar</a></td>
                   </tr>
                   <template id="template_conteudos">
@@ -62,25 +63,25 @@
                       <td>{{etapa}}</td>
                       <td>{{data}}</td>
                       <td><a class="waves-effect waves-light btn-small modal-trigger new" data-id="{{id}}">Faltas</a></td>
-                      <td><a class="waves-effect waves-light btn-small modal-trigger edit" data-id="{{id}}">Editar</a></td>
+                      <td><a href="#modalAlteraConteudos" class="waves-effect waves-light btn-small modal-trigger edit" data-id="{{id}}">Editar</a></td>
                       <td><a class="waves-effect waves-light btn-small modal-trigger delete" data-id="{{id}}">Deletar</a></td>
                     </tr>
                   </template>
                 </tbody>
           </table>
-        <a href="#modalConteudos" class="waves-effect waves-light btn-large modal-trigger" id="btnConteudos">Adicionar</a>
+        <a style="margin-left: 5%; margin-top: 2%;" href="#modalConteudos" class="waves-effect waves-light btn-large modal-trigger" id="btnConteudos">Adicionar</a>
       </div>
       
       <div id="atividade">
-        <h5>Atividades Realizadas</h5>
-        <p>Todas as atividades realizadas nesta disciplina.</p>
+        <h5 style="margin-left: 5%; color: #29a58c;">Atividades Realizadas</h5>
+        <p style="margin-left: 5%">Todas as atividades realizadas nesta disciplina.</p>
 
-        <table>
+        <table style="width: 90%; margin-left:5%;">
              <thead>
                 <tr>
-                  <th>ATIVIDADE</th>
-                  <th>ETAPA</th>
-                  <th>VALOR</th>
+                  <th style="width: 70%">ATIVIDADE</th>
+                  <th style="width: 15%">ETAPA</th>
+                  <th style="width: 15%">VALOR</th>
                  </tr>
               </thead>
               
@@ -90,7 +91,7 @@
                     <td>1</td>
                     <td>10</td>
                     <td><a class="waves-effect waves-light btn-small modal-trigger new">Notas</a></td>
-                    <td><a class="waves-effect waves-light btn-small modal-trigger edit">Editar</a></td>
+                    <td><a href="#modalAlteraAtividade" class="waves-effect waves-light btn-small modal-trigger edit">Editar</a></td>
                     <td><a class="waves-effect waves-light btn-small modal-trigger delete">Deletar</a></td>
                   </tr>
                   <tr>
@@ -98,7 +99,7 @@
                     <td>2</td>
                     <td>10</td>
                     <td><a class="waves-effect waves-light btn-small modal-trigger new">Notas</a></td>
-                    <td><a class="waves-effect waves-light btn-small modal-trigger edit">Editar</td>
+                    <td><a href="#modalAlteraAtividade" class="waves-effect waves-light btn-small modal-trigger edit">Editar</td>
                     <td><a class="waves-effect waves-light btn-small modal-trigger delete">Deletar</a></td>
                   </tr>
                   <tr>
@@ -106,7 +107,7 @@
                     <td>3</td>
                     <td>10</td>
                     <td><a class="waves-effect waves-light btn-small modal-trigger new">Notas</a></td>
-                    <td><a class="waves-effect waves-light btn-small modal-trigger edit">Editar</a></td>
+                    <td><a href="#modalAlteraAtividade" class="waves-effect waves-light btn-small modal-trigger edit">Editar</a></td>
                     <td><a class="waves-effect waves-light btn-small modal-trigger delete">Deletar</a></td>
                   </tr>
                   <tr>
@@ -114,14 +115,15 @@
                     <td>4</td>
                     <td>10</td>
                     <td><a class="waves-effect waves-light btn-small modal-trigger new">Notas</a></td>
-                    <td><a class="waves-effect waves-light btn-small modal-trigger edit">Editar</a></td>
+                    <td><a href="#modalAlteraAtividade" class="waves-effect waves-light btn-small modal-trigger edit">Editar</a></td>
                     <td><a class="waves-effect waves-light btn-small modal-trigger delete">Deletar</a></td>
                   </tr>
                 </tbody>
           </table>
-        <a href="#modalAtividades" class="waves-effect waves-light btn-large modal-trigger" id="btnAtividades">Adicionar</a>
+        <a style="margin-left: 5%; margin-top: 2%;" href="#modalAtividades" class="waves-effect waves-light btn-large modal-trigger" id="btnAtividades">Adicionar</a>
       </div>
 
+      <!-- Modal para adição de conteúdo -->
       <div id="modalConteudos" class="modal">
         <div class="modal-content">
           <div id="inserir_conteudo">
@@ -133,6 +135,7 @@
         </div>
       </div>
 
+      <!-- Modal para adição de atividade -->
       <div id="modalAtividades" class="modal">
         <div class="modal-content">
           <div id="inserir_atividade">
@@ -141,6 +144,31 @@
             <label>ETAPA<input class="short" name="etapa" type="number"></label>
             <label>VALOR<input class="short" name="valor" type="number"></label>
             <button class="waves-effect waves-light btn-large modal-close" id="submit_inserir_atividade">Enviar</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal para alteração de conteúdo -->
+      <div id="modalAlteraConteudos" class="modal">
+        <div class="modal-content">
+          <div id="alterar_conteudo">
+            <label>CONTEÚDO <input class="" name="conteudo" type="text"></label>
+            <label>DATA <input class="short" name="data" type="date"></label>
+            <label>ETAPA <input class="short" name="etapa" type="number"></label>
+            <button class="waves-effect waves-light btn-large modal-close" id="submit_alterar_conteudo">Editar</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal para alteração de atividade -->
+      <div id="modalAlteraAtividade" class="modal">
+        <div class="modal-content">
+          <div id="alterar_atividade">
+            <label>ATIVIDADE <input class="" name="conteudo" type="text"></label>
+            <label>DATA <input class="short" name="data" type="date"></label>
+            <label>ETAPA<input class="short" name="etapa" type="number"></label>
+            <label>VALOR<input class="short" name="valor" type="number"></label>
+            <button class="waves-effect waves-light btn-large modal-close" id="submit_alterar_atividade">Editar</button>
           </div>
         </div>
       </div>

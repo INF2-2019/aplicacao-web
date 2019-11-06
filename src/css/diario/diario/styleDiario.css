@@ -10,18 +10,6 @@ a
 	text-align: center;
 }
 
-.btn
-{
-	color: #FDFBF9;
-	font-size: 15px;
-
-	width: 25%;
-	text-align: center;
-	padding: 2%;
-	padding-bottom: 3%;
-	text-transform: uppercase;
-}
-
 .delete
 {
 	background-color: #E53935;
@@ -47,40 +35,7 @@ h1
 	color: #FDFBF9;
 }
 
-
-.segurador{
-	width: 90%;
-	margin-left: 5%; margin-right: 5%;
-	padding: 1%;
-	background-color: #E1E4F0;
-}
-
-.tabela{
-  display: table;
-}
-
-.txt_right{
-	text-align: right;
-}
-
-.sem_padding_lateral{
-  padding-right: 0 !important;
-  padding-left: 0 !important;
-}
-
-.formulario
-{
-	width: 90%;
-	margin-left: 5%; margin-right: 5%; margin-top: 2%;
-}
-
 /* Tela Inicial Professor */
-#dados_professor, #dados_titulo
-{
-	width: 90%;
-	margin-left: 5%; margin-right: 5%;
-}
-
 #listagemDisciplinas
 {
 	width: 90%;
@@ -92,60 +47,7 @@ h1
     padding-top: 5%;
 }
 
-#listagemDisciplinas table .btn
-{
-	font-size: 10px;
-}
-
-#listagemDisciplinas th:nth-of-type(2)
-{
-	width: 60%;
-}
-
-#listagemDisciplinas th:nth-of-type(3)
-{
-	width: 10%;
-}
-
-#listagemDisciplinas th:nth-of-type(4)
-{
-	width: 10%;
-}
-
-#listagemDisciplinas tr td:nth-of-type(5)
-{
-	text-align: center;
-}
-
-
 /* Tela Disciplina Professor */
-#conteudos h5
-{
-	margin-left: 5%;
-	color: #29a58c;
-}
-
-#conteudos p
-{
-	margin-left: 5%;
-}
-
-#conteudos table
-{
-	margin-left: 5%;
-	width: 90%;
-}
-
-#conteudo th:nth-of-type(1)
-{
-	width: 70%;
-}
-
-#conteudo th:nth-of-type(2), #conteudo th:nth-of-type(3)
-{
-	width: 15%;
-}
-
 #conteudo, #atividade
 {
 	margin-left: 5%;
@@ -155,104 +57,23 @@ h1
 	width: 90% !important;
 	background-color: #e5e5e5;
 }
-
-#atividade th:nth-of-type(1)
-{
-	width: 70%;
-}
-
-#atividade th:nth-of-type(2),#atividade th:nth-of-type(3)
-{
-	width: 15%;
-}
-
-#btnConteudos, #btnAtividades
-{
-	margin-left: 5%;
-	margin-top: 2%;
-}
-
 .modal .btn-large
 {
 	margin-top: 4%;
 }
 
+.modal
+{
+	padding: 5%;
+}
+
 /* Tela Inicial Aluno */
-#aluno th:nth-of-type(1)
-{
-	width: 10%;
-}
-
-#aluno th:nth-of-type(2)
-{
-	width: 60%;
-}
-
-#aluno th:nth-of-type(1)
-{
-	width: 15%;
-}
-
-#aluno th:nth-of-type(1)
-{
-	width: 15%;
-}
-
 #aluno .area
 {
 	padding-bottom: 2%; padding-top: 2%;
 	width: 90%;
 	margin-left: 5%;
 }
-
-#aluno .area:nth-of-type(1)
-{
-	padding-left: 5%;
-}
-
-
-#modalConteudoAluno th:nth-of-type(1)
-{
-	width: 10%;
-}
-
-#modalConteudoAluno th:nth-of-type(2)
-{
-	width: 20%;
-}
-
-#modalAtividadeAluno th:nth-of-type(1)
-{
-	width: 10%;
-}
-
-#modalAtividadeAluno th:nth-of-type(2), #modalAtividadeAluno th:nth-of-type(3)
-{
-	width: 15%;
-}
-
-/* footer */
-.modal
-{
-	width: 80%;
-	background-color: #E5E5E5;
-	min-height: 50vh;
-	max-height: 80vh;
-	overflow-y: hidden;
-}
-
-#modalDescartes
-{
-	padding: 5%;
-	padding-top: 3%;
-
-}
-
-#modalDescartes button
-{
-	margin-top: 5%;
-}
-
 
 /* form */
 label
@@ -266,6 +87,11 @@ input
 {
 	display: block;
 	font-style: italic;
+}
+
+input .short, input[type=number]:not(.browser-default)
+{
+	width: 10%;
 }
 
 input[type=text]:not(.browser-default).short, input[type=date]:not(.browser-default).short
@@ -301,10 +127,12 @@ table
 }
 
 /* Toast */
-.erro{
+.erro
+{
 	background-color: #E53935;
 }
 
-.sucesso{
+.sucesso
+{
 	background-color: #00E676;
 }
