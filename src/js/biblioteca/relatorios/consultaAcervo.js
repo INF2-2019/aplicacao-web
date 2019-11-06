@@ -2,7 +2,7 @@ function consulta() {
 	//cria conexão com o servlet consulta
 	var xhttp = new XMLHttpRequest(),
 		method = "GET",
-		url = "http://localhost:8080/app/biblioteca/acervo/consultar";
+		url = baseURL + "/acervo/consultar";
 	xhttp.open(method, url, true);
 	var parser = new DOMParser();
 	var divResposta = document.getElementsByClassName("resposta");
@@ -26,7 +26,7 @@ function consulta() {
 			var titulos = ["LIVROS", "PERIÓDICOS", "ACADÊMICOS", "MÍDIAS"];
 			var tipos = ["LIVROS", "PERIODICOS", "ACADEMICOS", "MIDIAS"];
 
-			for(let a = 0; a <= 3; a++){
+			for (let a = 0; a <= 3; a++) {
 				var tituloTabela = "<h5>" + titulos[a] + "</h5>";
 				var tabela = "<table class=\"highlight centered responsive-table\">";
 				tabela += tabelas[a];
@@ -37,41 +37,41 @@ function consulta() {
 				var tipoAtual = tipos[a];
 				//console.log(tipoAtual);
 
-				for(let i = 0; i < elementos.length; i++){
+				for (let i = 0; i < elementos.length; i++) {
 					let linha = "<tr>";
-					
+
 					let y = " ";
 
-					if(elementos[i].children[3] != undefined){
+					if (elementos[i].children[3] != undefined) {
 						y = elementos[i].children[3].innerHTML;
 					}
-					
-					if(tipoAtual == y){
+
+					if (tipoAtual == y) {
 						for (let j = 0; j < (elementos[i].children.length); j++) {
 							let elemento = "";
-							if(elementos[i].children[j].children.length > 0){
-								for(let k = 1; k < elementos[i].children[j].children.length; k++){
-									elemento+= "<td>";
-									elemento += elementos[i].children[j].children[k].innerHTML; 
+							if (elementos[i].children[j].children.length > 0) {
+								for (let k = 1; k < elementos[i].children[j].children.length; k++) {
+									elemento += "<td>";
+									elemento += elementos[i].children[j].children[k].innerHTML;
 									elemento += "</td>";
 								}
-							} else{
+							} else {
 								if (j === 0) {
 									elemento = "<td data-id=\"" + elementos[i].children[j].innerHTML + "\">";
-								} else if(j != 3){
+								} else if (j != 3) {
 									elemento = "<td>"
 								}
-								if(j != 3){
-									elemento += elementos[i].children[j].innerHTML; 
+								if (j != 3) {
+									elemento += elementos[i].children[j].innerHTML;
 									elemento += "</td>";
 								}
-					
+
 							}
-							
+
 							linha += elemento;
 							jaMostrouErro = true;
 						}
-					} else if(!jaMostrouErro){
+					} else if (!jaMostrouErro) {
 						console.log("chules de adidas");
 						var resp = xmlDoc.childNodes[0].children[0].innerHTML;
 						M.toast({
@@ -83,12 +83,12 @@ function consulta() {
 
 					linha += "</tr>"
 					tabela += linha;
-				}	
+				}
 
-				divResposta[a].innerHTML += tituloTabela; 
+				divResposta[a].innerHTML += tituloTabela;
 				divResposta[a].innerHTML += tabela;
 			}
-			
+
 
 		} else if (xhttp.status === 400) {
 			var responseStr = xhttp.responseText;
@@ -105,12 +105,3 @@ function consulta() {
 	};
 	xhttp.send();
 }
-
-document.getElementById('BotaoImprime').onclick = function() {
-	let div2 = document.getElementById("div2");
-	div2.style.paddingLeft = 0;
-	div2.style.paddingRight = 0;
-	window.print();
-	div2.style.paddingLeft = "10%";
-	div2.style.paddingRight = "10%";
-};
