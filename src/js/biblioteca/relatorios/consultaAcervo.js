@@ -7,13 +7,12 @@ function consulta() {
 	var parser = new DOMParser();
 	var divResposta = document.getElementsByClassName("resposta");
 
+	let jaMostrouErro = false;
 	//recebe resposta em XML e manipula o XML para criar a tabela
 	xhttp.onreadystatechange = function () {
 		if (xhttp.readyState === xhttp.DONE && xhttp.status === 200) {
 			var responseStr = xhttp.responseText;
 			var xmlDoc = parser.parseFromString(responseStr, "text/xml");
-
-			let jaMostrouErro = false;
 
 			//cria tabelas
 			var tabelas = [
@@ -72,7 +71,6 @@ function consulta() {
 							jaMostrouErro = true;
 						}
 					} else if(!jaMostrouErro){
-						console.log("chules de adidas");
 						var resp = xmlDoc.childNodes[0].children[0].innerHTML;
 						M.toast({
 							html: resp,
@@ -90,7 +88,7 @@ function consulta() {
 			}
 			
 
-		} else if (xhttp.status === 400) {
+		} else if (xhttp.status === 400 && !jaMostrouErro) {
 			var responseStr = xhttp.responseText;
 			if (responseStr != "") {
 				var xmlDoc = parser.parseFromString(responseStr, "text/xml");
@@ -100,6 +98,7 @@ function consulta() {
 					html: resp,
 					classes: "red darken-2"
 				});
+				jaMostrouErro = true;
 			}
 		}
 	};
@@ -107,10 +106,10 @@ function consulta() {
 }
 
 document.getElementById('BotaoImprime').onclick = function() {
-	let div2 = document.getElementById("div2");
-	div2.style.paddingLeft = 0;
-	div2.style.paddingRight = 0;
+	let resposta = document.getElementById("resposta");
+	resposta.style.paddingLeft = 0;
+	resposta.style.paddingRight = 0;
 	window.print();
-	div2.style.paddingLeft = "10%";
-	div2.style.paddingRight = "10%";
+	resposta.style.paddingLeft = "10%";
+	resposta.style.paddingRight = "10%";
 };
