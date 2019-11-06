@@ -5,9 +5,9 @@
 	<link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="../../css/materialize.css">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
+	<link rel="stylesheet" href="../../css/biblioteca/relatorios/custom.css">
 	<meta charset="utf-8">
-	<title>Relatório 4</title>
+	<title>Relatório de atrasos</title>
 </head>
 
 <body>
@@ -23,17 +23,12 @@
 		<h2>Relatório de Atrasos</h2>
 
 		<div class="row">
-			<div class="input-field col s12 m12 l4">
-				<i class="material-icons prefix">search</i>
-				<input id="search" type="text" autocomplete="off">
-				<label for="search">Pesquisar ID</label>
-			</div>
 
 			<div class="row">
-				<a class="btn col primary s12 m12 l2 right">Imprimir</a>
+				<a id="BotaoImprime" class="btn col primary s12 m12 l2 right">Imprimir</a>
 
 				<div class="col s12">
-					<table id="tabela-atrasos" class="responsive-table centered highlight">
+					<table id="resposta" class="responsive-table centered highlight imprime-atrasos-obras">
 						<thead>
 							<tr>
 								<th>ID Emprestimo</th>
@@ -72,7 +67,7 @@
 
 	<script src="../../js/biblioteca/relatorios/jquery-3.4.1.js"></script>
 	<script src="../../js/materialize.js"></script>
-	<script src="../../js/biblioteca/relatorios/custom.js"></script>
+	<script src="../../js/biblioteca/relatorios/consultaEmprestimo.js"></script>
 </body>
 
 </html>

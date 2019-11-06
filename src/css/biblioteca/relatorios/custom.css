@@ -1,8 +1,35 @@
 @media print {
   body * {
     visibility: hidden;
-  }
-  #div1, #div1 * , #div2, #div2 *{
+	}
+
+  #resposta, #resposta * {
+    visibility: visible;
+	}
+
+  #resposta {
+    position: fixed;
+    left: 0;
+    top: 0;
+	}
+
+	.imprime-atrasos-obras > thead > tr > th:nth-child(4) {
+		display: none;
+	}
+
+	.imprime-atrasos-obras > tbody > tr > td:nth-child(4) * {
+		display: none;
+	}
+
+	.imprime-multas > thead > tr > th:nth-child(5) {
+		display: none;
+	}
+
+	.imprime-multas > tbody > tr > td:nth-child(5) * {
+		display: none;
+	}
+
+	#div1, #div1 * , #div2, #div2 *{
     visibility: visible;
   }
   #div1, #div2 {
@@ -11,19 +38,7 @@
     top: 0;
   }
 }
-@media print {
-  body * {
-    visibility: hidden;
-  }
-  #resposta, #resposta * {
-    visibility: visible;
-  }
-  #resposta {
-    position: fixed;
-    left: 0;
-    top: 0;
-  }
-}
+
 #div1{
   padding-left: 25%;
   padding-right: 25%;
