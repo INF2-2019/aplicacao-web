@@ -16,6 +16,7 @@
 
 		<main style="margin: 0 10%">
 			<h1>Professores</h1>
+			<p class="red-text"></p>
 			<a href="#modalInsere" class="btn right primary editar modal-trigger" >Adicionar</a>
 
 			<table>
@@ -136,71 +137,7 @@
     <script src="../../js/diario/professores/consultar.js"></script>
     <script src="../../js/diario/professores/inserir.js"></script>
     <script src="../../js/diario/professores/editar.js"></script>
-    <script>
-                var linhaDeletada=null;
-                var idDeletado=null;
-                var linhaInfo=null;
-                var idInfo=null;
-		$(document).ready(function(){
-			$('.modal').modal();
-			$('select').formSelect();
-		});
-                function linhaQueSeraDeletada(indice){
-                    linhaDeletada=indice;
-                    idDeletado=document.querySelectorAll("tr")[indice+1].children[2].textContent;
-                   
-                }
-                function chamaDeletar(){
-                    deletar(idDeletado);
-                }
-                function linhaQueSeraInformada(ind){
-                    linhaInfo=ind;
-                    idInfo=document.querySelectorAll("tr")[ind+1].children[2].textContent;
-                    info(idInfo);
-                }
-                function linhaQueSeraAlterada(ind){
-                    linhaAlterada=ind;
-                    idAlterado=document.querySelectorAll("tr")[ind+1].children[2].textContent;
-                    
-                    /*esssa primeira requisicao é so para obter as informações do que sera alterado e coloca-las nos inouts para facilitar a vida do usuario*/
-                    let xhttp1 = new XMLHttpRequest();
-                    xhttp1.open(method, endereco+"diario/professores/informacao?id="+idAlterado, true);
-                    xhttp1.onreadystatechange = function() {
-                            if(xhttp1.readyState === xhttp1.DONE && xhttp1.status === 200) {
-                                    var xml1 = (new DOMParser()).parseFromString(this.responseText, "application/xml");
-                                    var raiz1 = xml1.firstElementChild;
-                                    if(raiz1.nodeName == "erro") {
-                                            window.alert(raiz1.firstElementChild.textContent);
-                                            return;
-                                    }else{
-                                        var elementos1 = raiz1.children;
-                                        var dados1 = elementos1[0].children;
-                                            document.getElementsByName(paramNomes[0])[0].value = dados1[0].textContent;
-                                            document.getElementsByName(paramNomes[1])[0].value = dados1[1].textContent;
-                                            document.getElementsByName(paramNomes[2])[0].value = dados1[2].textContent;
-                                            document.getElementsByName(paramNomes[4])[0].value = dados1[3].textContent;
-                                            document.getElementsByName(paramNomes[5])[0].value = dados1[4].textContent;
-                                    }
-                                        //atualizarTabela();
-                                    }
-                            }
-                    xhttp1.send();
-                }
-                /*SCRIPT especifico para passar o id correto para a funcao de deletar*/
-                /*atualizarTabela().then;
-                var buttonDeletar=document.getElementsByName("deletar");
-                for(let indice=0;indice<buttonDeletar.length;indice++)
-                {//indice+1 porque o thead tem uma linha
-                    let id=document.querySelectorAll("tr")[indice+1];
-                    console.log(document.querySelectorAll("tr"));
-                    //console.log(id);
-                    if(id!=undefined)
-                    {
-                      id=id.firstElementChild;
-                    }
-                    //console.log(id);
-                    buttonDeletar[indice].addEventListener("click",deletar());
-                }*/
-    </script>
+    <script src="../../js/diario/professores/main.js"></script>
+
     </body>
 </html>

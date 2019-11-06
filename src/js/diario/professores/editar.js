@@ -1,17 +1,17 @@
 const paramNomes = ["id", "id-depto", "nome", "senha", "email", "titulacao"];
-var endereco="http://localhost:8080/app/";
-var method="GET";
+const ROTA_EDICAO = "diario/professores/atualizar";
+const ROTA_REMOCAO = "diario/professores/deletar";
 
 function info(id){
-    if(id == ""){
-	window.alert("Insira ID");
-	return;
-    }
+	if(id == ""){
+		window.alert("Insira ID");
+		return;
+	}
 
 	let xhttp = new XMLHttpRequest();
-	let url = endereco + "diario/professores/informacao?id=" + id;
+	let url = ENDERECO + "diario/professores/consultar?id=" + id;
 
-	xhttp.open(method, url, true);
+	xhttp.open("GET", url, true);
 	xhttp.onreadystatechange = function() {
 		if(xhttp.readyState === xhttp.DONE && xhttp.status === 200) {
                         var xml = (new DOMParser()).parseFromString(this.responseText, "application/xml");
@@ -46,9 +46,9 @@ function deletar(id) {
 	}
 
 	let xhttp = new XMLHttpRequest();
-	let url = endereco + "diario/professores/deletar?id=" + id;
+	let url = ENDERECO + ROTA_REMOCAO + "?id=" + id;
 
-	xhttp.open(method, url, true);
+	xhttp.open("GET", url, true);
 	xhttp.onreadystatechange = function() {
 		if(xhttp.readyState === xhttp.DONE && xhttp.status === 200) {
                         var xml = (new DOMParser()).parseFromString(this.responseText, "application/xml");
@@ -70,39 +70,38 @@ function alterar() {
         
 	let xhttp = new XMLHttpRequest();
 
-	let url = endereco + "diario/professores/atualizar";
-	let stringParams = "?";
+	
+	let id = document.getElementsByName("id")[0].value;
+	let idDepto = document.getElementsByName("id-depto")[0].value;
+	let nome = document.getElementsByName("nome")[0].value;
+	let senha = document.getElementsByName("senha")[0].value;
+	let email = document.getElementsByName("email")[0].value;
+	let titulacao = document.getElementsByName("titulacao")[0].value;
 
-	for(i in paramNomes) {
-		let conteudo = document.getElementsByName(paramNomes[i])[0].value;
-		if(conteudo == ""){
-			window.alert("Preencha todos os campos para alterar");
-			return;
-		}
-                if(stringParams.length==1)
-                {//o primeiro parametro nao tem &
-                    stringParams += paramNomes[i] + "=" + conteudo;
-                }
-                else
-                {
-                    stringParams += "&" + paramNomes[i] + "=" + conteudo;
-                }
-	}
+	jqueryAjax(id, idDepto, nome, senha, email, titulacao);
+}
 
-	xhttp.open(method, url+stringParams, true);
-	xhttp.onreadystatechange = function() {
-		if(xhttp.readyState === xhttp.DONE && xhttp.status === 200) {
-                        var xml = (new DOMParser()).parseFromString(this.responseText, "application/xml");
-			var raiz = xml.firstElementChild;
-			if(raiz.nodeName == "erro") {
-				window.alert(raiz.firstElementChild.textContent);
-				return;
-			}
-                        else
-                        {
-                            atualizarTabela();
-                        }
+
+function jqueryAjax(id, idDepto, nome, senha, email, titulacao) {
+	$.ajax(ENDERECO+ROTA_EDICAO, {
+		method: "POST",
+		data: {
+			id: id,
+			"id-depto": idDepto,
+			nome: nome,
+			senha: senha,
+			email: email,
+			titulacao: titulacao
 		}
-	};
-	xhttp.send();
+	})
+	.then(
+		function success(name) {
+			atualizarTabela();
+		},
+
+		function fail(data, status) {
+			let resposta = data.responseXML.firstElementChild.firstElementChild.innerHTML;
+			document.getElementsByTagName("p")[0].innerHTML = resposta;
+		}
+	);
 }
