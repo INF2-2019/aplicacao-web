@@ -37,8 +37,7 @@ function editar() {
   let cidade = document.querySelector("#cidade1").value;
   let cep = document.querySelector("#cep1").value;
   let uf = document.querySelector("#uf1").value;
-  //let foto = document.querySelector("#foto").value;
-  let foto = "exemplodefoto";
+  let foto = document.querySelector("#fototext3").value;
   data = reformatDate(data.toString());
   let dataF;
   if (data == "undefined/undefined/")
@@ -66,10 +65,9 @@ function editar() {
     .then(text => {
       parser = new DOMParser();
       xmlDoc = parser.parseFromString(text, "text/xml");
-
+      listar();
+      adicionaResult(responseStatus, xmlDoc);
     });
-    setTimeout(function(){ listar(); }, 200);
-    setTimeout(function(){ adicionaResult(responseStatus, xmlDoc); }, 200);
 }
 
 function preencherEmail(id) {
@@ -85,9 +83,5 @@ function preencherEmail(id) {
       xmlDoc = parser.parseFromString(text, "text/xml");
     });
 
-    setTimeout(function(){
-      let lineItems = xmlDoc.getElementsByTagName("aluno")[0];
-      email.value = lineItems.childNodes[2].childNodes[0].nodeValue;
-    }, 100);
 
   }

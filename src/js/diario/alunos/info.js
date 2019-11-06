@@ -28,8 +28,8 @@ fetch(url)
   .then(text => {
     parser = new DOMParser();
     xmlDoc = parser.parseFromString(text, "text/xml");
+    preencher(xmlDoc);
   });
-  setTimeout(function(){ preencher(xmlDoc); }, 100);
 }
 
 function preencher(doc) {

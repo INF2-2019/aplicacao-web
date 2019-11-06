@@ -39,7 +39,7 @@ function inserir() {
     .then(text => {
       parser = new DOMParser();
       xmlDoc = parser.parseFromString(text, "text/xml");
+      listar();
+      adicionaResult(responseStatus, xmlDoc);
     });
-    setTimeout(function(){ listar(); }, 200);
-    setTimeout(function(){ adicionaResult(responseStatus, xmlDoc); }, 200);
 }

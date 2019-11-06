@@ -70,9 +70,9 @@ function fazerTabela(doc){
 
 
     }
-    setTimeout(function(){ prepareDeletar(); }, 200);
-    setTimeout(function(){ prepareInfo(); }, 200);
-    setTimeout(function(){ prepareEditar(); }, 200);
+    setTimeout(function(){ prepareDeletar(); }, 50);
+    setTimeout(function(){ prepareInfo(); }, 50);
+    setTimeout(function(){ prepareEditar(); }, 50);
 }
 
 listar();
