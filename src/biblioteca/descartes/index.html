@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Descartes</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400&display=swap" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="../../css/materialize.css">
+        <link rel="stylesheet" type="text/css" href="../../css/biblioteca/descartes/style.css">
+    </head>
+    <body>
+
+        <h1>Descartes</h1>
+
+        <div id="conteudo">
+            <a href="#modalDescartes" class="waves-effect waves-light btn-large modal-trigger" id="btnDescartes">Descartar</a>
+
+            <div id="modalDescartes" class="modal">
+                <div class="modal-content">
+                    <div>
+                        <label>ACERVO <input class="short" name="acervo" id="acervo" type="text"></label>
+                        <label>DATA <input class="short" name="data" id="data" type="date"></label>
+                        <label>ID FUNCIONARIO <input class="short" name="funcionario" id="funcionario" type="text"></label>
+                        <label>MOTIVAÇÃO <textarea name="motivacao" id="motivacao" placeholder="Insira aqui a motivação do descarte deste acervo"></textarea></label>
+                        <button class="waves-effect waves-light btn-large modal-close" id="submit">Enviar</button>
+                    </div>
+                </div>
+            </div>
+
+            <table>
+                <thead>
+                  <tr>
+                      <th>ACERVO</th>
+                      <th>MOTIVAÇÃO</th>
+                      <th>OPERADOR</th>
+                      <th>DATA</th>
+                  </tr>
+                </thead>
+
+                <tbody id="holder_descartados">
+                  <tr>
+                    <td>01</td>
+                    <td>blaablablabla</td>
+                    <td>Gerson</td>
+                    <td>01/01</td>
+                  </tr>
+                  <tr>
+                    <td>01</td>
+                    <td>blaablablabla</td>
+                    <td>Gerson</td>
+                    <td>01/01</td>
+                  </tr>
+                  <tr>
+                    <td>01</td>
+                    <td>blaablablabla</td>
+                    <td>Gerson</td>
+                    <td>01/01</td>
+                  </tr>
+                  <tr>
+                    <td>01</td>
+                    <td>blaablablabla</td>
+                    <td>Gerson</td>
+                    <td>01/01</td>
+                  </tr>
+                  <tr>
+                    <td>01</td>
+                    <td>blaablablabla</td>
+                    <td>Gerson</td>
+                    <td>01/01</td>
+                  </tr>
+                </tbody>
+            </table>
+        </div>
+
+    <script type="text/javascript" src="../../js/biblioteca/descartes/jquery-3.3.1.min.js"></script>
+  	<script>
+              $(document).ready(function(){
+                  $('.modal').modal();
+              });
+  	</script>
+    <script type="text/javascript" src="../../js/materialize.min.js"></script>
+    <script src="../../js/biblioteca/descartes/ajax.js" charset="utf-8"></script>
+    </body>
+</html>
