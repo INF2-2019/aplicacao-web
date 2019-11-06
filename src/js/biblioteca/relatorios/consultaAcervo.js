@@ -69,6 +69,7 @@ function consulta() {
 							}
 							
 							linha += elemento;
+							jaMostrouErro = true;
 						}
 					} else if(!jaMostrouErro){
 						console.log("chules de adidas");
