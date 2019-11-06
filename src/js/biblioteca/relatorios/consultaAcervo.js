@@ -7,13 +7,12 @@ function consulta() {
 	var parser = new DOMParser();
 	var divResposta = document.getElementsByClassName("resposta");
 
+	let jaMostrouErro = false;
 	//recebe resposta em XML e manipula o XML para criar a tabela
 	xhttp.onreadystatechange = function () {
 		if (xhttp.readyState === xhttp.DONE && xhttp.status === 200) {
 			var responseStr = xhttp.responseText;
 			var xmlDoc = parser.parseFromString(responseStr, "text/xml");
-
-			let jaMostrouErro = false;
 
 			//cria tabelas
 			var tabelas = [
@@ -71,8 +70,7 @@ function consulta() {
 							linha += elemento;
 							jaMostrouErro = true;
 						}
-					} else if (!jaMostrouErro) {
-						console.log("chules de adidas");
+					} else if(!jaMostrouErro){
 						var resp = xmlDoc.childNodes[0].children[0].innerHTML;
 						M.toast({
 							html: resp,
@@ -100,6 +98,7 @@ function consulta() {
 					html: resp,
 					classes: "red darken-2"
 				});
+				jaMostrouErro = true;
 			}
 		}
 	};
