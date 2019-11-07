@@ -10,14 +10,12 @@
 	<title>Relatório de atrasos</title>
 </head>
 
-<body>
-
+<body onload="infoAtrasos()">
 	<nav>
 		<div class="nav-wrapper">
 			<a class="brand-logo">S.A. Admin</a>
 		</div>
 	</nav>
-
 
 	<div class="container">
 		<h2>Relatório de Atrasos</h2>
@@ -37,22 +35,14 @@
 								<th>Ações</th>
 							</tr>
 						</thead>
-						<tbody id="atrasos">
-
-							<td>Lorem</td>
-							<td>Lorem</td>
-							<td>Lorem</td>
-							<td>
-								<a href="#modal-info"
-									class="btn utils-info secondary s12 m5 l2 lighten modal-trigger waves-effect waves-teal">Info</a>
-							</td>
+						<tbody id="atrasos"></tbody>
 						</tbody>
 					</table>
 				</div>
 			</div>
 		</div>
 
-		<div id="modal-info" class="modal z-depth-5">
+		<div id="modal-info" class="modal">
 			<div class="modal-content">
 				<h4>Informações</h4>
 
@@ -68,7 +58,7 @@
 	<script src="../../js/materialize.js"></script>
 	<script src="../../js/jquery-3.4.1.js"></script>
 	<script src="../../js/biblioteca/relatorios/main.js"></script>
-	<script src="../../js/biblioteca/relatorios/consultaEmprestimo.js"></script>
+	<script src="../../js/biblioteca/relatorios/pesquisaEmprestimo.js"></script>
 </body>
 
 </html>
