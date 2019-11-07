@@ -8,8 +8,10 @@
 		<title>Transferência</title>
 	</head>
 	<body>
-		<nav class="navbar primary" style="padding-left: 10px">
-			<h2 style="margin: 0">S.A.</h2>
+		<nav>
+			<div class="nav-wrapper">
+				<a class="brand-logo">S.A.</a>
+			</div>
 		</nav>
 
 		<main style="margin: 0 10%">
@@ -19,8 +21,18 @@
 			<input placeholder="Digite o CPF do aluno aqui" id="cpf" type="text">
 		</main>
 
-		<script src="../../js/materialize.js"></script>
+		<div class="modal">
+			<div id="conteudo" class="modal-content">
+				<h4>Transferir aluno</h4>
+				<p>Tem certeza que deseja transferir este aluno?</p>
+			</div>
+			<div class="modal-footer">
+				<a class="modal-close btn utils erro-2">Cancelar</a>
+				<a class="modal-close btn primary" onclick="transfere()">Transferir</a>
+			</div>
+		</div>
 
+		<script src="../../js/materialize.js"></script>
 		<script src="../../js/diario/transferencia/main.js"></script>
 	</body>
 </html>

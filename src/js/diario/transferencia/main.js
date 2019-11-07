@@ -1,6 +1,11 @@
+let instances;
+document.addEventListener('DOMContentLoaded', function() {
+	const elems = document.querySelectorAll('.modal');
+	instances = M.Modal.init(elems);
+});
+
 const inputEl = document.querySelector("input");
 const buttonEl = document.querySelector("button");
-const toastEl = document.querySelector(".toast");
 
 inputEl.onchange = function() {
 	if(validaCpf(inputEl.value)) {
@@ -16,20 +21,19 @@ inputEl.onkeypress = e => {
 		manipulaEnvio();
 };
 
-function validaCpf(cpf) {
-	return /^[0-9]{11}$/.test(cpf) || /^[0-9]{3}[\.][0-9]{3}[\.][0-9]{3}[\-][0-9]{2}$/.test(cpf);
+function validaCpf() {
+	return /^[0-9]{11}$/.test(inputEl.value) || /^[0-9]{3}[\.][0-9]{3}[\.][0-9]{3}[\-][0-9]{2}$/.test(inputEl.value);
 }
 
 function manipulaEnvio() {
-	if(validaCpf(inputEl.value)) {
-		const cpf = parseInt(inputEl.value.replace(/\./g, "").replace(/\-/g, ""));
-		transfere(cpf);
+	if(validaCpf()) {
+		instances[0].open();
 	} else {
 		M.toast({ html: "CPF inválido", classes: "utils erro-2 text-light-text" });
 	}
 };
 
-function transfere(cpf) {
+function transfere() {
 	const servidor = "http://localhost:8080/app/";
 	const xhr = new XMLHttpRequest();
 	xhr.onreadystatechange = function() {
@@ -46,6 +50,7 @@ function transfere(cpf) {
 			}
 		}
 	};
+	const cpf = parseInt(inputEl.value.replace(/\./g, "").replace(/\-/g, ""));
 	const params = "?cpf=" + cpf;
 	const url = servidor + "diario/transferencia/transfere" + params;
 	xhr.open("POST", url, true);
