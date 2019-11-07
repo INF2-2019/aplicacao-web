@@ -14,23 +14,25 @@
 			</div>
 		</nav>
 
-		<main style="margin: 0 10%">
-			<h1>Transferência de aluno</h1>
-			<button class="btn right primary">TRANSFERIR</button>
-			<label for="cpf" style="font-size: 24px; color: black">CPF do aluno:</label>
-			<input placeholder="Digite o CPF do aluno aqui" id="cpf" type="text">
-		</main>
+		<div class="container" style="margin: 0 10%">
+			<div>
+				<h1>Transferir aluno</h1>
+				<button class="btn right primary">TRANSFERIR</button>
+				<label for="cpf" style="font-size: 24px; color: black">CPF do aluno:</label>
+				<input placeholder="Digite o CPF do aluno aqui" id="cpf" type="text">
+			</div>
 
-		<div class="modal">
-			<div id="conteudo" class="modal-content">
-				<h4>Transferir aluno</h4>
-				<p>Tem certeza que deseja transferir este aluno?</p>
+			<div class="modal">
+				<div id="conteudo" class="modal-content">
+					<h4>Transferir aluno</h4>
+					<p>Tem certeza que deseja transferir este aluno?</p>
+				</div>
+				<div class="modal-footer">
+					<a class="modal-close btn utils erro-2">Cancelar</a>
+					<a class="modal-close btn primary" onclick="transfere()">Transferir</a>
+				</div>
 			</div>
-			<div class="modal-footer">
-				<a class="modal-close btn utils erro-2">Cancelar</a>
-				<a class="modal-close btn primary" onclick="transfere()">Transferir</a>
-			</div>
-		</div>
+		</main>
 
 		<script src="../../js/materialize.js"></script>
 		<script src="../../js/diario/transferencia/main.js"></script>
