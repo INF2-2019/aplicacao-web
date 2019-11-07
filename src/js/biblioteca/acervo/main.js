@@ -38,8 +38,11 @@ function atualizarTabela() {
 				}
 
 				document.getElementById('saida').innerHTML = "";
+			} else if(xhttp.status === 404) {
+				document.getElementById('saida').inneHTML = "404 (Not Found)";
 			} else {
 				let resposta = xhttp.responseXML.firstElementChild.firstElementChild;
+				console.log(resposta);
 				document.getElementById('saida').innerHTML = resposta.firstElementChild.textContent;
 			}
 		}
