@@ -6,57 +6,40 @@ const consultar = async () => {
 	return DOM.parseFromString(text, 'text/xml')
 }
 
-const infoAtrasos = async () => {
-	let atrasados = []
-	const xml = await consultar()
-	const emprestimos = xml.getElementsByTagName("emprestimo")
+const montarTabela = (dados, numRelatorio = 4) => {
+	let tabelaContainer
 
-	for (emprestimo of emprestimos) {
-		const emprestimoObj = {
-			id: emprestimo.children[0].innerHTML,
-			idAluno: emprestimo.children[1].innerHTML,
-			dataPrevista: new Date(emprestimo.children[4].innerHTML),
-			dataDevolucao: new Date(emprestimo.children[5].innerHTML),
-			diasAtrasado: 0,
-		}
+	if (numRelatorio == 4)
+		tabelaContainer = document.querySelector('#atrasos')
+	else if (numRelatorio == 5)
+		tabelaContainer = document.querySelector('#multas')
 
-		// Ainda não devolveu
-		if (emprestimoObj.dataDevolucao.getTime() == 0) {
-			// Se a data atual for maior que a data prevista
-			const dataAtual = new Date();
-			if (dataAtual > emprestimoObj.dataPrevista) {
-				emprestimoObj.diasAtrasado = Math.ceil((dataAtual.getTime() - emprestimoObj.dataPrevista.getTime()) / (1000 * 3600 * 24))
-				delete emprestimoObj.dataPrevista
-				delete emprestimoObj.dataDevolucao
-
-				atrasados.push(emprestimoObj)
-			}
-		}
-	}
-
-	montarTabela(atrasados)
-}
-
-const montarTabela = dados => {
-	const tabelaContainer = document.querySelector('#atrasos')
 	const tbody = document.createElement('tbody')
 
-	for (atraso of dados) {
+	for (dado of dados) {
 		const linha = document.createElement('tr')
 
 		// para cada key do objeto, cria uma nova coluna
-		for (key of Object.keys(atraso)) {
-			const coluna = document.createElement('td')
-			coluna.appendChild(document.createTextNode(atraso[key]))
-			coluna.classList = key
+		for (key of Object.keys(dado)) {
+			if (key != 'dataDevolucaoMulta') {
+				const coluna = document.createElement('td')
 
-			linha.appendChild(coluna)
+				if (key == 'dataEmprestimo') {
+					// adiciona como data-devolucao do td a data de devolucao
+					coluna.setAttribute('data-devolucao', dado.dataDevolucaoMulta)
+				}
+
+				coluna.appendChild(document.createTextNode(dado[key]))
+				coluna.classList = key
+
+				linha.appendChild(coluna)
+			}
 		}
 
 		const colunaAcao = document.createElement('td')
 		const botaoEditar = document.createElement('a')
 		botaoEditar.setAttribute('href', '#modal-info')
-		botaoEditar.classList = "btn utils info s12 m5 l2 modal-trigger editar"
+		botaoEditar.classList = "btn utils info s12 m5 l2 modal-trigger informacoes"
 		botaoEditar.appendChild(document.createTextNode("Info"))
 
 		colunaAcao.appendChild(botaoEditar)
@@ -67,14 +50,98 @@ const montarTabela = dados => {
 	tabelaContainer.innerHTML = tbody.innerHTML
 }
 
-$(document).on('click', '.editar', e => {
-	const id = $(e.target).closest('tr').find('.id')[0].innerHTML;
-	const idAluno = $(e.target).closest('tr').find('.idAluno')[0].innerHTML;
-	const diasAtrasado = $(e.target).closest('tr').find('.diasAtrasado')[0].innerHTML;
+const infoAtrasos = async () => {
+	let atrasados = []
+	const xml = await consultar()
+	const emprestimos = xml.getElementsByTagName("emprestimo")
 
-	$('#conteudo-info').text('')
-	$('#conteudo-info').append(`<h4>Informações do atraso</h4>`)
-	$('#conteudo-info').append(`<h6>ID do empréstimo: <strong>${id}</strong></h6>`)
-	$('#conteudo-info').append(`<h6>CPF do aluno: <strong>${idAluno}</strong></h6>`)
-	$('#conteudo-info').append(`<h6>Número de dias atualmente atrasado: <strong>${diasAtrasado}</strong></h6>`)
+	for (emprestimo of emprestimos) {
+		const atrasoObj = {
+			id: emprestimo.children[0].innerHTML,
+			idAluno: emprestimo.children[1].innerHTML,
+			dataPrevista: new Date(emprestimo.children[4].innerHTML),
+			dataDevolucao: new Date(emprestimo.children[5].innerHTML),
+			diasAtrasado: 0,
+		}
+
+		// Ainda não devolveu
+		if (atrasoObj.dataDevolucao.getTime() == 0) {
+			// Se a data atual for maior que a data prevista
+			const dataAtual = new Date();
+			if (dataAtual > atrasoObj.dataPrevista) {
+				atrasoObj.diasAtrasado = Math.ceil((dataAtual.getTime() - atrasoObj.dataPrevista.getTime()) / (1000 * 3600 * 24))
+				delete atrasoObj.dataPrevista
+				delete atrasoObj.dataDevolucao
+
+				atrasados.push(atrasoObj)
+			}
+		}
+	}
+
+	montarTabela(atrasados, 4)
+}
+
+const infoMultas = async () => {
+	let multados = []
+	const xml = await consultar()
+	const emprestimos = xml.getElementsByTagName("emprestimo")
+
+	for (emprestimo of emprestimos) {
+		const multasObj = {
+			id: emprestimo.children[0].innerHTML,
+			idAluno: emprestimo.children[1].innerHTML,
+			dataEmprestimo: new Date(emprestimo.children[3].innerHTML),
+			dataPrevista: new Date(emprestimo.children[4].innerHTML),
+			dataDevolucaoMulta: new Date(emprestimo.children[5].innerHTML),
+			multa: 0,
+		}
+
+		// Se já tiver entregado, e tiver atrasado o prazo
+		if (multasObj.dataDevolucaoMulta.getTime() != 0 && multasObj.dataDevolucaoMulta > multasObj.dataPrevista) {
+			delete multasObj.dataPrevista
+
+			multasObj.dataDevolucaoMulta = formatarData(multasObj.dataDevolucaoMulta)
+			multasObj.dataEmprestimo = formatarData(multasObj.dataEmprestimo)
+			multasObj.multa = emprestimo.children[6].innerHTML
+
+			multados.push(multasObj)
+		}
+
+	}
+
+	montarTabela(multados, 5)
+}
+
+const formatarData = data => {
+	const dia = data.getDate()
+	const mes = data.getMonth() + 1
+	const ano = data.getFullYear()
+	return dia + "/" + mes + "/" + ano;
+}
+
+$(document).on('click', '.informacoes', e => {
+	const id = $(e.target).closest('tr').find('.id')[0].innerHTML
+	const idAluno = $(e.target).closest('tr').find('.idAluno')[0].innerHTML
+
+	if (window.location.href.endsWith("relatorio4.html")) {
+		const diasAtrasado = $(e.target).closest('tr').find('.diasAtrasado')[0].innerHTML
+
+		$('#conteudo-info').text('')
+		$('#conteudo-info').append(`<h4>Informações do atraso</h4>`)
+		$('#conteudo-info').append(`<h6>ID do empréstimo: <strong>${id}</strong></h6>`)
+		$('#conteudo-info').append(`<h6>CPF do aluno: <strong>${idAluno}</strong></h6>`)
+		$('#conteudo-info').append(`<h6>Número de dias atualmente atrasado: <strong>${diasAtrasado}</strong></h6>`)
+	} else {
+		const dataEmprestimo = $(e.target).closest('tr').find('.dataEmprestimo')[0].innerHTML
+		const dataDevolucao = $(e.target).closest('tr').find('.dataEmprestimo')[0].dataset.devolucao
+		const valor = $(e.target).closest('tr').find('.multa')[0].innerHTML
+
+		$('#modal-info .modal-content').text('')
+		$('#modal-info .modal-content').append(`<h4>Informações da multa</h4>`)
+		$('#modal-info .modal-content').append(`<h6>ID do empréstimo: <strong>${id}</strong></h6>`)
+		$('#modal-info .modal-content').append(`<h6>CPF do aluno: <strong>${idAluno}</strong></h6>`)
+		$('#modal-info .modal-content').append(`<h6>Data do empréstimo: <strong>${dataEmprestimo}</strong></h6>`)
+		$('#modal-info .modal-content').append(`<h6>Data de devolução: <strong>${dataDevolucao}</strong></h6>`)
+		$('#modal-info .modal-content').append(`<h6>Valor da multa: <strong>R$${valor}</strong></h6>`)
+	}
 })

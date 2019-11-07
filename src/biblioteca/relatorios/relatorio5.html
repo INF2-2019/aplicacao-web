@@ -10,7 +10,7 @@
 	<title>Relatório de multas</title>
 </head>
 
-<body onload="consulta()">
+<body onload="infoMultas()">
 
 	<nav>
 		<div class="nav-wrapper">
@@ -37,41 +37,14 @@
 							<th>Ações</th>
 						</tr>
 					</thead>
-					<tbody id="multas">
-						<td>Lorem</td>
-						<td>Lorem</td>
-						<td>Lorem</td>
-						<td>Lorem</td>
-						<td>
-							<a href="#modal-info"
-								class="btn utils-info secondary s12 m5 l2 lighten modal-trigger waves-effect waves-teal">Info</a>
-						</td>
-					</tbody>
+					<tbody id="multas"></tbody>
 				</table>
 			</div>
 		</div>
 
 		<div id="modal-info" class="modal">
 			<div class="modal-content">
-				<h4>Informações</h4>
-
-				<h5>irmao, vai pagar as multa</h5>
-
-				<table class="responsive-table centered highlight">
-					<thead>
-						<tr>
-							<th>Dia do Emprestimo</th>
-							<th>Dia da Devolução</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>Lorem</td>
-							<td>Lorem</td>
-						</tr>
-					</tbody>
-				</table>
-
+				<h4>Informações da multa</h4>
 			</div>
 			<div class="modal-footer">
 				<a class="btn utils waves-effect erro col s12 right modal-close">Fechar</a>
@@ -82,7 +55,7 @@
 	<script src="../../js/materialize.js"></script>
 	<script src="../../js/jquery-3.4.1.js"></script>
 	<script src="../../js/biblioteca/relatorios/main.js"></script>
-	<script src="../../js/biblioteca/relatorios/consultaEmprestimo.js"></script>
+	<script src="../../js/biblioteca/relatorios/pesquisaEmprestimo.js"></script>
 </body>
 
 </html>
