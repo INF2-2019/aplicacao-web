@@ -3,7 +3,7 @@ const buttonEl = document.querySelector("button");
 const toastEl = document.querySelector(".toast");
 
 inputEl.onchange = function() {
-	if(validaCpf(cpf)) {
+	if(validaCpf(inputEl.value)) {
 		inputEl.style.borderColor = "#00C853";
 	} else if(inputEl.value) {
 		inputEl.style.borderColor = "#D32F2F";
@@ -17,16 +17,15 @@ inputEl.onkeypress = e => {
 };
 
 function validaCpf(cpf) {
-	return /^[0-9]{11}$/.test(inputEl.value) || /^[0-9]{3}[\.][0-9]{3}[\.][0-9]{3}[\-][0-9]{2}$/.test(inputEl.value);
+	return /^[0-9]{11}$/.test(cpf) || /^[0-9]{3}[\.][0-9]{3}[\.][0-9]{3}[\-][0-9]{2}$/.test(cpf);
 }
 
 function manipulaEnvio() {
-	if(validaCpf(cpf)) {
+	if(validaCpf(inputEl.value)) {
 		const cpf = parseInt(inputEl.value.replace(/\./g, "").replace(/\-/g, ""));
 		transfere(cpf);
 	} else {
-		toastEl.innerHTML = "CPF inválido";
-		toastEl.style.backgroundColor = "#D32F2F";
+		M.toast({ html: "CPF inválido", classes: "utils erro-2 text-light-text" });
 	}
 };
 
@@ -39,11 +38,11 @@ function transfere(cpf) {
 			const doc = parser.parseFromString(xhr.response, "application/xml");
 			const msg = doc.getElementsByTagName("mensagem")[0];
 			if(this.status == 200) {
-				if(msg) avisaSucesso(msg);
-				else avisaSucesso("Aluno transferido com sucesso");
+				if(msg) M.toast({ html: msg, classes: "utils sucesso-2 text-light-text" });
+				else M.toast({ html: "Aluno transferido com sucesso", classes: "utils sucesso-2 text-light-text" });
 			} else {
-				if(msg) avisaErro(msg);
-				else avisaErro("Falha ao transferir aluno");
+				if(msg) M.toast({ html: msg, classes: "utils erro-2 text-light-text" });
+				else M.toast({ html: "Falha ao transferir aluno", classes: "utils erro-2 text-light-text" });
 			}
 		}
 	};
@@ -51,14 +50,4 @@ function transfere(cpf) {
 	const url = servidor + "diario/transferencia/transfere" + params;
 	xhr.open("POST", url, true);
 	xhr.send();
-}
-
-function avisaSucesso(msg) {
-	toastEl.innerHTML = msg;
-	toastEl.style.backgroundColor = "#00C853";
-}
-
-function avisaErro(msg) {
-	toastEl.innerHTML = msg;
-	toastEl.style.backgroundColor = "#D32F2F";
 }
