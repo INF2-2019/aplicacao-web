@@ -11,5 +11,6 @@ function inserir(turma, nome, horas) {
 		.then(() => consultar())
 		.then(() => limpaInputs('inserir'))
 		.catch(error => console.error(error))
-
+		$("#Seleciona-add").prop('selected', true);
+		$("#turma-inserir").formSelect();
 }
