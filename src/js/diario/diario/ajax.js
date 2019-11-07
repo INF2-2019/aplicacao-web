@@ -1,3 +1,5 @@
+const prefixo = "http://localhost:8080/app";
+
 async function pegaTabela(link,parametros,isPost=false) {
     /*
     
@@ -67,4 +69,68 @@ function analiseXML(xml_string, output_status = true) {
         alertarStatus(resposta);
 
     return resposta;
+}
+
+function geraElemento(query, args) {
+    let template = document.querySelector(query).innerHTML;
+    template = template.replace(/{{\1([^}]*)}}/g, (a, nome) => (nome in args) ? args[nome] : "");
+    return [...$(template)];
+}
+
+async function requisicao(info, parametros) {
+    if (info.constructor === String) {
+        if (infos[info]) return requisicao(infos[info], parametros);
+        else return null;
+    }
+
+    if (info.alerta && !window.confirm(info.alert))
+        return null;
+    
+    const link = info.link;
+    let params = {},
+        inputs;
+
+    if (info.parametros_default)
+        params = Object.assign(params, info.parametros_default);
+    if(parametros)
+        params = Object.assign(params, parametros);        
+
+    if (info.queries && info.queries.inputs) {
+        inputs = document.querySelectorAll(info.queries.inputs);
+        inputs.forEach(input => input.value!=""? params[input.name] = input.value:undefined);
+    }
+
+    const resposta = await pegaTabela(prefixo + link, params),
+        analise = analiseXML(resposta);
+
+    if (analise && analise.status === true) { // Se deu certo
+        if (inputs != undefined)
+            inputs.forEach(input => input.value = ""); // Limpa os input
+    }
+
+
+    if (info.callback) {
+        info.callback(info, analise);
+    }
+    return analise;
+}
+
+function setaAtivadorUnico(info_insere, info_ativador) {
+    let elementos = document.querySelectorAll(info_ativador.query);
+    for (let elemento of elementos)
+        elemento.addEventListener(info_ativador.evento, () => requisicao(info_insere));
+}
+
+function leInfos(infos) {
+    for (let nome in infos) {
+        let info_insere = infos[nome];
+
+        if (info_insere.ativadores) {
+            let info_ativador = info_insere.ativadores;
+            if (info_ativador.constructor == Object)
+                setaAtivadorUnico(info_insere, info_ativador);
+            else if (info_ativador.constructor == Array)
+                info_ativador.forEach(i_a => setaAtivadorUnico(info_insere, i_a));
+        }
+    }
 }

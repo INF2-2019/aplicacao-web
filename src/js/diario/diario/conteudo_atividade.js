@@ -1,4 +1,3 @@
-const prefixo = "http://localhost:8080/app";
 let DISCIPLINA = 1;
 
 const infos = {
@@ -11,7 +10,8 @@ const infos = {
         queries:{
             inputs: "#inserir_atividade input"
         },
-        ativadores: { evento: "click", query: "#submit_inserir_atividade" }
+        ativadores: { evento: "click", query: "#submit_inserir_atividade" },
+        callback: atualizarAtividade
     },
     inserirConteudo:{
         link: "/diario/diario/conteudo/inserir",
@@ -22,7 +22,8 @@ const infos = {
         queries: {
             inputs: "#inserir_conteudo input"
         },
-        ativadores: { evento: "click", query: "#submit_inserir_conteudo" }
+        ativadores: { evento: "click", query: "#submit_inserir_conteudo" },
+        callback: atualizarConteudo
     },
     consultarConteudo:{
         link: "/diario/diario/conteudo/consulta",
@@ -32,76 +33,156 @@ const infos = {
         },
         queries: {
             holder: "#holder_conteudos",
-            template: "#template_conteudos"
-        }
-    }
+            template: "#template_conteudos",
+            alterar: "#modalAlteraConteudos"
+        },
+        callback: consultarConteudoPos
+    },
+    consultarAtividade: {
+        link: "/diario/diario/conteudo/consulta",
+        parametros_default: {
+            especifico: "atividade",
+            disciplina: DISCIPLINA
+        },
+        queries: {
+            holder: "#holder_atividades",
+            template: "#template_atividades"
+        },
+        callback: consultarAtividadePos
+    },
+    alterarAtividade: {
+        link: "/diario/diario/conteudo/atualizar",
+        parametros_default: {
+            disciplina: DISCIPLINA
+        },
+        queries: {
+            inputs: "#modalAlteraAtividade input"
+        },
+        ativadores: { evento: "click", query: "#submit_alterar_atividade" },
+        callback: atualizarAtividade
+    },
+    alterarConteudo: {
+        link: "/diario/diario/conteudo/atualizar",
+        parametros_default: {
+            disciplina: DISCIPLINA
+        },
+        queries: {
+            inputs: "#modalAlteraConteudos input"
+        },
+        ativadores: { evento: "click", query: "#submit_alterar_conteudo" },
+        callback: atualizarConteudo
+    },
+    deletarConteudo: {
+        link: "/diario/diario/conteudo/deletar",
+        callback: atualizarConteudo
+    },
+    deletarAtividade: {
+        link: "/diario/diario/conteudo/deletar",
+        callback: atualizarAtividade
+    },
 };
 
-function consultarConteudoPos(resposta_dom){
+function alterarConteudo(info, pai){
+    const modal = document.querySelector(info.queries.alterar);
+    const inputs = modal.querySelectorAll("input");
+
+    for(let input of inputs){
+        let name = input.name;
+        if(name in pai.dataset){
+            if(input.type=="date"||input.type==="hidden") input.value = pai.dataset[name];
+            else input.placeholder = pai.dataset[name];
+        }
+    }
+}
+
+function deletarConteudo(info, pai){
+    let id = pai.dataset.id;
+
+    if (window.confirm("Você tem certeza que deseja deletar o conteudo \""+pai.dataset.conteudo+"\"?\nUma vez deletado, não há mais volta."))
+        requisicao("deletarConteudo",{id});
+}
+
+function deletarAtividade(info, pai) {
+    let id = pai.dataset.id;
+
+    if (window.confirm("Você tem certeza que deseja deletar a atividade \"" + pai.dataset.atividade + "\"?\nUma vez deletada, não há mais volta."))
+        requisicao("deletarAtividade", { id });
+}
+
+function consultarConteudoPos(info,resposta_dom){
+    let args;
+    const holder = document.querySelector(info.queries.holder);
+    holder.innerHTML = "";
     
+    for(let conteudosEl of resposta_dom){
+        let conteudo = conteudosEl.querySelector("conteudos").innerHTML,
+            etapa = conteudosEl.querySelector("id-etapas").innerHTML,
+            data = conteudosEl.querySelector("data").innerHTML,
+            id = conteudosEl.querySelector("id").innerHTML;
+
+        args = { 
+            conteudo, 
+            etapa, 
+            id,
+            data: (new Date(data)).toLocaleDateString(),
+            data_raw: data
+        };
+
+        let el = geraElemento(info.queries.template,args)[0];
+
+        let botao_edit = el.querySelector(".edit"),
+            botao_deletar = el.querySelector(".delete");
+        
+        botao_edit.addEventListener("click", () => alterarConteudo(info, el));
+        botao_deletar.addEventListener("click", ()=> deletarConteudo(info, el));
+
+        holder.appendChild(el);
+
+    }  
 }
 
-/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  */
-async function requisicao(info){
-    const link = info.link;
-    let params = {},
-        inputs;
+function consultarAtividadePos(info, resposta_dom) {
+    let args;
+    const holder = document.querySelector(info.queries.holder);
+    holder.innerHTML = "";
 
-    if (info.parametros_default)
-        params = Object.assign(params, info.parametros_default);
+    for (let conteudosEl of resposta_dom) {
+        let atividade = conteudosEl.querySelector("conteudos").innerHTML,
+            etapa = conteudosEl.querySelector("id-etapas").innerHTML,
+            data = conteudosEl.querySelector("data").innerHTML,
+            valor = conteudosEl.querySelector("valor").innerHTML,
+            id = conteudosEl.querySelector("id").innerHTML;
 
-    if (info.queries && info.queries.inputs) {
-        inputs = document.querySelectorAll(info.queries.inputs);
-        inputs.forEach(input => params[input.name] = input.value);
-    }
+        args = {
+            atividade,
+            etapa,
+            id,
+            valor,
+            data: (new Date(data)).toLocaleDateString(),
+            data_raw: data
+        };
 
-    const resposta = await pegaTabela(prefixo + link, params),
-        analise = analiseXML(resposta);
+        let el = geraElemento(info.queries.template, args)[0];
 
-    if (analise && analise.status === true) { // Se deu certo
-        if (inputs != undefined)
-            inputs.forEach(input => input.value = ""); // Limpa os input
-    }
+        let botao_edit = el.querySelector(".edit"),
+            botao_deletar = el.querySelector(".delete");
 
-    return analise;
-}
+        botao_edit.addEventListener("click", () => alterarConteudo(info, botao_edit.closest("tr")));
+        botao_deletar.addEventListener("click", () => deletarAtividade(info, el));
 
-async function insere(info_insere){
-    if (info_insere.constructor === String) {
-        if (infos[info_insere]) return insere(infos[info_insere]);
-        else return null;
-    }
-
-    requisicao(info_insere);
-}
-
-async function consulta(info_consulta){
-    if (info_consulta.constructor === String) {
-        if (infos[info_consulta]) return consulta(infos[info_consulta]);
-        else return null;
-    }
-
-    let res = await requisicao(info_consulta);
-
-    console.log(res);
-    
-}
-
-function setaAtivadorUnico(info_insere, info_ativador){
-    let elementos = document.querySelectorAll(info_ativador.query);
-    for(let elemento of elementos)
-        elemento.addEventListener(info_ativador.evento, () => insere(info_insere));
-}
-
-
-for(let nome in infos){
-    let info_insere = infos[nome];
-
-    if(info_insere.ativadores){
-        let info_ativador = info_insere.ativadores;
-        if(info_ativador.constructor == Object)
-            setaAtivadorUnico(info_insere,info_ativador);
-        else if(info_ativador.constructor == Array)
-            info_ativador.forEach(i_a=>setaAtivadorUnico(info_insere,i_a));
+        holder.appendChild(el);
     }
 }
+
+function atualizarAtividade(){
+    requisicao("consultarAtividade");
+}
+
+function atualizarConteudo(){
+    requisicao("consultarConteudo");
+}
+
+leInfos(infos);
+
+requisicao("consultarConteudo");
+requisicao("consultarAtividade");

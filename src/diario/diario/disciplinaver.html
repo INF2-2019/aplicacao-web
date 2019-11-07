@@ -56,16 +56,7 @@
                     <td><a href="#modalAlteraConteudos" class="waves-effect waves-light btn-small modal-trigger edit">Editar</a></td>
                     <td><a class="waves-effect waves-light btn-small modal-trigger delete">Deletar</a></td>
                   </tr>
-                  <template id="template_conteudos">
-                    <tr>
-                      <td>{{conteudo}}</td>
-                      <td>{{etapa}}</td>
-                      <td>{{data}}</td>
-                      <td><a class="waves-effect waves-light btn-small modal-trigger new" data-id="{{id}}">Faltas</a></td>
-                      <td><a href="#modalAlteraConteudos" class="waves-effect waves-light btn-small modal-trigger edit" data-id="{{id}}">Editar</a></td>
-                      <td><a class="waves-effect waves-light btn-small modal-trigger delete" data-id="{{id}}">Deletar</a></td>
-                    </tr>
-                  </template>
+                  
                 </tbody>
           </table>
         <a style="margin-left: 5%; margin-top: 2%;" href="#modalConteudos" class="waves-effect waves-light btn-large modal-trigger" id="btnConteudos">Adicionar</a>
@@ -151,6 +142,7 @@
       <div id="modalAlteraConteudos" class="modal">
         <div class="modal-content">
           <div id="alterar_conteudo">
+            <input type="hidden" name="id">
             <label>CONTEÚDO <input class="" name="conteudo" type="text"></label>
             <label>DATA <input class="short" name="data" type="date"></label>
             <label>ETAPA <input class="short" name="etapa" type="number"></label>
@@ -163,6 +155,7 @@
       <div id="modalAlteraAtividade" class="modal">
         <div class="modal-content">
           <div id="alterar_atividade">
+            <input type="hidden" name="id">
             <label>ATIVIDADE <input class="" name="conteudo" type="text"></label>
             <label>DATA <input class="short" name="data" type="date"></label>
             <label>ETAPA<input class="short" name="etapa" type="number"></label>
@@ -171,6 +164,30 @@
           </div>
         </div>
       </div>
+
+      <!-- Template de linha da tabela conteudos -->
+      <template id="template_conteudos">
+        <tr data-id="{{id}}" data-conteudo="{{conteudo}}" data-etapa="{{etapa}}" data-data="{{data_raw}}">
+          <td>{{conteudo}}</td>
+          <td>{{etapa}}</td>
+          <td>{{data}}</td>
+          <td><a class="waves-effect waves-light btn-small modal-trigger new">Faltas</a></td>
+          <td><a href="#modalAlteraConteudos" class="waves-effect waves-light btn-small modal-trigger edit">Editar</a></td>
+          <td><a class="waves-effect waves-light btn-small delete">Deletar</a></td>
+        </tr>
+      </template>
+
+      <!-- Template de linha da tabela atividades -->
+      <template id="template_atividades">
+        <tr data-id="{{id}}" data-atividade="{{atividade}}" data-valor="{{valor}}" data-etapa="{{etapa}}" data-data="{{data_raw}}">
+          <td>{{atividade}}</td>
+          <td>{{etapa}}</td>
+          <td>{{valor}}</td>
+          <td><a class="waves-effect waves-light btn-small modal-trigger new">Notas</a></td>
+          <td><a href="#modalAlteraAtividade" class="waves-effect waves-light btn-small modal-trigger edit">Editar</a></td>
+          <td><a class="waves-effect waves-light btn-small delete">Deletar</a></td>
+        </tr>
+      </template>
       
       <script src="../../js/diario/diario/jquery-3.3.1.min.js"></script>
       <script>
