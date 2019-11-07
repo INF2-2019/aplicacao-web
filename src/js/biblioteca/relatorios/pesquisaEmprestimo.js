@@ -28,6 +28,7 @@ const infoAtrasos = async () => {
 				emprestimoObj.diasAtrasado = Math.ceil((dataAtual.getTime() - emprestimoObj.dataPrevista.getTime()) / (1000 * 3600 * 24))
 				delete emprestimoObj.dataPrevista
 				delete emprestimoObj.dataDevolucao
+
 				atrasados.push(emprestimoObj)
 			}
 		}
@@ -47,6 +48,7 @@ const montarTabela = dados => {
 		for (key of Object.keys(atraso)) {
 			const coluna = document.createElement('td')
 			coluna.appendChild(document.createTextNode(atraso[key]))
+			coluna.classList = key
 
 			linha.appendChild(coluna)
 		}
@@ -54,8 +56,8 @@ const montarTabela = dados => {
 		const colunaAcao = document.createElement('td')
 		const botaoEditar = document.createElement('a')
 		botaoEditar.setAttribute('href', '#modal-info')
-		botaoEditar.classList = "btn utils-info secondary s12 m5 l2 lighten modal-trigger"
-		botaoEditar.appendChild(document.createTextNode("Editar"))
+		botaoEditar.classList = "btn utils info s12 m5 l2 modal-trigger editar"
+		botaoEditar.appendChild(document.createTextNode("Info"))
 
 		colunaAcao.appendChild(botaoEditar)
 		linha.appendChild(colunaAcao)
@@ -64,3 +66,15 @@ const montarTabela = dados => {
 
 	tabelaContainer.innerHTML = tbody.innerHTML
 }
+
+$(document).on('click', '.editar', e => {
+	const id = $(e.target).closest('tr').find('.id')[0].innerHTML;
+	const idAluno = $(e.target).closest('tr').find('.idAluno')[0].innerHTML;
+	const diasAtrasado = $(e.target).closest('tr').find('.diasAtrasado')[0].innerHTML;
+
+	$('#conteudo-info').text('')
+	$('#conteudo-info').append(`<h4>Informações do atraso</h4>`)
+	$('#conteudo-info').append(`<h6>ID do empréstimo: <strong>${id}</strong></h6>`)
+	$('#conteudo-info').append(`<h6>CPF do aluno: <strong>${idAluno}</strong></h6>`)
+	$('#conteudo-info').append(`<h6>Número de dias atualmente atrasado: <strong>${diasAtrasado}</strong></h6>`)
+})
