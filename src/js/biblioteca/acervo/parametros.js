@@ -1,9 +1,11 @@
+// Se pá depois eu passo isso pra um JSON, sem tempo irmão
+
 const PARAMS_ACERVO = 	  ["id-campi", "nome", "tipo", "local", "ano", "editora", "paginas"];
 
 const PARAMS_ACADEMICOS = [
 	{
 		paramNome:  "id-obra",
-		exibNome:  "Id da obra",
+		exibNome:  "2º ID",
 		tipo: "number",
 		tamanho:  3
 	},
@@ -18,13 +20,13 @@ const PARAMS_ACADEMICOS = [
 const PARAMS_LIVROS = [
 	{
 		paramNome:  "id-obra",
-		exibNome:  "Id da obra",
+		exibNome:  "2º ID",
 		tipo: "number",
 		tamanho:  3
 	},
 	{
 		paramNome:  "isbn",
-		exibNome:  "Código ISBN",
+		exibNome:  "ISBN",
 		tipo: "number",
 		tamanho:  4
 	},
@@ -39,7 +41,7 @@ const PARAMS_LIVROS = [
 const PARAMS_MIDIAS = [
 	{
 		paramNome:  "id-obra",
-		exibNome:  "Id da obra",
+		exibNome:  "2º ID",
 		tipo: "number",
 		tamanho:  3
 	},
@@ -60,7 +62,7 @@ const PARAMS_MIDIAS = [
 const PARAMS_PERIODICOS = [
 	{
 		paramNome:  "id-obra",
-		exibNome:  "Id da obra",
+		exibNome:  "2º ID",
 		tipo: "number",
 		tamanho:  3
 	},
@@ -78,7 +80,7 @@ const PARAMS_PERIODICOS = [
 	},
 	{
 		paramNome:  "mes",
-		exibNome:  "Mês de lançamento",
+		exibNome:  "Mês",
 		tipo: "text",
 		tamanho:  3
 	},
@@ -90,7 +92,7 @@ const PARAMS_PERIODICOS = [
 	},
 	{
 		paramNome:  "issn",
-		exibNome:  "Código ISSN",
+		exibNome:  "ISSN",
 		tipo: "number",
 		tamanho:  3
 	}

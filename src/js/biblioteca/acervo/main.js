@@ -1,5 +1,9 @@
-const metodo = "GET";
-const endereco = "http://localhost:8080/app/";
+const ENDERECO = "http://localhost:8080/app/";
+const ROTA_CONSULTA = "biblioteca/acervo/consultar";
+const ROTA_REMOCAO = "biblioteca/acervo/deletar";
+const ROTA_ATUALIZACAO = "biblioteca/acervo/atualizar";
+const ROTA_INSERCAO = "biblioteca/acervo/inserir";
+
 let modalEstado;
 let deleteId;
 
@@ -8,9 +12,9 @@ atualizarTabela();
 function atualizarTabela() {
 	var xhttp = new XMLHttpRequest();
 
-	url = endereco + "biblioteca/acervo/consultar";
+	url = ENDERECO + ROTA_CONSULTA;
 
-	xhttp.open(metodo, url, true);
+	xhttp.open("GET", url, true);
 	xhttp.onreadystatechange = function() {
 		if(xhttp.readyState === xhttp.DONE) {
 			if(xhttp.status === 200) {
@@ -38,7 +42,7 @@ function atualizarTabela() {
 				}
 
 				document.getElementById('saida').innerHTML = "";
-			} else if(xhttp.status === 404) {
+			} else if(xhttp.status === 404 || xhttp == 0) {
 				document.getElementById('saida').inneHTML = "404 (Not Found)";
 			} else {
 				let resposta = xhttp.responseXML.firstElementChild.firstElementChild;
@@ -61,7 +65,7 @@ function onconfirmar() {
 function deletar() {
 
 	let xhttp = new XMLHttpRequest();
-	let url = endereco + "biblioteca/acervo/deletar?id=" + deleteId;
+	let url = ENDERECO + ROTA_REMOCAO + "?id=" + deleteId;
 
 	xhttp.open("GET", url, true);
 	xhttp.onreadystatechange = function() {
@@ -78,7 +82,7 @@ function deletar() {
 function alterar() {
 	let xhttp = new XMLHttpRequest();
 
-	let url = endereco + "biblioteca/acervo/atualizar";
+	let url = ENDERECO + ROTA_ATUALIZACAO;
 	let stringParams = "?id=" + document.getElementsByName("id")[0].value;
 
 	let tipo;
@@ -100,7 +104,6 @@ function alterar() {
 			if(xhttp.status === 200) {
 				atualizarTabela();
 			} else {
-				console.log("AAAAAAA")
 				document.getElementById("saida").innerHTML = "Código " + xhttp.status + ": ";
 			}
 			var xml = (new DOMParser()).parseFromString(this.responseText, "application/xml");
@@ -116,7 +119,7 @@ function alterar() {
 function inserir(){
 	var xhttp = new XMLHttpRequest();
 
-	url= endereco + "biblioteca/acervo/inserir";
+	url= ENDERECO + ROTA_INSERCAO;
 	let params = getParams();
 
 	xhttp.open("GET", url+params, true);
@@ -150,17 +153,27 @@ function getParams() {
 	return params.substring(0, params.length-1); // Substring para remover o '&' final
 }
 
-function alterarCampos() {
+function alterarCampos(desabilitarIdObra = false) {
+	let idObra = "";
+	if(typeof(desabilitarIdObra) != 'boolean') {
+		idObra = desabilitarIdObra;
+		let idObraInput = document.getElementsByName('id-obra')[0];
+		desabilitarIdObra = idObraInput != undefined && idObraInput.disabled;
+	}
 	let camposDiv = document.getElementById('outrosParametros');
 	let paramsDesseTipo = getParamsPorTipo(document.getElementsByName('tipo')[0].value);
 
 	camposDiv.innerHTML = "";
 	for(param in paramsDesseTipo) {
-		camposDiv.innerHTML +=
-			'<label class="primary-text text-lighten-1 short col s' + paramsDesseTipo[param].tamanho + '" name="'+paramsDesseTipo[param].propNome+'">' +
+		let inputHTML =
+			'<label class="primary-text text-lighten-1 short col s' + paramsDesseTipo[param].tamanho + '"' +
+					'name="' + paramsDesseTipo[param].propNome + '">' +
 				paramsDesseTipo[param].exibNome + ': ' +
-				'<input type="'+paramsDesseTipo[param].tipo+'" name="'+paramsDesseTipo[param].paramNome+'" value="'+ '' +'">'
-			'</label>';
+				'<input type="'+paramsDesseTipo[param].tipo+'" name="'+paramsDesseTipo[param].paramNome+'" ';
+		if(paramsDesseTipo[param].paramNome == "id-obra" && desabilitarIdObra)
+			inputHTML += 'disabled="true" value="' + idObra + '"';
+		inputHTML += '></label>';
+		camposDiv.innerHTML += inputHTML;
 	}
 
 }
@@ -182,6 +195,8 @@ function prepararInsercao() {
 	let selects = document.getElementsByTagName("select");
 	selects.item(0).parentElement.firstElementChild.disabled = false;
 	selects.item(1).parentElement.firstElementChild.disabled = false;
+
+	document.getElementById('outrosParametros').innerHTML = "";
 }
 
 function prepararEdicao(id) {
@@ -190,7 +205,7 @@ function prepararEdicao(id) {
 	nomeModal.innerHTML = "Editar item";
 	let xhttp = new XMLHttpRequest();
 
-	url= endereco + "biblioteca/acervo/consultar?id=" + id;
+	url= ENDERECO + ROTA_CONSULTA + "?id=" + id;
 
 	xhttp.open("GET", url, true);
 	xhttp.onreadystatechange = function() {
@@ -214,7 +229,7 @@ function prepararEdicao(id) {
 				}
 			}
 
-			alterarCampos();
+			alterarCampos(true);
 			let paramsEspecificos = item.item(item.length-1).children;
 			for(param in paramsEspecificos) {
 				let propNome = paramsEspecificos.item(param).nodeName;
@@ -237,7 +252,7 @@ function prepararInfo(id) {
 	nomeModal.innerHTML = "Informações";
 	let xhttp = new XMLHttpRequest();
 
-	url= endereco + "biblioteca/acervo/consultar?id=" + id;
+	url= ENDERECO + "biblioteca/acervo/consultar?id=" + id;
 
 	xhttp.open("GET", url, true);
 	xhttp.onreadystatechange = function() {
@@ -273,10 +288,19 @@ function prepararInfo(id) {
 			let selects = document.getElementsByTagName("select");
 			selects.item(0).parentElement.firstElementChild.disabled = true;
 			selects.item(1).parentElement.firstElementChild.disabled = true;
+			selects.item(1).value = "invalido";
 		}
 	};
 	xhttp.send();
 
+}
+
+function tipoChange() {
+	let inputIdObra = document.getElementsByName('id-obra')[0];
+	if(inputIdObra != undefined)
+		alterarCampos(inputIdObra.value);
+	else
+		alterarCampos();
 }
 
 function convert(tipo) {

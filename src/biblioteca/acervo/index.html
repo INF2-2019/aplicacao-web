@@ -15,31 +15,33 @@
 		</nav>
 
 		<main style="margin: 0 10%">
-			<h1>Acervo</h1>
-			<p id="saida" class="flow-text red-text" style="font-size:22px;"></p>
-			<a href="#modalAltera" class=" btn right primary modal-trigger" onclick="prepararInsercao();">Adicionar</a>
+			<div class="container">
+				<h1>Acervo</h1>
+				<p id="saida" class="flow-text red-text" style="font-size:22px;"></p>
+				<a href="#modalAltera" class="btn col s12 m12 l5 offset-l4 waves-effect waves-light primary modal-trigger" onclick="prepararInsercao();">Adicionar</a>
 
-			<table class="responsive-table">
-				<colgroup>
-				   <col span="1" style="width: 25%;">
-				   <col span="1" style="width: 25%;">
-				   <col span="1" style="width: 25%;">
-				   <col span="1" style="width: 8.3%;">
-				   <col span="1" style="width: 8.4%;">
-				   <col span="1" style="width: 8.3%;">
-				</colgroup>
+				<table class="responsive-table" style="padding-top: 5%">
+					<colgroup>
+					<col span="1" style="width: 25%;">
+					<col span="1" style="width: 25%;">
+					<col span="1" style="width: 25%;">
+					<col span="1" style="width: 8.3%;">
+					<col span="1" style="width: 8.4%;">
+					<col span="1" style="width: 8.3%;">
+					</colgroup>
 
-				<thead>
-					<th>ID</th>
-					<th>Nome</th>
-					<th>Tipo</th>
-					<th>Ações</th>
-					<th></th>
-					<th></th>
-				</thead>
-				<tbody>
-				</tbody>
-			</table>
+					<thead>
+						<th>ID</th>
+						<th>Nome</th>
+						<th>Tipo</th>
+						<th>Ações</th>
+						<th></th>
+						<th></th>
+					</thead>
+					<tbody>
+					</tbody>
+				</table>
+			</div>
 		</main>
 
 		<!-- MODAL DE EDIÇÃO -->
@@ -50,19 +52,19 @@
 					<div class="row modal-content" style="margin:0;">
 						<label class="primary-text text-lighten-1 short col s2">ID: <input type="number" name="id" disabled="true"></label>
 						<label class="primary-text text-lighten-1 short col s10">Nome: <input type="text" name="nome"></label>
-						<label class="primary-text text-lighten-1 short col s5">Campus:
+						<label class="primary-text text-lighten-1 short col m5 s12">Campus:
 							<select name="id-campi">
 								<option value = "invalido">Escolha um campus</option>
 								<option value = "1">I</option>
 								<option value = "2">II</option>
 							</select>
 						</label>
-						<label class="primary-text text-lighten-1 short col s7">Local: <input type="text" name="local"></label>
+						<label class="primary-text text-lighten-1 short col m7 s12">Local: <input type="text" name="local"></label>
 						<label class="primary-text text-lighten-1 short col s6">Editora: <input type="text" name="editora"></label>
 						<label class="primary-text text-lighten-1 short col s3">Ano: <input type="number" name="ano"></label>
 						<label class="primary-text text-lighten-1 short col s3">Páginas: <input type="number" name="paginas"></label>
-						<label class="primary-text text-lighten-1 short col s6">Tipo:
-							<select name="tipo" onchange="alterarCampos()">
+						<label class="primary-text text-lighten-1 short col m6 s12">Tipo:
+							<select name="tipo" onchange="tipoChange()">
 								<option value = "invalido">Escolha um tipo</option>
 								<option value = "academicos">Acadêmico</option>
 								<option value = "livros">Livro</option>
