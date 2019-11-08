@@ -113,6 +113,7 @@ function consultarConteudoPos(info,resposta_dom){
     let args;
     const holder = document.querySelector(info.queries.holder);
     holder.innerHTML = "";
+    if (resposta_dom == null) return;
     
     for(let conteudosEl of resposta_dom){
         let conteudo = conteudosEl.querySelector("conteudos").innerHTML,
@@ -145,6 +146,7 @@ function consultarAtividadePos(info, resposta_dom) {
     let args;
     const holder = document.querySelector(info.queries.holder);
     holder.innerHTML = "";
+    if (resposta_dom==null)return;
 
     for (let conteudosEl of resposta_dom) {
         let atividade = conteudosEl.querySelector("conteudos").innerHTML,

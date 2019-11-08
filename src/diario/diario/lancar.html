@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <!-- ARQUIVO TEMPORARIO PARA TESTES NO BD-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <label>conteudo:<input type="number" name="conteudo"></label>
+    <label>matricula:<input type="number" name="matricula"></label>
+    <label>falta:<input type="number" name="falta"></label>
+    <label>nota:<input type="number" name="nota"></label>
+
+    <button id="lancarNota">Lançar nota</button>
+    <button id="lancarFalta">Lançar falta</button>
+
+    <script src="../../js/materialize.min.js"></script>
+    <script src="../../js/diario/diario/ajax.js"></script>
+    <script>
+        const infos = {
+                lancaFalta: {
+                    link: "/diario/diario/diario/inserir",
+                    parametros_default: {
+                        tipo: "conteudo"
+                    },
+                    queries: {
+                        inputs: "input"
+                    },
+                    ativadores: { evento: "click", query: "#lancarFalta" },
+                    callback: console.log
+                }
+        };
+
+        leInfos(infos);
+    </script>
+</body>
+</html>
