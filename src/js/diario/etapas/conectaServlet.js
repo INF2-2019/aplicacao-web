@@ -1,3 +1,5 @@
+M.AutoInit();
+
 function consulta() {
 	//cria conexão com o servlet consulta
 	var xhttp = new XMLHttpRequest(),
@@ -29,8 +31,8 @@ function consulta() {
 					elemento += "</td>";
 					linha += elemento;
 				}
-				linha += "<td><button name=\"EditarEtapa\" class=\"edita waves-effect waves-light btn-small modal-trigger material-icons\" href=\"#EditaForm\" id=\"Edita\" >edit</button>    ";
-				linha += "<button class=\"deleta waves-effect waves-light btn-small modal-trigger material-icons\" href=\"#RemoveForm\" style=\"background-color:#D32F2F\">delete_forever</button></td>";
+				linha += "<td><button name=\"EditarEtapa\" class=\"edita waves-effect waves-light btn-small modal-trigger material-icons\" href=\"#EditaForm\" id=\"Edita\" >EDITAR</button>    ";
+				linha += "<button class=\"deleta waves-effect waves-light btn-small modal-trigger material-icons\" href=\"#RemoveForm\" style=\"background-color:#D32F2F\">DELETAR</button></td>";
 				linha += "</tr>"
 				tabela += linha;
 			}
@@ -85,8 +87,8 @@ function consultaParametro(){
 					elemento += "</td>";
 					linha += elemento;
 				}
-				linha += "<td><button name=\"EditarEtapa\" class=\"edita waves-effect waves-light btn-small modal-trigger material-icons\" href=\"#EditaForm\" id=\"Edita\" >edit</button>    ";
-				linha += "<button class=\"deleta waves-effect waves-light btn-small modal-trigger material-icons\" href=\"#RemoveForm\" style=\"background-color:#D32F2F\">delete_forever</button></td>";
+				linha += "<td><button name=\"EditarEtapa\" class=\"edita waves-effect waves-light btn-small modal-trigger material-icons\" href=\"#EditaForm\" id=\"Edita\" >EDITAR</button>    ";
+				linha += "<button class=\"deleta waves-effect waves-light btn-small modal-trigger material-icons\" href=\"#RemoveForm\" style=\"background-color:#D32F2F\">DELETAR</button></td>";
 				linha += "</tr>"
 				tabela += linha;
 			}
@@ -148,8 +150,6 @@ function adiciona() {
 
 	//limpa inputs
 	limpaInputs();
-	//atualiza a tabela
-	setTimeout(consulta, 10);
 }
 
 //pega o id a ser passado para deletar
@@ -190,9 +190,6 @@ function deleta() {
 		}
 	};
 	xhttp.send();
-
-	//atualiza a tabela
-	setTimeout(consulta, 10);
 }
 
 
@@ -218,6 +215,7 @@ function atualiza() {
 			var responseStr = xhttp.responseText;
 			var xmlDoc = parser.parseFromString(responseStr, "text/xml");
 			resp = xmlDoc.childNodes[0].children[0].innerHTML;
+
 			M.toast({
 				html: resp,
 				classes: "utils sucesso-2"
@@ -242,8 +240,6 @@ function atualiza() {
 
 	// limpa inputs
 	limpaInputs();
-	//atualiza a tabela
-        setTimeout(consulta, 10);
 }
 
 function recarrega() {
