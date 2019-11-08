@@ -37,12 +37,12 @@ const montarTabela = (dados, numRelatorio = 4) => {
 		}
 
 		const colunaAcao = document.createElement('td')
-		const botaoEditar = document.createElement('a')
-		botaoEditar.setAttribute('href', '#modal-info')
-		botaoEditar.classList = "btn utils info s12 m5 l2 modal-trigger informacoes"
-		botaoEditar.appendChild(document.createTextNode("Info"))
+		const botaoInfo = document.createElement('a')
+		botaoInfo.setAttribute('href', '#modal-info')
+		botaoInfo.classList = "btn utils info s12 m5 l2 modal-trigger informacoes"
+		botaoInfo.appendChild(document.createTextNode("Info"))
 
-		colunaAcao.appendChild(botaoEditar)
+		colunaAcao.appendChild(botaoInfo)
 		linha.appendChild(colunaAcao)
 		tbody.appendChild(linha)
 	}
@@ -127,21 +127,29 @@ $(document).on('click', '.informacoes', e => {
 		const diasAtrasado = $(e.target).closest('tr').find('.diasAtrasado')[0].innerHTML
 
 		$('#conteudo-info').text('')
-		$('#conteudo-info').append(`<h4>Informações do atraso</h4>`)
-		$('#conteudo-info').append(`<h6>ID do empréstimo: <strong>${id}</strong></h6>`)
-		$('#conteudo-info').append(`<h6>CPF do aluno: <strong>${idAluno}</strong></h6>`)
-		$('#conteudo-info').append(`<h6>Número de dias atualmente atrasado: <strong>${diasAtrasado}</strong></h6>`)
+		$('#conteudo-info').append(
+			`
+			<h4>Informações do atraso</h4>
+			<h6>ID do empréstimo: <strong>${id}</strong></h6>
+			<h6>CPF do aluno: <strong>${idAluno}</strong></h6>
+			<h6>Número de dias atualmente atrasado: <strong>${diasAtrasado}</strong></h6>
+			`
+		)
 	} else {
 		const dataEmprestimo = $(e.target).closest('tr').find('.dataEmprestimo')[0].innerHTML
 		const dataDevolucao = $(e.target).closest('tr').find('.dataEmprestimo')[0].dataset.devolucao
 		const valor = $(e.target).closest('tr').find('.multa')[0].innerHTML
 
 		$('#modal-info .modal-content').text('')
-		$('#modal-info .modal-content').append(`<h4>Informações da multa</h4>`)
-		$('#modal-info .modal-content').append(`<h6>ID do empréstimo: <strong>${id}</strong></h6>`)
-		$('#modal-info .modal-content').append(`<h6>CPF do aluno: <strong>${idAluno}</strong></h6>`)
-		$('#modal-info .modal-content').append(`<h6>Data do empréstimo: <strong>${dataEmprestimo}</strong></h6>`)
-		$('#modal-info .modal-content').append(`<h6>Data de devolução: <strong>${dataDevolucao}</strong></h6>`)
-		$('#modal-info .modal-content').append(`<h6>Valor da multa: <strong>R$${valor}</strong></h6>`)
+		$('#modal-info .modal-content').append(
+			`
+			<h4>Informações da multa</h4>
+			<h6>ID do empréstimo: <strong>${id}</strong></h6>
+			<h6>CPF do aluno: <strong>${idAluno}</strong></h6>
+			<h6>Data do empréstimo: <strong>${dataEmprestimo}</strong></h6>
+			<h6>Data de devolução: <strong>${dataDevolucao}</strong></h6>
+			<h6>Valor da multa: <strong>R$${valor}</strong></h6>
+			`
+		)
 	}
 })

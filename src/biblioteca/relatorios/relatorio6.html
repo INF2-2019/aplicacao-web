@@ -10,7 +10,7 @@
 	<title>Relatório de obras descartadas</title>
 </head>
 
-<body onload="consulta()">
+<body onload="infoDescartes()">
 
 	<nav>
 		<div class="nav-wrapper">
@@ -28,21 +28,13 @@
 				<table id="resposta" class="responsive-table centered highlight imprime-atrasos-obras">
 					<thead>
 						<tr>
-							<th>ID Do Acervo</th>
-							<th>ID Funcionario</th>
-							<th>Data de Descarte</th>
+							<th>ID do acervo</th>
+							<th>Data de descarte</th>
+							<th>Operador</th>
 							<th>Ações</th>
 						</tr>
 					</thead>
-					<tbody id="descartes">
-						<td>Lorem</td>
-						<td>Lorem</td>
-						<td>Lorem</td>
-						<td>
-							<a href="#modal-info"
-								class="btn utils-info secondary s12 m5 l2 lighten modal-trigger waves-effect waves-teal">Info</a>
-						</td>
-					</tbody>
+					<tbody id="descartes"></tbody>
 				</table>
 			</div>
 		</div>
@@ -55,7 +47,7 @@
 			</div>
 
 			<div class="modal-footer">
-				<a class="btn utils waves-effect erro col offset-s9 right modal-close">Fechar</a>
+				<a class="btn utils erro waves-effect right modal-close">Fechar</a>
 			</div>
 		</div>
 	</div>
@@ -63,7 +55,7 @@
 	<script src="../../js/materialize.js"></script>
 	<script src="../../js/jquery-3.4.1.js"></script>
 	<script src="../../js/biblioteca/relatorios/main.js"></script>
-	<script src="../../js/biblioteca/relatorios/consultaEmprestimo.js"></script>
+	<script src="../../js/biblioteca/relatorios/pesquisaDescartes.js"></script>
 </body>
 
 </html>
