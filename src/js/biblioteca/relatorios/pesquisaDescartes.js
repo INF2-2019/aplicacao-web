@@ -81,10 +81,10 @@ $(document).on('click', '.informacoes', e => {
 	$('#modal-info .modal-content').append(
 		`
 		<h4>Informações do descarte</h4>
-		<h6>ID do acervo: ${idAcervo}</h6>
-		<h6>Data de descarte: ${dataDescarte}</h6>
-		<h6>Operador: ${operador}</h6>
-		<h6>Motivo do descarte: ${motivo}</h6>
+		<h6><strong>ID do acervo</strong>: ${idAcervo}</h6>
+		<h6><strong>Data de descarte</strong>: ${dataDescarte}</h6>
+		<h6><strong>Operador</strong>: ${operador}</h6>
+		<h6><strong>Motivo do descarte</strong>: ${motivo}</h6>
 		`
 	)
 })

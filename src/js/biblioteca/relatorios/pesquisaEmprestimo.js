@@ -130,9 +130,9 @@ $(document).on('click', '.informacoes', e => {
 		$('#conteudo-info').append(
 			`
 			<h4>Informações do atraso</h4>
-			<h6>ID do empréstimo: <strong>${id}</strong></h6>
-			<h6>CPF do aluno: <strong>${idAluno}</strong></h6>
-			<h6>Número de dias atualmente atrasado: <strong>${diasAtrasado}</strong></h6>
+			<h6><strong>ID do empréstimo</strong>: ${id}</h6>
+			<h6><strong>CPF do aluno</strong>: ${idAluno}</h6>
+			<h6><strong>Número de dias atualmente atrasado</strong>: ${diasAtrasado}</h6>
 			`
 		)
 	} else {
@@ -144,11 +144,11 @@ $(document).on('click', '.informacoes', e => {
 		$('#modal-info .modal-content').append(
 			`
 			<h4>Informações da multa</h4>
-			<h6>ID do empréstimo: <strong>${id}</strong></h6>
-			<h6>CPF do aluno: <strong>${idAluno}</strong></h6>
-			<h6>Data do empréstimo: <strong>${dataEmprestimo}</strong></h6>
-			<h6>Data de devolução: <strong>${dataDevolucao}</strong></h6>
-			<h6>Valor da multa: <strong>R$${valor}</strong></h6>
+			<h6><strong>ID do empréstimo</strong>: ${id}</h6>
+			<h6><strong>CPF do aluno</strong>: ${idAluno}</h6>
+			<h6><strong>Data do empréstimo</strong>: ${dataEmprestimo}</h6>
+			<h6><strong>Data de devolução</strong>: ${dataDevolucao}</h6>
+			<h6><strong>Valor da multa</strong>: R$${valor}</h6>
 			`
 		)
 	}
