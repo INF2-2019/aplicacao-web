@@ -3,11 +3,11 @@
     visibility: hidden;
 	}
 
-  #resposta, #resposta * {
+  #printable, #printable * {
     visibility: visible;
 	}
 
-  #resposta {
+  #printable {
     position: fixed;
     left: 0;
     top: 0;
@@ -37,11 +37,6 @@
     left: 0;
     top: 0;
   }
-}
-
-#resposta{
-  padding-left: 10%;
-  padding-right: 10%;
 }
 
 .resposta{

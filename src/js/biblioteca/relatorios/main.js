@@ -4,7 +4,7 @@ const baseURL = 'http://localhost:8080/app/biblioteca'
 M.AutoInit()
 
 document.getElementById('BotaoImprime').addEventListener('click', () => {
-	let divResposta = document.getElementById("resposta");
+	let divResposta = document.getElementById("printable");
 	divResposta.style.paddingLeft = 0;
 	divResposta.style.paddingRight = 0;
 	window.print();
