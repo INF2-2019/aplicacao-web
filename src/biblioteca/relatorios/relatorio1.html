@@ -12,31 +12,40 @@
 </head>
 
 <body onload="consulta()">
-	<nav class="nav-extended">
-		<div class="row s12 nav-content white-text">
-			<h4 style="margin:0 ;margin-left:0.5%;">Biblioteca - Relatório de Acervo</h4>
+	<nav>
+		<div class="nav-wrapper">
+			<a class="brand-logo">Biblioteca</a>
 		</div>
 	</nav>
 	<!-- fim header -->
-	<button id="BotaoImprime" class="waves-effect waves-light btn-small " type="button" name="button">IMPRIMIR</button>
+
 	<!-- DIV PARA RESPOSTA CONSULTA -->
-	<div id="resposta">
+	<div class="container">
+		<h2>Relatório de Acervo</h2>
+		<div id="resposta" class="row">
+			<a id="BotaoImprime" class="btn col primary s12 m12 l2 right">IMPRIMIR</a>
 
-		<div class="resposta" id="livros">
+			<div class="col s12">
+				<div id="printable">
 
-		</div>
-		<div class="resposta" id="periodicos">
-
-		</div>
-		<div class="resposta" id="academicos">
-
-		</div>
-		<div class="resposta" id="midias">
-
+						<div class="resposta" id="livros">
+				
+						</div>
+						<div class="resposta" id="periodicos">
+				
+						</div>
+						<div class="resposta" id="academicos">
+				
+						</div>
+						<div class="resposta" id="midias">
+				
+						</div>
+					</div>
+			</div>
 		</div>
 	</div>
+	
 	<!-- IMPORTAÇÕES -->
-	<!--Conexao Servlets-->
 	<script src="../../js/materialize.js"></script>
 	<script src="../../js/jquery-3.4.1.js"></script>
 	<script src="../../js/biblioteca/relatorios/main.js"></script>

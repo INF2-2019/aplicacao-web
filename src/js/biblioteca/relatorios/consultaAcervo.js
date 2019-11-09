@@ -5,7 +5,7 @@ function consulta() {
 		url = baseURL + "/acervo/consultar";
 	xhttp.open(method, url, true);
 	var parser = new DOMParser();
-	var divResposta = document.getElementsByClassName("resposta");
+	var divResposta = document.getElementsByClassName("printable");
 
 	let jaMostrouErro = false;
 	//recebe resposta em XML e manipula o XML para criar a tabela

@@ -12,16 +12,25 @@
 </head>
 
 <body onload="consulta()">
-	<nav class="nav-extended">
-		<div class="row s12 nav-content white-text">
-			<h4 style="margin:0 ;margin-left:0.5%;">Biblioteca - Relatório de Empréstimos</h4>
+	<nav>
+		<div class="nav-wrapper">
+			<a class="brand-logo">Biblioteca</a>
 		</div>
 	</nav>
 	<!-- fim header -->
-	<button id="BotaoImprime" class="waves-effect waves-light btn-small " type="button" name="button">IMPRIMIR</button>
-	<!-- DIV PARA RESPOSTA CONSULTA -->
-	<div id="resposta">
 
+	<!-- DIV PARA RESPOSTA CONSULTA -->
+	<div class="container">
+		<h2>Relatório de Empréstimos</h2>
+		<div id="resposta" class="row">
+			<a id="BotaoImprime" class="btn col primary s12 m12 l2 right">IMPRIMIR</a>
+
+			<div class="col s12">
+				<table id="printable" class="highlight centered responsive-table">
+
+				</table>
+			</div>
+		</div>
 	</div>
 	<!-- IMPORTAÇÕES -->
 	<!--Conexao Servlets-->

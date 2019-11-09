@@ -14,7 +14,7 @@ function consulta() {
 			var xmlDoc = parser.parseFromString(responseStr, "text/xml");
 
 			//cria tabela
-			var tabela = "<table class=\"highlight centered responsive-table\">";
+			var tabela = document.getElementById("printable");
 			tabela += "<thead><th>Id</th><th>Id do Aluno</th><th>Id da Obra</th><th>Data de Empréstimo</th><th>Data Prevista de Devolução</th><th>Data de Devolução</th><th>Multa</th></thead>";
 
 			var elementos = xmlDoc.childNodes[0].children; //HTMLColletion etapa
