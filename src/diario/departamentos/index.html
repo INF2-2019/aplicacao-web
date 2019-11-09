@@ -1,64 +1,113 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 		<link rel="stylesheet" href="../../css/materialize.css" />
 		<title>Departamentos</title>
 	</head>
+
 	<body>
-		<nav class="navbar primary" style="padding-left: 10px">
-			<h2 style="margin: 0">S.A.</h2>
+		<nav>
+			<div class="nav-wrapper">
+				<a class="brand-logo">S.A.</a>
+			</div>
 		</nav>
 
-		<label id="toast" class="toast right" style="margin-right: 5px; background-color: #00E676">Bem-vindo</label>
-
-		<main style="margin: 0 10%">
+		<div class="container">
 			<h1>Departamentos</h1>
-			<button class="btn right primary modal-trigger" data-target="modal-adicionar">ADICIONAR</button>
-			<table>
-				<thead>
-					<th>Nome</th>
-					<th>Campus</th>
-					<th></th>
-				</thead>
-				<tbody></tbody>
-			</table>
-		</main>
 
-		<div id="modal-adicionar" class="modal">
-			<div class="modal-content">
-				<h2>Adicionar</h2>
-				<button class="btn right primary modal-close" data-target="modal-adicionar">ADICIONAR</button>
-				<label for="adicionar-nome">Nome</label>
-				<input placeholder="Nome do departamento" id="adicionar-nome" type="text" class="validate">
-				<label for="adicionar-id-campi">Campus</label>
-				<input placeholder="Campus do departamento" id="adicionar-id-campi" type="text" class="validate">
+			<div class="row">
+				<div class="input-field col s12 m12 l4">
+					<i class="material-icons prefix">search</i>
+					<input id="search" type="text" autocomplete="off">
+					<label for="search">Pesquisar</label>
+				</div>
+				<a class="btn col s12 m12 l4 offset-l4 waves-effect waves-light primary modal-trigger"
+						href="#modal-add">Adicionar</a>
+			</div>
+
+			<div id="consulta-departamentos" class="col s12">
+				<table id="tabela-departamentos" class="responsive-table centered highlight">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>Nome</th>
+							<th>Campus</th>
+							<th>Ações</th>
+						</tr>
+					</thead>
+					<tbody id="departamentos"></tbody>
+				</table>
+			</div>
+
+			<div id="modal-deletar" class="modal">
+				<div id="conteudo" class="modal-content">
+					<h4>Excluir departamento</h4>
+					<h6>Tem certeza que deseja excluir este departamento?</h6>
+				</div>
+				<div class="modal-footer">
+					<a class="modal-close btn utils erro-2">Cancelar</a>
+					<a class="modal-close btn primary">Excluir</a>
+				</div>
+			</div>
+
+			<div id="modal-add" class="modal">
+				<div class="row modal-content">
+					<h4>Adicionar departamento</h4>
+					<div class="input-field col s9">
+						<input id="nome-inserir" type="text" />
+						<label for="nome-inserir">Nome</label>
+					</div>
+					<div class="input-field col s3">
+						<select id="campus-inserir">
+							<option value="" selected>Selecione</option>
+						</select>
+						<label for="campus-inserir">Campus</label>
+					</div>
+				</div>
+				<div class="container modal-footer">
+					<a class="modal-close btn utils erro-2">Cancelar</a>
+					<a class="modal-close btn primary" id="adicionar-departamento">Adicionar</a>
+				</div>
+			</div>
+
+			<div id="modal-atualizar" class="modal">
+				<h4 style="padding: 15pt;">Editar departamento</h4>
+				<div class="row modal-content">
+					<div class="input-field col s8">
+						<input id="nome-atualizar" type="text" />
+						<label for="nome-atualizar">Nome</label>
+					</div>
+					<div class="input-field col s4">
+						<select id="campus-atualizar">
+							<option value="" disabled selected>Selecione</option>
+						</select>
+						<label for="campus-atualizar">Campus</label>
+					</div>
+				</div>
+				<div class="container modal-footer">
+					<a class="modal-close btn utils erro-2">Cancelar</a>
+					<a class="modal-close btn primary" id="atualizar-curso">Salvar</a>
+				</div>
 			</div>
 		</div>
 
-		<div id="modal-info" class="modal">
-			<div class="modal-content">
-				<h2>Info</h2>
-			</div>
-		</div>
-
-		<div id="modal-editar" class="modal">
-			<div class="modal-content">
-				<h2>Editar</h2>
-				<button class="btn right primary modal-close" data-target="modal-editar">EDITAR</button>
-				<label for="editar-nome">Nome</label>
-				<input placeholder="Nome do departamento" id="editar-nome" type="text" class="validate">
-				<label for="editar-id-campi">Campus</label>
-				<input placeholder="Campus do departamento" id="editar-id-campi" type="text" class="validate">
-			</div>
-		</div>
-
-		<script src="../../js/materialize.min.js"></script>
-		<script src="../../js/diario/departamentos/View.js"></script>
-		<script src="../../js/diario/departamentos/Tabela.js"></script>
-		<script src="../../js/diario/departamentos/Controller.js"></script>
+		<script>
+			const deptos = [];
+			let instances;
+			document.addEventListener('DOMContentLoaded', function() {
+				const elems = document.querySelectorAll('.modal');
+				instances = M.Modal.init(elems);
+			});
+		</script>
+		<script src="../../js/materialize.js"></script>
+		<script src="../../js/diario/departamentos/tabela.js"></script>
+		<script src="../../js/diario/departamentos/consulta.js"></script>
 		<script src="../../js/diario/departamentos/main.js"></script>
 	</body>
+
 </html>
