@@ -28,15 +28,6 @@
 	.imprime-multas > tbody > tr > td:nth-child(5) * {
 		display: none;
 	}
-
-	#div1, #div1 * , #div2, #div2 *{
-    visibility: visible;
-  }
-  #div1, #div2 {
-    position: fixed;
-    left: 0;
-    top: 0;
-  }
 }
 
 .resposta{
