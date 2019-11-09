@@ -1,0 +1,62 @@
+
+body,.modal,.modal-content,.modal .modal-footer{
+    background: #E5E5E5;
+    height: 100%;
+}
+.fontBTN{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 9pt;
+    margin-top: 10pt;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    width: 10em;
+    height: 3em;
+}
+#pesquisa{
+    display: inline;
+    margin-left: 0px;
+}
+#botao{
+    margin-right: 20%;
+}
+.header{
+    background: #29A58C;
+    color: white;
+    width: 100%;
+    padding: 4pt;
+    margin-bottom:1%;
+}
+.span-cadastro{
+    font-size: 10pt;
+    color: #29A58C;
+}
+#foto{
+    height:250px;
+    width:250px;
+    border: 5px solid #29A58C;
+    border-radius: 130px;
+    object-fit: cover;
+    margin-top:20pt;
+}
+.modal{
+    width:85%;
+    
+}
+.modal .modal-footer{
+    height: 21%;
+}
+.modal .modal-content {
+    padding: 0;
+}
+#divfoto{
+    margin-bottom:10%;
+}
+
+.btnAjuste{
+    margin-right: 1%;
+}
+#modal-deletar{
+    width:40%;
+    height: 30%;
+}
