@@ -23,15 +23,15 @@ function consulta() {
 				for (let j = 0; j < elementos[i].children.length; j++) {
 					let elemento = "";
 					if (j === 0) {
-						elemento = "<td data-id=\"" + elementos[i].children[j].innerHTML + "\">";
+						elemento = "<td data-id=\"" + elementos[i].children[j].innerHTML + "\" class =\"td-manutencao-etapas\" >";
 					} else {
-						elemento = "<td>"
+						elemento = "<td class =\"td-manutencao-etapas\">"
 					}
 					elemento += elementos[i].children[j].innerHTML; //id/ano/valor
 					elemento += "</td>";
 					linha += elemento;
 				}
-				linha += "<td><button name=\"EditarEtapa\" class=\"edita waves-effect waves-light btn-small modal-trigger material-icons\" href=\"#EditaForm\" id=\"Edita\" >EDITAR</button>    ";
+				linha += "<td class =\"td-manutencao-etapas\" ><button name=\"EditarEtapa\" class=\"edita waves-effect waves-light btn-small modal-trigger material-icons\" href=\"#EditaForm\" id=\"Edita\" >EDITAR</button>    ";
 				linha += "<button class=\"deleta waves-effect waves-light btn-small modal-trigger material-icons\" href=\"#RemoveForm\" style=\"background-color:#D32F2F\">DELETAR</button></td>";
 				linha += "</tr>"
 				tabela += linha;
@@ -79,15 +79,15 @@ function consultaParametro(){
 				for (let j = 0; j < elementos[i].children.length; j++) {
 					let elemento = "";
 					if (j === 0) {
-						elemento = "<td data-id=\"" + elementos[i].children[j].innerHTML + "\">";
+						elemento = "<td data-id=\"" + elementos[i].children[j].innerHTML + "\" class =\"td-manutencao-etapas\">";
 					} else {
-						elemento = "<td>"
+						elemento = "<td class =\"td-manutencao-etapas\">"
 					}
 					elemento += elementos[i].children[j].innerHTML; //id/ano/valor
 					elemento += "</td>";
 					linha += elemento;
 				}
-				linha += "<td><button name=\"EditarEtapa\" class=\"edita waves-effect waves-light btn-small modal-trigger material-icons\" href=\"#EditaForm\" id=\"Edita\" >EDITAR</button>    ";
+				linha += "<td class =\"td-manutencao-etapas\"><button name=\"EditarEtapa\" class=\"edita waves-effect waves-light btn-small modal-trigger material-icons\" href=\"#EditaForm\" id=\"Edita\" >EDITAR</button>    ";
 				linha += "<button class=\"deleta waves-effect waves-light btn-small modal-trigger material-icons\" href=\"#RemoveForm\" style=\"background-color:#D32F2F\">DELETAR</button></td>";
 				linha += "</tr>"
 				tabela += linha;
