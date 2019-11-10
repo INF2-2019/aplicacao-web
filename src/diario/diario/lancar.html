@@ -19,6 +19,15 @@
     <script src="../../js/materialize.min.js"></script>
     <script src="../../js/diario/diario/ajax.js"></script>
     <script>
+        
+        const stringEInteiro = numero => (/^\d+$/).test(numero);
+
+        const BARRA_PESQUISA = new URLSearchParams(window.location.search);
+        if (BARRA_PESQUISA.has("conteudo") && stringEInteiro(BARRA_PESQUISA.get("conteudo")))
+            document.querySelector("input[name=conteudo]").value = Number(BARRA_PESQUISA.get("conteudo"));
+
+
+
         const infos = {
                 lancaFalta: {
                     link: "/diario/diario/diario/inserir",
@@ -29,6 +38,16 @@
                         inputs: "input"
                     },
                     ativadores: { evento: "click", query: "#lancarFalta" },
+                    callback: console.log
+                }, lancaNota: {
+                    link: "/diario/diario/diario/inserir",
+                    parametros_default: {
+                        tipo: "atividade"
+                    },
+                    queries: {
+                        inputs: "input"
+                    },
+                    ativadores: { evento: "click", query: "#lancarNota" },
                     callback: console.log
                 }
         };

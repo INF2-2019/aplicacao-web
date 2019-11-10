@@ -1,11 +1,16 @@
-let DISCIPLINA = 1;
+let DISCIPLINA;
+
+const stringEInteiro = numero => (/^\d+$/).test(numero);
+
+const BARRA_PESQUISA = new URLSearchParams(window.location.search);
+if (BARRA_PESQUISA.has("disciplina") && stringEInteiro(BARRA_PESQUISA.get("disciplina")))
+    DISCIPLINA = Number(BARRA_PESQUISA.get("disciplina"));
 
 const infos = {
     inserirAtividade:{
         link: "/diario/diario/conteudo/inserir",
         parametros_default:{
-            disciplina: DISCIPLINA,
-            id: 1
+            disciplina: DISCIPLINA
         },
         queries:{
             inputs: "#inserir_atividade input"
@@ -28,7 +33,7 @@ const infos = {
     consultarConteudo:{
         link: "/diario/diario/conteudo/consulta",
         parametros_default: {
-            especifico: "conteudo",
+            tipo: "conteudo",
             disciplina: DISCIPLINA
         },
         queries: {
@@ -41,12 +46,13 @@ const infos = {
     consultarAtividade: {
         link: "/diario/diario/conteudo/consulta",
         parametros_default: {
-            especifico: "atividade",
+            tipo: "atividade",
             disciplina: DISCIPLINA
         },
         queries: {
             holder: "#holder_atividades",
-            template: "#template_atividades"
+            template: "#template_atividades",
+            alterar: "#modalAlteraAtividade"
         },
         callback: consultarAtividadePos
     },
@@ -82,6 +88,18 @@ const infos = {
     },
 };
 
+// Código baseado na primeira resposta do site: https://pt.stackoverflow.com/questions/6526/como-formatar-data-no-javascript
+function dataFormatada(data){
+    data = new Date(data);
+    
+    let dia  = (data.getDate()+1).toString(), // tive que colocar o +1 por algum motivo que desconheço, mas sei que sem ele não funciona
+        diaF = (dia.length == 1) ? '0'+dia : dia,
+        mes  = (data.getMonth()+1).toString(), //+1 pois no getMonth Janeiro começa com zero.
+        mesF = (mes.length == 1) ? '0'+mes : mes,
+        anoF = data.getFullYear();
+    return diaF+"/"+mesF+"/"+anoF;
+}
+
 function alterarConteudo(info, pai){
     const modal = document.querySelector(info.queries.alterar);
     const inputs = modal.querySelectorAll("input");
@@ -94,6 +112,7 @@ function alterarConteudo(info, pai){
         }
     }
 }
+
 
 function deletarConteudo(info, pai){
     let id = pai.dataset.id;
@@ -125,7 +144,7 @@ function consultarConteudoPos(info,resposta_dom){
             conteudo, 
             etapa, 
             id,
-            data: (new Date(data)).toLocaleDateString(),
+            data: dataFormatada(data),
             data_raw: data
         };
 
@@ -169,7 +188,7 @@ function consultarAtividadePos(info, resposta_dom) {
         let botao_edit = el.querySelector(".edit"),
             botao_deletar = el.querySelector(".delete");
 
-        botao_edit.addEventListener("click", () => alterarConteudo(info, botao_edit.closest("tr")));
+        botao_edit.addEventListener("click", () => alterarConteudo(info, el));
         botao_deletar.addEventListener("click", () => deletarAtividade(info, el));
 
         holder.appendChild(el);
