@@ -35,3 +35,4 @@ function validar() {
       window.location.href = "../diario/transicao/aluno.html";
     }
   }
+  
