@@ -32,6 +32,6 @@ function validar() {
         }
       }
     } else {
-      //codigo para redirecionar
+      window.location.href = "../diario/transicao/aluno.html";
     }
   }
