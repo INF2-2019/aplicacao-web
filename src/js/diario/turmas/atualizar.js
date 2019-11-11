@@ -11,7 +11,7 @@ function atualizar(turma, nome) {
 		.then(data => (retornaResposta(data)))
 		.then(resposta => {
                     console.log(resposta);
-			if (resposta.indexOf("sucesso"!=-1)) {
+			if (resposta.indexOf("sucesso")!=-1) {
 				M.toast({ html: resposta, classes: 'utils sucesso-2 text-light-text' })
 			} else {
 				M.toast({ html: resposta, classes: 'utils erro-2 text-light-text' })
