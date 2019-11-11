@@ -110,6 +110,7 @@ function consultaParametro(){
 		}
 	};
 	xhttp.send();
+
 }
 
 function adiciona() {
@@ -150,6 +151,8 @@ function adiciona() {
 
 	//limpa inputs
 	limpaInputs();
+
+	setTimeout(function(){	recarrega();}, 250);
 }
 
 //pega o id a ser passado para deletar
@@ -190,6 +193,8 @@ function deleta() {
 		}
 	};
 	xhttp.send();
+
+	setTimeout(function(){	recarrega();}, 250);
 }
 
 
