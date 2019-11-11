@@ -1,3 +1,8 @@
+.btn-trasicao{
+	height: 65pt;
+	line-height: 65pt;
+	margin: 10px 0;
+
 .td-manutencao-etapas {
   padding: 15px 80px;
 }
@@ -47,5 +52,6 @@
 
 .resposta-relatorio-biblioteca{
   margin-bottom: 5%;
+
 }
 
