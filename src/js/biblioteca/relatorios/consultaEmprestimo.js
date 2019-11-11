@@ -5,7 +5,6 @@ function consulta() {
 		url = baseURL + "/emprestimos/consultar";
 	xhttp.open(method, url, true);
 	var parser = new DOMParser();
-	var divResposta = document.getElementById("resposta");
 
 	//recebe resposta em XML e manipula o XML para criar a tabela
 	xhttp.onreadystatechange = function () {
@@ -15,7 +14,7 @@ function consulta() {
 
 			//cria tabela
 			var tabela = document.getElementById("printable");
-			tabela += "<thead><th>Id</th><th>Id do Aluno</th><th>Id da Obra</th><th>Data de Empréstimo</th><th>Data Prevista de Devolução</th><th>Data de Devolução</th><th>Multa</th></thead>";
+			tabela.innerHTML += "<thead><th>Id</th><th>Id do Aluno</th><th>Id da Obra</th><th>Data de Empréstimo</th><th>Data Prevista de Devolução</th><th>Data de Devolução</th><th>Multa</th></thead>";
 
 			var elementos = xmlDoc.childNodes[0].children; //HTMLColletion etapa
 			console.log(elementos);
@@ -38,12 +37,8 @@ function consulta() {
 
 
 				linha += "</tr>"
-				tabela += linha;
+				tabela.innerHTML += linha;
 			}
-
-			divResposta.innerHTML += tabela;
-
-
 
 		} else if (xhttp.status === 400) {
 			var responseStr = xhttp.responseText;

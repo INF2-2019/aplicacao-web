@@ -5,7 +5,7 @@ function consulta() {
 		url = baseURL + "/acervo/consultar";
 	xhttp.open(method, url, true);
 	var parser = new DOMParser();
-	var divResposta = document.getElementsByClassName("printable");
+	var divResposta = document.getElementsByClassName("resposta-relatorio-biblioteca");
 
 	let jaMostrouErro = false;
 	//recebe resposta em XML e manipula o XML para criar a tabela
@@ -27,7 +27,7 @@ function consulta() {
 
 			for (let a = 0; a <= 3; a++) {
 				var tituloTabela = "<h5>" + titulos[a] + "</h5>";
-				var tabela = "<table class=\"highlight centered responsive-table\">";
+				var tabela = "<table class=\"responsive-table highlight centered\">";
 				tabela += tabelas[a];
 
 				var elementos = xmlDoc.childNodes[0].children; //HTMLColletion etapa
