@@ -23,11 +23,11 @@ and open the template in the editor.
             <div id="modalDescartes" class="modal">
                 <div class="modal-content">
                     <div>
-                        <label>ACERVO <input class="short" name="acervo" id="acervo" type="text"></label>
-                        <label>DATA <input class="short" name="data" id="data" type="date"></label>
-                        <label>ID FUNCIONARIO <input class="short" name="funcionario" id="funcionario" type="text"></label>
-                        <label>MOTIVAÇÃO <textarea name="motivacao" id="motivacao" placeholder="Insira aqui a motivação do descarte deste acervo"></textarea></label>
-                        <button class="waves-effect waves-light btn-large modal-close" id="submit">Enviar</button>
+                        <label>ACERVO <input class="short" name="acervo" type="text"></label>
+                        <label>DATA <input class="short" name="data"  type="date"></label>
+                        <label>ID FUNCIONARIO <input class="short" name="funcionario" type="text"></label>
+                        <label>MOTIVAÇÃO <textarea name="motivacao" placeholder="Insira aqui a motivação do descarte deste acervo"></textarea></label>
+                        <button class="waves-effect waves-light btn-large modal-close" id="submit_inserir_descarte">Enviar</button>
                     </div>
                 </div>
             </div>
@@ -76,6 +76,14 @@ and open the template in the editor.
                 </tbody>
             </table>
         </div>
+        <template id="template_descarte">
+          <tr>
+            <td>{{acervo}}</td>
+            <td>{{motivacao}}</td>
+            <td>{{operador}}</td>
+            <td>{{data}}</td>
+          </tr>
+        </template>
 
     <script type="text/javascript" src="../../js/biblioteca/descartes/jquery-3.3.1.min.js"></script>
   	<script>
@@ -85,5 +93,6 @@ and open the template in the editor.
   	</script>
     <script type="text/javascript" src="../../js/materialize.min.js"></script>
     <script src="../../js/biblioteca/descartes/ajax.js" charset="utf-8"></script>
+    <script src="../../js/biblioteca/descartes/descarteAcervo.js" charset="utf-8"></script>
     </body>
 </html>
