@@ -4,7 +4,9 @@ function consulta() {
 		method = "GET",
 		url = "http://localhost:8080/app/diario/etapas/consultar";
 	xhttp.open(method, url, true);
-    var parser = new DOMParser();
+	xhttp.withCredentials = true;
+
+	var parser = new DOMParser();
     
     var tabela = document.getElementById("tabela-etapas-corpo");
     tabela.innerHTML = "";

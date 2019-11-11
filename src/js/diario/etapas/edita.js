@@ -10,9 +10,12 @@ function atualiza() {
 		method = "GET",
 		url = "http://localhost:8080/app/diario/etapas/atualizar?id=" + id + "&ano=" + document.getElementById('editaAno').value + '&valor=' + document.getElementById('editaValor').value;
 	xhttp.open(method, url, true);
+	xhttp.withCredentials = true;
+
 	var parser = new DOMParser();
-	var exibido = 0;
-        var resp;
+	var exibido = 0; // verifica se a mensagem de erro já foi mostrada
+	
+    var resp;
 
 	//recebe resposta em XML e manipula o XML
 	xhttp.onreadystatechange = function () {
