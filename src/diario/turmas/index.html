@@ -7,7 +7,7 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 	<link rel="stylesheet" href="../../css/materialize.css" />
-	<title>Manutenção de disciplinas</title>
+	<title>Manutenção de turmas</title>
 </head>
 
 <body>
@@ -24,7 +24,7 @@
 			<div class="input-field col s12 m12 l4">
 				<i class="material-icons prefix">search</i>
 				<input id="search" type="text" autocomplete="off">
-				<label for="search">Pesquisar disciplinas</label>
+				<label for="search">Pesquisar turmas</label>
 			</div>
 			<a class="btn col s12 m12 l4 offset-l4 waves-effect waves-light primary modal-trigger"
 				href="#modal-add">Adicionar</a>
@@ -35,9 +35,8 @@
 				<thead>
 					<tr>
 						<th>ID</th>
-						<th>Turma</th>
-						<th>Nome da disciplina</th>
-						<th>Carga-horaria-min</th>
+						<th>Curso</th>
+						<th>Nome</th>
 						<th>Ações</th>
 					</tr>
 				</thead>
@@ -47,8 +46,8 @@
 
 		<div id="modal-deletar" class="modal">
 			<div id="conteudo" class="modal-content">
-				<h4>Deletar disciplina</h4>
-				<h6>Tem certeza que deseja deletar esta disciplina?</h6>
+				<h4>Deletar turma</h4>
+				<h6>Tem certeza que deseja deletar esta turma?</h6>
 			</div>
 			<div class="modal-footer">
 				<a class="modal-close btn utils erro-2">Cancelar</a>
@@ -58,16 +57,16 @@
 
 		<div id="modal-add" class="modal">
 			<div class="row modal-content">
-				<h4>Inserir disciplina</h4>
+				<h4>Inserir turma</h4>
 				<div class="input-field col s3">
 					<select id="turma-inserir">
 						<option  id ="Seleciona-add" value="" disabled selected>Selecione</option>
 					</select>
-					<label for="turma-inserir">Turma</label>
+					<label for="turma-inserir">Curso</label>
 				</div>
 				<div class="input-field col s9">
 					<input id="nome-inserir" type="text" />
-					<label for="nome-inserir">Nome da disciplina</label>
+					<label for="nome-inserir">Nome</label>
 				</div>
 			</div>
 			<div class="container modal-footer">
@@ -77,17 +76,17 @@
 		</div>
 
 		<div id="modal-atualizar" class="modal">
-			<h4 style="padding: 15pt;">Atualizar disciplina</h4>
+			<h4 style="padding: 15pt;">Atualizar turma</h4>
 			<div class="row modal-content">
 				<div class="input-field col s4">
 					<select id="turma-atualizar">
 						<option value="" disabled selected>Selecione</option>
 					</select>
-					<label for="turma-atualizar">Nova turma</label>
+					<label for="turma-atualizar">Novo curso</label>
 				</div>
 				<div class="input-field col s8">
 					<input id="nome-atualizar" type="text" />
-					<label for="nome-atualizar">Novo nome da disciplina</label>
+					<label for="nome-atualizar">Novo nome</label>
 				</div>
 			</div>
 			<div class="container modal-footer">

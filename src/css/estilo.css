@@ -1,0 +1,20 @@
+.rel10 h1{
+  font-size: 32px;
+  margin: 0 0 32px;
+  color:white;
+  text-align: center;
+  padding: 16px 8px;
+}
+
+.rel10 .select-wrapper{
+  display:inline-block !important;
+  width:332px !important;
+}
+
+.rel10 .description{
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.rel10 .oculto{
+  display: none;
+}
