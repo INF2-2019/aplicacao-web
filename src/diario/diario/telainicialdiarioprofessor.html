@@ -24,6 +24,14 @@
             <div class="col s7"> <h6 class="teal-text">Nome</h6> <p class="campo">MARÍLIA MENDONÇA DA SILVA</p> </div>
             <div class="col s4"> <h6 class="teal-text">Titulação </h6> <p class="campo">DOUTORADO</p> </div>
         </div>
+
+        <!-- Template com dados do professor para exibição -->
+        <template id="template_professor">
+          <div class="col s5"> <h6 class="teal-text">ID (SIAPE) </h6> <p class="campo">{{id}}</p></div>
+          <div class="col s5"> <h6 class="teal-text">ID Departamento</h6><p class="campo">{{id_depto}}</p> </div>
+          <div class="col s7"> <h6 class="teal-text">Nome</h6> <p class="campo">{{nome}}</p> </div>
+          <div class="col s4"> <h6 class="teal-text">Titulação </h6> <p class="campo">{{titulacao}}</p> </div>
+        </template>
       </div>
         
       <div>
@@ -59,10 +67,24 @@
       </div>
     </main>
 
+
+    <!-- Template com as disciplinas do professor -->
+    <template id="template_disciplinas">
+        <tr>
+          <td>{{id}}</td>
+          <td>{{disciplina}}</td>
+          <td>{{turma}}</td>
+          <td>{{carga horaria}}</td>
+          <td><a href="disciplinaver.html?disciplina={{id-disciplina}}" class="waves-effect waves-light btn-small modal-trigger">Visualizar</a></td>
+        </tr>
+    </template>
+
     <!-- Jquery-->
-    <script src="
-    ./../js/diario/diario/jquery-3.3.1.min.js"></script>
+    <script src="../../js/diario/diario/jquery-3.3.1.min.js"></script>
     <!-- materialize JS-->
     <script src="../../js/materialize.min.js"></script>
+    <!-- -->
+    <script src="../../js/diario/diario/ajax.js"></script>
+    <script src="../../js/diario/diario/dados_professor.js"></script>
   </body>
 </html>
