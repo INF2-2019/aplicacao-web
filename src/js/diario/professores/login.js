@@ -3,7 +3,7 @@ const ENDERECO = "http://localhost:8080/app"
 const ROTA = "/diario/professores/logar"
 const MANTER = true;
 
-const PAGINA_DESTINO = "https://matias.ma/nsfw/";
+const PAGINA_DESTINO = "../../../aplicacao-web/src/diario/transicao/professor.html";
 
 let inputs;
 
