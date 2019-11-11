@@ -14,7 +14,7 @@
 	<div class="full-heght margin-0">
 		<nav>
 			<div class="nav-wrapper">
-				<a class="brand-logo">S.A. Admin</a>
+				<a class="brand-logo">S.B. Admin</a>
 			</div>
 		</nav>
 
@@ -22,20 +22,36 @@
 			<h2>Serviços:</h2>
 
 			<div class="center-align row" style="overflow: auto;height:450px">
-				<a class="col s12 l5 btn-trasicao primary alt waves-effect waves-light btn-large" href="#" >Manutenção de acervos</a>
-				<a class="col s12 l5 offset-l2 btn-trasicao primary alt waves-effect waves-light btn-large" href="#">Manutenção de descartes</a>
-				<a class="col s12 l5 btn-trasicao primary alt waves-effect waves-light btn-large" href="#" >Manutenção de empréstimos</a>
-				<a class="col s12 l5 offset-l2 btn-trasicao primary alt waves-effect waves-light btn-large" href="#">Manutenção de reservas</a>
-				<a class="col s12 l5 btn-trasicao primary alt waves-effect waves-light btn-large" href="#" >Menu de Relatórios</a>
+				<a class="col s12 l5 btn-trasicao primary alt waves-effect waves-light btn-large" href="../acervos/index.html" >Manutenção de acervos</a>
+				<a class="col s12 l5 offset-l2 btn-trasicao primary alt waves-effect waves-light btn-large" href="../descartes/index.html">Manutenção de descartes</a>
+				<a class="col s12 l5 btn-trasicao primary alt waves-effect waves-light btn-large" href="../emprestimos/index.html" >Manutenção de empréstimos</a>
+				<a class="col s12 l5 offset-l2 btn-trasicao primary alt waves-effect waves-light btn-large" href="../reservas/index.html">Manutenção de reservas</a>
+				<a class="col s12 l5 btn-trasicao modal-trigger primary alt waves-effect waves-light btn-large" href="#modal-relatorios">Menu de relatórios</a>
 			</div>
 		</div>
-	</div>
 
+		<div id="modal-relatorios" class="modal">
+			<div id="conteudo" class="modal-content row">
+				<h4>Relatórios:</h4>
+				<a class="col s12 m4 offset-m1 btn-trasicao primary alt waves-effect waves-light btn-large" href="../relatorios/relatorio1.html" >Relatório de Acervo</a>
+				<a class="col s12 m4 offset-m1 btn-trasicao primary alt waves-effect waves-light btn-large" href="../relatorios/relatorio2.html" >Relatório de Empréstimos</a>
+				<a class="col s12 m4 offset-m1 btn-trasicao primary alt waves-effect waves-light btn-large" href="../relatorios/relatorio3.html" >Relatório de Reservas</a>
+				<a class="col s12 m4 offset-m1 btn-trasicao primary alt waves-effect waves-light btn-large" href="../relatorios/relatorio4.html" >Relatório de Atrasos</a>
+				<a class="col s12 m4 offset-m1 btn-trasicao primary alt waves-effect waves-light btn-large" href="../relatorios/relatorio5.html" >Relatório de Multas</a>
+				<a class="col s12 m4 offset-m1 btn-trasicao primary alt waves-effect waves-light btn-large" href="../relatorios/relatorio6.html" >Relatório de Descartes</a>
+			</div>
+			<div class="modal-footer">
+				<a class="modal-close btn utils erro-2">Fechar</a>
+			</div>
+		</div>
 
 	<!-- IMPORTAÇÕES -->
 	<!--Conexao Servlets-->
 	<script src="../../js/diario/etapas/jquery-3.4.1.js"></script>
 	<script src="../../js/materialize.js"></script>
+	<script>
+		M.AutoInit();
+	</script>
 </body>
 
 </html>

@@ -2,5 +2,56 @@
 	height: 65pt;
 	line-height: 65pt;
 	margin: 10px 0;
+
+.td-manutencao-etapas {
+  padding: 15px 80px;
+}
+
+.form-manutencao-etapas {
+	margin-left: 1%;
+  margin-right: 1%;
+	padding-top: 1%;
+}
+
+#corpo-manutencao-etapas {
+  padding-left: 15%;
+  padding-right: 15%;
+}
+
+@media print {
+  body * {
+    visibility: hidden;
+	}
+
+  #printable, #printable * {
+    visibility: visible;
+	}
+
+  #printable {
+    position: fixed;
+    left: 0;
+    top: 0;
+	}
+
+	.imprime-atrasos-obras > thead > tr > th:nth-child(4) {
+		display: none;
+	}
+
+	.imprime-atrasos-obras > tbody > tr > td:nth-child(4) * {
+		display: none;
+	}
+
+	.imprime-multas > thead > tr > th:nth-child(5) {
+		display: none;
+	}
+
+	.imprime-multas > tbody > tr > td:nth-child(5) * {
+		display: none;
+	}
+}
+
+.resposta-relatorio-biblioteca{
+  margin-bottom: 5%;
+
 }
 
