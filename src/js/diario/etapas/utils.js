@@ -10,3 +10,10 @@ function limpaInputs() {
 	document.getElementById('editaAno').value = "";
 	document.getElementById('editaValor').value = "";
 }
+
+function toast(text, classe){
+	M.toast({
+		html: text,
+		classes: classe
+	});
+}
