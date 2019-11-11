@@ -5,43 +5,59 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../css/materialize.css">
-    <link rel="stylesheet" type="text/css" href="../../css/diario/diario/styleDiario.css" media="screen" />
     <title>Diário Professor</title>
   </head>
 
   <body>
-        <h1> Dados Pessoais </h1>
-        <div style="width: 90%; margin-left:5%;" class="blue-grey lighten-5 row instrução" id="dados_professor">
-              <div class="col s5"> <h6 class="teal-text">ID (SIAPE) </h6> <p class="campo">9999999</p></div>
-              <div class="col s5"> <h6 class="teal-text">ID Departamento</h6><p class="campo">00000001</p> </div>
-              <div class="col s7"> <h6 class="teal-text">Nome</h6> <p class="campo">MARÍLIA MENDONÇA DA SILVA</p> </div>
-              <div class="col s4"> <h6 class="teal-text">Titulação </h6> <p class="campo">DOUTORADO</p> </div>
+    <nav style="padding-left: 5pt;">
+      <div class="nav-wrapper">
+        <a class="brand-logo">Diário - Professor </a>
+      </div>
+    </nav>
+
+    <main style="margin: 0 10%">
+      <div>
+        <h3> Dados Pessoais </h3>
+        <div class="row area" id="dados_professor">
+            <div class="col s5"> <h6 class="teal-text">ID (SIAPE) </h6> <p class="campo">9999999</p></div>
+            <div class="col s5"> <h6 class="teal-text">ID Departamento</h6><p class="campo">00000001</p> </div>
+            <div class="col s7"> <h6 class="teal-text">Nome</h6> <p class="campo">MARÍLIA MENDONÇA DA SILVA</p> </div>
+            <div class="col s4"> <h6 class="teal-text">Titulação </h6> <p class="campo">DOUTORADO</p> </div>
         </div>
-
-    <h1>Disciplinas</h1>
-    <div id="listagemDisciplinas">
-        <table  id="diario">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th style="width: 60%;">DISCIPLINA</th>
-              <th style="width: 10%">TURMA</th>
-              <th style="width: 10%;">CARGA HORÁRIA</th>
-            </tr>
-          </thead>
+      </div>
         
-          <tbody id="holder_diario">
-            <tr>
-              <td>001</td>
-              <td>AULA DE PEBOLIM</td>
-              <td>A</td>
-              <td>22</td>
-              <td><a href=" " class="waves-effect waves-light btn-small left edit">visualizar</a></td>
-            </tr>
-          </tbody>
-        </table>
-    </div>
-
+      <div>
+        <h1>Disciplinas</h1>
+        <div class="row area" id="listagemDisciplinas">
+            <table class="responsive-table" id="diario" style="padding-top: 5%">
+              <colgroup>
+                <col span="1" style="width: 10%">
+                <col span="1" style="width: 50%">
+                <col span="1" style="width: 10%">
+                <col span="1" style="width: 10%">
+                <col span="1" style="width: 20%">
+              </colgroup>
+              
+              <thead>
+                  <th>ID</th>
+                  <th>DISCIPLINA</th>
+                  <th>TURMA</th>
+                  <th>CARGA HORÁRIA</th>
+              </thead>
+            
+              <tbody id="holder_diario">
+                <tr>
+                  <td>001</td>
+                  <td>AULA DE PEBOLIM</td>
+                  <td>A</td>
+                  <td>22</td>
+                  <td><a href="disciplinaver.html?disciplina={{id-disciplina}}" class="waves-effect waves btn-small left modal-trigger">visualizar</a></td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+      </div>
+    </main>
 
     <!-- Jquery-->
     <script src="
