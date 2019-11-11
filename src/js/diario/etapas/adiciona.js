@@ -1,10 +1,8 @@
 function adiciona() {
-    //cria conexão com o servlet adiciona
-    var ano = document.getElementById('adicionaAnoEtapa').value;
-    console.log(ano);
-    var valor = document.getElementById('adicionaValorEtapa').value;
-    console.log(valor);
+	let ano = document.getElementById('adicionaAnoEtapa').value;
+	let valor = document.getElementById('adicionaValorEtapa').value;
 
+	//cria conexão com o servlet adiciona
 	var xhttp = new XMLHttpRequest(),
 		method = "GET",
 		url = "http://localhost:8080/app/diario/etapas/inserir?ano=" + ano + "&valor=" + valor;
@@ -18,29 +16,25 @@ function adiciona() {
 			var responseStr = xhttp.responseText;
 			var xmlDoc = parser.parseFromString(responseStr, "text/xml");
 			var resp =  xmlDoc.childNodes[0].children[0].innerHTML;
-			M.toast({
-				html: resp,
-				classes: "utils sucesso-2"
-			});
-		} else if (xhttp.status === 400) {
+
+			toast(resp, "utils sucesso-2");
+			
+			setTimeout(function(){	consulta();}, 20);
+		} else if (xhttp.status !== 200) {
 			var responseStr = xhttp.responseText;
 			if (responseStr != "") {
 				var xmlDoc = parser.parseFromString(responseStr, "text/xml");
 				var resp = xmlDoc.childNodes[0].children[0].innerHTML;
 				if (exibido === 0) {
-					M.toast({
-						html: resp,
-						classes: "red darken-2"
-					});
+					toast(resp, "red darken-2")
 					exibido += 1;
 				}
 			}
+			setTimeout(function(){	consulta();}, 20);
 		}
 	};
 	xhttp.send();
 
 	//limpa inputs
 	limpaInputs();
-
-	setTimeout(function(){	consulta();}, 20);
 }

@@ -21,24 +21,21 @@ function atualiza() {
 			var xmlDoc = parser.parseFromString(responseStr, "text/xml");
 			resp = xmlDoc.childNodes[0].children[0].innerHTML;
 
-			M.toast({
-				html: resp,
-				classes: "utils sucesso-2"
-			});
-			// div.innerHTML = resp;
-		} else if (xhttp.status === 400) {
+			toast(resp, "utils sucesso-2");
+
+			setTimeout(function(){	consulta();}, 20);
+		} else if (xhttp.status !== 200) {
 			var responseStr = xhttp.responseText;
 			if (responseStr != "") {
 				var xmlDoc = parser.parseFromString(responseStr, "text/xml");
 				resp = xmlDoc.childNodes[0].children[0].innerHTML;
 				if (exibido === 0) {
-					M.toast({
-						html: resp,
-						classes: "red darken-2"
-					});
+					toast(resp, "red darken-2");
 					exibido += 1;
 				}
 			}
+
+			setTimeout(function(){	consulta();}, 20);
 		}
 	};
 	xhttp.send();
@@ -46,5 +43,4 @@ function atualiza() {
 	// limpa inputs
     limpaInputs();
     
-    setTimeout(function(){	consulta();}, 20);
 }

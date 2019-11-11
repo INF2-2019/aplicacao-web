@@ -19,23 +19,22 @@ function deleta() {
 			var responseStr = xhttp.responseText;
 			var xmlDoc = parser.parseFromString(responseStr, "text/xml");
 			var resp = xmlDoc.childNodes[0].children[0].innerHTML;
-			M.toast({
-				html: resp,
-				classes: "utils sucesso-2"
-			});
-		} else if (xhttp.status === 400) {
+
+			toast(resp, "utils sucesso-2");
+
+			setTimeout(function(){	consulta();}, 20);
+		} else if (xhttp.status !== 200) {
 			var responseStr = xhttp.responseText;
 			if (responseStr != "") {
 				var xmlDoc = parser.parseFromString(responseStr, "text/xml");
 				var resp = xmlDoc.childNodes[0].children[0].innerHTML;
-				M.toast({
-					html: resp,
-					classes: "red darken-2"
-				});
+
+				toast(resp, "red darken-2");
 			}
+			
+			setTimeout(function(){	consulta();}, 20);
 		}
 	};
 	xhttp.send();
 
-	setTimeout(function(){	consulta();}, 20);
 }

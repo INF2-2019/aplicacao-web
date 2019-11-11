@@ -40,10 +40,8 @@ function consulta() {
 			if (responseStr != "") {
 				var xmlDoc = parser.parseFromString(responseStr, "text/xml");
 				var resp = xmlDoc.childNodes[0].children[0].innerHTML;
-				M.toast({
-					html: resp,
-					classes: "red darken-2"
-				});
+
+				toast(resp, "red darken-2");
 			}
 		}
 	};
@@ -87,15 +85,13 @@ function consultaParametro(){
 				tabela.innerHTML += linha;
 			}
                         
-		} else if (xhttp.status === 400) {
+		} else if (xhttp.status !== 200) {
                    var responseStr = xhttp.responseText;
 			if (responseStr != "") {
 				var xmlDoc = parser.parseFromString(responseStr, "text/xml");
 				var resp = xmlDoc.childNodes[0].children[0].innerHTML;
-				M.toast({
-					html: resp,
-					classes: "red darken-2"
-				});
+
+				toast(resp, "red darken-2");
 			}
 		}
 	};
