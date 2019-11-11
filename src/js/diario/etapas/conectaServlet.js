@@ -15,7 +15,7 @@ function consulta() {
 			var responseStr = xhttp.responseText;
 			var xmlDoc = parser.parseFromString(responseStr, "text/xml");
 			//cria tabela
-			var tabela = "<table class=\"highlight centered responsive-table\">";
+			var tabela = "<table class=\"responsive-table highlight centered\">";
 			tabela += "<thead><th>Id</th><th>Ano</th><th>Valor</th><th>Ações</th></thead>";
 			var elementos = xmlDoc.childNodes[0].children; //HTMLColletion etapa
 			for (let i = 0; i < elementos.length; i++) {
@@ -71,7 +71,7 @@ function consultaParametro(){
                         var responseStr = xhttp.responseText;
 			var xmlDoc = parser.parseFromString(responseStr, "text/xml");
 			//cria tabela
-			var tabela = "<table class=\"highlight centered responsive-table\">";
+			var tabela = "<table class=\"responsive-table highlight centered\">";
 			tabela += "<thead><th>Id</th><th>Ano</th><th>Valor</th><th>Ações</th></thead>";
 			var elementos = xmlDoc.childNodes[0].children; //HTMLColletion etapa
 			for (let i = 0; i < elementos.length; i++) {
