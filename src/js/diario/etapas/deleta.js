@@ -37,5 +37,5 @@ function deleta() {
 	};
 	xhttp.send();
 
-	setTimeout(function(){	recarrega();}, 250);
+	setTimeout(function(){	consulta();}, 20);
 }

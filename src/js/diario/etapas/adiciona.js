@@ -1,8 +1,13 @@
 function adiciona() {
-	//cria conexão com o servlet adiciona
+    //cria conexão com o servlet adiciona
+    var ano = document.getElementById('adicionaAnoEtapa').value;
+    console.log(ano);
+    var valor = document.getElementById('adicionaValorEtapa').value;
+    console.log(valor);
+
 	var xhttp = new XMLHttpRequest(),
 		method = "GET",
-		url = "http://localhost:8080/app/diario/etapas/inserir?ano=" + document.getElementById('AdicionaAnoEtapa').value + '&valor=' + document.getElementById('AdicionaValorEtapa').value;
+		url = "http://localhost:8080/app/diario/etapas/inserir?ano=" + ano + "&valor=" + valor;
 	xhttp.open(method, url, true);
 	var parser = new DOMParser();
 	var exibido = 0; //verifica se a mensagem de erro ja foi mostrada
@@ -37,5 +42,5 @@ function adiciona() {
 	//limpa inputs
 	limpaInputs();
 
-	setTimeout(function(){	recarrega();}, 250);
+	setTimeout(function(){	consulta();}, 20);
 }

@@ -46,5 +46,5 @@ function atualiza() {
 	// limpa inputs
     limpaInputs();
     
-    setTimeout(function(){	recarrega();}, 250);
+    setTimeout(function(){	consulta();}, 20);
 }

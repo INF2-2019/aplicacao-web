@@ -4,8 +4,10 @@ function consulta() {
 		method = "GET",
 		url = "http://localhost:8080/app/diario/etapas/consultar";
 	xhttp.open(method, url, true);
-	var parser = new DOMParser();
-	var divResposta = document.getElementById("resposta");
+    var parser = new DOMParser();
+    
+    var tabela = document.getElementById("tabela-etapas-corpo");
+    tabela.innerHTML = "";
 
 	//recebe resposta em XML e manipula o XML para criar a tabela
 	xhttp.onreadystatechange = function () {
@@ -13,8 +15,6 @@ function consulta() {
 			var responseStr = xhttp.responseText;
 			var xmlDoc = parser.parseFromString(responseStr, "text/xml");
 			//cria tabela
-			var tabela = "<table class=\"responsive-table highlight centered\">";
-			tabela += "<thead><th>Id</th><th>Ano</th><th>Valor</th><th>Ações</th></thead>";
 			var elementos = xmlDoc.childNodes[0].children; //HTMLColletion etapa
 			for (let i = 0; i < elementos.length; i++) {
 				let linha = "<tr>";
@@ -32,11 +32,8 @@ function consulta() {
 				linha += "<td class =\"td-manutencao-etapas\" ><button name=\"EditarEtapa\" class=\"botao-tabela-etapas edita waves-effect waves-light btn-small modal-trigger material-icons\" href=\"#EditaForm\" id=\"Edita\" >EDITAR</button>    ";
 				linha += "<button class=\"botao-tabela-etapas deleta waves-effect waves-light btn-small modal-trigger material-icons\" href=\"#RemoveForm\" style=\"background-color:#D32F2F\">DELETAR</button></td>";
 				linha += "</tr>"
-				tabela += linha;
+				tabela.innerHTML += linha;
 			}
-			tabela += "</table>";
-
-			divResposta.innerHTML = tabela;
 
 		} else if (xhttp.status === 400) {
 			var responseStr = xhttp.responseText;
@@ -57,20 +54,19 @@ function consultaParametro(){
     //cria conexão com o servlet consulta
 	var xhttp = new XMLHttpRequest(),
 		method = "GET",
-		url = "http://localhost:8080/app/diario/etapas/consultar?id=" + document.getElementById('idConsulta').value + '&ano=' + document.getElementById('anoConsulta').value + '&valor=' + document.getElementById('valorConsulta').value;
+		url = "http://localhost:8080/app/diario/etapas/consultar?id=" + document.getElementById('consultaID').value + '&ano=' + document.getElementById('consultaAno').value + '&valor=' + document.getElementById('consultaValor').value;
 	xhttp.open(method, url, true);
 	var parser = new DOMParser();
-        var divResposta = document.getElementById("resposta");
+    
+    var tabela = document.getElementById("tabela-etapas-corpo");
 
 	//recebe resposta em XML e manipula o XML para criar a tabela
 	xhttp.onreadystatechange = function () {
 		if (xhttp.readyState === xhttp.DONE && xhttp.status === 200) {
-			divResposta.innerHTML = "";
-                        var responseStr = xhttp.responseText;
-			var xmlDoc = parser.parseFromString(responseStr, "text/xml");
-			//cria tabela
-			var tabela = "<table class=\"responsive-table highlight centered\">";
-			tabela += "<thead><th>Id</th><th>Ano</th><th>Valor</th><th>Ações</th></thead>";
+			tabela.innerHTML = "";
+            var responseStr = xhttp.responseText;
+            var xmlDoc = parser.parseFromString(responseStr, "text/xml");
+            
 			var elementos = xmlDoc.childNodes[0].children; //HTMLColletion etapa
 			for (let i = 0; i < elementos.length; i++) {
 				let linha = "<tr>";
@@ -88,12 +84,8 @@ function consultaParametro(){
 				linha += "<td class =\"td-manutencao-etapas\"><button name=\"EditarEtapa\" class=\"botao-tabela-etapas edita waves-effect waves-light btn-small modal-trigger material-icons\" href=\"#EditaForm\" id=\"Edita\" >EDITAR</button>    ";
 				linha += "<button class=\"botao-tabela-etapas deleta waves-effect waves-light btn-small modal-trigger material-icons\" href=\"#RemoveForm\" style=\"background-color:#D32F2F\">DELETAR</button></td>";
 				linha += "</tr>"
-				tabela += linha;
+				tabela.innerHTML += linha;
 			}
-			tabela += "</table>";
-
-			divResposta.innerHTML = tabela;
-
                         
 		} else if (xhttp.status === 400) {
                    var responseStr = xhttp.responseText;

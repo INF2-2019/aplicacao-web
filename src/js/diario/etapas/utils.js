@@ -5,8 +5,8 @@ function recarrega() {
 }
 
 function limpaInputs() {
-	document.getElementById('AdicionaAnoEtapa').value = "";
-	document.getElementById('AdicionaValorEtapa').value = "";
+	document.getElementById('adicionaAnoEtapa').value = "";
+	document.getElementById('adicionaValorEtapa').value = "";
 	document.getElementById('editaAno').value = "";
 	document.getElementById('editaValor').value = "";
 }
