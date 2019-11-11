@@ -2,6 +2,7 @@
 	height: 65pt;
 	line-height: 65pt;
 	margin: 10px 0;
+}
 
 .td-manutencao-etapas {
   padding: 15px 80px;
@@ -16,6 +17,26 @@
 #corpo-manutencao-etapas {
   padding-left: 15%;
   padding-right: 15%;
+}
+
+.relTitulo{
+	font-size: 32px;
+	margin: 0 0 32px;
+	color:white;
+	padding: 16px 8px;
+}
+
+.relContainer .select-wrapper{
+	display:inline-block !important;
+	width:332px !important;
+}
+
+.relContainer .description{
+	color: rgba(0, 0, 0, 0.5);
+}
+
+.relContainer .oculto{
+	display: none;
 }
 
 @media print {
@@ -54,4 +75,3 @@
   margin-bottom: 5%;
 
 }
-
