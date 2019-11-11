@@ -41,39 +41,14 @@
                     <td>Física</td>
                     <td>1</td>
                     <td>29/10/2019</td>
-                    <td><a class="waves-effect waves-light btn-small modal-trigger light-blue accent 3">Faltas</a></td>
+                    <td><a href="#modalLancaFalta" class="waves-effect waves-light btn-small modal-trigger light-blue accent 3 falta">Faltas</a></td>
                     <td><a href="#modalAlteraConteudos" class="waves-effect waves-light btn-small modal-trigger edit">Editar</a></td>
-                    <td><a class="waves-effect waves-light btn-small modal-trigger red darken 1">Deletar</a></td>
-                  </tr>
-                  <tr>
-                    <td>Física 2: lá vamos nós</td>
-                    <td>2</td>
-                    <td>29/10/2019</td>
-                    <td><a class="waves-effect waves-light btn-small modal-trigger light-blue accent 3">Faltas</a></td>
-                    <td><a href="#modalAlteraConteudos" class="waves-effect waves-light btn-small modal-trigger edit">Editar</a></td>
-                    <td><a class="waves-effect waves-light btn-small modal-trigger red darken 1">Deletar</a></td>
-                  </tr>
-                  <tr>
-                    <td>Física 3: a mesma coisa mais complicada</td>
-                    <td>3</td>
-                    <td>29/10/2019</td>
-                    <td><a class="waves-effect waves-light btn-small modal-trigger light-blue accent 3">Faltas</a></td>
-                    <td><a href="#modalAlteraConteudos" class="waves-effect waves-light btn-small modal-trigger edit">Editar</a></td>
-                    <td><a class="waves-effect waves-light btn-small modal-trigger red darken 1">Deletar</a></td>
-                  </tr>
-                  <tr>
-                    <td>Física para sempre: quando você acha que não dá pra piorar...</td>
-                    <td>4</td>
-                    <td>29/10/2019</td>
-                    <td><a class="waves-effect waves-light btn-small modal-trigger light-blue accent 3">Faltas</a></td>
-                    <td><a href="#modalAlteraConteudos" class="waves-effect waves-light btn-small modal-trigger edit">Editar</a></td>
-                    <td><a class="waves-effect waves-light btn-small modal-trigger red darken 1">Deletar</a></td>
-                  </tr>
-                  
+                    <td><a class="waves-effect waves-light btn-small modal-trigger red darken 1 delete">Deletar</a></td>
+                  </tr>                
                 </tbody>
           </table>
 
-      <a style="margin-top: 2%;" href="#modalConteudos" class="waves-effect waves-light primary btn-large modal-trigger" id="btnConteudos">Adicionar</a>
+        <a style="margin-top: 2%;" href="#modalConteudos" class="waves-effect waves-light primary btn-large modal-trigger" id="btnConteudos">Adicionar</a>
       </div>
       
 
@@ -104,33 +79,9 @@
               <td>Física</td>
               <td>1</td>
               <td>10</td>
-              <td><a class="waves-effect waves-light btn-small modal-trigger light-blue accent 3">Notas</a></td>
+              <td><a href="#modalLancaNota" class="waves-effect waves-light btn-small modal-trigger light-blue accent 3 falta">Notas</a></td>
               <td><a href="#modalAlteraAtividade" class="waves-effect waves-light btn-small modal-trigger edit">Editar</a></td>
-              <td><a class="waves-effect waves-light btn-small modal-trigger red darken-1">Deletar</a></td>
-            </tr>
-            <tr>
-              <td>Física 2: lá vamos nós</td>
-              <td>2</td>
-              <td>10</td>
-              <td><a class="waves-effect waves-light btn-small modal-trigger light-blue accent 3">Notas</a></td>
-              <td><a href="#modalAlteraAtividade" class="waves-effect waves-light btn-small modal-trigger edit">Editar</td>
-              <td><a class="waves-effect waves-light btn-small modal-trigger red darken-1">Deletar</a></td>
-            </tr>
-            <tr>
-              <td>Física 3: a mesma coisa mais complicada</td>
-              <td>3</td>
-              <td>10</td>
-              <td><a class="waves-effect waves-light btn-small modal-trigger light-blue accent 3">Notas</a></td>
-              <td><a href="#modalAlteraAtividade" class="waves-effect waves-light btn-small modal-trigger edit">Editar</a></td>
-              <td><a class="waves-effect waves-light btn-small modal-trigger red darken-1">Deletar</a></td>
-            </tr>
-            <tr>
-              <td>Física para sempre: quando você acha que não dá pra piorar...</td>
-              <td>4</td>
-              <td>10</td>
-              <td><a class="waves-effect waves-light btn-small modal-trigger light-blue accent 3">Notas</a></td>
-              <td><a href="#modalAlteraAtividade" class="waves-effect waves-light btn-small modal-trigger edit">Editar</a></td>
-              <td><a class="waves-effect waves-light btn-small modal-trigger red darken-1">Deletar</a></td>
+              <td><a class="waves-effect waves-light btn-small modal-trigger red darken-1 delete">Deletar</a></td>
             </tr>
           </tbody>
         </table>
@@ -206,6 +157,71 @@
         </div>
       </div>
       
+      <!-- Modal para lançamento de notas por atividade -->
+      <div class="container secondary lighten-5">
+        <div id="modalLancaNota" class="modal" style="padding: 2%">
+          <div class="row modal-content" style="padding: 0;">
+            <div>
+              <h3>Lançamento de Notas</h3>
+              <table class="responsive-table" style="padding-top: 10%">
+                <colgroup>
+                  <col span="1" width="50%">
+                  <col span="1" width="25%">
+                  <col span="1" width="25%">
+                </colgroup>
+
+                <thead>
+                  <th>MATRICULA</th>
+                  <th>FALTA</th>
+                  <th>NOTA</th>
+                </thead>
+
+                <tbody id="holder_notas_faltas">
+                  <tr>
+                    <td>000000100</td>
+                    <td><input type="number" name="falta"></td>
+                    <td><input type="number" name="nota"></td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <button class="waves-light waves-effect primary btn-large" id="lancarNota">Lançar Notas</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal para lançamento de faltas por conteúdo -->
+      <div class="container secondary lighten-5">
+        <div id="modalLancaFalta" class="modal" style="padding: 2%">
+          <div class="row modal-content" style="padding: 0;">
+            <div>
+              <h3>Lançamento de Notas</h3>
+              <table class="responsive-table" style="padding-top: 10%">
+                <colgroup>
+                  <col span="1" width="50%">
+                  <col span="1" width="25%">
+                  <col span="1" width="25%">
+                </colgroup>
+
+                <thead>
+                  <th>MATRICULA</th>
+                  <th>FALTA</th>
+                </thead>
+
+                <tbody id="holder_faltas">
+                  <tr>
+                    <td>000000100</td>
+                    <td><input type="number" name="falta"></td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <button class="waves-light waves-effect primary btn-large" id="lancarNota">Lançar Notas</button>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <!-- Template de linha da tabela conteudos -->
       <template id="template_conteudos">
@@ -233,9 +249,11 @@
       
       <script src="../../js/diario/diario/jquery-3.3.1.min.js"></script>
       <script>
-              $(document).ready(function(){
-                  $('.modal').modal();
-              });
+        $(document).ready(function(){
+          $('.modal').modal();
+        });
+
+
       </script>
       <script src="../../js/materialize.min.js"></script>
       <script src="../../js/diario/diario/ajax.js"></script>

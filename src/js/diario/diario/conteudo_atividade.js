@@ -86,7 +86,28 @@ const infos = {
         link: "/diario/diario/conteudo/deletar",
         callback: atualizarAtividade
     },
-};
+    lancaFalta: {
+                    link: "/diario/diario/diario/inserir",
+                    parametros_default: {
+                        tipo: "conteudo"
+                    },
+                    queries: {
+                        inputs: "input"
+                    },
+                    ativadores: { evento: "click", query: "#lancarFalta" },
+                    callback: console.log
+                }, lancaNota: {
+                    link: "/diario/diario/diario/inserir",
+                    parametros_default: {
+                        tipo: "atividade"
+                    },
+                    queries: {
+                        inputs: "input"
+                    },
+                    ativadores: { evento: "click", query: "#lancarNota" },
+                    callback: console.log
+                }
+    };
 
 // Código baseado na primeira resposta do site: https://pt.stackoverflow.com/questions/6526/como-formatar-data-no-javascript
 function dataFormatada(data){
