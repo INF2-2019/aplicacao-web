@@ -2,6 +2,7 @@
 	height: 65pt;
 	line-height: 65pt;
 	margin: 10px 0;
+}
 
 .td-manutencao-etapas {
   padding: 15px 80px;
@@ -53,5 +54,32 @@
 .resposta-relatorio-biblioteca{
   margin-bottom: 5%;
 
+}
+
+#botao-manutencao-campi{
+	margin-right: 20%;
+}
+.header-manutencao-campi{
+	background: #29A58C;
+	color: white;
+	width: 100%;
+	padding: 4pt;
+	margin-bottom:1%;
+}
+.span-cadastro-manutencao-campi{
+	font-size: 10pt;
+	color: #29A58C;
+}
+
+.modal .modal-content-manutencao-campi {
+	padding: 0;
+}
+
+.btnAjuste-manutencao-campi{
+	margin-right: 1%;
+}
+#modal-deletar-manutencao-campi{
+	width:30%;
+	height: 20%;
 }
 

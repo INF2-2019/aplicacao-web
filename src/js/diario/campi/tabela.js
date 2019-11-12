@@ -17,7 +17,7 @@ function fazerTabela(doc){
         editar.classList.add("btn");
         editar.classList.add("waves-effect");
         editar.classList.add("waves-light");
-        editar.classList.add("btnAjuste");
+        editar.classList.add("btnAjuste-manutencao-campi");
         editar.classList.add("blue");
         editar.classList.add("modal-trigger");
         editar.classList.add("botaoEditar");
@@ -28,12 +28,12 @@ function fazerTabela(doc){
         deletar.classList.add("btn");
         deletar.classList.add("waves-effect");
         deletar.classList.add("waves-light");
-        deletar.classList.add("btnAjuste");
+        deletar.classList.add("btnAjuste-manutencao-campi");
         deletar.classList.add("red");
         deletar.classList.add("darken-2");
         deletar.classList.add("modal-trigger");
         deletar.classList.add("botaoDeletar");
-        deletar.href = "#modal-deletar";
+        deletar.href = "#modal-deletar-manutencao-campi";
         deletar.innerHTML = "DELETAR";
 
         var coluna = document.createElement("tr");
