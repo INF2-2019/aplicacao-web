@@ -15,7 +15,7 @@ function postFetch(url, data) {
 
 
 function idNome(val) {
-	return fetch('http://localhost:8080/app/biblioteca/alunos/consultar?id='+val)
+	return fetch('http://localhost:8080/app/diario/alunos/consultar?id='+val)
 		.then(response => response.text())
 		.then(str => (new window.DOMParser()).parseFromString(str, "text/xml"))
 		.then(xml => {
