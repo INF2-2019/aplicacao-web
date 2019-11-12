@@ -109,15 +109,14 @@ function CriaBotaoEmprestar(params) {
 }
 function limpaInputs(inputType) {
 	if (inputType == 'inserir') {
-		let aluno = document.querySelector("#aluno-inserir").value = '';
+	let aluno = document.querySelector("#aluno-inserir").value = '';
 	let acervo = document.querySelector("#acervo-inserir").value = '';
-	let dataEmprestimo = document.querySelector("#data-emprestimo-inserir").value = '';
-	let dataPrev = document.querySelector("#data-previa-devolução-inserir").value = ''
-	let dataDev = document.querySelector("#data-devolução-inserir").value = ''
-	let multa = document.querySelector("#multa-inserir").value = ''
+	let dataEmprestimo = document.querySelector("#data-reserva-inserir").value = '';
+	let tempoEspera = document.querySelector("#tempo-espera-inserir").value = ''
+	let emprestou = document.querySelector("#emprestou-inserir").value = ''
 	}
 	else if (inputType == 'atualizar') {
-		let aluno = document.querySelector("#aluno-atualizar").value = '';
+	let aluno = document.querySelector("#aluno-atualizar").value = '';
 	let acervo = document.querySelector("#acervo-atualizar").value = '';
 	let dataEmprestimo = document.querySelector("#data-reserva-atualizar").value = '';
 	let tempoEspera = document.querySelector("#tempo-espera-atualizar").value = ''
