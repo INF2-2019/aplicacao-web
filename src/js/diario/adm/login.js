@@ -3,7 +3,7 @@ const ENDERECO = "http://localhost:8080/app";
 const ROTA = "/diario/admin/login";
 const MANTER = true;
 
-const PAGINA_DESTINO = "../../../aplicacao-web/src/diario/transicao/adm.html";
+const PAGINA_DESTINO = "transicao/adm.html";
 
 let inputs;
 
@@ -17,7 +17,6 @@ function logar() {
 
 }
 
-// Vanilla n tava funfando to nem aí
 function jqueryAjax(acesso, senha, manter) {
 	$.ajax(ENDERECO+ROTA, {
 		method: METODO,
@@ -25,6 +24,9 @@ function jqueryAjax(acesso, senha, manter) {
 			login: acesso,
 			senha: senha,
 			manter: manter
+		},
+		xhrFields: {
+			withCredentials: true
 		}
 	})
 	.then(
