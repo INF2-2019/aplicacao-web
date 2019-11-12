@@ -128,7 +128,7 @@ function limpaInputs(inputType) {
 }
 
 function preencherInput() {
-	fetch('http://localhost:8080/app/diario/alunos/listar')
+	fetch('http://localhost:8080/app/biblioteca/alunos/listar')
 		.then(response => response.text())
 		.then(str => (new window.DOMParser()).parseFromString(str, "text/xml"))
 		.then(xml => {

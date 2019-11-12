@@ -12,11 +12,26 @@
 
 <body>
 	<div class="full-heght margin-0">
-		<nav>
+		<ul id="dropdown1" class="dropdown-content">
+			<li><a href="../transferencia/index.html">Transferência</a></li>
+			<li><a href="../professores/index.html">Professores</a></li>
+			<li><a href="../departamentos/index.html">Departamentos</a></li>
+			<li><a href="../cursos/index.html">Cursos</a></li>
+			<li><a href="../etapas/index.html">Etapas</a></li>
+			<li><a href="../disciplinas/index.html">Disciplinas</a></li>
+			<li><a href="../alunos/index.html">Alunos</a></li>
+			<li><a href="../campi/index.html">Campi</a></li>
+		  </ul>
+		  <nav>
 			<div class="nav-wrapper">
-				<a class="brand-logo">S.A. Admin</a>
+			  <a class="brand-logo">Diário</a>
+			  <ul class="right hide-on-med-and-down">
+				<li><a href="../login-adm.html">Login</a></li>
+				<li class="active"><a href="">Página Inicial</a></li>
+				<li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Funções<i class="material-icons right">arrow_drop_down</i></a></li>
+			  </ul>
 			</div>
-		</nav>
+		  </nav>
 
 		<div class="container" >
 			<h2>Serviços:</h2>
@@ -38,6 +53,7 @@
 	<!--Conexao Servlets-->
 	<script src="../../js/diario/etapas/jquery-3.4.1.js"></script>
 	<script src="../../js/materialize.js"></script>
+	<script>$(".dropdown-trigger").dropdown();</script>
 </body>
 
 </html>
