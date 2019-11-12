@@ -4,6 +4,7 @@ let currentId;
 function postFetch(url, data) {
 	return fetch(url, {
 		method: 'POST',
+		credentials: "include",
 		body: new URLSearchParams(data),
 		headers: new Headers({
 			'Content-type': 'application/x-www-form-urlencoded; charset=UTF-8'
@@ -14,7 +15,9 @@ function postFetch(url, data) {
 }
 
 function nomeTurma(id) {
-	return fetch('http://localhost:8080/app/diario/turmas/consultar?id=' + id)
+	return fetch('http://localhost:8080/app/diario/turmas/consultar?id=' + id, {
+		credentials: "include",
+	})
 		.then(response => response.text())
 		.then(str => (new window.DOMParser()).parseFromString(str, "text/xml"))
 		.then(xml => {
