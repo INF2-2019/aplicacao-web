@@ -1,19 +1,6 @@
 const baseURL = 'http://localhost:8080/app/diario/cursos/';
 let currentId;
 
-function postFetch(url, data) {
-	return fetch(url, {
-		credentials: 'include',
-		method: 'POST',
-		body: new URLSearchParams(data),
-		headers: new Headers({
-			'Content-type': 'application/x-www-form-urlencoded; charset=UTF-8'
-		}),
-	})
-		.then(response => response.text())
-		.then(str => (new window.DOMParser()).parseFromString(str, "text/xml"))
-}
-
 function nomeDepto(id) {
 	return fetch('http://localhost:8080/app/diario/departamentos/consulta?id=' + id, { credentials: 'include' })
 		.then(response => response.text())
