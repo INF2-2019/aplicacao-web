@@ -4,6 +4,7 @@ let currentId;
 function postFetch(url, data) {
 	return fetch(url, {
 		method: 'POST',
+		credentials: "include",
 		body: new URLSearchParams(data),
 		headers: new Headers({
 			'Content-type': 'application/x-www-form-urlencoded; charset=UTF-8'
@@ -15,7 +16,9 @@ function postFetch(url, data) {
 
 
 function idNome(val) {
-	return fetch('http://localhost:8080/app/diario/alunos/consultar?id='+val)
+	return fetch('http://localhost:8080/app/biblioteca/alunos/consultar?id='+val,{
+		credentials: "include",
+	})
 		.then(response => response.text())
 		.then(str => (new window.DOMParser()).parseFromString(str, "text/xml"))
 		.then(xml => {
@@ -56,7 +59,9 @@ $(document).on('click', '.editar', e => {
 	$('#aluno-atualizar').find('option:contains(' + valor + ')').prop('selected', true);
 	$("#aluno-atualizar").formSelect();
 	$("#emprestou-atualizar")
-	fetch('http://localhost:8080/app/biblioteca/reservas/consultarporid?id=' +id)
+	fetch('http://localhost:8080/app/biblioteca/reservas/consultarporid?id=' +id,{
+		credentials: "include",
+	})
 		.then(response => response.text())
 		.then(str => (new window.DOMParser()).parseFromString(str, "text/xml"))
 		.then(xml => {

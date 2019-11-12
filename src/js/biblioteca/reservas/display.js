@@ -64,7 +64,9 @@ function criarBotaoEditar() {
 function info(){
 	let infoContainer = document.querySelector('#informacoes')
 	infoContainer.innerHTML = ''
-	fetch('http://localhost:8080/app/biblioteca/reservas/consultarporid?id=' +currentId)
+	fetch('http://localhost:8080/app/biblioteca/reservas/consultarporid?id=' +currentId, {
+		credentials: "include",
+	})
 		.then(response => response.text())
 		.then(str => (new window.DOMParser()).parseFromString(str, "text/xml"))
 		.then(xml => {
@@ -117,17 +119,19 @@ function limpaInputs(inputType) {
 	else if (inputType == 'atualizar') {
 		let aluno = document.querySelector("#aluno-atualizar").value = '';
 	let acervo = document.querySelector("#acervo-atualizar").value = '';
-	let dataEmprestimo = document.querySelector("#data-emprestimo-atualizar").value = '';
-	let dataPrev = document.querySelector("#data-previa-devolução-atualizar").value = ''
-	let dataDev = document.querySelector("#data-devolução-atualizar").value = ''
-	let multa = document.querySelector("#multa-atualizar").value = ''
+	let dataEmprestimo = document.querySelector("#data-reserva-atualizar").value = '';
+	let tempoEspera = document.querySelector("#tempo-espera-atualizar").value = ''
+	let emprestou = document.querySelector("#emprestou-atualizar").value = ''
+	
 	}
 
 	M.updateTextFields();
 }
 
 function preencherInput() {
-	fetch('http://localhost:8080/app/diario/alunos/listar')
+	fetch('http://localhost:8080/app/biblioteca/alunos/listar',{
+		credentials: "include",
+	})
 		.then(response => response.text())
 		.then(str => (new window.DOMParser()).parseFromString(str, "text/xml"))
 		.then(xml => {
