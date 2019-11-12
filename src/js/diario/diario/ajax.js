@@ -12,7 +12,8 @@ async function pegaTabela(link,parametros,isPost=false) {
     */
 
     let config = {
-        method: isPost? "POST": "GET"
+        method: isPost? "POST": "GET",
+        credentials: "include"
     };
 
     if(isPost){ // Parametros para o metodo POST
