@@ -25,6 +25,9 @@ function jqueryAjax(acesso, senha, manter) {
 			login: acesso,
 			senha: senha,
 			manter: manter
+		},
+		xhrFields: {
+			withCredentials: true
 		}
 	})
 	.then(
