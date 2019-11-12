@@ -3,6 +3,7 @@ let currentId;
 
 function postFetch(url, data) {
 	return fetch(url, {
+		credentials: 'include',
 		method: 'POST',
 		body: new URLSearchParams(data),
 		headers: new Headers({
@@ -14,7 +15,7 @@ function postFetch(url, data) {
 }
 
 function nomeDepto(id) {
-	return fetch('http://localhost:8080/app/diario/departamentos/consulta?id=' + id)
+	return fetch('http://localhost:8080/app/diario/departamentos/consulta?id=' + id, { credentials: 'include' })
 		.then(response => response.text())
 		.then(str => (new window.DOMParser()).parseFromString(str, "text/xml"))
 		.then(xml => {
