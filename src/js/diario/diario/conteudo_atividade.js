@@ -111,9 +111,11 @@ const infos = {
 
 // Código baseado na primeira resposta do site: https://pt.stackoverflow.com/questions/6526/como-formatar-data-no-javascript
 function dataFormatada(data){
-    data = new Date(data);
+    let pedacos = data.split("-");
+    pedacos = pedacos.map(x=> parseInt(x));
+    data = new Date(pedacos[0],pedacos[1]-1, pedacos[2]);
     
-    let dia  = (data.getDate()+1).toString(), // tive que colocar o +1 por algum motivo que desconheço, mas sei que sem ele não funciona
+    let dia  = (data.getDate()).toString(), // tive que colocar o +1 por algum motivo que desconheço, mas sei que sem ele não funciona
         diaF = (dia.length == 1) ? '0'+dia : dia,
         mes  = (data.getMonth()+1).toString(), //+1 pois no getMonth Janeiro começa com zero.
         mesF = (mes.length == 1) ? '0'+mes : mes,
