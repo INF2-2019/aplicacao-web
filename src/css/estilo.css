@@ -20,19 +20,13 @@
 }
 
 .relTitulo{
-	font-size: 32px;
 	margin: 0 0 32px;
-	color:white;
 	padding: 16px 8px;
 }
 
 .relContainer .select-wrapper{
 	display:inline-block !important;
 	width:332px !important;
-}
-
-.relContainer .description{
-	color: rgba(0, 0, 0, 0.5);
 }
 
 .relContainer .oculto{
