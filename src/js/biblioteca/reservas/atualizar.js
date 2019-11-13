@@ -10,7 +10,6 @@ function atualizar(aluno, acervo, dataReserva, tempoEspera,emprestou) {
 		req['data-reserva'] = dataReserva;
 	if (tempoEspera)
 		req['tempo-espera'] = tempoEspera;
-		console.log(emprestou)
 	if (emprestou){
 		if(emprestou == "Sim") req['emprestou'] = "true";
 		if(emprestou == "Não") req['emprestou'] = "false";
