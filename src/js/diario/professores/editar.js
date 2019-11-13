@@ -14,13 +14,12 @@ function info(id){
 	let url = ENDERECO + ROTA_CONSULTA + "?id=" + id;
 
 	xhttp.open("GET", url, true);
-	xhttp.withCredentials = true;
 	xhttp.onreadystatechange = function() {
-		if(xhttp.readyState === xhttp.DONE) {
-			var xml = (new DOMParser()).parseFromString(this.responseText, "application/xml");
+		if(xhttp.readyState === xhttp.DONE && xhttp.status === 200) {
+				var xml = (new DOMParser()).parseFromString(this.responseText, "application/xml");
 			var raiz = xml.firstElementChild;
 			if(raiz.nodeName == "erro") {
-				document.getElementsByTagName("p")[0].innerHTML = raiz.firstElementChild.textContent;
+				window.alert(raiz.firstElementChild.textContent);
 				return;
 			}else{
 				var elementos = raiz.children;
@@ -51,18 +50,18 @@ function deletar(id) {
 	let url = ENDERECO + ROTA_REMOCAO + "?id=" + id;
 
 	xhttp.open("GET", url, true);
-	xhttp.withCredentials = true;
 	xhttp.onreadystatechange = function() {
-		if(xhttp.readyState === xhttp.DONE) {
-			var xml = (new DOMParser()).parseFromString(this.responseText, "application/xml");
+		if(xhttp.readyState === xhttp.DONE && xhttp.status === 200) {
+                        var xml = (new DOMParser()).parseFromString(this.responseText, "application/xml");
 			var raiz = xml.firstElementChild;
 			if(raiz.nodeName == "erro") {
-				document.getElementsByTagName("p")[0].innerHTML = raiz.firstElementChild.textContent;
+				window.alert(raiz.firstElementChild.textContent);
 				return;
 			}
-			else {
-				atualizarTabela();
-			}
+                        else
+                        {
+                            atualizarTabela();
+                        }
 		}
 	};
 	xhttp.send();
@@ -77,18 +76,16 @@ function alterar() {
 	let idDepto = document.getElementsByName("id-depto")[0].value;
 	let nome = document.getElementsByName("nome")[0].value;
 	let senha = document.getElementsByName("senha")[0].value;
-	if(senha == undefined) senha = "";
 	let email = document.getElementsByName("email")[0].value;
 	let titulacao = document.getElementsByName("titulacao")[0].value;
 
-	alterarPost(id, idDepto, nome, senha, email, titulacao);
+	requisicaoPost(id, idDepto, nome, senha, email, titulacao);
 }
 
 // Não consegui fazer o vanilla funcionar com POST, sinto muito
-function alterarPost(id, idDepto, nome, senha, email, titulacao) {
+function requisicaoPost(id, idDepto, nome, senha, email, titulacao) {
 	$.ajax(ENDERECO+ROTA_EDICAO, {
 		method: "POST",
-		xhrFields: { withCredentials: true },
 		data: {
 			id: id,
 			"id-depto": idDepto,

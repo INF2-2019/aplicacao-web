@@ -10,10 +10,9 @@ function atualizarTabela() {
 	url = endereco + "diario/professores/consultar";
 
 	xhttp.open(method, url, true);
-	xhttp.withCredentials = true;
 	xhttp.onreadystatechange = function() {
 		// Mostrar os resultados passando de xml para tabela html
-		if(xhttp.readyState === xhttp.DONE) {
+		if(xhttp.readyState === xhttp.DONE && xhttp.status === 200) {
 			var xml = (new DOMParser()).parseFromString(this.responseText, "application/xml");
 			var raiz = xml.firstElementChild;
 			if(raiz.nodeName == "erro") {

@@ -14,12 +14,24 @@ function inserir(){
 
 	console.log(id);
 	jqueryAjax(id, idDepto, nome, senha, email, titulacao);
+
+	/*url= endereco + "diario/professores/inserir";
+	let params = "?id="+id + "&id-depto="+idDepto + "&nome="+nome + "&senha="+senha
+		 	+"&email="+email + "&titulacao="+titulacao;
+
+	xhttp.open(method, url+params, true);
+	xhttp.onreadystatechange = function() {
+		if(xhttp.readyState === xhttp.DONE && xhttp.status === 200) {
+			let msg = this.responseXML.firstElementChild.lastElementChild.textContent;
+			document.getElementById("saida").innerHTML = msg;
+		}
+	};
+	xhttp.send();*/
 }
 
 function jqueryAjax(id, idDepto, nome, senha, email, titulacao) {
 	$.ajax(ENDERECO+ROTA, {
 		method: METODO,
-		xhrFields: { withCredentials: true },
 		data: {
 			id: id,
 			"id-depto": idDepto,

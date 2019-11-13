@@ -29,8 +29,7 @@ function linhaQueSeraAlterada(ind){
 
 	/*esssa primeira requisicao é so para obter as informações do que sera alterado e coloca-las nos inouts para facilitar a vida do usuario*/
 	let xhttp1 = new XMLHttpRequest();
-	xhttp1.open("GET", ENDERECO + ROTA_CONSULTA + "?id=" + idAlterado, true);
-	xhttp1.withCredentials = true;
+	xhttp1.open(method, endereco+"diario/professores/informacao?id="+idAlterado, true);
 	xhttp1.onreadystatechange = function() {
 		if(xhttp1.readyState === xhttp1.DONE && xhttp1.status === 200) {
 			var xml1 = (new DOMParser()).parseFromString(this.responseText, "application/xml");
