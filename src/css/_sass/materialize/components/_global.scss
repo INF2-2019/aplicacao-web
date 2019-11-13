@@ -9,12 +9,12 @@ html {
 
 body {
   // display: flex;
-  min-height: 100vh;
+  //min-height: 100vh;
   // flex-direction: column;
 }
 
 main {
-  flex: 1 0 auto;
+  //flex: 1 0 auto;
 }
 
 button,
@@ -43,44 +43,6 @@ a {
   // Gets rid of tap active state
   -webkit-tap-highlight-color: transparent;
 }
-
-
-// Flex
-.margin-0 {
-	margin: 0;
-}
-
-.margin-v {
-	margin-top: auto;
-	margin-bottom: auto;
-}
-
-.margin-h {
-	margin-left: auto;
-	margin-right: auto;
-}
-
-.full-height {
-	height: 100%;
-}
-
-.full-width {
-	width: 100%;
-}
-
-.resp-flex {
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	justify-content: space-evenly;
-
-	@media #{$medium-and-down} {
-		flex-direction: column;
-		align-items: center;
-	}
-}
-
-
 
 
 // Positioning
