@@ -1,6 +1,8 @@
 function devolver() {
   console.log(currentId)
-	fetch(baseURL + 'devolver?id=' + currentId)
+	fetch(baseURL + 'devolver?id=' + currentId,{
+		credentials: "include",
+	})
 		.then(response => response.text())
 		.then(str => (new window.DOMParser()).parseFromString(str, "text/xml"))
 		.then(xml => (retornaResposta(xml)))
