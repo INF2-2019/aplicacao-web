@@ -8,11 +8,26 @@
         <title>Listagem de Professores</title>
     </head>
     <body>
-		<nav style="padding-left: 5pt;">
+		<ul id="dropdown1" class="dropdown-content">
+			<li><a href="../transferencia/index.html">Transferência</a></li>
+			<li class="active"><a href="../professores/index.html">Professores</a></li>
+			<li><a href="../departamentos/index.html">Departamentos</a></li>
+			<li><a href="../cursos/index.html">Cursos</a></li>
+			<li><a href="../etapas/index.html">Etapas</a></li>
+			<li><a href="../disciplinas/index.html">Disciplinas</a></li>
+			<li><a href="../alunos/index.html">Alunos</a></li>
+			<li><a href="../campi/index.html">Campi</a></li>
+		  </ul>
+		  <nav>
 			<div class="nav-wrapper">
-				<a class="brand-logo">S.A. Admin</a>
+			  <a class="brand-logo">Diário</a>
+			  <ul class="right hide-on-med-and-down">
+				<li><a href="../login-adm.html">Login</a></li>
+				<li><a href="../transicao/adm.html">Página Inicial</a></li>
+				<li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Funções<i class="material-icons right">arrow_drop_down</i></a></li>
+			  </ul>
 			</div>
-		</nav>
+		  </nav>
 
 		<main style="margin: 0 10%" class="row">
 			<h1>Professores</h1>
@@ -28,7 +43,7 @@
 				   <col span="1" style="width: 8.4%;">
 				   <col span="1" style="width: 8.3%;">
 				</colgroup>
-			
+
 				<thead>
 					<th>Nome</th>
 					<th>Departamento</th>
@@ -69,13 +84,13 @@
 				</div>
 			</div>
 		</div>
-		
+
                 <div class="container secondary lighten-5">
 			<div id="modalDeleta" class="modal">
 				<div class="modal-content row col s12" style="padding:0;">
 					<h4 style="padding: 15pt;">Tem certeza que deseja deletar esse professor?</h4>
 					<div class="row modal-content" style="margin:0;">
-						
+
 					</div>
 					<div class="row modal-content" style="margin:0;">
 						<button onclick="chamaDeletar()"  class="btn primary espaco  waves-effect waves-ligth btn modal-close">Confirmar</button>
@@ -84,7 +99,7 @@
 				</div>
 			</div>
 		</div>
-        
+
                 <div class="container secondary lighten-5">
 			<div id="modalInsere" class="modal">
 				<div class="modal-content row col s12" style="padding:0;">
@@ -112,32 +127,28 @@
 			</div>
 		</div>
 
-        
+
                 <div class="container secondary lighten-5">
 			<div id="modalInfo" class="modal">
 				<div class="modal-content row col s12" style="padding:0;">
 					<h4 style="padding: 15pt;">Informações do Professor</h4>
 					<div id="informacoes" class="row modal-content" style="margin:0;" >
-                                            
+
 					</div>
 					<div class="row modal-content" style="margin:0;">
 						<a class="modal-close btn utils erro-2">Ok</a>
 					</div>
 				</div>
 			</div>
-		</div>        
-        
-        
-        
-        
-        
-        
+		</div>
+
+	<script src="../../js/jquery-3.4.1.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript" src="../../js/materialize.min.js"></script>
     <script src="../../js/diario/professores/consultar.js"></script>
     <script src="../../js/diario/professores/inserir.js"></script>
     <script src="../../js/diario/professores/editar.js"></script>
     <script src="../../js/diario/professores/main.js"></script>
-
-    </body>
+	<script>$(".dropdown-trigger").dropdown();</script>
+	</body>
 </html>

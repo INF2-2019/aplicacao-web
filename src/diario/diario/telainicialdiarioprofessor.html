@@ -9,11 +9,21 @@
   </head>
 
   <body>
-    <nav style="padding-left: 5pt;">
-      <div class="nav-wrapper">
-        <a class="brand-logo">Diário - Professor </a>
-      </div>
-    </nav>
+		<ul id="dropdown1" class="dropdown-content">
+			<li><a href="../professores/perfil.html">Perfil do professor</a></li>
+			<li class="active"><a href="../diario/telainicialdiarioprofessor.html">Diário Escolar</a></li>
+			<li><a href="../diario/disciplinaver.html">Disciplinas</a></li>
+		</ul>
+		<nav>
+			<div class="nav-wrapper">
+				<a class="brand-logo">Diário</a>
+				<ul class="right hide-on-med-and-down">
+					<li><a href="../login-professor.html">Login</a></li>
+					<li><a href="../transicao/professor.html">Página Inicial</a></li>
+					<li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Funções<i class="material-icons right">arrow_drop_down</i></a></li>
+				</ul>
+			</div>
+		</nav>
 
     <main style="margin: 0 10%">
       <div>
@@ -33,7 +43,7 @@
           <div class="col s4"> <h6 class="teal-text">Titulação </h6> <p class="campo">{{titulacao}}</p> </div>
         </template>
       </div>
-        
+
       <div>
         <h1>Disciplinas</h1>
         <div class="row area" id="listagemDisciplinas">
@@ -45,14 +55,14 @@
                 <col span="1" style="width: 10%">
                 <col span="1" style="width: 20%">
               </colgroup>
-              
+
               <thead>
                   <th>ID</th>
                   <th>DISCIPLINA</th>
                   <th>TURMA</th>
                   <th>CARGA HORÁRIA</th>
               </thead>
-            
+
               <tbody id="holder_diario">
                 <tr>
                   <td>001</td>
@@ -85,6 +95,7 @@
     <script src="../../js/materialize.min.js"></script>
     <!-- -->
     <script src="../../js/diario/diario/ajax.js"></script>
-    <script src="../../js/diario/diario/dados_professor.js"></script>
+		<script src="../../js/diario/diario/dados_professor.js"></script>
+		<script>$(".dropdown-trigger").dropdown();</script>
   </body>
 </html>

@@ -3,7 +3,7 @@ const ENDERECO = "http://localhost:8080/app"
 const ROTA = "/diario/professores/logar"
 const MANTER = true;
 
-const PAGINA_DESTINO = "../../../aplicacao-web/src/diario/transicao/professor.html";
+const PAGINA_DESTINO = "transicao/professor.html";
 
 let inputs;
 
@@ -21,6 +21,7 @@ function logar() {
 function jqueryAjax(siape, senha, manter) {
 	$.ajax(ENDERECO+ROTA, {
 		method: METODO,
+		xhrFields: { withCredentials: true },
 		data: {
 			siape: siape,
 			senha: senha,

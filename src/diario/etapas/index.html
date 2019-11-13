@@ -11,11 +11,26 @@
 </head>
 
 <body onload="consulta()" style="font-family: 'Montserrat', sans-serif; background-color: white;">
-	<nav class="nav-extended " style=" ">
-		<div class="row s12 nav-content white-text">
-			<h4 style="margin:0 ;margin-left:0.5%;">S.A. Admin</h4>
-		</div>
-	</nav>
+		<ul id="dropdown1" class="dropdown-content">
+				<li><a href="../transferencia/index.html">Transferência</a></li>
+				<li><a href="../professores/index.html">Professores</a></li>
+				<li><a href="../departamentos/index.html">Departamentos</a></li>
+				<li><a href="../cursos/index.html">Cursos</a></li>
+				<li class="active"><a href="../etapas/index.html">Etapas</a></li>
+				<li><a href="../disciplinas/index.html">Disciplinas</a></li>
+				<li><a href="../alunos/index.html">Alunos</a></li>
+				<li><a href="../campi/index.html">Campi</a></li>
+			  </ul>
+			  <nav>
+				<div class="nav-wrapper">
+				  <a class="brand-logo">Diário</a>
+				  <ul class="right hide-on-med-and-down">
+					<li><a href="../login-adm.html">Login</a></li>
+					<li><a href="../transicao/adm.html">Página Inicial</a></li>
+					<li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Funções<i class="material-icons right">arrow_drop_down</i></a></li>
+				  </ul>
+				</div>
+			  </nav>
 	<!-- fim header -->
 
 	<div id="corpo-manutencao-etapas">
@@ -61,11 +76,11 @@
 		<!-- FORMULÁRIO CONSULTAR -->
 
 		<div style = "" id="ConsultaForm" class="left-align modal modal-content">
-			
+
 				<div id="navTexto" class="left-align black-text">
 					<h4>Consultar Etapas</h4>
 				</div>
-		
+
 			<div>
 				<form id="formConsulta" class="col s12 form-manutencao-etapas" action="diario/etapas/inserir" method="get">
 					<!-- div para input ID -->
@@ -115,7 +130,7 @@
 				<div class=" left-align black-text">
 					<h4>Editar Etapas</h4>
 				</div>
-			
+
 			<div>
 				<form id="formEdita" class="col s12 form-manutencao-etapas" action="/diario/etapas/atualizar" method="get">
 
@@ -189,6 +204,7 @@
 	<script src="../../js/diario/etapas/jquery-3.4.1.js"></script>
 	<script src="../../js/materialize.js"></script>
 	<script src="../../js/diario/etapas/conectaServlet.js"></script>
+	<script>$(".dropdown-trigger").dropdown();</script>
 </body>
 
 </html>

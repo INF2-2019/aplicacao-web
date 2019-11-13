@@ -8,9 +8,20 @@
         <title>Listagem do Acervo</title>
     </head>
     <body>
-		<nav style="padding-left: 5pt;">
-			<div class="nav-wrapper">
-				<a class="brand-logo">S.A. Admin</a>
+		<ul id="dropdown1" class="dropdown-content">
+			<li class="active"><a href="../acervo/index.html" >Manutenção de acervos</a></li>
+			<li><a href="../descartes/index.html">Manutenção de descartes</a></li>
+			<li><a href="../emprestimos/index.html" >Manutenção de empréstimos</a></li>
+			<li><a href="../reservas/index.html">Manutenção de reservas</a></li>
+		</ul>
+		<nav>
+		    <div class="nav-wrapper">
+				<a class="brand-logo">Biblioteca</a>
+				<ul class="right hide-on-med-and-down">
+					<li><a href="../login-adm.html">Login</a></li>
+					<li><a href="../transicao/adm.html">Página Inicial</a></li>
+					<li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Funções<i class="material-icons right">arrow_drop_down</i></a></li>
+				</ul>
 			</div>
 		</nav>
 
@@ -94,11 +105,12 @@
 			</div>
 		</div>
 
-		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script src="../../js/jquery-3.4.1.js"></script>
 		<script type="text/javascript" src="../../js/materialize.min.js"></script>
 		<script src="../../js/biblioteca/acervo/parametros.js"></script>
 		<script src="../../js/biblioteca/acervo/main.js"></script>
 		<script>
+			$(".dropdown-trigger").dropdown();
 			$(document).ready(function(){
 				$('.modal').modal();
 				$('select').formSelect();

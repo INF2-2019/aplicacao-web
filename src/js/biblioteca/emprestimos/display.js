@@ -5,12 +5,12 @@ function criaTabela(elementos) {
 	const tabela = document.createElement("table")
 	deptosConsultados = 0
 	elementos = elementos.childNodes[0].children
+	
 	tabela.classList.add("highlight")
 	let devolvido;
 	for (let i = 0; i < elementos.length; i++) {
 		devolvido = true;
 		const linha = document.createElement("tr");
-		console.log(elementos[i].children[5])
 		if(elementos[i].children[5].innerHTML == "1970-01-01"){
 
 			console.log("entrou")
@@ -64,7 +64,9 @@ function criarBotaoEditar() {
 function info(){
 	let infoContainer = document.querySelector('#informacoes')
 	infoContainer.innerHTML = ''
-	fetch('http://localhost:8080/app/biblioteca/emprestimos/consultarporid?id=' +currentId)
+	fetch('http://localhost:8080/app/biblioteca/emprestimos/consultarporid?id=' +currentId ,{
+		credentials: "include",
+	})
 		.then(response => response.text())
 		.then(str => (new window.DOMParser()).parseFromString(str, "text/xml"))
 		.then(xml => {
@@ -128,7 +130,9 @@ function limpaInputs(inputType) {
 }
 
 function preencherInput() {
-	fetch('http://localhost:8080/app/biblioteca/alunos/listar')
+	fetch('http://localhost:8080/app/biblioteca/alunos/listar',{
+		credentials: "include",
+	})
 		.then(response => response.text())
 		.then(str => (new window.DOMParser()).parseFromString(str, "text/xml"))
 		.then(xml => {
