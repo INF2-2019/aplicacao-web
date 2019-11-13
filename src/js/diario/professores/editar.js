@@ -17,7 +17,7 @@ function info(id){
 	xhttp.withCredentials = true;
 	xhttp.onreadystatechange = function() {
 		if(xhttp.readyState === xhttp.DONE) {
-				var xml = (new DOMParser()).parseFromString(this.responseText, "application/xml");
+			var xml = (new DOMParser()).parseFromString(this.responseText, "application/xml");
 			var raiz = xml.firstElementChild;
 			if(raiz.nodeName == "erro") {
 				document.getElementsByTagName("p")[0].innerHTML = raiz.firstElementChild.textContent;
@@ -51,6 +51,7 @@ function deletar(id) {
 	let url = ENDERECO + ROTA_REMOCAO + "?id=" + id;
 
 	xhttp.open("GET", url, true);
+	xhttp.withCredentials = true;
 	xhttp.onreadystatechange = function() {
 		if(xhttp.readyState === xhttp.DONE) {
 			var xml = (new DOMParser()).parseFromString(this.responseText, "application/xml");
