@@ -13,7 +13,7 @@ function inserir() {
   let url = "http://localhost:8080/app/diario/campi/inserir?nome="+nome
   +"&cidade="+cidade
   +"&uf="+uf;
-  fetch(url)
+  fetch(url, { credentials: 'include' })
     .then(resposta => {
       responseStatus = resposta.status;
       return resposta.text();

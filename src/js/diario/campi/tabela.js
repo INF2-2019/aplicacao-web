@@ -73,7 +73,7 @@ listar();
 function listar() {
   let url = "http://localhost:8080/app/diario/campi/listar";
 
-  fetch(url)
+  fetch(url, { credentials: 'include' })
     .then(resposta => {
       return resposta.text();
     })

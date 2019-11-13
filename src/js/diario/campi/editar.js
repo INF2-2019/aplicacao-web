@@ -35,7 +35,7 @@ function editar() {
   +"&nome="+nome+
   "&cidade="+cidade+
   "&uf="+uf
-  fetch(url)
+  fetch(url, { credentials: 'include' })
     .then(resposta => {
       responseStatus = resposta.status;
       return resposta.text();
