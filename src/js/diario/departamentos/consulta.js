@@ -24,5 +24,6 @@ function consulta() {
 	};
 	const url = "http://localhost:8080/app/diario/departamentos/consulta";
 	xhr.open("GET", url, true);
+	xhr.withCredentials = true;
 	xhr.send();
 }
