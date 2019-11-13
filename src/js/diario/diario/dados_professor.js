@@ -1,11 +1,3 @@
-let PROFESSOR;
-
-const stringEInteiro = numero => (/^\d+$/).test(numero);
-
-const BARRA_PESQUISA = new URLSearchParams(window.location.search);
-if(BARRA_PESQUISA.has("professor") && stringEInteiro(BARRA_PESQUISA.get("professor")))
-    PROFESSOR = Number(BARRA_PESQUISA.get("professor"));
-
 const infos = {
     consultarDadosProfessor: {
         link: "/diario/professores/consultar",
@@ -54,37 +46,39 @@ function consultarDadosProfessor(info, resposta_dom) {
     if (resposta_dom == null)
         return;
     console.log(resposta_dom);
-    for (let conteudosEl of resposta_dom) {
-        let id = conteudosEl.querySelector("id").innerHTML,
-            id_depto = conteudosEl.querySelector("id-depto").innerHTML,
-            nome = conteudosEl.querySelector("nome").innerHTML,
-            titulacao = conteudosEl.querySelector("titulacao").innerHTML;
+    if(resposta_dom.length>1)
+        return;
 
-        if(titulacao=="M")
+    let professorEl = resposta_dom[0];
+
+    let id = professorEl.querySelector("id").innerHTML,
+    id_depto = professorEl.querySelector("id-depto").innerHTML,
+    nome = professorEl.querySelector("nome").innerHTML,
+    titulacao = professorEl.querySelector("titulacao").innerHTML;
+
+    if(titulacao=="M")
             titulacao = "Mestre";
-        else if(titulacao=="E")
+    else if(titulacao=="E")
             titulacao = "Especialista";
-        else if(titulacao=="D")
+    else if(titulacao=="D")
             titulacao = "Doutor";
-        else if(titulacao=="G")
+    else if(titulacao=="G")
             titulacao = "Graduado";
 
-        args = {
-            id: formatarNumero(id,9),
-            id_depto,
-            nome,
-            titulacao
-        };
+    args = {
+        id: formatarNumero(id,9),
+        id_depto,
+        nome,
+        titulacao
+    };
 
-        console.log(args);
-
-        let els = geraElemento(info.queries.template, args);
-        for(let el of els){
-            holder.appendChild(el);
-        }
-
-        requisicao("consultarDisciplinaProfessor",{"id-professores": id});
+    let els = geraElemento(info.queries.template, args);
+    for(let el of els){
+        holder.appendChild(el);
     }
+
+    requisicao("consultarDisciplinaProfessor",{"id-professores": id});
+    
 }
 
 function consultarDisciplinaProfessor(info, resposta_dom) {
@@ -117,7 +111,12 @@ async function consultarDisciplina(info, resposta_dom) {
 
         let turma_dom = await requisicao("consultarTurma",{id:id_turma});
         if(turma_dom==null)return;
-        let turma = turma_dom[0].querySelector("nome").innerHTML;
+        
+        let turma;
+        if(turma_dom[0].querySelector("nome")!=null)
+            turma = turma_dom[0].querySelector("nome").innerHTML;
+        else
+            break;
 
         args = {
             carga_horaria: horaria,
