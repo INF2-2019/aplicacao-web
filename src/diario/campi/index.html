@@ -7,14 +7,29 @@
         <link rel="stylesheet" href="../../css/estilo.css">
     </head>
     <body class="background full-height">
-      <nav>
-        <div class="nav-wrapper">
-          <a class="brand-logo">S.A. Admin</a>
-        </div>
-      </nav>
+        <ul id="dropdown1" class="dropdown-content">
+                <li><a href="../transferencia/index.html">Transferência</a></li>
+                <li><a href="../professores/index.html">Professores</a></li>
+                <li><a href="../departamentos/index.html">Departamentos</a></li>
+                <li ><a href="../cursos/index.html">Cursos</a></li>
+                <li><a href="../etapas/index.html">Etapas</a></li>
+                <li><a href="../disciplinas/index.html">Disciplinas</a></li>
+                <li><a href="../alunos/index.html">Alunos</a></li>
+                <li class="active"><a href="../campi/index.html">Campi</a></li>
+            </ul>
+            <nav>
+                <div class="nav-wrapper">
+                    <a class="brand-logo">Diário</a>
+                    <ul class="right hide-on-med-and-down">
+                        <li><a href="../login-adm.html">Login</a></li>
+                        <li><a href="../transicao/adm.html">Página Inicial</a></li>
+                        <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Funções<i class="material-icons right">arrow_drop_down</i></a></li>
+                    </ul>
+                </div>
+            </nav>
       <div class="container">
       <h2>Campi</h2>
-           <a id="botao-manutencao-campi" class="btn teal lighten-1 modal-trigger botaoAdicionar right" href="#modal-cadastro">Adicionar</a>
+           <a id="botao-manutencao-campi" class="btn right primary editar modal-trigger botaoAdicionar right" href="#modal-cadastro">Adicionar</a>
 
            <div class="row">
                  <div class="input-field col s2">
@@ -33,7 +48,7 @@
              				<div class="nav-wrapper">
              					<form>
              						<div class="input-field">
-             							<input id="search" style="background-color: #29A58C" type="search" oninput="pesquisa()" required>
+             							<input id="search" class="primary" type="search" oninput="pesquisa()" required>
              							<label class="label-icon" for="search"><i class="  material-icons"></i></label>
              							<i class="material-icons">close</i>
              						</div>
@@ -52,23 +67,22 @@
 
 
 
-        <div id="modal-cadastro" class="modal background full-height">
+        <div id="modal-cadastro" class="modal background">
             <div class="modal-content-manutencao-campi">
-                <div class="header-manutencao-campi">Novo campus</div>
+                <h4 style="padding: 15pt;">Novo Campus</h4>
                 <div class="container"></div>
                <div class="row">
                    <div class="col s12 m9">
                         <div class="col offset-s1 s10">
-                            <span class="span-cadastro-manutencao-campi">Nome*</span><input name="campus-nome" type="text" class="obrigatorio-cadastro" id="nome">
+                            <span class="span-cadastro-manutencao-campi primary-text text-lighten-1">Nome*</span><input name="campus-nome" type="text" class="obrigatorio-cadastro" id="nome">
                         </div>
 
-                        <div class="col offset-s1 s10">
-                            <span class="span-cadastro-manutencao-campi">Cidade*</span><input name="campus-cidade" type="text" class="obrigatorio-cadastro" id="cidade">
+                        <div class="col offset-s1 s8">
+                            <span class="span-cadastro-manutencao-campi primary-text text-lighten-1">Cidade*</span><input name="campus-cidade" type="text" class="obrigatorio-cadastro" id="cidade">
                         </div>
 
-                        <div class="col offset-s1 s10">
-                            <span class="span-cadastro-manutencao-campi">UF*</span><input name="campus-UF" type="text" class="obrigatorio-cadastro" id="uf">
-                            <span class="span-cadastro-manutencao-campi"><i>Os campos com * são obrigatórios</i></span><br>
+                        <div class="col offset-s1 s2">
+                            <span class="span-cadastro-manutencao-campi primary-text text-lighten-1">UF*</span><input name="campus-UF" type="text" class="obrigatorio-cadastro" id="uf">
                         </div>
 
                     </div>
@@ -76,6 +90,7 @@
                 </div>
                 <div class="row" id="divbotoes">
                     <div class="col offset-s1">
+                        <span class="span-cadastro-manutencao-campi primary-text text-lighten-1"><i>Os campos com * são obrigatórios</i></span><br>
                         <button class="btns waves-effect blue darken-3 btn modal-close" id="btConfirmaCadastro">Confirmar</button>
                         <button class="modal-close btns waves-effect teal lighten-1 btn botaoCancelar">Cancelar</button>
                     </div>
@@ -84,27 +99,27 @@
             </div>
         </div>
 
-        <div id="modal-editar" class="modal background full-height">
+        <div id="modal-editar" class="modal background">
             <div class="modal-content-manutencao-campi">
-                <div class="header-manutencao-campi">Editar campus</div>
+                <h4 style="padding: 15pt;">Editar Campus</h4>
                 <div class="container"></div>
                <div class="row">
                    <div class="col s12 m9">
 
-                     <div class="col offset-s1 s10">
-                         <span class="span-cadastro-manutencao-campi">ID*</span><input name="campus-id" type="text" id="idEdit" readonly>
+                     <div class="col offset-s1 s1">
+                         <span class="span-cadastro-manutencao-campi primary-text text-lighten-1">ID*</span><input name="campus-id" type="text" id="idEdit" readonly>
                      </div>
 
-                        <div class="col offset-s1 s10">
-                            <span class="span-cadastro-manutencao-campi">Nome</span><input name="campus-nome" type="text" id="nome1">
+                        <div class="col offset-s1 s8">
+                            <span class="span-cadastro-manutencao-campi primary-text text-lighten-1">Nome</span><input name="campus-nome" type="text" id="nome1">
                         </div>
 
-                        <div class="col offset-s1 s10">
-                            <span class="span-cadastro-manutencao-campi">Cidade</span><input name="campus-cidade" type="text" id="cidade1">
+                        <div class="col offset-s1 s8">
+                            <span class="span-cadastro-manutencao-campi primary-text text-lighten-1">Cidade</span><input name="campus-cidade" type="text" id="cidade1">
                         </div>
 
-                        <div class="col offset-s1 s10">
-                            <span class="span-cadastro-manutencao-campi">UF</span><input name="campus-UF" type="text" id="uf1">
+                        <div class="col offset-s1 s2">
+                            <span class="span-cadastro-manutencao-campi primary-text text-lighten-1">UF</span><input name="campus-UF" type="text" id="uf1">
                         </div>
 
                     </div>
@@ -124,9 +139,9 @@
 
 
 
-        <div id="modal-deletar-manutencao-campi" class="modal modal-fixed-footer background full-height">
-            <div class="modal-content-manutencao-campi background full-height">
-                <div class="header-manutencao-campi">Deletar Campus</div>
+        <div id="modal-deletar-manutencao-campi" class="modal modal-fixed-footer background">
+            <div class="modal-content-manutencao-campi background ">
+                <h4 style="padding: 15pt;">Deletar Campus</h4>
                 <div class="container">
                     <div class="row">
                         Tem certeza que deseja deletar este campus?

@@ -51,21 +51,6 @@
 
 }
 
-#botao-manutencao-campi{
-	margin-right: 20%;
-}
-.header-manutencao-campi{
-	background: #29A58C;
-	color: white;
-	width: 100%;
-	padding: 4pt;
-	margin-bottom:1%;
-}
-.span-cadastro-manutencao-campi{
-	font-size: 10pt;
-	color: #29A58C;
-}
-
 .botao-tabela-etapas{
 	font-family: 'Montserrat', sans-serif;
 }
