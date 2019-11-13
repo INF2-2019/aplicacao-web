@@ -92,7 +92,7 @@ function limpaInputs(inputType) {
 }
 
 function preencherInput() {
-	fetch('http://localhost:8080/app/diario/departamentos/consulta')
+	fetch('http://localhost:8080/app/diario/departamentos/consulta', { credentials: 'include' })
 		.then(response => response.text())
 		.then(str => (new window.DOMParser()).parseFromString(str, "text/xml"))
 		.then(xml => {

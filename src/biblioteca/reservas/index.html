@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+	<link rel="stylesheet" href="../../css/materialize.css" />
+	<title>Manutenção de Reservas</title>
+</head>
+
+<body>
+	<nav>
+		<div class="nav-wrapper">
+			<a class="brand-logo">Biblioteca</a>
+		</div>
+	</nav>
+
+	<div class="container">
+		<h2>Reservas
+		</h2>
+
+		<div class="row">
+			<div class="input-field col s12 m12 l4">
+				<i class="material-icons prefix">search</i>
+				<input id="search" type="text" autocomplete="off">
+				<label for="search">Pesquisar acervo da Reserva</label>
+			</div>
+			<a class="btn col s12 m12 l4 offset-l4 waves-effect waves-light primary modal-trigger"
+				href="#modal-add">Adicionar</a>
+		</div>
+
+		<div id="consulta-disciplinas" class="col s12">
+			<table id="tabela-disciplinas" class="responsive-table centered highlight">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Id-aluno</th>
+						<th>Id-acervo</th>
+						<th>Data-reserva</th>
+						<th>Ações</th>
+					</tr>
+				</thead>
+				<tbody id="disciplinas"></tbody>
+			</table>
+		</div>
+
+		<div id="modal-deletar" class="modal">
+			<div id="conteudo" class="modal-content">
+				<h4>Deletar Reserva</h4>
+				<h6>Tem certeza que deseja deletar esta reserva?</h6>
+			</div>
+			<div class="modal-footer">
+				<a class="modal-close btn utils erro-2">Cancelar</a>
+				<a class="modal-close btn primary" onclick="deletar()">Deletar</a>
+			</div>
+		</div>
+
+		<div id="modal-add" class="modal">
+			<div class="row modal-content">
+				<h4>Inserir Reserva</h4>
+				<div class="input-field col s3">
+					<select id="aluno-inserir">
+						<option  id ="Seleciona-add" value="" disabled selected>Selecione</option>
+					</select>
+					<label for="aluno-inserir">Aluno</label>
+				</div>
+				<div class="input-field col s9">
+					<input id="acervo-inserir" type="text" />
+					<label for="acervo-inserir">Acervo</label>
+				</div>
+				<div class="input-field col s4">
+					<input id="data-reserva-inserir" type="date" />
+					<label for="data-reserva-inserir">Data  da Reserva</label>
+				</div>
+				<div class="input-field col s4">
+					<input id="tempo-espera-inserir" type="text" />
+					<label for="tempo-espera-inserir">Tempo de espera</label>
+				</div>
+				<div class="input-field col s4">
+					<select id="emprestou-inserir">
+						<option  id ="Seleciona-add" value="" disabled selected>Selecione</option>
+						<option  id ="" value="">Sim</option>
+						<option  id ="" value="">Não</option>
+					</select>
+				</div>
+			</div>
+			<div class="container modal-footer">
+				<a class="modal-close btn utils erro-2">Cancelar</a>
+				<a class="modal-close btn primary" id="adicionar-disciplina">Adicionar</a>
+			</div>
+		</div>
+
+		<div id="modal-atualizar" class="modal">
+			<h4 style="padding: 15pt;">Atualizar Reserva</h4>
+			<div class="row modal-content">
+					<div class="input-field col s3">
+							<select id="aluno-atualizar">
+								<option  id ="Seleciona-add" value="" disabled selected>Selecione</option>
+							</select>
+							<label for="aluno-atualizar">Aluno</label>
+						</div>
+						<div class="input-field col s9">
+							<input id="acervo-atualizar" type="text" />
+							<label for="acervo-atualizar">Acervo</label>
+						</div>
+						<div class="input-field col s4">
+							<input id="data-reserva-atualizar" type="date" />
+							<label for="data-reserva-atualizar">Data  da Reserva</label>
+						</div>
+						<div class="input-field col s4">
+							<input id="tempo-espera-atualizar" type="text" />
+							<label for="tempo-espera-atualizar">Tempo de espera</label>
+						</div>
+						<div class="input-field col s4">
+							<select id="emprestou-atualizar">
+								<option  id ="Seleciona-add" value="" disabled selected>Selecione</option>
+								<option  id ="" value="">Sim</option>
+								<option  id ="" value="">Não</option>
+							</select>
+						</div>
+			</div>
+			<div class="container modal-footer">
+				<a class="modal-close btn utils erro-2">Cancelar</a>
+				<a class="modal-close btn primary" id="atualizar-disciplina">Salvar</a>
+			</div>
+		</div>
+	</div>
+
+	<div id="modal-info" class="modal">
+		<div class="modal-content row col s12" style="padding:0;">
+			<h4 style="padding: 15pt;">Informações da Reserva</h4>
+			<div id="informacoes" class="row modal-content" style="margin:0;" >
+
+			</div>
+			<div class="row modal-content" style="margin:0;">
+				<a class="modal-close btn utils erro-2">Ok</a>
+			</div>
+		</div>
+	</div>
+	<!-- Imports -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="../../js/materialize.js"></script>
+	<script src="../../js/biblioteca/reservas/display.js"></script>
+	<!-- imports de funcionalidades do servidor -->
+	<script src="../../js/biblioteca/reservas/main.js"></script>
+	<script src="../../js/biblioteca/reservas/consultar.js"></script>
+	<script src="../../js/biblioteca/reservas/deletar.js"></script>
+	<script src="../../js/biblioteca/reservas/inserir.js"></script>
+	<script src="../../js/biblioteca/reservas/atualizar.js"></script>
+	<script src="../../js/biblioteca/reservas/emprestar.js"></script>
+	<!-- Aparecer tabela ao abrir a pagina -->
+	<script>
+		consultar();
+		preencherInput();
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Inicial Aluno</title>
+	<link rel="stylesheet" href="../../css/materialize.css" />
+	<link rel="stylesheet" href="../../css/estilo.css" />
+
+</head>
+
+<body>
+	<div class="full-heght margin-0">
+		<ul id="dropdown1" class="dropdown-content">
+			<li><a href="#" >Perfil do Aluno</a></li>
+			<li><a href="#">Histórico Escolar</a></li>
+			<li><a href="#" >Diário Escolar</a></li>
+			<li><a href="#" >Certificado de Escolaridade</a></li>
+		  </ul>
+		  <nav>
+			<div class="nav-wrapper">
+			  <a class="brand-logo">Diário</a>
+			  <ul class="right hide-on-med-and-down">
+				<li><a href="../login-aluno.html">Login</a></li>
+				<li class="active"><a href="">Página Inicial</a></li>
+				<li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Funções<i class="material-icons right">arrow_drop_down</i></a></li>
+			  </ul>
+			</div>
+		  </nav>
+
+		<div class="container" >
+			<h2>Serviços:</h2>
+
+			<div class="center-align row" style="overflow: auto;height:450px">
+				<a class="col s12 l5 btn-trasicao primary alt waves-effect waves-light btn-large" href="#" >Perfil do Aluno</a>
+				<a class="col s12 l5 offset-l2 btn-trasicao primary alt waves-effect waves-light btn-large" href="#">Histórico Escolar</a>
+				<a class="col s12 l5 btn-trasicao primary alt waves-effect waves-light btn-large" href="#" >Diário Escolar</a>
+				<a class="col s12 l5 offset-l2 btn-trasicao primary alt waves-effect waves-light btn-large" href="#" >Certificado de Escolaridade</a>
+			</div>
+		</div>
+	</div>
+
+	<!-- IMPORTAÇÕES -->
+	<!--Conexao Servlets-->
+	<script src="../../js/jquery-3.4.1.js"></script>
+	<script src="../../js/materialize.js"></script>
+	<script>$(".dropdown-trigger").dropdown();</script>
+</body>
+
+</html>
