@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>pu</title>
+    <link rel="stylesheet" href="../../css/materialize.css">
+    <style>
+    .relDoFitz{
+      margin: 50px 0;
+    }
+    .relDoFitz .select-wrapper{
+      display: inline-block;
+      margin: 0 30px 0 8px;
+    }
+    .relDoFitz #t>*{
+      border-bottom: 1px solid #e0e0e0;
+    }
+    .relDoFitz #t :last-child{
+      border-bottom: none !important;
+    }
+    .relDoFitz .head{
+      font-weight: bold;
+    }
+    .relDoFitz #esc{
+      margin-bottom: 35px;
+    }
+    .relDoFitz #t>*{
+        display:flex;
+    }
+    .relDoFitz #t>*>*{
+        display:flex;
+        flex:1 1 0;
+    }
+    </style>
+  </head>
+  <body class="relDoFitz">
+    <main class="container">
+      <div id="esc" class="center-align row">
+        <div>
+          Escolha o aluno:<select></select><button class="primary btn">Gerar</button>
+        </div>
+      </div>
+      <div id="t">
+        <div class="head row">
+          <div>Disciplina</div>
+        </div>
+      </div>
+    </main>
+    <script src="../../js/materialize.js"></script>
+    <script src="../../js/diario/relatorios/r10.js"></script>
+  </body>
+</html>

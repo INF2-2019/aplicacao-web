@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>pu</title>
+    <link rel="stylesheet" href="../../css/materialize.css">
+    <style>
+    .relDoFitz{
+      margin: 50px 0;
+    }
+    .relDoFitz .select-wrapper{
+      display: inline-block;
+      margin: 0 30px 0 8px;
+    }
+    .relDoFitz #t>*{
+      border-bottom: 1px solid #e0e0e0;
+    }
+    .relDoFitz #t :last-child{
+      border-bottom: none !important;
+    }
+    .relDoFitz .head{
+      font-weight: bold;
+    }
+    .relDoFitz #esc{
+      margin-bottom: 35px;
+    }
+    .relDoFitz #t>*{
+        display:flex;
+    }
+    .relDoFitz #t>*>*{
+        display:flex;
+        flex:1 1 0;
+    }
+    </style>
+  </head>
+  <body class="relDoFitz">
+    <main class="container">
+      <div id="esc" class="center-align row">
+        <div>
+          Escolha a disciplina:<select></select>
+          Escolha a etapa:<select></select>
+          <button class="primary btn">Gerar</button>
+        </div>
+      </div>
+      <div id="t"></div>
+    </main>
+    <script src="../../js/materialize.js"></script>
+    <script>
+    const t=document.querySelector("#t");
+    let sels=document.querySelectorAll("select");
+    const gen=document.querySelector("button");
+    let discs,idsEt,conts;
+    function mostraBunitin(data){
+        return data.split("-").reverse().join("/");
+    }
+    function fete(p1,p2={}){
+        return fetch(p1,{
+            ...p2,
+            credentials: "include", // <-- Essa linha resolve o problema!
+            mode: "no-cors", // <-- Essa linha é pra quem a primeira não resolver ou seja, o servl
+        });
+    }
+    function makeOption(sel,cont,value){
+        const opt=document.createElement("option");
+        opt.innerHTML=cont;
+        if(value!=undefined){
+            opt.setAttribute("value",value);
+        }
+        sel.appendChild(opt);
+    }
+    function xmlToArray(v){
+        let ret=[];
+        for(let i=0; i<v.length; i++){
+            ret[i]=v[i].textContent;
+        }
+        return ret;
+    }
+    fete("http://localhost:8080/app/diario/disciplinas/consultar")
+    .then(resposta => {
+            return resposta.text();
+    })
+    .then(text => {
+        let parser = new DOMParser();
+        let xmlDisc = parser.parseFromString(text, "text/xml");
+        //console.log(xmlDisc);
+        discs=xmlDisc.querySelectorAll("disciplina");
+        for(let i=0; i<discs.length; i++){
+                        makeOption(sels[0],getField(discs[i],"nome"),getField(discs[i],"id"));
+                    }
+                    M.FormSelect.init(document.querySelectorAll("select:first-child"));
+        fete("http://localhost:8080/app/diario/etapas/consultar")
+            .then(resposta => {
+                return resposta.text();
+            })
+            .then(text => {
+                let parser = new DOMParser();
+                let xmlEt = parser.parseFromString(text, "text/xml");
+                //console.log(xmlEt);
+                idsEt=xmlToArray(xmlEt.querySelectorAll("id"));
+                    for(let i=0; i<idsEt.length; i++){
+                        makeOption(sels[1],idsEt[i]);
+                    }
+                    sels=M.FormSelect.init(document.querySelectorAll("select"));
+                fete("http://localhost:8080/app/diario/diario/conteudos/consulta?especifico=conteudo")
+                .then(resposta => {
+                        return resposta.text();
+                })
+                .then(text => {
+                    let parser = new DOMParser();
+                    let xmlCont = parser.parseFromString(text, "text/xml");
+                    console.log(xmlCont);
+                    conts=xmlCont.querySelectorAll("info>conteudos");
+                });
+            });
+    });
+    function getField(node,field){
+        return node.querySelector(field).textContent;
+    }
+    gen.addEventListener("click",function(){
+        t.innerHTML="";
+        sels=M.FormSelect.init(document.querySelectorAll("select"));
+        let et=sels[1].getSelectedValues()[0],disc=sels[0].getSelectedValues()[0];
+        for(let i=0; i<conts.length; i++){
+            if(getField(conts[i],"id-etapas")==et && getField(conts[i],"id-disciplinas")==disc){
+                t.innerHTML+="<p><strong>"+mostraBunitin(getField(conts[i],"data"))+": </strong>"+getField(conts[i],"conteudos")+"</p>";
+            }
+        }
+    });
+    </script>
+  </body>
+</html>

@@ -5,6 +5,8 @@ function postFetch(url, data) {
 	return fetch(url, {
 		method: 'POST',
 		body: new URLSearchParams(data),
+                credentials: "include", // <-- Essa linha resolve o problema!
+                mode: "no-cors", // <-- Essa linha é pra quem a primeira não resolver ou seja, o servl
 		headers: new Headers({
 			'Content-type': 'application/x-www-form-urlencoded; charset=UTF-8'
 		}),
@@ -14,7 +16,10 @@ function postFetch(url, data) {
 }
 
 function nomeTurma(id) {
-	return fetch('http://localhost:8080/app/diario/cursos/consultar')
+	return fetch('http://localhost:8080/app/diario/cursos/consultar',{
+		credentials: "include", // <-- Essa linha resolve o problema!
+		mode: "no-cors" // <-- Essa linha é pra quem a primeira não resolver ou seja, o servl
+                })
 		.then(response => {return response.text()})
 		.then(str => (new window.DOMParser()).parseFromString(str, "text/xml"))
 		.then(xml => {
