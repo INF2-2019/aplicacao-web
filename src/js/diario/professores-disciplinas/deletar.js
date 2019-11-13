@@ -1,5 +1,5 @@
 function deletar(prof) {
-	fetch(baseURL + 'deletar?id-disciplina=' + prof, {
+	fetch(baseURL + 'deletar?v=2&id-disciplinas=' + prof, {
 		credentials: "include",
 	})
 		.then(response => response.text())
