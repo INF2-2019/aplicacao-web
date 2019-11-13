@@ -10,7 +10,7 @@ const infos = {
     consultarDadosProfessor: {
         link: "/diario/professores/consultar",
         parametros_default: {
-            professor: PROFESSOR
+            id: -1
         },
         queries: {
             holder: "#dados_professor",
@@ -20,9 +20,6 @@ const infos = {
     }, 
     consultarDisciplinaProfessor: {
         link: "/diario/professoresdisciplinas/consultar",
-        parametros_default: {
-            "id-professores": PROFESSOR
-        },
         callback: consultarDisciplinaProfessor
     },
     consultarDisciplina: {
@@ -33,7 +30,21 @@ const infos = {
             template: "#template_disciplinas"
         },
         callback: consultarDisciplina
+    }, 
+    consultarTurma: {
+        link: "/diario/turmas/consultar",
+        parametros_default: {}
     }
+}
+
+function formatarNumero(num,digitos){
+    let str = num+"";
+    if(str.length<digitos){
+        let faltam = digitos-str.length;
+        for(let i=0; i<faltam; i++)
+            str="0"+str;
+    }
+    return str;
 }
 
 function consultarDadosProfessor(info, resposta_dom) {
@@ -49,8 +60,17 @@ function consultarDadosProfessor(info, resposta_dom) {
             nome = conteudosEl.querySelector("nome").innerHTML,
             titulacao = conteudosEl.querySelector("titulacao").innerHTML;
 
+        if(titulacao=="M")
+            titulacao = "Mestre";
+        else if(titulacao=="E")
+            titulacao = "Especialista";
+        else if(titulacao=="D")
+            titulacao = "Doutor";
+        else if(titulacao=="G")
+            titulacao = "Graduado";
+
         args = {
-            id,
+            id: formatarNumero(id,9),
             id_depto,
             nome,
             titulacao
@@ -62,6 +82,8 @@ function consultarDadosProfessor(info, resposta_dom) {
         for(let el of els){
             holder.appendChild(el);
         }
+
+        requisicao("consultarDisciplinaProfessor",{"id-professores": id});
     }
 }
 
@@ -78,7 +100,7 @@ function consultarDisciplinaProfessor(info, resposta_dom) {
     }
 }
 
-function consultarDisciplina(info, resposta_dom) {
+async function consultarDisciplina(info, resposta_dom) {
     let args;
     const holder = document.querySelector(info.queries.holder);
     if (holder.querySelectorAll("tr > td").length>1 && holder.querySelectorAll("tr > td")[1].innerHTML=="AULA DE PEBOLIM")
@@ -93,9 +115,13 @@ function consultarDisciplina(info, resposta_dom) {
             horaria = disciplinaProfessorEl.querySelector("carga-horaria-min").innerHTML,
             id = disciplinaProfessorEl.querySelector("id").innerHTML;
 
+        let turma_dom = await requisicao("consultarTurma",{id:id_turma});
+        if(turma_dom==null)return;
+        let turma = turma_dom[0].querySelector("nome").innerHTML;
+
         args = {
             carga_horaria: horaria,
-            turma: id_turma,
+            turma,
             disciplina: nome,
             id
         };
@@ -113,4 +139,3 @@ function consultarDisciplina(info, resposta_dom) {
 leInfos(infos);
 
 requisicao("consultarDadosProfessor");
-requisicao("consultarDisciplinaProfessor");
