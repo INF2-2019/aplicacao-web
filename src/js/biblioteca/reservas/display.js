@@ -134,7 +134,6 @@ function preencherInput() {
 		.then(response => response.text())
 		.then(str => (new window.DOMParser()).parseFromString(str, "text/xml"))
 		.then(xml => {
-			console.log(xml);
 			for (departamento of xml.getElementsByTagName('aluno')) {
 				const id = departamento.getElementsByTagName("id")[0].innerHTML
 				const nome = departamento.getElementsByTagName("nome")[0].innerHTML

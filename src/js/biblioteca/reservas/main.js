@@ -22,7 +22,6 @@ function idNome(val) {
 		.then(response => response.text())
 		.then(str => (new window.DOMParser()).parseFromString(str, "text/xml"))
 		.then(xml => {
-			console.log(xml);
 			return xml.getElementsByTagName('aluno')[0].getElementsByTagName('nome')[0].innerHTML
 		})
 }
@@ -50,12 +49,10 @@ $(document).on('click', '.editar', e => {
 	currentId = e.currentTarget.parentElement.parentElement.childNodes[0].innerHTML;
 
 	// colocar a opção no atual no select
-	console.log(e.currentTarget.parentElement.parentElement.childNodes[0])
 	const val = e.currentTarget.parentElement.parentElement.childNodes[1].innerHTML;
 	const id = e.currentTarget.parentElement.parentElement.childNodes[0].innerHTML;
 	let nome = idNome(val)
 	nome.then( valor =>{
-		console.log(valor)
 	$('#aluno-atualizar').find('option:contains(' + valor + ')').prop('selected', true);
 	$("#aluno-atualizar").formSelect();
 	$("#emprestou-atualizar")
@@ -65,7 +62,6 @@ $(document).on('click', '.editar', e => {
 		.then(response => response.text())
 		.then(str => (new window.DOMParser()).parseFromString(str, "text/xml"))
 		.then(xml => {
-			console.log(xml)
 			let valorEmprestou;
 			if(xml.getElementsByTagName("reserva")[0].getElementsByTagName("emprestou")[0].innerHTML == "false"){
 				valorEmprestou = "Não"
@@ -103,7 +99,6 @@ $(document).on('click', '#atualizar-disciplina', e => {
 	let dataReserva = document.querySelector("#data-reserva-atualizar").value;
 	let tempoEspera = document.querySelector("#tempo-espera-atualizar").value
 	let emprestou = $('#emprestou-atualizar').find(":selected").text();
-	console.log(emprestou)
 	atualizar(aluno, acervo, dataReserva, tempoEspera,emprestou);
 })
 

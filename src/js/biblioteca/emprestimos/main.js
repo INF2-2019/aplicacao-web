@@ -22,7 +22,6 @@ function idNome(val) {
 		.then(response => response.text())
 		.then(str => (new window.DOMParser()).parseFromString(str, "text/xml"))
 		.then(xml => {
-			console.log(xml);
 			return xml.getElementsByTagName('aluno')[0].getElementsByTagName('nome')[0].innerHTML
 		})
 }
@@ -50,22 +49,18 @@ $(document).on('click', '.editar', e => {
 	currentId = e.currentTarget.parentElement.parentElement.childNodes[0].innerHTML;
 
 	// colocar a opção no atual no select
-	console.log(e.currentTarget.parentElement.parentElement.childNodes[0])
 	const val = e.currentTarget.parentElement.parentElement.childNodes[1].innerHTML;
 	const id = e.currentTarget.parentElement.parentElement.childNodes[0].innerHTML;
 	let nome = idNome(val)
 	nome.then( valor =>{
-		console.log(valor)
 	$('#aluno-atualizar').find('option:contains(' + valor + ')').prop('selected', true);
 	$("#aluno-atualizar").formSelect();
-	console.log(id)
 	fetch('http://localhost:8080/app/biblioteca/emprestimos/consultarporid?id=' +id , {
 		credentials: "include",
 	})
 		.then(response => response.text())
 		.then(str => (new window.DOMParser()).parseFromString(str, "text/xml"))
 		.then(xml => {
-			console.log(xml)
 			 document.querySelector("#acervo-atualizar").value = xml.getElementsByTagName("emprestimo")[0].getElementsByTagName("id-acervo")[0].innerHTML
 			 document.querySelector("#data-emprestimo-atualizar").value =  xml.getElementsByTagName("emprestimo")[0].getElementsByTagName("data-emprestimo")[0].innerHTML
 			 document.querySelector("#data-previa-devolução-atualizar").value = xml.getElementsByTagName("emprestimo")[0].getElementsByTagName("data-prev-devol")[0].innerHTML

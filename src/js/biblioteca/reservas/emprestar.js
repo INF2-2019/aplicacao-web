@@ -1,5 +1,4 @@
 function emprestar() {
-  console.log(currentId)
 	fetch(baseURL + 'emprestar?id=' + currentId, {
 		credentials: "include",
 	})
