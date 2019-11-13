@@ -22,7 +22,6 @@ function nomeTurma(id) {
 		.then(str => (new window.DOMParser()).parseFromString(str, "text/xml"))
 		.then(xml => {
 			//pega o nome do único departamento da consulta
-			console.log(xml)
 			return xml.getElementsByTagName("turma")[0].getElementsByTagName("nome")[0].innerHTML
 		})
 		.catch(err => {
