@@ -2,7 +2,7 @@ function validar() {
     let cpf = document.querySelector("#cpf").value;
     let senha = document.querySelector("#senha").value;
     let url = "http://localhost:8080/app/diario/alunos/logar?id="+cpf+"&senha="+senha;
-    fetch(url)
+    fetch(url, { credentials: 'include' })
       .then(resposta => {
         responseStatus = resposta.status;
         return resposta.text();
