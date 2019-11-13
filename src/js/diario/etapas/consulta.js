@@ -7,9 +7,9 @@ function consulta() {
 	xhttp.withCredentials = true;
 
 	var parser = new DOMParser();
-    
-    var tabela = document.getElementById("tabela-etapas-corpo");
-    tabela.innerHTML = "";
+
+	var tabela = document.getElementById("tabela-etapas-corpo");
+	tabela.innerHTML = "";
 
 	//recebe resposta em XML e manipula o XML para criar a tabela
 	xhttp.onreadystatechange = function () {
@@ -33,10 +33,10 @@ function consulta() {
 				}
 				linha += "<td class =\"td-manutencao-etapas\" >"
 				linha += "<a class=\"botao-tabela-etapas edita waves-effect waves-light btn-small modal-trigger material-icons\" href=\"#EditaForm\" name=\"EditarEtapa\" id=\"Edita\">Editar</a>";
-				linha += "<a class=\"botao-tabela-etapas deleta waves-effect waves-light btn-small modal-trigger material-icons\" href=\"#RemoveForm\" style=\"background-color:#D32F2F; margin-left: 1%\">Deletar</a></td>";
+				linha += "<a class=\"botao-tabela-etapas deleta waves-effect waves-light btn-small modal-trigger material-icons red darken-2\" href=\"#RemoveForm\" style=\"margin-left: 1%\">Deletar</a></td>";
 				linha += "</tr>"
 				tabela.innerHTML += linha;
-				
+
 			}
 
 		} else if (xhttp.status !== 200) {
@@ -52,23 +52,23 @@ function consulta() {
 	xhttp.send();
 }
 
-function consultaParametro(){
-    //cria conexão com o servlet consulta
+function consultaParametro() {
+	//cria conexão com o servlet consulta
 	var xhttp = new XMLHttpRequest(),
 		method = "GET",
 		url = "http://localhost:8080/app/diario/etapas/consultar?id=" + document.getElementById('consultaID').value + '&ano=' + document.getElementById('consultaAno').value + '&valor=' + document.getElementById('consultaValor').value;
 	xhttp.open(method, url, true);
 	var parser = new DOMParser();
-    
-    var tabela = document.getElementById("tabela-etapas-corpo");
+
+	var tabela = document.getElementById("tabela-etapas-corpo");
 
 	//recebe resposta em XML e manipula o XML para criar a tabela
 	xhttp.onreadystatechange = function () {
 		if (xhttp.readyState === xhttp.DONE && xhttp.status === 200) {
 			tabela.innerHTML = "";
-            var responseStr = xhttp.responseText;
-            var xmlDoc = parser.parseFromString(responseStr, "text/xml");
-            
+			var responseStr = xhttp.responseText;
+			var xmlDoc = parser.parseFromString(responseStr, "text/xml");
+
 			var elementos = xmlDoc.childNodes[0].children; //HTMLColletion etapa
 			for (let i = 0; i < elementos.length; i++) {
 				let linha = "<tr>";
@@ -85,13 +85,13 @@ function consultaParametro(){
 				}
 				linha += "<td class =\"td-manutencao-etapas\" >"
 				linha += "<a class=\"botao-tabela-etapas edita waves-effect waves-light btn-small modal-trigger material-icons\" href=\"#EditaForm\" name=\"EditarEtapa\" id=\"Edita\">Editar</a>";
-				linha += "<a class=\"botao-tabela-etapas deleta waves-effect waves-light btn-small modal-trigger material-icons\" href=\"#RemoveForm\" style=\"background-color:#D32F2F; margin-left: 1%\">Deletar</a></td>";
+				linha += "<a class=\"botao-tabela-etapas deleta waves-effect waves-light btn-small modal-trigger material-icons red darken-2\" href=\"#RemoveForm\" style=\"margin-left: 1%\">Deletar</a></td>";
 				linha += "</tr>"
 				tabela.innerHTML += linha;
 			}
-                        
+
 		} else if (xhttp.status !== 200) {
-                   var responseStr = xhttp.responseText;
+			var responseStr = xhttp.responseText;
 			if (responseStr != "") {
 				var xmlDoc = parser.parseFromString(responseStr, "text/xml");
 				var resp = xmlDoc.childNodes[0].children[0].innerHTML;

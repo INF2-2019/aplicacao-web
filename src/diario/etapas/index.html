@@ -10,42 +10,43 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
-	<title>Manutenção de Etapas!</title>
+	<title>Manutenção de Etapas</title>
 </head>
 
-<body onload="consulta()" style="font-family: 'Montserrat', sans-serif; background-color: white;">
-	<nav class="nav-extended " style=" ">
-		<div class="row s12 nav-content white-text">
-			<h4 style="margin:0 ;margin-left:0.5%;">S.A. Admin</h4>
+<body onload="consulta()">
+
+	<nav>
+		<div class="nav-wrapper">
+			<a class="brand-logo">S.A. Admin</a>
 		</div>
 	</nav>
 	<!-- fim header -->
 
-	<div id="corpo-manutencao-etapas" class="container row">
+	<div id="corpo-manutencao-etapas" class="container row" style="margin-top: 2%">
 
 		<h2 style="margin:0" class="col push-s2">Etapas</h2>
 
 		<div class="row">
-			<a class="btn col s12 m12 l4 offset-l4 waves-effect waves-light primary modal-trigger"
-			href="#AdicionaForm" name="AdicionarEtapa" id="Adiciona">Adicionar</a>
-			<a class="btn col s12 m12 l4 offset-l4 waves-effect waves-light primary modal-trigger"
-			href="#ConsultaForm" name="ConsultarEtapa" id="Consulta" style="margin-top: 1%">Consultar</a> 	
+			<a class="btn col s12 m12 l4 offset-l4 waves-effect waves-light primary modal-trigger" href="#AdicionaForm"
+				name="AdicionarEtapa" id="Adiciona">Adicionar</a>
+			<a class="btn col s12 m12 l4 offset-l4 waves-effect waves-light primary modal-trigger" href="#ConsultaForm"
+				name="ConsultarEtapa" id="Consulta" style="margin-top: 1%">Consultar</a>
 		</div>
 
 		<!-- RESPOSTA DA CONSULTA -->
-		<div id="consulta-etapas" class = "col s12">
+		<div id="consulta-etapas" class="col s12">
 			<table id="tabela-etapas" class="responsive-table centered highlight">
-					<thead>
-							<tr>
-								<th>ID</th>
-								<th>Ano</th>
-								<th>Valor</th>
-								<th>Ações</th>
-							</tr>
-						</thead>
-						<tbody id="tabela-etapas-corpo">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Ano</th>
+						<th>Valor</th>
+						<th>Ações</th>
+					</tr>
+				</thead>
+				<tbody id="tabela-etapas-corpo">
 
-						</tbody>
+				</tbody>
 			</table>
 		</div>
 
@@ -54,7 +55,7 @@
 			<div class="row modal-content">
 				<h4>Adicionar etapa</h4>
 				<div class="input-field col s4">
-					<input type="number" name="ano"	id="adicionaAnoEtapa">
+					<input type="number" name="ano" id="adicionaAnoEtapa">
 					<label class="col" for="ano">Ano</label>
 				</div>
 				<div class="input-field col s4">
@@ -76,8 +77,8 @@
 			<h4 style="padding: 15pt;">Consultar etapa</h4>
 			<div class="row modal-content">
 				<div class="input-field col s4">
-						<input id="consultaID" type="number" />
-						<label for="consultaID">ID</label>
+					<input id="consultaID" type="number" />
+					<label for="consultaID">ID</label>
 				</div>
 				<div class="input-field col s4">
 					<input id="consultaAno" type="number" />
@@ -85,12 +86,12 @@
 				</div>
 				<div class="input-field col s4">
 					<input id="consultaValor" type="text" />
-					<label for="consultaValor" >Valor</label>
+					<label for="consultaValor">Valor</label>
 				</div>
 			</div>
 			<div class="container modal-footer">
-				<a class="modal-close btn utils erro-2" onclick="recarrega()" >Cancelar</a>
-				<a class="modal-close btn primary" onclick="consultaParametro()" >Salvar</a>
+				<a class="modal-close btn utils erro-2" onclick="recarrega()">Cancelar</a>
+				<a class="modal-close btn primary" onclick="consultaParametro()">Salvar</a>
 			</div>
 		</div>
 
@@ -106,12 +107,12 @@
 				</div>
 				<div class="input-field col s4">
 					<input id="editaValor" type="text" />
-					<label for="editaValor" >Valor</label>
+					<label for="editaValor">Valor</label>
 				</div>
 			</div>
 			<div class="container modal-footer">
-				<a class="modal-close btn utils erro-2" onclick="recarrega()" >Cancelar</a>
-				<a class="modal-close btn primary" onclick="atualiza()" >Salvar</a>
+				<a class="modal-close btn utils erro-2" onclick="recarrega()">Cancelar</a>
+				<a class="modal-close btn primary" onclick="atualiza()">Salvar</a>
 			</div>
 		</div>
 
@@ -124,7 +125,7 @@
 				<h6>Tem certeza que deseja deletar esta etapa?</h6>
 			</div>
 			<div class="modal-footer">
-				<a class="modal-close btn utils erro-2" onclick="recarrega()" >Cancelar</a>
+				<a class="modal-close btn utils erro-2" onclick="recarrega()">Cancelar</a>
 				<a class="modal-close btn primary" onclick="deleta()">Deletar</a>
 			</div>
 		</div>
