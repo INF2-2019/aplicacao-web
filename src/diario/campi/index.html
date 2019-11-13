@@ -7,11 +7,26 @@
         <link rel="stylesheet" href="../../css/estilo.css">
     </head>
     <body class="background full-height">
-      <nav>
-        <div class="nav-wrapper">
-          <a class="brand-logo">S.A. Admin</a>
-        </div>
-      </nav>
+        <ul id="dropdown1" class="dropdown-content">
+                <li><a href="../transferencia/index.html">Transferência</a></li>
+                <li><a href="../professores/index.html">Professores</a></li>
+                <li><a href="../departamentos/index.html">Departamentos</a></li>
+                <li ><a href="../cursos/index.html">Cursos</a></li>
+                <li><a href="../etapas/index.html">Etapas</a></li>
+                <li><a href="../disciplinas/index.html">Disciplinas</a></li>
+                <li><a href="../alunos/index.html">Alunos</a></li>
+                <li class="active"><a href="../campi/index.html">Campi</a></li>
+            </ul>
+            <nav>
+                <div class="nav-wrapper">
+                    <a class="brand-logo">Diário</a>
+                    <ul class="right hide-on-med-and-down">
+                        <li><a href="../login-adm.html">Login</a></li>
+                        <li><a href="../transicao/adm.html">Página Inicial</a></li>
+                        <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Funções<i class="material-icons right">arrow_drop_down</i></a></li>
+                    </ul>
+                </div>
+            </nav>
       <div class="container">
       <h2>Campi</h2>
            <a id="botao-manutencao-campi" class="btn right primary editar modal-trigger botaoAdicionar right" href="#modal-cadastro">Adicionar</a>
