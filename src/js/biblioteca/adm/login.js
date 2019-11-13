@@ -1,31 +1,32 @@
 const METODO = "POST";
-const ENDERECO = "http://localhost:8080/app"
-const ROTA = "/diario/professores/logar"
+const ENDERECO = "http://localhost:8080/app";
+const ROTA = "/biblioteca/admin/login";
 const MANTER = true;
 
-const PAGINA_DESTINO = "transicao/professor.html";
+const PAGINA_DESTINO = "transicao/adm.html";
 
 let inputs;
 
 function logar() {
 	inputs = document.getElementsByTagName("input");
-	
-	let siape = inputs[0].value;
+
+	let acesso = inputs[0].value;
 	let senha = inputs[1].value;
 
-	jqueryAjax(siape, senha, MANTER);
-	
+	jqueryAjax(acesso, senha, MANTER);
+
 }
 
-// Vanilla n tava funfando to nem aí
-function jqueryAjax(siape, senha, manter) {
+function jqueryAjax(acesso, senha, manter) {
 	$.ajax(ENDERECO+ROTA, {
 		method: METODO,
-		xhrFields: { withCredentials: true },
 		data: {
-			siape: siape,
+			login: acesso,
 			senha: senha,
 			manter: manter
+		},
+		xhrFields: {
+			withCredentials: true
 		}
 	})
 	.then(

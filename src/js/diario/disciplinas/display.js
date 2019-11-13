@@ -84,7 +84,9 @@ function limpaInputs(inputType) {
 
 function preencherInput() {
 	console.log("AAAAA")
-	fetch('http://localhost:8080/app/diario/turmas/consultar')
+	fetch('http://localhost:8080/app/diario/turmas/consultar', {
+		credentials: "include",
+	})
 		.then(response => response.text())
 		.then(str => (new window.DOMParser()).parseFromString(str, "text/xml"))
 		.then(xml => {

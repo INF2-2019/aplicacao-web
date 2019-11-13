@@ -1,6 +1,7 @@
 function emprestar() {
-  console.log(currentId)
-	fetch(baseURL + 'emprestar?id=' + currentId)
+	fetch(baseURL + 'emprestar?id=' + currentId, {
+		credentials: "include",
+	})
 		.then(response => response.text())
 		.then(str => (new window.DOMParser()).parseFromString(str, "text/xml"))
 		.then(xml => (retornaResposta(xml)))

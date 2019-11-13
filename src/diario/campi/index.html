@@ -1,0 +1,153 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Manipulação de Campi</title>
+        <link rel="stylesheet" href="../../css/materialize.css">
+        <link rel="stylesheet" href="../../css/estilo.css">
+    </head>
+    <body class="background full-height">
+      <nav>
+        <div class="nav-wrapper">
+          <a class="brand-logo">S.A. Admin</a>
+        </div>
+      </nav>
+      <div class="container">
+      <h2>Campi</h2>
+           <a id="botao-manutencao-campi" class="btn teal lighten-1 modal-trigger botaoAdicionar right" href="#modal-cadastro">Adicionar</a>
+
+           <div class="row">
+                 <div class="input-field col s2">
+                   <select id="filtros">
+
+                     <option value="1" selected>ID</option>
+                     <option value="2">Nome</option>
+                     <option value="3">Cidade</option>
+                     <option value="4">UF</option>
+                   </select>
+                   <label>Filtrar por:</label>
+                 </div>
+
+                 <div class="col s5 center-align">
+             			<nav>
+             				<div class="nav-wrapper">
+             					<form>
+             						<div class="input-field">
+             							<input id="search" style="background-color: #29A58C" type="search" oninput="pesquisa()" required>
+             							<label class="label-icon" for="search"><i class="  material-icons"></i></label>
+             							<i class="material-icons">close</i>
+             						</div>
+             					</form>
+             				</div>
+             			</nav>
+           		</div>
+              </div>
+
+
+        <div class="">
+            <table id="tabela">
+
+            </table>
+        </div>
+
+
+
+        <div id="modal-cadastro" class="modal background full-height">
+            <div class="modal-content-manutencao-campi">
+                <div class="header-manutencao-campi">Novo campus</div>
+                <div class="container"></div>
+               <div class="row">
+                   <div class="col s12 m9">
+                        <div class="col offset-s1 s10">
+                            <span class="span-cadastro-manutencao-campi">Nome*</span><input name="campus-nome" type="text" class="obrigatorio-cadastro" id="nome">
+                        </div>
+
+                        <div class="col offset-s1 s10">
+                            <span class="span-cadastro-manutencao-campi">Cidade*</span><input name="campus-cidade" type="text" class="obrigatorio-cadastro" id="cidade">
+                        </div>
+
+                        <div class="col offset-s1 s10">
+                            <span class="span-cadastro-manutencao-campi">UF*</span><input name="campus-UF" type="text" class="obrigatorio-cadastro" id="uf">
+                            <span class="span-cadastro-manutencao-campi"><i>Os campos com * são obrigatórios</i></span><br>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="row" id="divbotoes">
+                    <div class="col offset-s1">
+                        <button class="btns waves-effect blue darken-3 btn modal-close" id="btConfirmaCadastro">Confirmar</button>
+                        <button class="modal-close btns waves-effect teal lighten-1 btn botaoCancelar">Cancelar</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div id="modal-editar" class="modal background full-height">
+            <div class="modal-content-manutencao-campi">
+                <div class="header-manutencao-campi">Editar campus</div>
+                <div class="container"></div>
+               <div class="row">
+                   <div class="col s12 m9">
+
+                     <div class="col offset-s1 s10">
+                         <span class="span-cadastro-manutencao-campi">ID*</span><input name="campus-id" type="text" id="idEdit" readonly>
+                     </div>
+
+                        <div class="col offset-s1 s10">
+                            <span class="span-cadastro-manutencao-campi">Nome</span><input name="campus-nome" type="text" id="nome1">
+                        </div>
+
+                        <div class="col offset-s1 s10">
+                            <span class="span-cadastro-manutencao-campi">Cidade</span><input name="campus-cidade" type="text" id="cidade1">
+                        </div>
+
+                        <div class="col offset-s1 s10">
+                            <span class="span-cadastro-manutencao-campi">UF</span><input name="campus-UF" type="text" id="uf1">
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="row" id="divbotoes">
+                    <div class="col offset-s1">
+                        <button class="btns waves-effect blue darken-3 btn modal-close" id="btConfirmaEditar">Confirmar</button>
+                        <button class="modal-close btns waves-effect teal lighten-1 btn botaoCancelar">Cancelar</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+        <div id="modal-deletar-manutencao-campi" class="modal modal-fixed-footer background full-height">
+            <div class="modal-content-manutencao-campi background full-height">
+                <div class="header-manutencao-campi">Deletar Campus</div>
+                <div class="container">
+                    <div class="row">
+                        Tem certeza que deseja deletar este campus?
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-close btns waves-effect teal lighten-1 btn">Cancelar</button>
+                <button class="btns waves-effect red darken-2 btn modal-close" id="delet">Deletar</button>
+            </div>
+            </div>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+        <script src="../../js/materialize.js"></script>
+        <script src="../../js/diario/campi/tabela.js"></script>
+        <script src="../../js/diario/campi/filtragem.js"></script>
+        <script src="../../js/diario/campi/extras.js"></script>
+        <script src="../../js/diario/campi/inserir.js"></script>
+        <script src="../../js/diario/campi/resultado.js"></script>
+        <script src="../../js/diario/campi/editar.js"></script>
+        <script src="../../js/diario/campi/deletar.js"></script>
+    </body>
+</html>
