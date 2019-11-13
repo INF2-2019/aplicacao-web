@@ -31,13 +31,15 @@ function consulta() {
 					elemento += "</td>";
 					linha += elemento;
 				}
-				linha += "<td class =\"td-manutencao-etapas\" ><button name=\"EditarEtapa\" class=\"botao-tabela-etapas edita waves-effect waves-light btn-small modal-trigger material-icons\" href=\"#EditaForm\" id=\"Edita\" >EDITAR</button>    ";
-				linha += "<button class=\"botao-tabela-etapas deleta waves-effect waves-light btn-small modal-trigger material-icons\" href=\"#RemoveForm\" style=\"background-color:#D32F2F\">DELETAR</button></td>";
+				linha += "<td class =\"td-manutencao-etapas\" >"
+				linha += "<a class=\"botao-tabela-etapas edita waves-effect waves-light btn-small modal-trigger material-icons\" href=\"#EditaForm\" name=\"EditarEtapa\" id=\"Edita\">Editar</a>";
+				linha += "<a class=\"botao-tabela-etapas deleta waves-effect waves-light btn-small modal-trigger material-icons\" href=\"#RemoveForm\" style=\"background-color:#D32F2F; margin-left: 1%\">Deletar</a></td>";
 				linha += "</tr>"
 				tabela.innerHTML += linha;
+				
 			}
 
-		} else if (xhttp.status === 400) {
+		} else if (xhttp.status !== 200) {
 			var responseStr = xhttp.responseText;
 			if (responseStr != "") {
 				var xmlDoc = parser.parseFromString(responseStr, "text/xml");
@@ -81,8 +83,9 @@ function consultaParametro(){
 					elemento += "</td>";
 					linha += elemento;
 				}
-				linha += "<td class =\"td-manutencao-etapas\"><button name=\"EditarEtapa\" class=\"botao-tabela-etapas edita waves-effect waves-light btn-small modal-trigger material-icons\" href=\"#EditaForm\" id=\"Edita\" >EDITAR</button>    ";
-				linha += "<button class=\"botao-tabela-etapas deleta waves-effect waves-light btn-small modal-trigger material-icons\" href=\"#RemoveForm\" style=\"background-color:#D32F2F\">DELETAR</button></td>";
+				linha += "<td class =\"td-manutencao-etapas\" >"
+				linha += "<a class=\"botao-tabela-etapas edita waves-effect waves-light btn-small modal-trigger material-icons\" href=\"#EditaForm\" name=\"EditarEtapa\" id=\"Edita\">Editar</a>";
+				linha += "<a class=\"botao-tabela-etapas deleta waves-effect waves-light btn-small modal-trigger material-icons\" href=\"#RemoveForm\" style=\"background-color:#D32F2F; margin-left: 1%\">Deletar</a></td>";
 				linha += "</tr>"
 				tabela.innerHTML += linha;
 			}
