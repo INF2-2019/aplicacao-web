@@ -58,6 +58,8 @@ function consultaParametro() {
 		method = "GET",
 		url = "http://localhost:8080/app/diario/etapas/consultar?id=" + document.getElementById('consultaID').value + '&ano=' + document.getElementById('consultaAno').value + '&valor=' + document.getElementById('consultaValor').value;
 	xhttp.open(method, url, true);
+	xhttp.withCredentials = true;
+
 	var parser = new DOMParser();
 
 	var tabela = document.getElementById("tabela-etapas-corpo");
