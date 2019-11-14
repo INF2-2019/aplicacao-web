@@ -18,7 +18,7 @@ function pegarId() {
     .then(text => {
         parser = new DOMParser();
         xmlDoc = parser.parseFromString(text, "text/xml");
-        if (xmlDoc.childNodes[0].childNodes[5].childNodes[0] == undefined) {
+        if (xmlDoc.childNodes[0].childNodes[5].childNodes[0] != undefined) {
             let id = xmlDoc.childNodes[0].childNodes[5].childNodes[0].nodeValue;
             let foto = document.querySelector("#foto-perfil-aluno");
             consulta(id, foto);
