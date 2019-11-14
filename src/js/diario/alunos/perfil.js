@@ -20,7 +20,7 @@ function pegarId() {
         xmlDoc = parser.parseFromString(text, "text/xml");
         if (xmlDoc.childNodes[0].childNodes[5].childNodes[0] == undefined) {
             let id = xmlDoc.childNodes[0].childNodes[5].childNodes[0].nodeValue;
-            let foto = document.querySelector("#foto");
+            let foto = document.querySelector("#foto-perfil-aluno");
             consulta(id, foto);
             idSessao = id;
         }
@@ -52,7 +52,7 @@ function alterarFoto(foto) {
     .then(text => {
         parser = new DOMParser();
         xmlDoc = parser.parseFromString(text, "text/xml");
-        let foto = document.querySelector("#foto");
+        let foto = document.querySelector("#foto-perfil-aluno");
         consulta(idSessao, foto);
         adicionaResult(responseStatus, xmlDoc);
     });

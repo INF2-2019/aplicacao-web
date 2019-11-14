@@ -9,9 +9,13 @@
     </head>
     <body class="background">
              <div class="modal-content-manutencao-campi">
+                <ul id="dropdown1" class="dropdown-content">
+                </ul>
                 <nav>
                     <div class="nav-wrapper">
-                        <a class="brand-logo">S.A. Aluno</a>
+                        <a class="brand-logo">Diário</a>
+                        <ul class="right hide-on-med-and-down">
+                        </ul>
                     </div>
                 </nav>
                 <div class="container">
@@ -20,47 +24,47 @@
                         <div class="col s12 m9">
                             <div class="row">
                                 <div class="col s4">
-                                    <span class="span-cadastro-manutencao-campi">CPF</span><input class="info" name="cpf" type="number" maxlength="11" readonly>
+                                    <span class="primary-text">CPF</span><input class="info" name="cpf" type="number" maxlength="11" readonly>
                                 </div>
                                 <div class="col s8">
-                                    <span class="span-cadastro-manutencao-campi">Nome</span><input class="info" name="nome" type="text" readonly>
+                                    <span class="primary-text">Nome</span><input class="info" name="nome" type="text" readonly>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col s6">
-                                    <span class="span-cadastro-manutencao-campi">Email</span><input class="info" name="email" type="email" readonly>
+                                    <span class="primary-text">Email</span><input class="info" name="email" type="email" readonly>
                                 </div>
                                 <div class="col s3">
-                                    <span class="span-cadastro-manutencao-campi">Sexo</span>
+                                    <span class="primary-text">Sexo</span>
                                     <input name="sexo" type="text" readonly class="info">
                                 </div>
                                 <div class="col s3">
-                                    <span class="span-cadastro-manutencao-campi">Nascimento</span><input class="info" name="nascimento" type="date" readonly>
+                                    <span class="primary-text">Nascimento</span><input class="info" name="nascimento" type="date" readonly>
                                 </div>                                
                             </div>
                             <div class="row">
                                 <div class="col s4">
-                                    <span class="span-cadastro-manutencao-campi">Logradouro</span><input class="info" name="logradouro" type="text" readonly>
+                                    <span class="primary-text">Logradouro</span><input class="info" name="logradouro" type="text" readonly>
                                 </div>
                                 <div class="col s4">
-                                    <span class="span-cadastro-manutencao-campi">Número</span><input class="info" name="numero" type="number" readonly>
+                                    <span class="primary-text">Número</span><input class="info" name="numero" type="number" readonly>
                                 </div>
                                 <div class="col s4">
-                                    <span class="span-cadastro-manutencao-campi">Complemento</span><input class="info" name="complemento" type="text" readonly>
+                                    <span class="primary-text">Complemento</span><input class="info" name="complemento" type="text" readonly>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col s3">
-                                    <span class="span-cadastro-manutencao-campi">Bairro</span><input class="info" name="bairro" type="text" readonly>
+                                    <span class="primary-text">Bairro</span><input class="info" name="bairro" type="text" readonly>
                                 </div>
                                 <div class="col s3">
-                                    <span class="span-cadastro-manutencao-campi">Cidade</span><input class="info" name="cidade" type="text" readonly>
+                                    <span class="primary-text">Cidade</span><input class="info" name="cidade" type="text" readonly>
                                 </div>
                                 <div class="col s3">
-                                    <span class="span-cadastro-manutencao-campi">CEP</span><input class="info" name="cep" type="number" readonly>
+                                    <span class="primary-text">CEP</span><input class="info" name="cep" type="number" readonly>
                                 </div>
                                 <div class="col s3">
-                                    <span class="span-cadastro-manutencao-campi">UF</span><input class="info" name="uf" type="text" readonly>
+                                    <span class="primary-text">UF</span><input class="info" name="uf" type="text" readonly>
                                 </div>
                             </div>
                             <div class="row">
@@ -71,11 +75,10 @@
                         </div>
                         <a class="modal-trigger" href="#modal-foto-perfil-alunos">
                             <div id="divfoto-perfil-alunos" class="offset-l1 offset-s1 offset-m2 col l2 s2">
-                                        <img id="foto" class="foto-manutencao-alunos" src="" >
+                                <img id="foto-perfil-aluno" class="foto-manutencao-alunos" src="" >
                             </div>
                         </a>
                         <footer class="left">
-                            <button class="waves-effect teal lighten-1 btn btn-large btVoltar">Voltar</button>
                             <a class="waves-effect teal darken-4 btn btn-large modal-trigger" href="#divSenha-perfil-alunos">Alterar senha</a>
                         </footer>
                     </div>
@@ -84,11 +87,11 @@
         
         
             <div id="modal-foto-perfil-alunos" class="modal modal-fixed-footer">
-                <div class="header-manutencao-campi">Alterar foto</div>
+                <h4 style="padding: 15pt;">Alterar foto</h4>
                 <img id="fotoAlterada-perfil-alunos" class="foto-manutencao-alunos" src="">
                 <div class="row">
                     <div class="col s11">
-                        <span class="span-cadastro-manutencao-campi">Link da foto</span><input id="link" onchange="loadFoto()" type="text">
+                        <span class="primary-text">Link da foto</span><input id="link" onchange="loadFoto()" type="text">
                     </div>
                 </div>
                 <footer class="center">
@@ -97,9 +100,9 @@
                 </footer>
             </div>
         
-        <div id="divSenha-perfil-alunos" class="modal modal-fixed-footer">
+        <div id="divSenha-perfil-alunos" class="modal ">
             <div class="modal-content-manutencao-campi">
-                <div class="header-manutencao-campi">Alterar senha</div>
+                <h4 style="padding: 15pt;">Alterar senha</h4>
                 <div class="container">
                     <div class="row">
                         <div class="col s12 m9">
