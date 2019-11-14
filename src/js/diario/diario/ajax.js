@@ -42,8 +42,8 @@ function analiseXML(xml_string, output_status = true) {
         doc = parser.parseFromString(xml_string, "text/xml");
 
     // Se resposta não for um status
-    if (doc.querySelector("info > erro, info > sucesso") == null) {
-        const info = doc.querySelector("info");
+    if (doc.querySelector("erro, sucesso") == null) {
+        const info = doc.children[0];
         if (info.children.length >= 1)
             return [...info.children]; // Retorna vetor com todos os filhos
         else
@@ -53,17 +53,17 @@ function analiseXML(xml_string, output_status = true) {
     // As seguintes linhas só serão executadas caso a resposta seja um status (erro ou sucesso)
 
     // Variavel status é true caso o status seja sucesso e false se for erro
-    let status = (doc.querySelector("info > erro") == null);
+    let status = (doc.querySelector("erro") == null);
     resposta.status = status;
 
     // Já que causa é opcional
-    if (doc.querySelector("info > * > causa") != null) {
-        let causa = doc.querySelector("info > * > causa").innerHTML;
+    if (doc.querySelector("erro > causa, sucesso > causa") != null) {
+        let causa = doc.querySelector("erro > causa, sucesso > causa").innerHTML;
         resposta.causa = causa;
     }
 
     // Independentemente do status, sempre haverá uma mensagem
-    let mensagem = doc.querySelector("info > * > mensagem").innerHTML;
+    let mensagem = doc.querySelector("erro > mensagem, sucesso > mensagem").innerHTML;
     resposta.mensagem = mensagem;
 
     if (output_status)

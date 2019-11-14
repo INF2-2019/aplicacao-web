@@ -21,7 +21,8 @@ function inserir() {
     .then(text => {
       parser = new DOMParser();
       xmlDoc = parser.parseFromString(text, "text/xml");
+      adicionaResult(responseStatus, xmlDoc);
+      listar();
     });
-    setTimeout(function(){ listar(); }, 200);
-    setTimeout(function(){ adicionaResult(responseStatus, xmlDoc); }, 200);
+
 }

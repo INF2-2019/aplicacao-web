@@ -10,13 +10,8 @@
 
 .form-manutencao-etapas {
 	margin-left: 1%;
-  margin-right: 1%;
+  	margin-right: 1%;
 	padding-top: 1%;
-}
-
-#corpo-manutencao-etapas {
-  padding-left: 15%;
-  padding-right: 15%;
 }
 
 @media print {
@@ -56,6 +51,9 @@
 
 }
 
+.botao-tabela-etapas{
+	font-family: 'Montserrat', sans-serif;
+}
 
 .modal .modal-content-manutencao-campi {
 	padding: 0;
@@ -64,6 +62,7 @@
 .btnAjuste-manutencao-campi{
 	margin-right: 1%;
 }
+
 #modal-deletar-manutencao-campi{
 	width:30%;
 	height: 20%;
@@ -86,7 +85,6 @@
 }
 
 #divSenha-perfil-alunos{
-
 	width: 35%;
 }
 
@@ -110,6 +108,4 @@
 	margin-right: auto;
 	margin-bottom: 20pt;
 }
-
-
 
