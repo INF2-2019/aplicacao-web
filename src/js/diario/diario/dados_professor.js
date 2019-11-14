@@ -29,15 +29,7 @@ const infos = {
     }
 }
 
-function formatarNumero(num,digitos){
-    let str = num+"";
-    if(str.length<digitos){
-        let faltam = digitos-str.length;
-        for(let i=0; i<faltam; i++)
-            str="0"+str;
-    }
-    return str;
-}
+
 
 function consultarDadosProfessor(info, resposta_dom) {
     let args;

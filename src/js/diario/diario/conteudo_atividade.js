@@ -56,6 +56,20 @@ const infos = {
         },
         callback: consultarAtividadePos
     },
+    consultarMatriculas: {
+        link: "/diario/matriculas/listar",
+        parametros_default: {
+            idDisciplinas: DISCIPLINA
+        },
+        queries: {
+            holder: ["#holder_notas_faltas", "#holder_faltas"],
+            template: ["#template_nota_falta", "#template_falta"]
+        },
+        callback: consultarMatriculasPos
+    },
+    consultarAluno: {
+        link: "/diario/alunos/consultar"
+    },
     alterarAtividade: {
         link: "/diario/diario/conteudo/atualizar",
         parametros_default: {
@@ -87,41 +101,21 @@ const infos = {
         callback: atualizarAtividade
     },
     lancaFalta: {
-                    link: "/diario/diario/diario/inserir",
-                    parametros_default: {
-                        tipo: "conteudo"
-                    },
-                    queries: {
-                        inputs: "input"
-                    },
-                    ativadores: { evento: "click", query: "#lancarFalta" },
-                    callback: console.log
-                }, lancaNota: {
-                    link: "/diario/diario/diario/inserir",
-                    parametros_default: {
-                        tipo: "atividade"
-                    },
-                    queries: {
-                        inputs: "input"
-                    },
-                    ativadores: { evento: "click", query: "#lancarNota" },
-                    callback: console.log
-                }
-    };
-
-// Código baseado na primeira resposta do site: https://pt.stackoverflow.com/questions/6526/como-formatar-data-no-javascript
-function dataFormatada(data){
-    let pedacos = data.split("-");
-    pedacos = pedacos.map(x=> parseInt(x));
-    data = new Date(pedacos[0],pedacos[1]-1, pedacos[2]);
-    
-    let dia  = (data.getDate()).toString(), // tive que colocar o +1 por algum motivo que desconheço, mas sei que sem ele não funciona
-        diaF = (dia.length == 1) ? '0'+dia : dia,
-        mes  = (data.getMonth()+1).toString(), //+1 pois no getMonth Janeiro começa com zero.
-        mesF = (mes.length == 1) ? '0'+mes : mes,
-        anoF = data.getFullYear();
-    return diaF+"/"+mesF+"/"+anoF;
-}
+        link: "/diario/diario/diario/inserir",
+        parametros_default: {
+            tipo: "conteudo"
+        }
+    }, 
+    lancaNota: {
+        link: "/diario/diario/diario/inserir",
+        parametros_default: {
+            tipo: "atividade"
+        }
+    },
+    consultaDiario:{
+        link: "/diario/diario/diario/consulta"
+    }
+};
 
 function alterarConteudo(info, pai){
     const modal = document.querySelector(info.queries.alterar);
@@ -135,7 +129,6 @@ function alterarConteudo(info, pai){
         }
     }
 }
-
 
 function deletarConteudo(info, pai){
     let id = pai.dataset.id;
@@ -163,6 +156,8 @@ function consultarConteudoPos(info,resposta_dom){
             data = conteudosEl.querySelector("data").innerHTML,
             id = conteudosEl.querySelector("id").innerHTML;
 
+        consultaDiario(id);
+
         args = { 
             conteudo, 
             etapa, 
@@ -174,14 +169,50 @@ function consultarConteudoPos(info,resposta_dom){
         let el = geraElemento(info.queries.template,args)[0];
 
         let botao_edit = el.querySelector(".edit"),
-            botao_deletar = el.querySelector(".delete");
+            botao_deletar = el.querySelector(".delete"),
+            botao_lanca = el.querySelector(".falta");
         
         botao_edit.addEventListener("click", () => alterarConteudo(info, el));
-        botao_deletar.addEventListener("click", ()=> deletarConteudo(info, el));
+        botao_deletar.addEventListener("click", () => deletarConteudo(info, el));
+        botao_lanca.addEventListener("click", () => consultaDiarioConteudoFalta(info, el));
 
         holder.appendChild(el);
 
     }  
+}
+
+async function consultaDiarioConteudoFalta(info, el){
+    let conteudo = el.dataset.id;
+
+    const holder = document.querySelector(infos.consultarMatriculas.queries.holder[1]);
+    holder.dataset.conteudo = conteudo;
+}
+
+
+const diarios = {}
+
+async function consultaDiario(id){
+    let conteudo = id;
+    if (diarios[conteudo] == undefined) diarios[conteudo] = {};
+
+    let objetoDiario = diarios[conteudo];
+
+    let diarioEls = await requisicao("consultaDiario", { conteudo });
+    if (diarioEls == null) return;
+
+    for (let diarioEl of diarioEls) {
+        let matricula = diarioEl.querySelector("id-matriculas").innerHTML,
+            faltas = diarioEl.querySelector("faltas").innerHTML,
+            nota = diarioEl.querySelector("nota").innerHTML;
+
+        matricula = formatarNumero(matricula);
+
+        objetoDiario[matricula] = {
+            faltas,
+            nota
+        };
+        
+    }
 }
 
 function consultarAtividadePos(info, resposta_dom) {
@@ -197,6 +228,8 @@ function consultarAtividadePos(info, resposta_dom) {
             valor = conteudosEl.querySelector("valor").innerHTML,
             id = conteudosEl.querySelector("id").innerHTML;
 
+        consultaDiario(id);
+
         args = {
             atividade,
             etapa,
@@ -209,12 +242,63 @@ function consultarAtividadePos(info, resposta_dom) {
         let el = geraElemento(info.queries.template, args)[0];
 
         let botao_edit = el.querySelector(".edit"),
-            botao_deletar = el.querySelector(".delete");
+            botao_deletar = el.querySelector(".delete"),
+            botao_lanca = el.querySelector(".nota");
 
         botao_edit.addEventListener("click", () => alterarConteudo(info, el));
         botao_deletar.addEventListener("click", () => deletarAtividade(info, el));
+        botao_lanca.addEventListener("click", () => consultaDiarioConteudoNota(info, el));
 
         holder.appendChild(el);
+    }
+}
+
+function consultaDiarioConteudoNota(info, el) {
+    let conteudo = el.dataset.id;
+
+    const holder = document.querySelector(infos.consultarMatriculas.queries.holder[0]);
+    holder.dataset.conteudo = conteudo;
+}
+
+async function consultarMatriculasPos(info, resposta_dom) {
+    let args;
+    const holders = [];
+    for (let holder_query of info.queries.holder){
+        const holder = document.querySelector(holder_query);
+        holder.innerHTML = "";
+        holders.push(holder);
+    }
+
+    if (resposta_dom == null) return;
+
+    for (let matriculasEl of resposta_dom) {
+        let matricula = matriculasEl.querySelector("id").innerHTML,
+            idAluno = matriculasEl.querySelector("id-alunos").innerHTML;
+
+        let alunoEl = await requisicao("consultarAluno",{id: idAluno}),
+            nome="";
+
+        for(let campo of alunoEl){
+            if(campo.tagName=="nome")
+                nome = campo.innerHTML;
+        }
+
+        args = {
+            matricula: formatarNumero(matricula,11),
+            nome
+        };
+
+        for(let i=0; i< holders.length; i++){
+            const holder = holders[i];
+            let template;
+            if (info.queries.template.constructor == Array)
+                template = info.queries.template[i];
+            else
+                template = info.queries.template;
+
+            let el = geraElemento(template, args)[0];
+            holder.appendChild(el);
+        }  
     }
 }
 
@@ -230,3 +314,40 @@ leInfos(infos);
 
 requisicao("consultarConteudo");
 requisicao("consultarAtividade");
+requisicao("consultarMatriculas");
+
+const botaoLancarNota = document.querySelector("#lancarNota");
+const botaoLancarFalta = document.querySelector("#lancarFalta");
+
+function lanca(link, query){
+    const holder = document.querySelector(query);
+    const campos = holder.querySelectorAll("tr");
+
+    for (let campo of campos) {
+        console.log(campo);
+
+        let matricula = formatarNumero(campo.dataset.matricula),
+            conteudo = holder.dataset.conteudo,
+            config = { matricula, conteudo },
+            falta = campo.querySelector("input[name=falta]").value,
+            nota = campo.querySelector("input[name=nota]");
+
+        if(nota!=null) nota = nota.value
+
+        if (falta != "") config.falta = falta;
+        if (!(nota == "" || nota == null )) config.nota = nota;
+
+        console.log(config);
+
+
+        requisicao(link, config);
+    }
+}
+
+botaoLancarFalta.addEventListener("click",()=>{
+    lanca("lancaFalta", infos.consultarMatriculas.queries.holder[1]);
+});
+
+botaoLancarNota.addEventListener("click", () => {
+    lanca("lancaNota", infos.consultarMatriculas.queries.holder[0]);
+});

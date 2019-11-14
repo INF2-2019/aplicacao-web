@@ -44,6 +44,7 @@ function analiseXML(xml_string, output_status = true) {
     // Se resposta não for um status
     if (doc.querySelector("erro, sucesso") == null) {
         const info = doc.children[0];
+       
         if (info.children.length >= 1)
             return [...info.children]; // Retorna vetor com todos os filhos
         else
@@ -102,7 +103,7 @@ async function requisicao(info, parametros) {
     }
 
     const resposta = await pegaTabela(prefixo + link, params),
-        analise = analiseXML(resposta);
+        analise = analiseXML(resposta, true);
 
     if (analise && analise.status === true) { // Se deu certo
         if (inputs != undefined)
@@ -134,4 +135,33 @@ function leInfos(infos) {
                 info_ativador.forEach(i_a => setaAtivadorUnico(info_insere, i_a));
         }
     }
+}
+
+function formatarNumero(num, digitos) {
+    if(typeof num === "string"){
+        num = Number(num);
+        if(digitos===undefined) return num;
+    }
+
+    let str = num + "";
+    if (str.length < digitos) {
+        let faltam = digitos - str.length;
+        for (let i = 0; i < faltam; i++)
+            str = "0" + str;
+    }
+    return str;
+}
+
+// Código baseado na primeira resposta do site: https://pt.stackoverflow.com/questions/6526/como-formatar-data-no-javascript
+function dataFormatada(data) {
+    let pedacos = data.split("-");
+    pedacos = pedacos.map(x => parseInt(x));
+    data = new Date(pedacos[0], pedacos[1] - 1, pedacos[2]);
+
+    let dia = (data.getDate()).toString(), // tive que colocar o +1 por algum motivo que desconheço, mas sei que sem ele não funciona
+        diaF = (dia.length == 1) ? '0' + dia : dia,
+        mes = (data.getMonth() + 1).toString(), //+1 pois no getMonth Janeiro começa com zero.
+        mesF = (mes.length == 1) ? '0' + mes : mes,
+        anoF = data.getFullYear();
+    return diaF + "/" + mesF + "/" + anoF;
 }
