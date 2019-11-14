@@ -78,7 +78,7 @@
                                       <span class="primary-text">Nome*</span><input class="obrigatorio-cadastro" name="nome-cadastro" type="text" id="nome">
                                   </div>
                                   <div class="col s4">
-                                      <span class="primary-text">Senha*</span><input  name="senha-cadastro" type="password" id="senha">
+                                      <span class="primary-text">Senha*</span><input class="obrigatorio-cadastro" name="senha-cadastro" type="password" id="senha">
                                   </div>
                               </div>
                               <div class="row">
@@ -115,7 +115,36 @@
                                       <span class="primary-text">CEP*</span><input class="obrigatorio-cadastro" name="cep-cadastro" type="number" id="cep">
                                   </div>
                                   <div class="col s3">
-                                      <span class="primary-text">UF*</span><input class="obrigatorio-cadastro" name="uf-cadastro" type="text" id="uf">
+                                        <span class="primary-text">UF</span>
+                                        <select name="uf-cadastro" class="input-field" id="uf">
+                                            <option value="AC">Acre</option>
+                                            <option value="AL">Alagoas</option>
+                                            <option value="AP">Amapá</option>
+                                            <option value="AM">Amazonas</option>
+                                            <option value="BA">Bahia</option>
+                                            <option value="CE">Ceará</option>
+                                            <option value="DF">Distrito Federal</option>
+                                            <option value="ES">Espírito Santo</option>
+                                            <option value="GO">Goiás</option>
+                                            <option value="MA">Maranhão</option>
+                                            <option value="MT">Mato Grosso</option>
+                                            <option value="MS">Mato Grosso do Sul</option>
+                                            <option value="MG">Minas Gerais</option>
+                                            <option value="PA">Pará</option>
+                                            <option value="PB">Paraíba</option>
+                                            <option value="PR">Paraná</option>
+                                            <option value="PE">Pernambuco</option>
+                                            <option value="PI">Piauí</option>
+                                            <option value="RJ">Rio de Janeiro</option>
+                                            <option value="RN">Rio Grande do Norte</option>
+                                            <option value="RS">Rio Grande do Sul</option>
+                                            <option value="RO">Rondônia</option>
+                                            <option value="RR">Roraima</option>
+                                            <option value="SC">Santa Catarina</option>
+                                            <option value="SP">São Paulo</option>
+                                            <option value="SE">Sergipe</option>
+                                            <option value="TO">Tocantins</option>
+                                        </select>
                                   </div>
                                   <div class="col s3">
                                       <span class="primary-text">Bairro*</span><input class="obrigatorio-cadastro" name="bairro-cadastro" type="text" id="bairro">
@@ -195,7 +224,7 @@
                               </div>
                               <div class="row">
                                   <div class="col s9">
-                                      <span class="primary-text">Link da foto*</span><input readonly class="info" name="foto-cadastro" type="text">
+                                      <span class="primary-text">Link da foto</span><input readonly class="info" name="foto-cadastro" type="text">
                                   </div>
                               </div>
                           </div>
@@ -262,8 +291,36 @@
                                       <span class="primary-text">CEP</span><input class="recomendado-editar" name="cep-cadastro" type="number" id="cep1">
                                   </div>
                                   <div class="col s3">
-                                      <span clas
-                                      s="primary-text">UF</span><input class="recomendado-editar" name="uf-cadastro" type="text" id="uf1">
+                                        <span class="primary-text">UF</span>
+                                        <select name="uf-cadastro" class="input-field" id="uf1">
+                                            <option value="AC">Acre</option>
+                                            <option value="AL">Alagoas</option>
+                                            <option value="AP">Amapá</option>
+                                            <option value="AM">Amazonas</option>
+                                            <option value="BA">Bahia</option>
+                                            <option value="CE">Ceará</option>
+                                            <option value="DF">Distrito Federal</option>
+                                            <option value="ES">Espírito Santo</option>
+                                            <option value="GO">Goiás</option>
+                                            <option value="MA">Maranhão</option>
+                                            <option value="MT">Mato Grosso</option>
+                                            <option value="MS">Mato Grosso do Sul</option>
+                                            <option value="MG">Minas Gerais</option>
+                                            <option value="PA">Pará</option>
+                                            <option value="PB">Paraíba</option>
+                                            <option value="PR">Paraná</option>
+                                            <option value="PE">Pernambuco</option>
+                                            <option value="PI">Piauí</option>
+                                            <option value="RJ">Rio de Janeiro</option>
+                                            <option value="RN">Rio Grande do Norte</option>
+                                            <option value="RS">Rio Grande do Sul</option>
+                                            <option value="RO">Rondônia</option>
+                                            <option value="RR">Roraima</option>
+                                            <option value="SC">Santa Catarina</option>
+                                            <option value="SP">São Paulo</option>
+                                            <option value="SE">Sergipe</option>
+                                            <option value="TO">Tocantins</option>
+                                        </select>
                                   </div>
                                   <div class="col s3">
                                       <span class="primary-text">Bairro</span><input class="recomendado-editar" name="bairro-cadastro" type="text" id="bairro1">
@@ -271,7 +328,7 @@
                               </div>
                               <div class="row">
                                   <div class="col s9">
-                                      <span class="primary-text">Link da foto*</span><input name="foto-cadastro" type="text" id="fototext3" onchange="loadFoto2()">
+                                      <span class="primary-text">Link da foto</span><input name="foto-cadastro" type="text" id="fototext3" onchange="loadFoto2()">
                                   </div>
                               </div>
                           </div>
