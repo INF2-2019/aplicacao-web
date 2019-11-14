@@ -11,24 +11,9 @@
 </head>
 
 <body>
-	<ul id="dropdown1" class="dropdown-content">
-		<li><a href="../transferencia/index.html">Transferência</a></li>
-		<li><a href="../professores/index.html">Professores</a></li>
-		<li><a href="../departamentos/index.html">Departamentos</a></li>
-		<li class="active"><a href="../cursos/index.html">Cursos</a></li>
-		<li><a href="../etapas/index.html">Etapas</a></li>
-		<li><a href="../disciplinas/index.html">Disciplinas</a></li>
-		<li><a href="../alunos/index.html">Alunos</a></li>
-		<li><a href="../campi/index.html">Campi</a></li>
-	</ul>
 	<nav>
 		<div class="nav-wrapper">
-			<a class="brand-logo">Diário</a>
-			<ul class="right hide-on-med-and-down">
-				<li><a href="../login-adm.html">Login</a></li>
-				<li><a href="../transicao/adm.html">Página Inicial</a></li>
-				<li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Funções<i class="material-icons right">arrow_drop_down</i></a></li>
-			</ul>
+			<a class="brand-logo">S.A. Admin</a>
 		</div>
 	</nav>
 
@@ -75,21 +60,21 @@
 		<div id="modal-add" class="modal">
 			<div class="row modal-content">
 				<h4>Inserir curso</h4>
-				<div class="input-field col s3">
+				<div class="input-field col s12 m3">
 					<select id="departamento-inserir">
 						<option value="" disabled selected>Selecione</option>
 					</select>
 					<label for="departamento-inserir">Departamento</label>
 				</div>
-				<div class="input-field col s9">
+				<div class="input-field col s12 m9">
 					<input id="nome-inserir" type="text" />
 					<label for="nome-inserir">Nome do curso</label>
 				</div>
-				<div class="input-field col s5">
+				<div class="input-field col s12 m5">
 					<input id="horas-inserir" type="number" />
 					<label for="horas-inserir">Horas Totais</label>
 				</div>
-				<div class="input-field col s7">
+				<div class="input-field col s12 m7">
 					<input id="modalidade-inserir" type="text" />
 					<label for="modalidade-inserir">Modalidade</label>
 				</div>
@@ -101,23 +86,23 @@
 		</div>
 
 		<div id="modal-atualizar" class="modal">
-			<h4 style="padding: 15pt;">Atualizar curso</h4>
 			<div class="row modal-content">
-				<div class="input-field col s4">
+				<h4>Atualizar curso</h4>
+				<div class="input-field col s12 m4">
 					<select id="departamento-atualizar">
 						<option value="" disabled selected>Selecione</option>
 					</select>
 					<label for="departamento-atualizar">Departamento</label>
 				</div>
-				<div class="input-field col s8">
+				<div class="input-field col s12 m8">
 					<input id="nome-atualizar" type="text" />
 					<label for="nome-atualizar">Novo nome do curso</label>
 				</div>
-				<div class="input-field col s5">
+				<div class="input-field col s12 m5">
 					<input id="horas-atualizar" type="number" />
 					<label for="horas-atualizar">Nova horas totais</label>
 				</div>
-				<div class="input-field col s7">
+				<div class="input-field col s12 m7">
 					<input id="modalidade-atualizar" type="text" />
 					<label for="modalidade-atualizar">Nova modalidade</label>
 				</div>
@@ -141,7 +126,6 @@
 	<script src="../../js/diario/cursos/services/atualizar.js"></script>
 	<!-- Aparecer tabela ao abrir a pagina -->
 	<script>
-		$(".dropdown-trigger").dropdown();
 		consultar();
 		preencherInput();
 	</script>

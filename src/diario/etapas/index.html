@@ -6,68 +6,66 @@
 	<link rel="stylesheet" href="../../css/materialize.css">
 	<link rel="stylesheet" href="../../css/estilo.css">
 
-	<meta charset="utf-8">
-	<title>Manutenção de Etapas!</title>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+	<title>Manutenção de Etapas</title>
 </head>
 
-<body onload="consulta()" style="font-family: 'Montserrat', sans-serif; background-color: white;">
-		<ul id="dropdown1" class="dropdown-content">
-				<li><a href="../transferencia/index.html">Transferência</a></li>
-				<li><a href="../professores/index.html">Professores</a></li>
-				<li><a href="../departamentos/index.html">Departamentos</a></li>
-				<li><a href="../cursos/index.html">Cursos</a></li>
-				<li class="active"><a href="../etapas/index.html">Etapas</a></li>
-				<li><a href="../disciplinas/index.html">Disciplinas</a></li>
-				<li><a href="../alunos/index.html">Alunos</a></li>
-				<li><a href="../campi/index.html">Campi</a></li>
-			  </ul>
-			  <nav>
-				<div class="nav-wrapper">
-				  <a class="brand-logo">Diário</a>
-				  <ul class="right hide-on-med-and-down">
-					<li><a href="../login-adm.html">Login</a></li>
-					<li><a href="../transicao/adm.html">Página Inicial</a></li>
-					<li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Funções<i class="material-icons right">arrow_drop_down</i></a></li>
-				  </ul>
-				</div>
-			  </nav>
+<body onload="consulta()">
+
+	<nav>
+		<div class="nav-wrapper">
+			<a class="brand-logo">S.A. Admin</a>
+		</div>
+	</nav>
 	<!-- fim header -->
 
-	<div id="corpo-manutencao-etapas">
+	<div id="corpo-manutencao-etapas" class="container row" style="margin-top: 2%">
+
+		<h2 style="margin:0" class="col push-s2">Etapas</h2>
+
+		<div class="row">
+			<a class="btn col s12 m12 l2 offset-l7 waves-effect waves-light primary modal-trigger" href="#AdicionaForm"
+				name="AdicionarEtapa" id="Adiciona">Adicionar</a>
+			<a class="btn col s12 m12 l2 offset-l7 waves-effect waves-light primary modal-trigger" href="#ConsultaForm"
+				name="ConsultarEtapa" id="Consulta" style="margin-top: 1%">Consultar</a>
+		</div>
+
+		<!-- RESPOSTA DA CONSULTA -->
+		<div id="consulta-etapas" class="col s12">
+			<table id="tabela-etapas" class="responsive-table centered highlight">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Ano</th>
+						<th>Valor</th>
+						<th>Ações</th>
+					</tr>
+				</thead>
+				<tbody id="tabela-etapas-corpo">
+
+				</tbody>
+			</table>
+		</div>
+
 		<!-- FORMULÁRIO ADICIONAR -->
-		<div id="AdicionaForm" class="center-align modal modal-content">
-				<div id="navTexto" class="left-align nav-wrapper black-text">
-					<h4>Adicionar Etapas</h4>
+		<div id="AdicionaForm" class="modal">
+			<div class="row modal-content">
+				<h4>Adicionar etapa</h4>
+				<div class="input-field col s4">
+					<input type="number" name="ano" id="adicionaAnoEtapa">
+					<label class="col" for="ano">Ano</label>
 				</div>
-			<div>
-				<form id="formAdiciona" class="col s12 form-manutencao-etapas" action="diario/etapas/inserir" method="get">
-					<!-- div para input ano -->
-					<div class="col">
-						<div class="input-field col s4">
-							<input placeholder="2018, 2019, ..." type="number" name="ano" class="black-text "
-								id="AdicionaAnoEtapa">
-							<label class="col" for="ano" style="color: #29A58C">Ano:</label>
-						</div>
-					</div>
-					<!-- div para input valor -->
-					<div class="col">
-						<div class="input-field col s4">
-							<input placeholder="'20, 30...'" type="text" name="valor" class="black-text "
-								id="AdicionaValorEtapa">
-							<label class="col" for="valorEtapa" style="color: #29A58C">Valor da etapa:</label>
-
-						</div>
-					</div>
-					<div id="respostaAdiciona"></div>
-				</form>
-				<div class="right-align"  style="margin: 1%;">
-					<button type="button" onclick="recarrega()" name="CancelarAdc" class="modal-close waves-effect white-text btn-small"
-						id="CancelaAdc" style="margin-top: 3%; background-color:#29A58C">Cancelar</button>
-
-					<button onclick="adiciona()" name="EnviarAdc" class="modal-close waves-effect white-text btn-small"
-						id="EnviaAdc" style="margin-top: 3%;background-color:#3E56B0">Confirmar</button>
-
+				<div class="input-field col s4">
+					<input type="text" name="valor" id="adicionaValorEtapa">
+					<label class="col" for="valor">Valor</label>
 				</div>
+			</div>
+			<div class="container modal-footer">
+				<a class="modal-close btn utils erro-2" onclick="recarrega()">Cancelar</a>
+				<a class="modal-close btn primary" onclick="adiciona()">Adicionar</a>
 			</div>
 		</div>
 
@@ -75,136 +73,75 @@
 
 		<!-- FORMULÁRIO CONSULTAR -->
 
-		<div style = "" id="ConsultaForm" class="left-align modal modal-content">
-
-				<div id="navTexto" class="left-align black-text">
-					<h4>Consultar Etapas</h4>
+		<div id="ConsultaForm" class="modal">
+			<h4 style="padding: 15pt;">Consultar etapa</h4>
+			<div class="row modal-content">
+				<div class="input-field col s4">
+					<input id="consultaID" type="number" />
+					<label for="consultaID">ID</label>
 				</div>
-
-			<div>
-				<form id="formConsulta" class="col s12 form-manutencao-etapas" action="diario/etapas/inserir" method="get">
-					<!-- div para input ID -->
-					<div class="col">
-						<div class="input-field col s4">
-							<input placeholder="'1, 2, 4, 75'" type="text" name="id" class="black-text "
-								id="idConsulta" value="">
-							<label class="col" for="ID" style="color: #29A58C">ID da etapa:</label>
-						</div>
-					</div>
-					<!-- div para input ano -->
-					<div class="col">
-						<div class="input-field col s4">
-							<input placeholder="2018, 2019, ..." type="number" name="ano" class="black-text "
-								id="anoConsulta" value="">
-							<label class="col" for="ano" style="color: #29A58C">Ano:</label>
-						</div>
-					</div>
-					<!-- div para input valor -->
-					<div class="col">
-						<div class="input-field col s4">
-							<input placeholder="'20, 30...'" type="text" name="valor" class="black-text "
-								id="valorConsulta" value="">
-							<label class="col" for="ConsultaValor" style="color: #29A58C">Valor da etapa:</label>
-						</div>
-					</div>
-
-
-					<div id="respostaConsulta"></div>
-				</form>
-				<div class="right-align" style="margin: 1%;">
-					<button type="button" onclick="recarrega()" name="CancelarConsulta" class="modal-close waves-effect white-text btn-small"
-						id="CancelarConsulta" style="margin-top: 3%; background-color:#29A58C">Cancelar</button>
-
-					<button onclick="consultaParametro()" name="EnviarConsulta" class="modal-close waves-effect white-text btn-small"
-						id="EnviaConsultaParametro" style="margin-top: 3%;background-color:#3E56B0">Confirmar</button>
-
+				<div class="input-field col s4">
+					<input id="consultaAno" type="number" />
+					<label for="consultaAno">Ano</label>
 				</div>
+				<div class="input-field col s4">
+					<input id="consultaValor" type="text" />
+					<label for="consultaValor">Valor</label>
+				</div>
+			</div>
+			<div class="container modal-footer">
+				<a class="modal-close btn utils erro-2" onclick="recarrega()">Cancelar</a>
+				<a class="modal-close btn primary" onclick="consultaParametro()">Salvar</a>
 			</div>
 		</div>
 
 		<!-- FIM FORM CONSULTA ETAPA -->
 
-
 		<!-- FORMULÁRIO EDITA ETAPA -->
-		<div style="background-color: #E5E5E5" class="center-align modal modal-content" id="EditaForm">
-				<div class=" left-align black-text">
-					<h4>Editar Etapas</h4>
+		<div class="modal" id="EditaForm">
+			<h4 style="padding: 15pt;">Editar etapa</h4>
+			<div class="row modal-content">
+				<div class="input-field col s4">
+					<input id="editaAno" type="number" />
+					<label for="editaAno">Ano</label>
 				</div>
-
-			<div>
-				<form id="formEdita" class="col s12 form-manutencao-etapas" action="/diario/etapas/atualizar" method="get">
-
-					<!-- div para input ano -->
-					<div class="col">
-						<div class="input-field col s4">
-							<input placeholder="'2018, 2019, ...'" type="number" name="ano" class="black-text "
-								id="editaAno" />
-							<label class="col" for="valorEtapa" style="color: #29A58C">Ano:</label>
-						</div>
-					</div>
-					<!-- div para input valor -->
-					<div class="col">
-						<div class="input-field col s4">
-							<input placeholder="'20.0, 30.0, ...'" type="text" name="valor" class="black-text "
-								id="editaValor" />
-							<label class="col" for="valorEtapa" style="color: #29A58C">Valor da etapa:</label>
-						</div>
-					</div>
-
-					<div id="respostaEdita"></div>
-				</form>
-				<!-- div para botões de ação  -->
-				<div class="right-align" style="margin: 1%;">
-					<button type="button" onclick="recarrega()" name="Enviar" class="right-align hmodal-close waves-effect white-text btn-small" id="EnviaEdit"
-						style="background-color:#29A58C">Cancelar</button>
-					<button onclick="atualiza()" name="Salva" class="modal-close right-align waves-effect white-text btn-small" id="CancelaEdit"
-						style="background-color:#3E56B0">Salvar</button>
+				<div class="input-field col s4">
+					<input id="editaValor" type="text" />
+					<label for="editaValor">Valor</label>
 				</div>
+			</div>
+			<div class="container modal-footer">
+				<a class="modal-close btn utils erro-2" onclick="recarrega()">Cancelar</a>
+				<a class="modal-close btn primary" onclick="atualiza()">Salvar</a>
 			</div>
 		</div>
 
 		<!-- FIM FORMULÁRIO EDITA ETAPAS -->
 
 		<!--FORMULÁRIO REMOVER ETAPAS-->
-		<div style="background-color: #E5E5E5" class=" center-align modal" id="RemoveForm">
-				<div class="left-align black-text">
-					<h4>Remover Etapas</h4>
-				</div>
-
-			<div style="margin-top:0;">
-				<h5 class="col s4 red-text">Tem certeza de que quer remover?</h5>
-				<!-- div para botões de ação -->
-				<div class="right-align "style="margin: 1%;">
-					<button type="button" onclick="recarrega()" name="Enviar"
-						class="modal-close waves-effect white-text btn-small" id="cancelaRemove"
-						style="background-color:#29A58C">Cancelar</button>
-
-					<button onclick="deleta()" name="Enviar" class="modal-close waves-effect white-text btn-small" id="enviaRemove"
-						style="background-color:#D32F2F">Remover Etapa</button>
-				</div>
-				<div id="respostaDeleta"></div>
+		<div class="modal" id="RemoveForm">
+			<div id="conteudo" class="modal-content">
+				<h4>Deletar etapa</h4>
+				<h6>Tem certeza que deseja deletar esta etapa?</h6>
+			</div>
+			<div class="modal-footer">
+				<a class="modal-close btn utils erro-2" onclick="recarrega()">Cancelar</a>
+				<a class="modal-close btn primary" onclick="deleta()">Deletar</a>
 			</div>
 		</div>
 
-		<!-- BOTÕES NAVEGAÇÃO -->
-		<div  class="row">
-			<h3 style="margin:0" class="col push-s2">Etapas</h3>
-			<button name="AdicionarEtapa" class="col push-s7 waves-effect waves-light btn-small modal-trigger"
-				href="#AdicionaForm" id="Adiciona" style="background-color:#29A58C">Adicionar</button>
-				<button style="background-color:#29A58C; margin-left: 1%"class="col push-s7 waves-effect waves-light btn-small modal-trigger" href="#ConsultaForm"id="Consulta"
-				name="ConsultarEtapa">Consultar</button>
-		</div>
-		<!-- DIV PARA RESPOSTA CONSULTA -->
-		<div id="resposta">
-
-		</div>
 	</div>
+
 	<!-- IMPORTAÇÕES -->
-	<!--Conexao Servlets-->
-	<script src="../../js/diario/etapas/jquery-3.4.1.js"></script>
+	<!-- Arquivos base -->
+	<script src="../../js/jquery-3.4.1.js"></script>
 	<script src="../../js/materialize.js"></script>
-	<script src="../../js/diario/etapas/conectaServlet.js"></script>
-	<script>$(".dropdown-trigger").dropdown();</script>
+	<script src="../../js/diario/etapas/utils.js"></script>
+	<!-- Arquivos que executam as funções -->
+	<script src="../../js/diario/etapas/adiciona.js"></script>
+	<script src="../../js/diario/etapas/consulta.js"></script>
+	<script src="../../js/diario/etapas/deleta.js"></script>
+	<script src="../../js/diario/etapas/edita.js"></script>
 </body>
 
 </html>

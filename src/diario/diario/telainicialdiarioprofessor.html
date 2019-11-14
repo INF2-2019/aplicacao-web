@@ -9,21 +9,11 @@
   </head>
 
   <body>
-		<ul id="dropdown1" class="dropdown-content">
-			<li><a href="../professores/perfil.html">Perfil do professor</a></li>
-			<li class="active"><a href="../diario/telainicialdiarioprofessor.html">Diário Escolar</a></li>
-			<li><a href="../diario/disciplinaver.html">Disciplinas</a></li>
-		</ul>
-		<nav>
-			<div class="nav-wrapper">
-				<a class="brand-logo">Diário</a>
-				<ul class="right hide-on-med-and-down">
-					<li><a href="../login-professor.html">Login</a></li>
-					<li><a href="../transicao/professor.html">Página Inicial</a></li>
-					<li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Funções<i class="material-icons right">arrow_drop_down</i></a></li>
-				</ul>
-			</div>
-		</nav>
+    <nav style="padding-left: 5pt;">
+      <div class="nav-wrapper">
+        <a class="brand-logo">Diário - Professor </a>
+      </div>
+    </nav>
 
     <main style="margin: 0 10%">
       <div>
@@ -37,13 +27,15 @@
 
         <!-- Template com dados do professor para exibição -->
         <template id="template_professor">
-          <div class="col s5"> <h6 class="teal-text">ID (SIAPE) </h6> <p class="campo">{{id}}</p></div>
-          <div class="col s5"> <h6 class="teal-text">ID Departamento</h6><p class="campo">{{id_depto}}</p> </div>
-          <div class="col s7"> <h6 class="teal-text">Nome</h6> <p class="campo">{{nome}}</p> </div>
-          <div class="col s4"> <h6 class="teal-text">Titulação </h6> <p class="campo">{{titulacao}}</p> </div>
+          
+            <div class="col s5"> <h6 class="teal-text">ID (SIAPE) </h6> <p class="campo">{{id}}</p></div>
+            <div class="col s5"> <h6 class="teal-text">ID Departamento</h6><p class="campo">{{id_depto}}</p> </div>
+            <div class="col s7"> <h6 class="teal-text">Nome</h6> <p class="campo">{{nome}}</p> </div>
+            <div class="col s4"> <h6 class="teal-text">Titulação </h6> <p class="campo">{{titulacao}}</p> </div>
+          
         </template>
       </div>
-
+        
       <div>
         <h1>Disciplinas</h1>
         <div class="row area" id="listagemDisciplinas">
@@ -55,21 +47,21 @@
                 <col span="1" style="width: 10%">
                 <col span="1" style="width: 20%">
               </colgroup>
-
+              
               <thead>
                   <th>ID</th>
                   <th>DISCIPLINA</th>
                   <th>TURMA</th>
                   <th>CARGA HORÁRIA</th>
               </thead>
-
+            
               <tbody id="holder_diario">
                 <tr>
                   <td>001</td>
                   <td>AULA DE PEBOLIM</td>
                   <td>A</td>
                   <td>22</td>
-                  <td><a href="disciplinaver.html?disciplina={{id-disciplina}}" class="waves-effect waves btn-small left modal-trigger">visualizar</a></td>
+                  <td><a href="disciplinaver.html?disciplina=1" class="waves-effect waves btn-small left modal-trigger">visualizar</a></td>
                 </tr>
               </tbody>
             </table>
@@ -84,8 +76,8 @@
           <td>{{id}}</td>
           <td>{{disciplina}}</td>
           <td>{{turma}}</td>
-          <td>{{carga horaria}}</td>
-          <td><a href="disciplinaver.html?disciplina={{id-disciplina}}" class="waves-effect waves-light btn-small modal-trigger">Visualizar</a></td>
+          <td>{{carga_horaria}}</td>
+          <td><a href="disciplinaver.html?disciplina={{id}}" class="waves-effect waves-light btn-small modal-trigger">Visualizar</a></td>
         </tr>
     </template>
 
@@ -95,7 +87,6 @@
     <script src="../../js/materialize.min.js"></script>
     <!-- -->
     <script src="../../js/diario/diario/ajax.js"></script>
-		<script src="../../js/diario/diario/dados_professor.js"></script>
-		<script>$(".dropdown-trigger").dropdown();</script>
+    <script src="../../js/diario/diario/dados_professor.js"></script>
   </body>
 </html>

@@ -8,19 +8,9 @@
         <title>Seu perfil</title>
 	</head>
 	<body onload="carregarPerfil()">
-		<ul id="dropdown1" class="dropdown-content">
-			<li class="active"><a href="../professores/perfil.html">Perfil do professor</a></li>
-			<li><a href="../diario/telainicialdiarioprofessor.html">Diário Escolar</a></li>
-			<li><a href="../diario/disciplinaver.html">Disciplinas</a></li>
-		</ul>
-		<nav>
+		<nav style="padding-left: 5pt;">
 			<div class="nav-wrapper">
-				<a class="brand-logo">Diário</a>
-				<ul class="right hide-on-med-and-down">
-					<li><a href="../login-professor.html">Login</a></li>
-					<li><a href="../transicao/professor.html">Página Inicial</a></li>
-					<li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Funções<i class="material-icons right">arrow_drop_down</i></a></li>
-				</ul>
+				<a class="brand-logo">S.A. Professor</a>
 			</div>
 		</nav>
 
@@ -52,8 +42,8 @@
 							</div>
 						</div>
 						<div class="row">
-              
-					</div>
+						
+						</div>
 						<div class="row">
 							<button class="modal-trigger waves-effect waves-light btn-large col s12 m4" href="#modal">Alterar senha</button>
 							<button class="waves-effect waves-light btn-large col s12 m2 offset-m1 offset-l1 primary" onclick="salvar()" >Salvar</button>
@@ -62,7 +52,7 @@
 					</div>
 				</div>
 			</div>
-
+			
 			<div style="width: 50%">
 			<div id="modal" class="modal container">
 				<div class="modal-content row">
@@ -80,14 +70,13 @@
 				</div>
 			</div>
 			</div>
-
+			
 		</main>
 
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 		<script type="text/javascript" src="../../js/materialize.min.js"></script>
 		<script src="../../js/diario/professores/perfil.js"></script>
 		<script>
-			$(".dropdown-trigger").dropdown();
 			$(document).ready(function(){
 				$('.modal').modal();
 			});

@@ -9,22 +9,11 @@
   </head>
 
   <body id="aluno">
-			<ul id="dropdown1" class="dropdown-content">
-					<li class="active"><a href="../diario/telainicialdiarioaluno.html">Diário Escolar</a></li>
-					<li><a href="#" >Perfil do Aluno</a></li>
-					<li><a href="#">Histórico Escolar</a></li>
-					<li><a href="#" >Certificado de Escolaridade</a></li>
-					</ul>
-					<nav>
-					<div class="nav-wrapper">
-						<a class="brand-logo">Diário</a>
-						<ul class="right hide-on-med-and-down">
-						<li><a href="../login-aluno.html">Login</a></li>
-						<li><a href="../transicao/aluno.html">Página Inicial</a></li>
-						<li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Funções<i class="material-icons right">arrow_drop_down</i></a></li>
-						</ul>
-					</div>
-					</nav>
+    <nav style="padding-left: 5pt">
+      <div class="nav-wrapper">
+        <a class="brand-logo">Diário - Aluno</a>
+      </div>
+    </nav>
 
     <main style="margin: 0 10%">
       <div style="width: 90% !important">
@@ -99,14 +88,14 @@
             <table class="responsive-table" style="padding-top: 5%">
               <colgroup>
                 <col span="1" style="width: 20%">
-                <col span="1" style="width: 80%">
+                <col span="1" style="width: 80%"> 
               </colgroup>
-
+              
               <thead>
                 <th>CONTEUDO</th>
                 <th>DATA</th>
               </thead>
-
+              
               <tbody id="holder_conteudos">
                 <tr>
                   <td>Aula de Forró</td>
@@ -117,7 +106,7 @@
           </div>
         </div>
       </div>
-
+      
       <div class="container secondary lighten-5">
         <div id="modalAtividadeAluno" class="modal" style="padding: 2%">
           <div class="row modal-content" style="padding: 0">
@@ -147,14 +136,14 @@
         </div>
       </div>
 
-		<!-- Jquery-->
-		<script src="../../js/jquery-3.4.1.js"></script>
-		<script src="../../js/materialize.js"></script>
-		<script>
-				$(".dropdown-trigger").dropdown();
-				$(document).ready(function(){
-					$('.modal').modal();
-				});
-			</script>
+    <!-- Jquery-->
+    <script src="../../js/diario/diario/jquery-3.3.1.min.js"></script>
+    <script>
+      $(document).ready(function(){
+        $('.modal').modal();
+      });
+    </script>
+    <!-- materialize JS-->
+    <script src="../../js/materialize.min.js"></script>
   </body>
 </html>

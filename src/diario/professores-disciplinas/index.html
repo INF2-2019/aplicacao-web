@@ -7,7 +7,7 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 	<link rel="stylesheet" href="../../css/materialize.css" />
-	<title>Manutenção de disciplinas</title>
+	<title>Manutenção de Professores-Disciplinas</title>
 </head>
 
 <body>
@@ -18,13 +18,13 @@
 	</nav>
 
 	<div class="container">
-		<h2>Disciplinas</h2>
+		<h2>Professores-Disciplinas</h2>
 
 		<div class="row">
 			<div class="input-field col s12 m12 l4">
 				<i class="material-icons prefix">search</i>
 				<input id="search" type="text" autocomplete="off">
-				<label for="search">Pesquisar disciplinas</label>
+				<label for="search">Pesquisar disciplina</label>
 			</div>
 			<a class="btn col s12 m12 l4 offset-l4 waves-effect waves-light primary modal-trigger"
 				href="#modal-add">Adicionar</a>
@@ -34,10 +34,8 @@
 			<table id="tabela-disciplinas" class="responsive-table centered highlight">
 				<thead>
 					<tr>
-						<th>ID</th>
-						<th>Turma</th>
-						<th>Nome da disciplina</th>
-						<th>Carga-horaria-min</th>
+						<th>Professor</th>
+						<th>Disciplina</th>
 						<th>Ações</th>
 					</tr>
 				</thead>
@@ -52,7 +50,7 @@
 			</div>
 			<div class="modal-footer">
 				<a class="modal-close btn utils erro-2">Cancelar</a>
-				<a class="modal-close btn primary" onclick="deletar()">Deletar</a>
+				<a class="modal-close delete btn primary" >Deletar</a>
 			</div>
 		</div>
 
@@ -60,18 +58,16 @@
 			<div class="row modal-content">
 				<h4>Inserir disciplina</h4>
 				<div class="input-field col s3">
-					<select id="turma-inserir">
+					<select id="disciplina-inserir">
 						<option  id ="Seleciona-add" value="" disabled selected>Selecione</option>
 					</select>
-					<label for="turma-inserir">Turma</label>
+					<label for="disciplina-inserir">Disciplina</label>
 				</div>
-				<div class="input-field col s9">
-					<input id="nome-inserir" type="text" />
-					<label for="nome-inserir">Nome da disciplina</label>
-				</div>
-				<div class="input-field col s5">
-					<input id="horas-inserir" type="number" />
-					<label for="horas-inserir">Carga horaria min</label>
+				<div class="input-field col s3">
+					<select id="professor-inserir">
+						<option  id ="Seleciona-add" value="" disabled selected>Selecione</option>
+					</select>
+					<label for="professor-inserir">Professor</label>
 				</div>
 			</div>
 			<div class="container modal-footer">
@@ -108,13 +104,12 @@
 	<!-- Imports -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script src="../../js/materialize.js"></script>
-	<script src="../../js/diario/disciplinas/display.js"></script>
+	<script src="../../js/diario/professores-disciplinas/display.js"></script>
 	<!-- imports de funcionalidades do servidor -->
-	<script src="../../js/diario/disciplinas/main.js"></script>
-	<script src="../../js/diario/disciplinas/consultar.js"></script>
-	<script src="../../js/diario/disciplinas/deletar.js"></script>
-	<script src="../../js/diario/disciplinas/inserir.js"></script>
-	<script src="../../js/diario/disciplinas/atualizar.js"></script>
+	<script src="../../js/diario/professores-disciplinas/main.js"></script>
+	<script src="../../js/diario/professores-disciplinas/consultar.js"></script>
+	<script src="../../js/diario/professores-disciplinas/deletar.js"></script>
+	<script src="../../js/diario/professores-disciplinas/inserir.js"></script>
 	<!-- Aparecer tabela ao abrir a pagina -->
 	<script>
 		consultar();
