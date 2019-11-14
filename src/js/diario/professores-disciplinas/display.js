@@ -1,9 +1,12 @@
 M.AutoInit();
 let deptosConsultados;
+let ProfConsultados;
 
 function criaTabela(elementos) {
+	console.log(elementos)
 	const tabela = document.createElement("table")
 	deptosConsultados = 0
+	ProfConsultados = 0
 	elementos = elementos.childNodes[0].children
 	tabela.classList.add("highlight")
 
@@ -14,7 +17,7 @@ function criaTabela(elementos) {
 			elemento.classList.add(elementos[i].children[j].nodeName)
 
 			if (j == 1) {
-				let nomeDepartamento = nomeDepto(elementos[i].children[j].innerHTML)
+				let nomeDepartamento = nomeTurma(elementos[i].children[j].innerHTML)
 				nomeDepartamento.then(res => {
 					elemento.innerHTML = res
 					deptosConsultados++
@@ -22,7 +25,16 @@ function criaTabela(elementos) {
 					if (deptosConsultados == elementos.length)
 						containerTabela.innerHTML = tabela.innerHTML;
 				})
-			} else {
+			} else if(j==0) {
+				let nomeProf = nomeProfessor(elementos[i].children[j].innerHTML)
+				nomeProf.then(res => {
+					elemento.innerHTML = res
+					ProfConsultados++
+					// se for o último a carregar, recarrega o conteudo da tabela com os nomes dos deptos.
+					if (ProfConsultados == elementos.length)
+						containerTabela.innerHTML = tabela.innerHTML;
+				})
+			} else{
 				elemento.innerHTML = elementos[i].children[j].innerHTML
 			}
 
@@ -33,15 +45,14 @@ function criaTabela(elementos) {
 		const botaoEditar = criarBotaoEditar()
 		const botaoDeletar = criarBotaoDeletar()
 
-		colunaAcoes.appendChild(botaoEditar)
+	
 		colunaAcoes.appendChild(botaoDeletar)
 
 		linha.appendChild(colunaAcoes)
 
 		tabela.appendChild(linha)
 	}
-
-	const containerTabela = document.querySelector("#cursos");
+	containerTabela = document.querySelector("#disciplinas");
 	containerTabela.innerHTML = tabela.innerHTML;
 }
 
@@ -62,60 +73,76 @@ function criarBotaoEditar() {
 
 function criarBotaoDeletar() {
 	const deletar = document.createElement("a")
-	deletar.setAttribute("href", "#modal-confirmar")
+	deletar.setAttribute("href", "#modal-deletar")
 	deletar.classList = "btn-small utils erro-2 deletar modal-trigger"
-
-	/*const iconDel = document.createElement("i")
-	iconDel.classList = "material-icons small"
-	iconDel.innerHTML = "delete_forever"
-
-	deletar.appendChild(iconDel)*/
 	deletar.appendChild(document.createTextNode("DELETAR"))
 	return deletar
 }
 
 function limpaInputs(inputType) {
 	if (inputType == 'inserir') {
-		document.querySelector("#departamento-inserir").value = '';
+		document.querySelector("#turma-inserir").value = '';
 		document.querySelector("#nome-inserir").value = '';
 		document.querySelector("#horas-inserir").value = '';
-		document.querySelector("#modalidade-inserir").value = '';
 	}
 	else if (inputType == 'atualizar') {
-		document.querySelector("#departamento-atualizar").value = '';
+		document.querySelector("#turma-atualizar").value = '';
 		document.querySelector("#nome-atualizar").value = '';
 		document.querySelector("#horas-atualizar").value = '';
-		document.querySelector("#modalidade-atualizar").value = '';
 	}
 
 	M.updateTextFields();
 }
 
 function preencherInput() {
-	fetch('http://localhost:8080/app/diario/departamentos/consulta', { credentials: 'include' })
+	fetch('http://localhost:8080/app/diario/disciplinas/consultar', {
+		credentials: "include",
+	})
 		.then(response => response.text())
 		.then(str => (new window.DOMParser()).parseFromString(str, "text/xml"))
 		.then(xml => {
-			for (departamento of xml.getElementsByTagName('departamento')) {
+			console.log(xml);
+			for (departamento of xml.getElementsByTagName('disciplina')) {
 				const id = departamento.getElementsByTagName("id")[0].innerHTML
 				const nome = departamento.getElementsByTagName("nome")[0].innerHTML
 
 				// cria novo option no select para inserir
 				const inserirOption = $("<option>").attr("value", id).text(nome)
-				$("#departamento-inserir").append(inserirOption)
-				$("#departamento-inserir").formSelect()
+				$("#disciplina-inserir").append(inserirOption)
+				$("#disciplina-inserir").formSelect()
 				// cira novo option no select para atualizar
 				const atualizarOption = $("<option>").attr("value", id).text(nome)
-				$("#departamento-atualizar").append(atualizarOption)
-				$("#departamento-atualizar").formSelect()
+				$("#disciplina-atualizar").append(atualizarOption)
+				$("#disciplina-atualizar").formSelect()
+			}
+		})
+		fetch('http://localhost:8080/app/diario/professores/consultar', {
+			credentials: "include",
+		})
+		.then(response => response.text())
+		.then(str => (new window.DOMParser()).parseFromString(str, "text/xml"))
+		.then(xml => {
+			console.log(xml);
+			for (departamento of xml.getElementsByTagName('professor')) {
+				const id = departamento.getElementsByTagName("id")[0].innerHTML
+				const nome = departamento.getElementsByTagName("nome")[0].innerHTML
+
+				// cria novo option no select para inserir
+				const inserirOption = $("<option>").attr("value", id).text(nome)
+				$("#professor-inserir").append(inserirOption)
+				$("#professor-inserir").formSelect()
+				// cira novo option no select para atualizar
+				const atualizarOption = $("<option>").attr("value", id).text(nome)
+				$("#professor-atualizar").append(atualizarOption)
+				$("#professor-atualizar").formSelect()
 			}
 		})
 }
 
-function pesquisarCursos() {
+function pesquisarDisciplinas() {
 	const input = document.querySelector("#search");
 	const filter = input.value.toUpperCase();
-	const table = document.querySelector("#tabela-cursos");
+	const table = document.querySelector("#tabela-disciplinas");
 	const tr = table.getElementsByTagName("tr");
 
 	for (let i = 1; i < tr.length; i++) {

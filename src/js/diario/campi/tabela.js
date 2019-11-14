@@ -64,8 +64,8 @@ function fazerTabela(doc){
 
     }
     atribuirClasses();
-    setTimeout(function(){ prepareDeletar(); }, 200);
-    setTimeout(function(){ prepareEditar(); }, 200);
+    setTimeout(function(){ prepareDeletar(); }, 50);
+    setTimeout(function(){ prepareEditar(); }, 50);
 }
 
 listar();

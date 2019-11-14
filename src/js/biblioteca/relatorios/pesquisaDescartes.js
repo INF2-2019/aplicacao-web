@@ -1,6 +1,8 @@
 const consultar = async () => {
 	const DOM = new DOMParser()
-	const res = await fetch(baseURL + '/descartes/consulta')
+	const res = await fetch(baseURL + '/descartes/consulta', {
+		credentials: 'include'
+	})
 	const text = await res.text()
 
 	return DOM.parseFromString(text, 'text/xml')
