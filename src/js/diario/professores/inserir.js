@@ -3,7 +3,6 @@ const ENDERECO= "http://localhost:8080/app/";
 const ROTA = "diario/professores/inserir";
 
 function inserir(){
-	var xhttp = new XMLHttpRequest();
 
 	let id = document.getElementsByName("idInsere")[0].value;
 	let idDepto = document.getElementsByName("id-deptoInsere")[0].value;
@@ -12,21 +11,12 @@ function inserir(){
 	let email = document.getElementsByName("emailInsere")[0].value;
 	let titulacao = document.getElementsByName("titulacaoInsere")[0].value;
 
-	console.log(id);
+	if(id == "" || idDepto == "" || nome == "" || senha == "" || email == "") {
+		window.alert("Todos os campos devem ser preenchidos");
+		return;
+	}
+
 	jqueryAjax(id, idDepto, nome, senha, email, titulacao);
-
-	/*url= endereco + "diario/professores/inserir";
-	let params = "?id="+id + "&id-depto="+idDepto + "&nome="+nome + "&senha="+senha
-		 	+"&email="+email + "&titulacao="+titulacao;
-
-	xhttp.open(method, url+params, true);
-	xhttp.onreadystatechange = function() {
-		if(xhttp.readyState === xhttp.DONE && xhttp.status === 200) {
-			let msg = this.responseXML.firstElementChild.lastElementChild.textContent;
-			document.getElementById("saida").innerHTML = msg;
-		}
-	};
-	xhttp.send();*/
 }
 
 function jqueryAjax(id, idDepto, nome, senha, email, titulacao) {

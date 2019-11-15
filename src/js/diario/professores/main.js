@@ -32,13 +32,10 @@ function linhaQueSeraAlterada(ind){
 	xhttp1.open("GET", endereco+"diario/professores/informacao?id="+idAlterado, true);
 	xhttp1.withCredentials = true;
 	xhttp1.onreadystatechange = function() {
-		if(xhttp1.readyState === xhttp1.DONE && xhttp1.status === 200) {
+		if(xhttp1.readyState === xhttp1.DONE) {
 			var xml1 = (new DOMParser()).parseFromString(this.responseText, "application/xml");
 			var raiz1 = xml1.firstElementChild;
-			if(raiz1.nodeName == "erro") {
-					window.alert(raiz1.firstElementChild.textContent);
-					return;
-			}else{
+			if(xhttp1.status === 200) {
 				var elementos1 = raiz1.children;
 				var dados1 = elementos1[0].children;
 				document.getElementsByName(paramNomes[0])[0].value = dados1[0].textContent;
@@ -46,6 +43,10 @@ function linhaQueSeraAlterada(ind){
 				document.getElementsByName(paramNomes[2])[0].value = dados1[2].textContent;
 				document.getElementsByName(paramNomes[4])[0].value = dados1[3].textContent;
 				document.getElementsByName(paramNomes[5])[0].value = dados1[4].textContent;
+			} else if (xhttp1.status == 404) {
+				document.getElementsByTagName("p")[0].innerHTML = "Servidor offline";
+			} else {
+				document.getElementsByTagName("p")[0].innerHTML = raiz1.firstElementChild.textContent;
 			}
 		}
 	}
