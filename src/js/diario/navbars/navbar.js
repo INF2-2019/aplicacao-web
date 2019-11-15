@@ -22,7 +22,7 @@ function navADMIN() {
 		ul_itens.insertBefore(li_itens[i],ul_funcoes);
 	}
 
-	for(i=0;i<8;i++){
+	for(i=0;i<9;i++){
 		li_dropdown[i] = document.createElement("li");
 	}
 	li_dropdown[0].innerHTML = "<a href='../alunos/index.html'>Alunos</a>";
@@ -32,7 +32,8 @@ function navADMIN() {
 	li_dropdown[4].innerHTML = "<a href='../disciplinas/index.html'>Disciplinas</a>";
 	li_dropdown[5].innerHTML = "<a href='../etapas/index.html'>Etapas</a>";
 	li_dropdown[6].innerHTML = "<a href='../professores/index.html'>Professores</a>";
-	li_dropdown[7].innerHTML = "<a href='../transferencia/index.html'>Transferência de alunos</a>";
+	li_dropdown[7].innerHTML = "<a href='../professores-disciplinas/index.html'>Professores-disciplina</a>";
+	li_dropdown[8].innerHTML = "<a href='../transferencia/index.html'>Transferência de alunos</a>";
 	for(i=0;i<li_dropdown.length;i++){
 		ul_dropdown.appendChild(li_dropdown[i]);
 	}
