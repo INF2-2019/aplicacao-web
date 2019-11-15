@@ -12,7 +12,10 @@ function consulta(reconsulta = false) {
 					deptos.push({
 						id: parseInt(deptoEl.children[0].textContent),
 						campus: parseInt(deptoEl.children[1].textContent),
-						nome: deptoEl.children[2].textContent
+						nome: deptoEl.children[2].textContent,
+						nomeCampi: deptoEl.children[3].textContent,
+						cidade: deptoEl.children[4].textContent,
+						uf: deptoEl.children[5].textContent
 					});
 				}
 				atualizaTabela();
