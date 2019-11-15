@@ -1,5 +1,5 @@
 const tbody = document.querySelector("tbody");
-
+let idAtual;
 function atualizaTabela() {
 	tbody.innerHTML = "";
 	for(let depto of deptos) {
@@ -18,56 +18,34 @@ function atualizaTabela() {
 		tr.appendChild(campus);
 
 		const acoes = document.createElement("td");
-		acoes.appendChild(botaoEditar());
-		acoes.appendChild(botaoExcluir());
+		acoes.appendChild(botaoEditar(depto.id));
+		acoes.appendChild(botaoExcluir(depto.id));
 		tr.appendChild(acoes);
 
 		tbody.appendChild(tr);
 	}
 }
 
-function botaoEditar() {
+function botaoEditar(id) {
 	const botao = document.createElement("a");
 	botao.setAttribute("href", "#modal-atualizar");
 	botao.classList = "btn-small secondary editar modal-trigger";
 	botao.style = "margin-right: 20px";
+	botao.setAttribute("onclick", "setId("+id+")")
 	botao.innerHTML = "EDITAR";
 	return botao;
 }
 
-function botaoExcluir() {
+function botaoExcluir(id) {
 	const botao = document.createElement("a");
 	botao.setAttribute("href", "#modal-deletar");
 	botao.classList = "btn-small utils erro-2 deletar modal-trigger";
 	botao.style = "margin-right: 20px";
+	botao.setAttribute("onclick", "setId("+id+")");
 	botao.innerHTML = "EXCLUIR";
 	return botao;
 }
 
-function filtrarTabela(){
-	
-	console.log("AAAAAA")
-
-  	input = document.getElementById("search");
-  	filtro = input.value.toUpperCase();
-  	tabela = document.getElementById("tabela-departamentos");
-  	tr = tabela.getElementsByTagName("tr");
-	
-  	for (i = 0; i < tr.length; i++) {
-		id = tr[i].getElementsByTagName("td")[0];
-		nome = tr[i].getElementsByTagName("td")[1];
-		campus = tr[i].getElementsByTagName("td")[2];
-    	if (id) {
-		  idConteudo = id.textContent || id.innerText;
-		  nomeConteudo = nome.textContent || nome.innerText;
-	      campusConteudo = campus.textContent || campus.innerText;
-
-    	  if (idConteudo.toUpperCase().indexOf(filtro) > -1 || nomeConteudo.toUpperCase().indexOf(filtro) > -1 || campusConteudo.toUpperCase().indexOf(filtro) > -1) {
-	        tr[i].style.display = "";
-    	  } else {
-        	tr[i].style.display = "none";
-	      }
-    	}
-	}
-	
+function setId(id) {
+	idAtual = id;
 }
