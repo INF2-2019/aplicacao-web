@@ -1,15 +1,15 @@
 
 atualizarTabela();
 
-
 function atualizarTabela() {
 	var xhttp = new XMLHttpRequest();
-        var method = "GET";
-        var endereco = "http://localhost:8080/app/";
+	var method = "GET";
+	var endereco = "http://localhost:8080/app/";
 
 	url = endereco + "diario/professores/consultar";
 
 	xhttp.open(method, url, true);
+	xhttp.withCredentials = true;
 	xhttp.onreadystatechange = function() {
 		// Mostrar os resultados passando de xml para tabela html
 		if(xhttp.readyState === xhttp.DONE && xhttp.status === 200) {

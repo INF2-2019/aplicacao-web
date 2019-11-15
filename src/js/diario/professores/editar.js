@@ -86,6 +86,7 @@ function alterar() {
 function requisicaoPost(id, idDepto, nome, senha, email, titulacao) {
 	$.ajax(ENDERECO+ROTA_EDICAO, {
 		method: "POST",
+		xhrFields: { withCredentials: true },
 		data: {
 			id: id,
 			"id-depto": idDepto,
