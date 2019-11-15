@@ -1,4 +1,4 @@
-const ENDERECO = "http://localhost:38695/app";
+const ENDERECO = "http://localhost:8080/app";
 const ROTA = "/biblioteca/cargo";
 
 let ul_dropdown;
