@@ -68,11 +68,24 @@
 	height: 20%;
 }
 .modal-footer-manutencao-alunos{
-	height: 16% !important;
+	height: 12% !important;
 }
 
 .modal-manutencao-alunos{
 	width:75%;
+	max-height: 95% !important;
+}
+
+@media only screen and (max-device-height: 900px) {
+	.modal-manutencao-alunos{
+		height: 90% !important;
+		bottom:10%;
+	}
+}
+
+@media only screen and (max-device-height: 1080px) {
+	.modal-manutencao-alunos{
+	}
 }
 
 .foto-manutencao-alunos{
