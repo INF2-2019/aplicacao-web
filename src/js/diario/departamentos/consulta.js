@@ -1,4 +1,4 @@
-function consulta(reconsulta = false) {
+function consultaDeptos(reconsulta = false) {
 	const xhr = new XMLHttpRequest();
 	xhr.withCredentials = true;
 	xhr.onreadystatechange = function() {
@@ -32,6 +32,32 @@ function consulta(reconsulta = false) {
 		}
 	};
 	const url = "http://localhost:8080/app/diario/departamentos/consulta";
+	xhr.open("GET", url, true);
+	xhr.send();
+}
+
+function consultaCampi(){
+	const xhr = new XMLHttpRequest();
+	xhr.withCredentials = true;
+	xhr.onreadystatechange = function() {
+		if(this.readyState == 4) {
+			const parser = new DOMParser();
+			const doc = parser.parseFromString(xhr.response, "application/xml");
+			if(this.status == 200) {
+				campi = [];
+				for(campusEl of doc.getElementsByTagName("campi")) {
+					campi.push({
+						id: parseInt(campusEl.children[0].textContent),
+						nome: campusEl.children[1].textContent,
+						cidade: campusEl.children[2].textContent,
+						uf: campusEl.children[3].textContent,
+					});
+				}
+				colocarCampi();
+			}
+		}
+	};
+	const url = "http://localhost:8080/app/diario/campi/listar";
 	xhr.open("GET", url, true);
 	xhr.send();
 }

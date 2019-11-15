@@ -66,15 +66,15 @@
 						<label for="nome-inserir">Nome</label>
 					</div>
 					<div class="input-field col s3">
-						<select id="campus-inserir">
-							<option value="" selected>Selecione</option>
+						<select id="campus-inserir" class="materialize-select">
+
 						</select>
 						<label for="campus-inserir">Campus</label>
 					</div>
 				</div>
 				<div class="container modal-footer">
 					<a class="modal-close btn utils erro-2">Cancelar</a>
-					<a class="modal-close btn primary" id="adicionar-departamento">Adicionar</a>
+					<a class="modal-close btn primary" id="adicionar-departamento" onclick="insere()">Adicionar</a>
 				</div>
 			</div>
 
@@ -87,7 +87,7 @@
 					</div>
 					<div class="input-field col s4">
 						<select id="campus-atualizar">
-							<option value="" disabled selected>Selecione</option>
+
 						</select>
 						<label for="campus-atualizar">Campus</label>
 
@@ -95,13 +95,18 @@
 				</div>
 				<div class="container modal-footer">
 					<a class="modal-close btn utils erro-2">Cancelar</a>
-					<a class="modal-close btn primary" id="atualizar-curso">Salvar</a>
+					<a class="modal-close btn primary" id="atualizar-departamento" onclick="edita()" >Salvar</a>
 				</div>
 			</div>
 		</div>
 
 		<script>
+			document.addEventListener('DOMContentLoaded', function() {
+    		var elems = document.querySelectorAll('select');
+    		var instances = M.FormSelect.init(elems, {});
+  		});
 			let deptos = [];
+			let campi = [];
 			let instances;
 			document.addEventListener('DOMContentLoaded', function() {
 				const elems = document.querySelectorAll('.modal');
@@ -109,11 +114,12 @@
 			});
 		</script>
 		<script src="../../js/materialize.js"></script>
-		<script src="../../js/diario/departamentos/tabela.js"></script>
+		<script src="../../js/diario/departamentos/Tabela.js"></script>
+		<script src="../../js/diario/departamentos/Selects.js"></script>
 		<script src="../../js/diario/departamentos/consulta.js"></script>
 		<script src="../../js/diario/departamentos/deletar.js"></script>
-		<script src="../../js/diario/departamentos/inserir.js"></script>
 		<script src="../../js/diario/departamentos/editar.js"></script>
+		<script src="../../js/diario/departamentos/inserir.js"></script>
 		<script src="../../js/diario/departamentos/main.js"></script>
 	</body>
 </html>

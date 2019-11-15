@@ -20,7 +20,7 @@ function atualizaTabela() {
 		const cidade = document.createElement("td");
 		cidade.innerHTML = depto.cidade;
 		tr.appendChild(cidade);
-		
+
 		const uf = document.createElement("td");
 		uf.innerHTML = depto.uf;
 		tr.appendChild(uf);
@@ -65,7 +65,7 @@ function filtrarTabela(){
   	filtro = input.value.toUpperCase();
   	tabela = document.getElementById("tabela-departamentos");
   	tr = tabela.getElementsByTagName("tr");
-	
+
   	for (i = 0; i < tr.length; i++) {
 		id = tr[i].getElementsByTagName("td")[0];
 		nome = tr[i].getElementsByTagName("td")[1];
@@ -86,6 +86,5 @@ function filtrarTabela(){
 	      }
     	}
 	}
-	
-}
 
+}

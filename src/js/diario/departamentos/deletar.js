@@ -9,7 +9,7 @@ function deleta() {
 			if(this.status == 200) {
 				if(msg) M.toast({ html: msg, classes: "utils sucesso-2 text-light-text" });
 				else M.toast({ html: "Departamento removido com sucesso", classes: "utils sucesso-2 text-light-text" });
-        consulta(true);
+        consultaDeptos(true);
 			} else {
 				if(msg) M.toast({ html: msg, classes: "utils erro-2 text-light-text" });
 				else M.toast({ html: "Falha ao remover departamento", classes: "utils erro-2 text-light-text" });
