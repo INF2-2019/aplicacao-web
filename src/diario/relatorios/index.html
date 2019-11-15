@@ -6,8 +6,17 @@
     <link rel="stylesheet" href="../../css/materialize.css">
 		<link rel="stylesheet" href="../../css/estilo.css">
   </head>
-  <body class="menuRelDoPedrin">
-    <h1 class="primary left-align">Menu de Relatórios</h1>
+  <body class="menuRelDoPedrin"><div class="margin-0">
+		<ul id="dropdown1" class="dropdown-content">
+		</ul>
+	<nav>
+		<div class="nav-wrapper">
+			<a class="brand-logo">Diário</a>
+			<ul id="navbars-itens" class="right hide-on-med-and-down">
+				<li style="width:200px;" id="nav-funcoes"><a class="dropdown-trigger" href="#!" data-target="dropdown1">Funções<i class="material-icons right">arrow_drop_down</i></a></li>
+			</ul>
+		</div>
+	</nav>
     <div class="container row center-align">
         <div class="input-field">
           <select>
@@ -33,7 +42,7 @@
           <select class='selectAlunos oculto'>
           </select>
         </div>
-    </div>
+    </div></div>
     <script src="../../js/materialize.js"></script>
     <script src="../../js/diario/relatorios/mainRelatorios.js"></script>
   </body>

@@ -6,8 +6,18 @@
 		<link rel="stylesheet" href="../../css/materialize.css">
 		<link rel="stylesheet" href="../../css/estilo.css">
 	</head>
-	<body class="relDoFitz">
-		<main class="container">
+	<body><div class="margin-0">
+		<ul id="dropdown1" class="dropdown-content">
+		</ul>
+	<nav>
+		<div class="nav-wrapper">
+			<a class="brand-logo">Diário</a>
+			<ul id="navbars-itens" class="right hide-on-med-and-down">
+				<li style="width:200px;" id="nav-funcoes"><a class="dropdown-trigger" href="#!" data-target="dropdown1">Funções<i class="material-icons right">arrow_drop_down</i></a></li>
+			</ul>
+		</div>
+	</nav>
+		<main class="container relDoFitz">
 			<div id="esc" class="center-align row">
 				<div>
 					Escolha a disciplina:<select></select>
@@ -16,7 +26,7 @@
 				</div>
 			</div>
 			<div id="r"></div>
-		</main>
+                </main></div>
 		<script src="../../js/materialize.js"></script>
 		<script src="../../js/diario/relatorios/r11.js"></script>
 	</body>
