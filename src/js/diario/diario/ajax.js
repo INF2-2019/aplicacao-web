@@ -37,40 +37,43 @@ function alertarStatus({ status, mensagem, causa }) {
 }
 
 function analiseXML(xml_string, output_status = true) {
-    let resposta = {};
+    let resposta = null;
     const parser = new DOMParser(),
         doc = parser.parseFromString(xml_string, "text/xml");
 
-    // Se resposta não for um status
-    if (doc.querySelector("erro, sucesso") == null) {
-        const info = doc.children[0];
-       
-        if (info.children.length >= 1)
-            return [...info.children]; // Retorna vetor com todos os filhos
-        else
-            return null;
+    if (doc.querySelector("erro,sucesso")!=null){
+        resposta = {};
+        // As seguintes linhas só serão executadas caso a resposta seja um status (erro ou sucesso)
+
+        // Variavel status é true caso o status seja sucesso e false se for erro
+        let status = (doc.querySelector("erro") == null);
+        resposta.status = status;
+
+        // Já que causa é opcional
+        if (doc.querySelector("erro > causa, sucesso > causa") != null) {
+            let causa = doc.querySelector("erro > causa, sucesso > causa").innerHTML;
+            resposta.causa = causa;
+        }
+
+        // Independentemente do status, sempre haverá uma mensagem
+        
+        let mensagem = doc.querySelector("erro > mensagem, sucesso > mensagem").innerHTML;
+        resposta.mensagem = mensagem;
+        
+        if (output_status)
+            alertarStatus(resposta);
     }
 
-    // As seguintes linhas só serão executadas caso a resposta seja um status (erro ou sucesso)
+    const info = doc.children[0];
 
-    // Variavel status é true caso o status seja sucesso e false se for erro
-    let status = (doc.querySelector("erro") == null);
-    resposta.status = status;
-
-    // Já que causa é opcional
-    if (doc.querySelector("erro > causa, sucesso > causa") != null) {
-        let causa = doc.querySelector("erro > causa, sucesso > causa").innerHTML;
-        resposta.causa = causa;
-    }
-
-    // Independentemente do status, sempre haverá uma mensagem
-    let mensagem = doc.querySelector("erro > mensagem, sucesso > mensagem").innerHTML;
-    resposta.mensagem = mensagem;
-
-    if (output_status)
-        alertarStatus(resposta);
-
-    return resposta;
+    
+    
+    if (info.querySelector(":not(erro):not(sucesso):not(mensagem):not(causa)")==null)
+        return resposta;
+    else if (info.children.length >= 1) 
+        return [...info.children]; // Retorna vetor com todos os filhos
+    else
+        return null;
 }
 
 function geraElemento(query, args) {
@@ -79,9 +82,9 @@ function geraElemento(query, args) {
     return [...$(template)];
 }
 
-async function requisicao(info, parametros) {
+async function requisicao(info, parametros, config={}) {
     if (info.constructor === String) {
-        if (infos[info]) return requisicao(infos[info], parametros);
+        if (infos[info]) return requisicao(infos[info], parametros, config);
         else return null;
     }
 
@@ -103,9 +106,10 @@ async function requisicao(info, parametros) {
     }
 
     const resposta = await pegaTabela(prefixo + link, params),
-        analise = analiseXML(resposta, true);
+        analise = analiseXML(resposta, config.output!==false);
 
     if (analise && analise.status === true) { // Se deu certo
+        
         if (inputs != undefined)
             inputs.forEach(input => input.value = ""); // Limpa os input
     }

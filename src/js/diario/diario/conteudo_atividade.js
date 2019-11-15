@@ -121,6 +121,7 @@ function alterarConteudo(info, pai){
     const modal = document.querySelector(info.queries.alterar);
     const inputs = modal.querySelectorAll("input");
 
+
     for(let input of inputs){
         let name = input.name;
         if(name in pai.dataset){
@@ -301,6 +302,7 @@ async function consultarMatriculasPos(info, resposta_dom) {
         }  
     }
 }
+
 
 function atualizarAtividade(){
     requisicao("consultarAtividade");
