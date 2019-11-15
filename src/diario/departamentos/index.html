@@ -24,7 +24,7 @@
 			<div class="row">
 				<div class="input-field col s12 m12 l4">
 					<i class="material-icons prefix">search</i>
-					<input id="search" type="text" autocomplete="off" oninput="filtrarTabela()">
+					<input id="search" type="text" autocomplete="off">
 					<label for="search">Pesquisar</label>
 				</div>
 				<a class="btn col s12 m12 l4 offset-l4 waves-effect waves-light primary modal-trigger"
@@ -52,7 +52,7 @@
 				</div>
 				<div class="modal-footer">
 					<a class="modal-close btn utils erro-2">Cancelar</a>
-					<a class="modal-close btn primary">Excluir</a>
+					<a class="modal-close btn primary" onclick="deleta()">Excluir</a>
 				</div>
 			</div>
 
@@ -88,6 +88,7 @@
 							<option value="" disabled selected>Selecione</option>
 						</select>
 						<label for="campus-atualizar">Campus</label>
+
 					</div>
 				</div>
 				<div class="container modal-footer">
@@ -98,7 +99,7 @@
 		</div>
 
 		<script>
-			const deptos = [];
+			let deptos = [];
 			let instances;
 			document.addEventListener('DOMContentLoaded', function() {
 				const elems = document.querySelectorAll('.modal');
@@ -108,7 +109,9 @@
 		<script src="../../js/materialize.js"></script>
 		<script src="../../js/diario/departamentos/tabela.js"></script>
 		<script src="../../js/diario/departamentos/consulta.js"></script>
+		<script src="../../js/diario/departamentos/deletar.js"></script>
+		<script src="../../js/diario/departamentos/inserir.js"></script>
+		<script src="../../js/diario/departamentos/editar.js"></script>
 		<script src="../../js/diario/departamentos/main.js"></script>
 	</body>
-
 </html>
