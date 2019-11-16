@@ -14,3 +14,19 @@ function colocarCampi() {
        var instances = M.FormSelect.init(elems, {});
      }
 }
+function resetarSelects() {
+  const select1 = document.querySelector('#campus-inserir');
+  const select2 = document.querySelector('#campus-atualizar');
+
+  select1.value = -1;
+  select2.value = -1;
+
+  var elems = document.querySelectorAll('select');
+  var instances = M.FormSelect.init(elems, {});
+}
+function resetarInputs() {
+  const input1 = document.querySelector('#nome-inserir')
+  const input2 = document.querySelector('#nome-atualizar')
+  input1.value = '';
+  input2.value = '';
+}

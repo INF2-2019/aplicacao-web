@@ -28,7 +28,7 @@
 					<label for="search">Pesquisar</label>
 				</div>
 				<a class="btn col s12 m12 l4 offset-l4 waves-effect waves-light primary modal-trigger"
-						href="#modal-add">Adicionar</a>
+						href="#modal-add" onclick="resetarSelects();resetarInputs()">Adicionar</a>
 			</div>
 
 			<div id="consulta-departamentos" class="col s12">
@@ -62,12 +62,12 @@
 				<div class="row modal-content">
 					<h4>Adicionar departamento</h4>
 					<div class="input-field col s9">
-						<input id="nome-inserir" type="text" />
+						<input id="nome-inserir" type="text" maxlength="127" value=""/>
 						<label for="nome-inserir">Nome</label>
 					</div>
 					<div class="input-field col s3">
 						<select id="campus-inserir" class="materialize-select">
-
+							<option value="-1" selected disabled>Selecione</option>
 						</select>
 						<label for="campus-inserir">Campus</label>
 					</div>
@@ -82,12 +82,12 @@
 				<h4 style="padding: 15pt;">Editar departamento</h4>
 				<div class="row modal-content">
 					<div class="input-field col s8">
-						<input id="nome-atualizar" type="text" />
+						<input id="nome-atualizar" type="text" maxlength="127"/>
 						<label for="nome-atualizar">Nome</label>
 					</div>
 					<div class="input-field col s4">
 						<select id="campus-atualizar">
-
+							<option value="-1" selected disabled>Selecione</option>
 						</select>
 						<label for="campus-atualizar">Campus</label>
 

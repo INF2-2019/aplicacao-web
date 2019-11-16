@@ -39,7 +39,7 @@ function botaoEditar(id) {
 	botao.setAttribute("href", "#modal-atualizar");
 	botao.classList = "btn-small secondary editar modal-trigger";
 	botao.style = "margin-right: 20px";
-	botao.setAttribute("onclick", "setId("+id+")")
+	botao.setAttribute("onclick", "setId("+id+");resetarSelects();resetarInputs()")
 	botao.innerHTML = "EDITAR";
 	return botao;
 }
