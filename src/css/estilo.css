@@ -1,3 +1,58 @@
+.relDoFitz{
+	margin: 50px 0;
+}
+
+.relDoFitz .select-wrapper {
+	display: inline-block;
+	margin: 0 30px 0 8px;
+}
+
+.relDoFitz #t>* {
+	border-bottom: 1px solid #e0e0e0;
+}
+
+.relDoFitz #t :last-child {
+	border-bottom: none !important;
+}
+
+.relDoFitz .head {
+	font-weight: bold;
+}
+
+.relDoFitz #esc {
+	margin-bottom: 35px;
+}
+
+.relDoFitz #t>* {
+	display: flex;
+}
+
+.relDoFitz #t>*>* {
+	display: flex;
+	flex: 1 1 0;
+}
+
+
+.menuRelDoPedrin h1{
+  font-size: 32px;
+  margin: 0 0 32px;
+  color:white;
+  text-align: center;
+  padding: 16px 8px;
+}
+
+.menuRelDoPedrin .select-wrapper{
+  display:inline-block !important;
+  width:332px !important;
+}
+
+.menuRelDoPedrin .description{
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.menuRelDoPedrin .oculto{
+  display: none;
+
 .btn-trasicao{
 	height: 65pt;
 	line-height: 65pt;
