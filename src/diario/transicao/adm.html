@@ -7,31 +7,20 @@
 	<title>Inicial ADM</title>
 	<link rel="stylesheet" href="../../css/materialize.css" />
 	<link rel="stylesheet" href="../../css/estilo.css" />
-
 </head>
 
 <body>
-	<div class="full-heght margin-0">
+	<div class="margin-0">
 		<ul id="dropdown1" class="dropdown-content">
-			<li><a href="../transferencia/index.html">Transferência</a></li>
-			<li><a href="../professores/index.html">Professores</a></li>
-			<li><a href="../departamentos/index.html">Departamentos</a></li>
-			<li><a href="../cursos/index.html">Cursos</a></li>
-			<li><a href="../etapas/index.html">Etapas</a></li>
-			<li><a href="../disciplinas/index.html">Disciplinas</a></li>
-			<li><a href="../alunos/index.html">Alunos</a></li>
-			<li><a href="../campi/index.html">Campi</a></li>
-		  </ul>
-		  <nav>
+		</ul>
+		<nav>
 			<div class="nav-wrapper">
-			  <a class="brand-logo">Diário</a>
-			  <ul class="right hide-on-med-and-down">
-				<li><a href="../login-adm.html">Login</a></li>
-				<li class="active"><a href="">Página Inicial</a></li>
-				<li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Funções<i class="material-icons right">arrow_drop_down</i></a></li>
-			  </ul>
+				<a class="brand-logo">Diário</a>
+				<ul id="navbars-itens" class="right hide-on-med-and-down">
+					<li style="width:200px;" id="nav-funcoes"><a class="dropdown-trigger" href="#!" data-target="dropdown1">Funções<i class="material-icons right">arrow_drop_down</i></a></li>
+				</ul>
 			</div>
-		  </nav>
+		</nav>
 
 		<div class="container" >
 			<h2>Serviços:</h2>
@@ -45,6 +34,7 @@
 				<a class="col s12 l5 offset-l2 btn-trasicao primary alt waves-effect waves-light btn-large" href="../disciplinas/index.html">Manutenção de disciplinas</a>
 				<a class="col s12 l5 btn-trasicao primary alt waves-effect waves-light btn-large" href="../alunos/index.html" >Manutenção de alunos</a>
 				<a class="col s12 l5 offset-l2 btn-trasicao primary alt waves-effect waves-light btn-large" href="../campi/index.html">Manutenção de campi</a>
+				<a class="col s12 l5 btn-trasicao primary alt waves-effect waves-light btn-large" href="../professores-disciplinas/index.html">Manutenção professores-disciplinas</a>
 			</div>
 		</div>
 	</div>
@@ -53,6 +43,8 @@
 	<!--Conexao Servlets-->
 	<script src="../../js/jquery-3.4.1.js"></script>
 	<script src="../../js/materialize.js"></script>
+	<script src="../../js/diario/navbars/navbar.js"></script>
+	<script>cargoLogado();</script>
 	<script>$(".dropdown-trigger").dropdown();</script>
 </body>
 
