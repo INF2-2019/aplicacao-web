@@ -82,13 +82,8 @@
 		<script type="text/javascript" src="../../js/materialize.min.js"></script>
 		<script src="../../js/diario/navbars/navbar.js"></script>
 		<script src="../../js/diario/professores/perfil.js"></script>
-		<script>
-			$(document).ready(function(){
-				$('.modal').modal();
-				cargoLogado();
-				$(".dropdown-trigger").dropdown();
-			});
-		</script>
+		<script>cargoLogado();</script>
+		<script>$(".dropdown-trigger").dropdown();M.AutoInit();</script>
 
 	</body>
 </html>
