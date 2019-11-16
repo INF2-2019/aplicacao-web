@@ -1,7 +1,7 @@
 const paramNomes = ["id", "id-depto", "nome", "senha", "email", "titulacao"];
-const ROTA_EDICAO = "diario/professores/atualizar";
-const ROTA_REMOCAO = "diario/professores/deletar";
-const ROTA_CONSULTA = "diario/professores/consultar";
+const ROTA_EDICAO = "/diario/professores/atualizar";
+const ROTA_REMOCAO = "/diario/professores/deletar";
+const ROTA_CONSULTA = "/diario/professores/consultar";
 const LABEL_ATRIBUTOS = 'class="primary-text text-lighten-1 short col s12" style="font-size:18px;"'
 
 function info(id){
