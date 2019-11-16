@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Diário Acadêmico</title>
+    <link rel="stylesheet" href="../../css/materialize.css">
+		<link rel="stylesheet" href="../../css/estilo.css">
+  </head>
+  <body class="menuRelDoPedrin"><div class="margin-0">
+		<ul id="dropdown1" class="dropdown-content">
+		</ul>
+	<nav>
+		<div class="nav-wrapper">
+			<a class="brand-logo">Diário</a>
+			<ul id="navbars-itens" class="right hide-on-med-and-down">
+				<li style="width:200px;" id="nav-funcoes"><a class="dropdown-trigger" href="#!" data-target="dropdown1">Funções<i class="material-icons right">arrow_drop_down</i></a></li>
+			</ul>
+		</div>
+	</nav>
+    <div class="container row center-align">
+        <div class="input-field">
+          <select>
+            <option disabled selected>Escolha um relatório</option>
+           <option value="0">Histórico escolar</option>
+            <option value="1">Certificados de aprovação</option>
+            <option value="2">Relação de professores</option>
+            <option value="3">Notas dos alunos</option>
+            <option value="4">Relação de conteúdos</option>
+          </select>
+          <a class='waves-effect waves-light primary white-text btn'>Gerar</a>
+        </div>
+        <div class="input-field">
+          <p class='description'></p>
+        </div>
+        <div class="input-field selectsDiv oculto">
+          <select class='selectDisciplinas oculto'>
+          </select>
+          <select class='selectEtapas oculto'>
+          </select>
+        </div>
+        <div class="input-field alunosDiv oculto">
+          <select class='selectAlunos oculto'>
+          </select>
+        </div>
+    </div></div>
+    <script src="../../js/materialize.js"></script>
+    <script src="../../js/diario/relatorios/mainRelatorios.js"></script>
+    <script src="../navbars/navbar.js"></script>
+  </body>
+</html>

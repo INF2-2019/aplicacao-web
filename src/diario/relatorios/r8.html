@@ -1,0 +1,68 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Certificado de aluno</title>
+        <link rel="stylesheet" href="../../css/materialize.css">
+        <style>
+            #certificado-nome{
+                width:35%;
+                text-align: center;
+            }
+            @media print {
+                .no-print {
+                  visibility: hidden;
+                }
+                html, body {
+                    height: 99%;    
+                }
+                img{
+                    bottom: 10%;
+                }
+                @page {
+                    size: landscape
+                }
+            }
+        </style>
+        <style type="text/css" media="print">
+            @page {
+                size: auto;   /* auto is the initial value */
+                margin: 0;  /* this affects the margin in the printer settings */
+            }
+        </style>
+        
+    </head>
+    <body class="background grey lighten-2">
+        <ul id="dropdown1" class="dropdown-content no-print">
+		</ul>
+        <nav class="no-print">
+            <div class="nav-wrapper">
+                <a class="brand-logo">Diário</a>
+                <ul id="navbars-itens" class="right hide-on-med-and-down">
+                    <li style="width:200px;" id="nav-funcoes"><a class="dropdown-trigger" href="#!" data-target="dropdown1">Funções<i class="material-icons right">arrow_drop_down</i></a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="container">
+            <div class="row white">
+                <div class="offset-s1 col s10">
+                    <h3 class="center-align">Certificado de conclusão de Curso</h3><br>
+                    <div class="row">
+                        <p>É através deste documento que a instituição <strong>Centro Federal 
+                        de Educação Tecnológica de Minas Gerais</strong> certifica que o aluno
+                        <input id="certificado-nome" readonly placeholder="Nome do aluno" style="text-transform: uppercase;"> 
+                        foi aprovado em todas as disciplinas em que estava inscrito, ou seja, possui nota igual ou superior a 60 pontos em todas essas
+                    </p>
+                    </div>
+                    <div class="row">
+                        <img class="responsive-img right" src="https://www.cefetmg.br/galeria/imagens/Logo_Assinatura_CEFET_Rodape.png">
+                    </div>
+                </div>
+            </div>
+            <a id="imprimir" class="btn right no-print">Imprimir</a>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+        <script src="../../js/materialize.js"></script>
+        <script src="../../js/diario/relatorios/r8.js"></script>
+    </body>
+</html>
