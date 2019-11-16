@@ -289,7 +289,6 @@ function deletarAtividade(info, pai) {
 const DIARIOS = {}
 
 async function consultaDiario({id,valor}){
-    console.log(id,valor);
     
     let conteudo = id;
     if (DIARIOS[conteudo] == undefined) DIARIOS[conteudo] = {};
@@ -306,7 +305,7 @@ async function consultaDiario({id,valor}){
             faltas: parseInt(parametros["faltas"]),
             nota: parametros["nota"]
         };
-
+        
         if(valor) args.valor = Number(valor);
 
         objetoDiario[args.matricula] = args;
@@ -328,14 +327,12 @@ function mostraDiario(query, id_conteudo) {
         
         const falta = linha.querySelector("input[name=falta]"),
             nota = linha.querySelector("input[name=nota]");
-            
-        console.log(diario, matricula);
         
         falta.value = diario? diario.faltas: "";
         
         if(nota!=null){
-            nota.value = diario? diario.nota: "";
-            
+            nota.value = diario ? diario.nota : ""; 
+
             if(ATIVIDADES[id_conteudo])
                 nota.max = ATIVIDADES[id_conteudo].valor;
         }
@@ -405,28 +402,53 @@ requisicao("consultarMatriculas");
 const botaoLancarNota = document.querySelector("#lancarNota");
 const botaoLancarFalta = document.querySelector("#lancarFalta");
 
-function lanca(link, query){
+async function lanca(link, query){
     const holder = document.querySelector(query);
     const campos = holder.querySelectorAll("tr");
+    let atualizar_no_final = false;
+    
+    
 
     for (let campo of campos) {
         console.log(campo);
 
         let matricula = formatarNumero(campo.dataset.matricula),
-            conteudo = holder.dataset.conteudo,
+            conteudo = formatarNumero(holder.dataset.conteudo),
+            diario = DIARIOS[conteudo][matricula],
             config = { matricula, conteudo },
             falta = campo.querySelector("input[name=falta]").value,
             nota = campo.querySelector("input[name=nota]");
+        
+        let teve_alteracao = false;
 
-        if(nota!=null) nota = nota.value
+        if (falta != ""){
+            if (!diario || Number(falta) != diario.faltas){
+                config.falta = falta;
+                teve_alteracao = true;
+            }
+        }
+        if (!(nota == "" || nota == null)){
+            if (!diario || Number(nota.value) != Number(diario.nota)){
+                config.nota = nota.value;
+                teve_alteracao = true;
+            }
+        }
 
-        if (falta != "") config.falta = falta;
-        if (!(nota == "" || nota == null )) config.nota = nota;
 
-        console.log(config);
+        
+        if(teve_alteracao){
+            console.log(config);
+            let res = await requisicao(link, config);
+            if(res.status){
+                atualizar_no_final = true;
+            }
+        }
+    }
 
 
-        requisicao(link, config);
+    if (atualizar_no_final){
+        let conteudo = formatarNumero(holder.dataset.conteudo);
+        consultaDiario({id: conteudo});
     }
 }
 

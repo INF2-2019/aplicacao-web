@@ -26,8 +26,6 @@ async function pegaTabela(link,parametros,isPost=false) {
         config.headers = new Headers({ 'Content-type': 'application/x-www-form-urlencoded; charset=UTF-8' });
     } else { // Parametros para o metodo GET    
         link += '?' + new URLSearchParams(parametros);
-        console.log(link, parametros);
-        
     }
 
     let request = await fetch(link, config); 
