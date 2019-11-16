@@ -75,5 +75,5 @@ function cargoLogado() {
 		else if(cargo=="OPERADOR")navOPERADOR();
 		else return;
 	})
-	.catch(error => console.error(error));
+	.catch(error =>  alert("Erro de conexão ao servidor."));
 }
