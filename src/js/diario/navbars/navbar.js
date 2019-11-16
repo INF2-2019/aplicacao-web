@@ -103,5 +103,5 @@ function cargoLogado() {
 		else if(cargo=="PROFESSOR")navPROFESSOR();
 		else return;
 	})
-	.catch(error => console.error(error));
+	.catch(error => alert("Erro de conexão ao servidor."));
 }
