@@ -11,6 +11,11 @@ async function pegaTabela(link,parametros,isPost=false) {
 
     */
 
+    for(let nome in parametros){
+        if (parametros[nome]==undefined)
+            delete parametros[nome];
+    }
+
     let config = {
         method: isPost? "POST": "GET",
         credentials: "include"
@@ -19,11 +24,10 @@ async function pegaTabela(link,parametros,isPost=false) {
     if(isPost){ // Parametros para o metodo POST
         config.body = new URLSearchParams(parametros);
         config.headers = new Headers({ 'Content-type': 'application/x-www-form-urlencoded; charset=UTF-8' });
-    } else { // Parametros para o metodo GET
-        let query = [];
-        for(let nome in parametros)
-            query.push(nome+"="+parametros[nome]);
-        link+= '?'+query.join("&");
+    } else { // Parametros para o metodo GET    
+        link += '?' + new URLSearchParams(parametros);
+        console.log(link, parametros);
+        
     }
 
     let request = await fetch(link, config); 
@@ -87,25 +91,26 @@ async function requisicao(info, parametros, config={}) {
         if (infos[info]) return requisicao(infos[info], parametros, config);
         else return null;
     }
-
+    
+    
     if (info.alerta && !window.confirm(info.alert))
-        return null;
+    return null;
     
     const link = info.link;
     let params = {},
-        inputs;
-
+    inputs;
+    
     if (info.parametros_default)
-        params = Object.assign(params, info.parametros_default);
+    params = Object.assign(params, info.parametros_default);
     if(parametros)
-        params = Object.assign(params, parametros);        
-
+    params = Object.assign(params, parametros);        
+    
     if (info.queries && info.queries.inputs) {
         inputs = document.querySelectorAll(info.queries.inputs);
         inputs.forEach(input => input.value!=""? params[input.name] = input.value:undefined);
     }
 
-    const resposta = await pegaTabela(prefixo + link, params),
+    const resposta = await pegaTabela(prefixo + link, params, info.post),
         analise = analiseXML(resposta, config.output!==false);
 
     if (analise && analise.status === true) { // Se deu certo
@@ -116,7 +121,7 @@ async function requisicao(info, parametros, config={}) {
 
 
     if (info.callback) {
-        info.callback(info, analise);
+        info.callback(info, analise, config.params);
     }
     return analise;
 }
@@ -168,4 +173,23 @@ function dataFormatada(data) {
         mesF = (mes.length == 1) ? '0' + mes : mes,
         anoF = data.getFullYear();
     return diaF + "/" + mesF + "/" + anoF;
+}
+
+function leParametrosXML(xml_dom){
+    let obj = {};
+    let vetor;
+
+    if(xml_dom.constructor == Array)
+        vetor = xml_dom;
+    else
+        vetor = xml_dom.children;
+
+    for (let filho of vetor) {
+        if (filho.children.length > 0)
+            obj[filho.tagName] = leParametrosXML(filho);
+        else
+            obj[filho.tagName] = filho.innerHTML;
+    }
+
+    return obj;
 }

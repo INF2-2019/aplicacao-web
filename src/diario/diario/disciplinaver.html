@@ -181,8 +181,8 @@
                 <tbody id="holder_notas_faltas" data-conteudo="">
                   <tr>
                     <td>000000100</td>
-                    <td>Juan Vitor Saar Silvério</td>
-                    <td><input type="number" name="falta"></td>
+                    <td>Reginaura Clevertson Santa Maria</td>
+                    <td><input type="number" name="falta" step="1" min="0"></td>
                     <td><input type="number" name="nota"></td>
                   </tr>
                 </tbody>
@@ -216,7 +216,7 @@
                 <tbody id="holder_faltas" data-conteudo="">
                   <tr>
                     <td>000000100</td>
-                    <td><input type="number" name="falta"></td>
+                    <td><input type="number" name="falta" step="1" min="0"></td>
                   </tr>
                 </tbody>
               </table>
@@ -252,19 +252,19 @@
       </template>
 
       <template id="template_nota_falta">
-        <tr data-matricula="{{matricula}}">
+        <tr data-matricula="{{matricula_raw}}">
           <td>{{matricula}}</td>
           <td>{{nome}}</td>
-          <td><input type="number" name="falta" data-falta_inicial=""></td>
-          <td><input type="number" name="nota" data-nota_inicial=""></td>
+          <td><input type="number" name="falta" data-falta_inicial="" step="1" min="0"></td>
+          <td><input type="number" name="nota" data-nota_inicial="" min="0"></td>
         </tr>
       </template>
 
       <template id="template_falta">
-        <tr data-matricula="{{matricula}}">
+        <tr data-matricula="{{matricula_raw}}">
           <td>{{matricula}}</td>
           <td>{{nome}}</td>
-          <td><input type="number" name="falta" data-falta_inicial=""></td>
+          <td><input type="number" name="falta" data-falta_inicial="" step="1" min="0"></td>
         </tr>
       </template>
       
