@@ -3,6 +3,8 @@
 
 let idSessao;
 let tabela = document.querySelector("table");
+let div = document.querySelector(".container");
+let h1 = document.querySelector("#alerta");
 pegarId();
 function pegarId() {
         let url = "http://localhost:8080/app/diario/cargo";
@@ -55,6 +57,8 @@ function adicionaResult(responseStatus,xmlResult){
         //recebe resposta em XML e manipula o XML
                 if(xmlResult.getElementsByTagName("erro").length === 0){
                         atualizaTabela(xmlResult);
+                        div.classList.remove('oculto');
+                        h1.classList.add('oculto');
                 } else {
                 if (xmlResult != "") {
                         var resp = xmlResult.childNodes[0];

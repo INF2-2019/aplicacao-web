@@ -23,6 +23,9 @@
                     size: landscape
                 }
             }
+            .oculto {
+                    display: none !important;
+                }
         </style>
         <style type="text/css" media="print">
             @page {
@@ -43,7 +46,7 @@
 				</ul>
 			</div>
 		</nav>
-        <div class="container">
+        <div class="container oculto">
             <div class="row white">
                 <div class="offset-s1 col s10">
                     <h3 class="center-align">Certificado de conclusão de Curso</h3><br>
@@ -62,6 +65,8 @@
             </div>
             <a id="imprimir" class="btn right no-print">Imprimir</a>
         </div>
+
+        <h1 id="alerta" style="text-align: center">Não foi possível gerar o certificado</h1>
 
         <script src="../../js/jquery-3.4.1.js"></script>
         <script src="../../js/materialize.js"></script>
