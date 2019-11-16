@@ -54,5 +54,6 @@ function transfere() {
 	const params = "?cpf=" + cpf;
 	const url = servidor + "diario/transferencia/transfere" + params;
 	xhr.open("POST", url, true);
+	xhr.withCredentials = true;
 	xhr.send();
 }
