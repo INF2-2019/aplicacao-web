@@ -98,7 +98,12 @@
               <h4 style="padding: 10pt">Inserir Novo Conteúdo</h4>
               <label class="primary-text text-lighten-1 col s12">CONTEÚDO <input name="conteudo" type="text"></label>
               <label class="primary-text text-lighten-1 col s5">DATA <input name="data" type="date"></label>
-              <label class="primary-text text-lighten-1 col s6">ETAPA <input name="etapa" type="number"></label>
+              <label class="primary-text text-lighten-1 col s6">ETAPA
+                <select class="holder_etapas_lanca_conteudo" style="display: block;">
+                  <option value="1">1</option>
+                </select>
+              </label>
+              <!--<label class="primary-text text-lighten-1 col s6">ETAPA <input name="etapa" type="number"></label>-->
               <button style="margin-left: 2%; margin-top: 2%" class="btn primary espaco waves-effect waves-light btn-large modal-close" id="submit_inserir_conteudo">Enviar</button>
             </div>
           </div>
@@ -114,7 +119,11 @@
               <h4 style="padding: 10pt">Inserir Nova Atividade</h4>
               <label class="primary-text text-lighten-1 col s12">ATIVIDADE <input name="conteudo" type="text"></label>
               <label class="primary-text text-lighten-1 col s6">DATA <input name="data" type="date"></label>
-              <label class="primary-text text-lighten-1 col s6">ETAPA<input name="etapa" type="number"></label>
+              <label class="primary-text text-lighten-1 col s6">ETAPA
+                <select class="holder_etapas_lanca_atividde" style="display: block;">
+                  <option value="1">1</option>
+                </select>
+              </label>
               <label class="primary-text text-lighten-1 col s6">VALOR<input name="valor" type="number"></label>
               <button style="margin-left: 2%; margin-top: 2%" class="btn primary espaco waves-effect waves-light btn-large modal-close" id="submit_inserir_atividade">Enviar</button>
             </div>
@@ -132,7 +141,12 @@
               <input type="hidden" name="id">
               <label class="primary-text text-lighten-1 col s12">CONTEÚDO <input name="conteudo" type="text"></label>
               <label class="primary-text text-lighten-1 col s5">DATA <input name="data" type="date"></label>
-              <label class="primary-text text-lighten-1 col s6">ETAPA <input name="etapa" type="number"></label>
+              <label class="primary-text text-lighten-1 col s6" style="display: block;">ETAPA
+                  <select id="holder_etapas_altera_conteudo" style="display: block;">
+                    <option value="1">1</option>
+                  </select>
+              </label>
+              <!--<label class="primary-text text-lighten-1 col s6">ETAPA <input name="etapa" type="number"></label>-->
               <button style="margin-left: 2%; margin-top: 2%" class="btn primary espaco waves-effect waves-light btn-large modal-close" id="submit_alterar_conteudo">Editar</button>
             </div>
           </div>
@@ -149,7 +163,12 @@
               <input type="hidden" name="id">
               <label class="primary-text text-lighten-1 col s12">ATIVIDADE <input name="conteudo" type="text"></label>
               <label class="primary-text text-lighten-1 short col s6">DATA <input name="data" type="date"></label>
-              <label class="primary-text text-lighten-1 short col s6">ETAPA<input name="etapa" type="number"></label>
+              <label class="primary-text text-lighten-1 col s6">ETAPA
+                  <select id="holder_etapas_altera_atividade" style="display: block;">
+                    <option value="1">1</option>
+                  </select>
+              </label>
+              <!--<label class="primary-text text-lighten-1 short col s6">ETAPA<input name="etapa" type="number"></label>-->
               <label class="primary-text text-lighten-1 short col s6">VALOR<input name="valor" type="number"></label>
               <button style="margin-left: 2%; margin-top: 2%" class="btn primary espaco waves-effect waves-light btn-large modal-close" id="submit_alterar_atividade">Editar</button>
             </div>
@@ -199,7 +218,7 @@
         <div id="modalLancaFalta" class="modal" style="padding: 2%">
           <div class="row modal-content" style="padding: 0;">
             <div>
-              <h3>Lançamento de Notas</h3>
+              <h3>Lançamento de Faltas</h3>
               <table class="responsive-table" style="padding-top: 10%">
                 <colgroup>
                   <col span="1" width="25%">
@@ -251,6 +270,7 @@
         </tr>
       </template>
 
+      <!-- Template de linha da tabela de Faltas -->
       <template id="template_nota_falta">
         <tr data-matricula="{{matricula_raw}}">
           <td>{{matricula}}</td>
@@ -260,6 +280,7 @@
         </tr>
       </template>
 
+      <!-- Template de linha da tabela de Notas -->
       <template id="template_falta">
         <tr data-matricula="{{matricula_raw}}">
           <td>{{matricula}}</td>
@@ -267,14 +288,17 @@
           <td><input type="number" name="falta" data-falta_inicial="" step="1" min="0"></td>
         </tr>
       </template>
+
+      <!-- Template de option no select de etapas -->
+      <template id="template_etapa">
+        
+      </template>
       
       <script src="../../js/diario/diario/jquery-3.3.1.min.js"></script>
       <script>
         $(document).ready(function(){
           $('.modal').modal();
         });
-
-
       </script>
       <script src="../../js/materialize.min.js"></script>
       <script src="../../js/diario/diario/ajax.js"></script>

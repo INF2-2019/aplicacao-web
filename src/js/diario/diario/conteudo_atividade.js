@@ -69,6 +69,14 @@ const infos = {
         },
         callback: gerarListaDiario
     },
+    consultarEtapas: {
+        link: "diario/etapas/consultaretapas",
+        queries: {
+            holder: ["#holder_etapas_lanca_atividade", "#holder_etapas_lanca_conteudo", "#holder_etapas_altera_atividade", "#holder_etapas_altera_conteudo"],
+            template: ["#template-etapas"]
+        },
+        callback: gerarListaEtapas
+    },
     consultarAluno: {
         link: "/diario/alunos/consultar"
     },
@@ -389,6 +397,23 @@ async function gerarListaDiario(info, resposta_dom){
     }
 }
 
+/* - - - - - - Etapas - - - - - - */
+function consultarEtapasPos(info, resposta_dom) {
+    const holder = document.querySelector(info.queries.holder);
+    holder.innerHTML = "";
+    if (resposta_dom == null) return;
+
+    for (let conteudosEl of resposta_dom) {
+        let parametros = leParametrosXML(conteudosEl);
+
+        let id_etapa = parametros["id"];
+
+        //CRIA UMA OPTION COM O VALOR DA ETAPA E O NÚMERO DA ETAPA
+        let el = "<option value=" + id_etapa + " \"> " + id-etapa + "</option>";
+
+        holder.appendChild(el);
+    }
+}
 
 
 /* Main */
