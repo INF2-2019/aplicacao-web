@@ -38,7 +38,6 @@ function salvar() {
 	let email = document.getElementById("email").value;
 	let titulacao = document.getElementById("titulacao").value;
 	
-	console.log(titulacao);
 	alterarPost(id, idDepto, nome, senha, email, titulacao);
 }
 
