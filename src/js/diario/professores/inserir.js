@@ -22,7 +22,7 @@ function inserir(){
 function jqueryAjax(id, idDepto, nome, senha, email, titulacao) {
 	$.ajax(ENDERECO+ROTA, {
 		method: METODO,
-		xhrFiels: { withCredentials: true },
+		xhrFields: { withCredentials: true },
 		data: {
 			id: id,
 			"id-depto": idDepto,
