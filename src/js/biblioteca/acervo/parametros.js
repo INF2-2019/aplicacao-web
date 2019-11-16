@@ -49,7 +49,8 @@ const PARAMS_MIDIAS = [
 		paramNome:  "subtipo",
 		exibNome:  "Subtipo",
 		tipo: "text",
-		tamanho:  4
+		tamanho:  4,
+		tipoInput: "select"
 	},
 	{
 		paramNome:  "tempo",
@@ -70,7 +71,8 @@ const PARAMS_PERIODICOS = [
 		paramNome:  "subtipo",
 		exibNome:  "Subtipo",
 		tipo: "text",
-		tamanho:  4
+		tamanho:  4,
+		tipoInput: "input"
 	},
 	{
 		paramNome:  "periodicidade",
