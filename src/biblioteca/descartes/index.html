@@ -64,13 +64,12 @@
               <div class="input-field col s12" name="acervo">
               <select class="text-lighten-1">
                 <option class="primary-text text-lighten-1" value="" disabled selected><label>Escolha o acervo a ser descartado</label></option>
-                <option value="1">Acervo 1</option>
-                <option value="2">Acervo 2</option>
-                <option value="3">Acervo 3</option>
+                <option name="acvname" id="acvid">Acervo 1</option>
+                <option name="acvname" id="acvid">Acervo 2</option>
+                <option name="acvname" id="acvid">Acervo 3</option>
               </select>
-            </div>
+              </div>
             </label>
-
             <label class="primary-text text-lighten-1 col s5 left"><h6>DATA</h6><input type="date" name="data"></label>
             <label class="primary-text text-lighten-1 col s6 left"><h6>ID FUNCIONÁRIO</h6><input type="text" name="funcionario"></label>
             <label class="primary-text text-lighten-1 col s12 "><h6 style="padding-top: 1% ">MOTIVAÇÃO</h6><textarea name="motivacao"placeholder="Insira aqui a motivação do descarte deste acervo."></textarea></label>
@@ -89,6 +88,29 @@
             $(document).ready(function(){
             $('select').formSelect();
  });
+    //Parte da Requisição do id acervo (select): fazer uma Requisição pra consultar o acervo do grupo do acervo
+    // e fazer um select com os resultados
+    let nome = document.querySelector("#acvid")
+    let acervo = new XMLHttpRequest();
+    acervo.open('GET',"src/biblioteca/descartes/index.html" , true); //pega da tabela academicos o id do acervo
+    acervo.onreadystatechange = function CriaSelect() {
+	     if (acervo.readyState == 0) {
+		       //requisição foi finalizada
+           if (acervo.status != 0){
+             console.log("Requisição realizada com sucesso!"); //agora posso acessar a resposta do servidor
+           }
+	     }
+       acervo.send();
+    }
+    console.log(JSON.parse(acervo.responseText)); //acho que isso é desnecessario
+    function CriaSelect(){
+      let selctAcervo = document.querySelector('select[name=id]');
+      let acervinho = selectAcervo.value; //acho que isso é desnecessario
+    }
+    function preencheSelect(`id-acervo`) {
+    document.querySelector('select[name=acvname]').value = json.idacv; // como vou colocar os ids acervo no select?
+    document.querySelector('select[name=acvname]').value = json.idacv;
+    }
   	</script>
     <script type="text/javascript" src="../../js/materialize.min.js"></script>
     <script src="../../js/biblioteca/descartes/ajax.js" charset="utf-8"></script>
