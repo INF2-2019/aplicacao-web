@@ -90,30 +90,11 @@
  });
     //Parte da Requisição do id acervo (select): fazer uma Requisição pra consultar o acervo do grupo do acervo
     // e fazer um select com os resultados
-    let nome = document.querySelector("#acvid")
-    let acervo = new XMLHttpRequest();
-    acervo.open('GET',"src/biblioteca/descartes/index.html" , true); //pega da tabela academicos o id do acervo
-    acervo.onreadystatechange = function CriaSelect() {
-	     if (acervo.readyState == 0) {
-		       //requisição foi finalizada
-           if (acervo.status != 0){
-             console.log("Requisição realizada com sucesso!"); //agora posso acessar a resposta do servidor
-           }
-	     }
-       acervo.send();
-    }
-    console.log(JSON.parse(acervo.responseText)); //acho que isso é desnecessario
-    function CriaSelect(){
-      let selctAcervo = document.querySelector('select[name=id]');
-      let acervinho = selectAcervo.value; //acho que isso é desnecessario
-    }
-    function preencheSelect(`id-acervo`) {
-    document.querySelector('select[name=acvname]').value = json.idacv; // como vou colocar os ids acervo no select?
-    document.querySelector('select[name=acvname]').value = json.idacv;
-    }
+
   	</script>
     <script type="text/javascript" src="../../js/materialize.min.js"></script>
     <script src="../../js/biblioteca/descartes/ajax.js" charset="utf-8"></script>
+    <script src="../../js/biblioteca/descartes/index.js" charset="utf-8"></script> <!-- Referenciei o ajax do select aqui -->
     <script src="../../js/biblioteca/descartes/descarteAcervo.js" charset="utf-8"></script>
     </body>
 </html>
