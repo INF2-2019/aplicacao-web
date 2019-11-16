@@ -1,11 +1,11 @@
-var ENDERECO = "http://localhost:8080/app";
-var ROTA = "/diario/cargo";
+const ENDERECO = "http://localhost:8080/app";
+const ROTA = "/diario/cargo";
 
-var ul_dropdown;
-var ul_itens;
-var li_dropdown = [];
-var li_itens = [];
-var ul_funcoes;
+let ul_dropdown;
+let ul_itens;
+let li_dropdown = [];
+let li_itens = [];
+let ul_funcoes;
 
 function navADMIN() {
     ul_dropdown = document.getElementById("dropdown1");
@@ -103,5 +103,5 @@ function cargoLogado() {
 		else if(cargo=="PROFESSOR")navPROFESSOR();
 		else return;
 	})
-	.catch(error => console.error(error));
+	.catch(error => alert("Erro de conexão ao servidor."));
 }

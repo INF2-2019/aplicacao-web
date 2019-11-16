@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt" dir="ltr">
+
+<head>
+	<link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="../../css/materialize.css">
+	<link rel="stylesheet" href="../../css/estilo.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+	<meta charset="utf-8">
+	<title>Relatório de Acervos</title>
+</head>
+
+<body onload="consulta()">
+	<nav>
+		<div class="nav-wrapper">
+			<a class="brand-logo">Biblioteca</a>
+		</div>
+	</nav>
+	<!-- fim header -->
+
+	<!-- DIV PARA RESPOSTA CONSULTA -->
+	<div class="container">
+		<h2>Relatório de Acervo</h2>
+		<div id="resposta" class="row">
+			<a id="BotaoImprime" class="btn col primary s12 m12 l2 right">IMPRIMIR</a>
+
+			<div class="col s12">
+				<div id="printable">
+
+						<div class="resposta-relatorio-biblioteca" id="livros">
+
+						</div>
+						<div class="resposta-relatorio-biblioteca" id="periodicos">
+
+						</div>
+						<div class="resposta-relatorio-biblioteca" id="academicos">
+
+						</div>
+						<div class="resposta-relatorio-biblioteca" id="midias">
+
+						</div>
+					</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- IMPORTAÇÕES -->
+	<script src="../../js/materialize.js"></script>
+	<script src="../../js/jquery-3.4.1.js"></script>
+	<script src="../../js/biblioteca/relatorios/main.js"></script>
+	<script src="../../js/biblioteca/relatorios/consultaAcervo.js"></script>
+</body>
+
+</html>

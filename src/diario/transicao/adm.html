@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Inicial ADM</title>
+	<link rel="stylesheet" href="../../css/materialize.css" />
+	<link rel="stylesheet" href="../../css/estilo.css" />
+</head>
+
+<body>
+	<div class="margin-0">
+		<ul id="dropdown1" class="dropdown-content">
+		</ul>
+		<nav>
+			<div class="nav-wrapper">
+				<a class="brand-logo">Diário</a>
+				<ul id="navbars-itens" class="right hide-on-med-and-down">
+					<li style="width:200px;" id="nav-funcoes"><a class="dropdown-trigger" href="#!" data-target="dropdown1">Funções<i class="material-icons right">arrow_drop_down</i></a></li>
+				</ul>
+			</div>
+		</nav>
+
+		<div class="container" >
+			<h2>Serviços:</h2>
+
+			<div class="center-align row" style="overflow: auto;height:450px">
+				<a class="col s12 l5 btn-trasicao primary alt waves-effect waves-light btn-large" href="../transferencia/index.html" >Transferência de aluno</a>
+				<a class="col s12 l5 offset-l2 btn-trasicao primary alt waves-effect waves-light btn-large" href="../professores/index.html">Manutenção de professores</a>
+				<a class="col s12 l5 btn-trasicao primary alt waves-effect waves-light btn-large" href="../departamentos/index.html" >Manutenção de departamentos</a>
+				<a class="col s12 l5 offset-l2 btn-trasicao primary alt waves-effect waves-light btn-large" href="../cursos/index.html">Manutenção de cursos</a>
+				<a class="col s12 l5 btn-trasicao primary alt waves-effect waves-light btn-large" href="../etapas/index.html" >Manutenção de etapas</a>
+				<a class="col s12 l5 offset-l2 btn-trasicao primary alt waves-effect waves-light btn-large" href="../disciplinas/index.html">Manutenção de disciplinas</a>
+				<a class="col s12 l5 btn-trasicao primary alt waves-effect waves-light btn-large" href="../alunos/index.html" >Manutenção de alunos</a>
+				<a class="col s12 l5 offset-l2 btn-trasicao primary alt waves-effect waves-light btn-large" href="../campi/index.html">Manutenção de campi</a>
+				<a class="col s12 l5 btn-trasicao primary alt waves-effect waves-light btn-large" href="../professores-disciplinas/index.html">Manutenção professores-disciplinas</a>
+			</div>
+		</div>
+	</div>
+
+	<!-- IMPORTAÇÕES -->
+	<!--Conexao Servlets-->
+	<script src="../../js/jquery-3.4.1.js"></script>
+	<script src="../../js/materialize.js"></script>
+	<script src="../../js/diario/navbars/navbar.js"></script>
+	<script>cargoLogado();</script>
+	<script>$(".dropdown-trigger").dropdown();</script>
+</body>
+
+</html>
