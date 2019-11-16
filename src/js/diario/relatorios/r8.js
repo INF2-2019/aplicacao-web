@@ -1,9 +1,9 @@
 /* global M*/
 
-M.AutoInit();
+
 let idSessao;
 let tabela = document.querySelector("table");
-
+pegarId();
 function pegarId() {
         let url = "http://localhost:8080/app/diario/cargo";
         fetch(url, { credentials: 'include' })
@@ -14,9 +14,11 @@ function pegarId() {
                 parser = new DOMParser();
                 xmlDoc = parser.parseFromString(text, "text/xml");
                 if (xmlDoc.childNodes[0].childNodes[5].childNodes[0] != undefined) {
-                let id = xmlDoc.childNodes[0].childNodes[5].childNodes[0].nodeValue;
-                consulta(id);
-                idSessao = id;
+                        let id = xmlDoc.childNodes[0].childNodes[5].childNodes[0].nodeValue;
+                        consulta(id);
+                        idSessao = id;
+                } else {
+                        alert("Nenhum aluno está logado");
                 }
         });
         
