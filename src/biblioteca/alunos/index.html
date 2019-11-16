@@ -1,0 +1,365 @@
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Manipulação de Alunos</title>
+        <link rel="stylesheet" href="../../css/materialize.css">
+        <link rel="stylesheet" href="../../css/estilo.css">
+    </head>
+    <body class="background">
+        <ul id="dropdown1" class="dropdown-content">
+		</ul>
+        <nav>
+            <div class="nav-wrapper">
+                <a class="brand-logo">Biblioteca</a>
+                <ul id="navbars-itens" class="right hide-on-med-and-down">
+                    <li style="width:200px;" id="nav-funcoes"><a class="dropdown-trigger" href="#!" data-target="dropdown1">Funções<i class="material-icons right">arrow_drop_down</i></a></li>
+                </ul>
+            </div>
+        </nav>
+      <div class="container" >
+        <div class="row">
+          <h2 class="col s5">Alunos</h2>
+          <a  class="botaoAdicionar btn primary editar modal-trigger col right" style="margin-top: 6vh" href="#modal-cadastro">Adicionar</a>
+        </div>
+        <div class="row">
+          <div class="input-field col s2">
+            <select id="filtros">
+
+              <option value="1" selected>CPF</option>
+              <option value="2">Nome</option>
+            </select>
+            <label>Filtrar por:</label>
+          </div>
+
+          <div class="col s5 center-align">
+      			<nav>
+      				<div class="nav-wrapper">
+      					<form>
+      						<div class="input-field">
+      							<input id="search" class="primary" type="search" oninput="pesquisa()" required>
+      							<label class="label-icon" for="search"><i class="  material-icons"></i></label>
+      							<i class="material-icons">close</i>
+      						</div>
+      					</form>
+      				</div>
+      			</nav>
+    		</div>
+       </div>
+
+          <div id="divTabela">
+            <table id="tabela">
+
+            </table>
+          </div>
+
+         <div id="modal-cadastro" class="modal modal-manutencao-alunos background modal-fixed-footer">
+              <div class="modal-content-manutencao-campi background">
+                <h4 style="padding: 15pt;">Novo Aluno</h4>
+                  <div class="container">
+                      <div class="row">
+                          <div class="col s12 m9">
+                              <div class="row">
+                                  <div class="col s4">
+                                      <span class="primary-text">CPF*</span><input class="obrigatorio-cadastro" name="cpf-cadastro" type="text" maxlength="11" onkeypress='return event.charCode >= 48 && event.charCode <= 57' id="cpf">
+                                  </div>
+                                  <div class="col s4">
+                                      <span class="primary-text">Nome*</span><input class="obrigatorio-cadastro" name="nome-cadastro" type="text" id="nome">
+                                  </div>
+                                  <div class="col s4">
+                                      <span class="primary-text">Senha*</span><input class="obrigatorio-cadastro" name="senha-cadastro" type="password" id="senha">
+                                  </div>
+                              </div>
+                              <div class="row">
+                                  <div class="col s4">
+                                      <span class="primary-text">Sexo</span>
+                                      <select name="sexo-cadastro" class="input-field" id="sexo">
+                                      <option value="M">Masculino</option>
+                                      <option value="F">Feminino</option>
+                                  </select>
+                                  </div>
+                                  <div class="col s4">
+                                      <span class="primary-text">Nascimento*</span><input class="obrigatorio-cadastro" name="nascimento-cadastro" type="date" id="data">
+                                  </div>
+                                  <div class="col s4">
+                                      <span class="primary-text">Email*</span><input class="obrigatorio-cadastro" name="email-cadastro" type="email" id="email">
+                                  </div>
+                              </div>
+                              <div class="row">
+                                  <div class="col s4">
+                                      <span class="primary-text">Logradouro*</span><input class="obrigatorio-cadastro" name="logradouro-cadastro" type="text" id="logradouro">
+                                  </div>
+                                  <div class="col s4">
+                                      <span class="primary-text">Número*</span><input class="obrigatorio-cadastro" name="numero-cadastro" type="number" id="number">
+                                  </div>
+                                  <div class="col s4">
+                                      <span class="primary-text">Complemento</span><input class="" name="complemento-cadastro" type="text" id="comple">
+                                  </div>
+                              </div>
+                              <div class="row">
+                                  <div class="col s3">
+                                      <span class="primary-text">Cidade*</span><input class="obrigatorio-cadastro" name="cidade-cadastro" type="text" id="cidade">
+                                  </div>
+                                  <div class="col s3">
+                                      <span class="primary-text">CEP*</span><input class="obrigatorio-cadastro" name="cep-cadastro" type="number" id="cep">
+                                  </div>
+                                  <div class="col s3">
+                                        <span class="primary-text">UF</span>
+                                        <select name="uf-cadastro" class="input-field" id="uf">
+                                            <option value="AC">Acre</option>
+                                            <option value="AL">Alagoas</option>
+                                            <option value="AP">Amapá</option>
+                                            <option value="AM">Amazonas</option>
+                                            <option value="BA">Bahia</option>
+                                            <option value="CE">Ceará</option>
+                                            <option value="DF">Distrito Federal</option>
+                                            <option value="ES">Espírito Santo</option>
+                                            <option value="GO">Goiás</option>
+                                            <option value="MA">Maranhão</option>
+                                            <option value="MT">Mato Grosso</option>
+                                            <option value="MS">Mato Grosso do Sul</option>
+                                            <option value="MG">Minas Gerais</option>
+                                            <option value="PA">Pará</option>
+                                            <option value="PB">Paraíba</option>
+                                            <option value="PR">Paraná</option>
+                                            <option value="PE">Pernambuco</option>
+                                            <option value="PI">Piauí</option>
+                                            <option value="RJ">Rio de Janeiro</option>
+                                            <option value="RN">Rio Grande do Norte</option>
+                                            <option value="RS">Rio Grande do Sul</option>
+                                            <option value="RO">Rondônia</option>
+                                            <option value="RR">Roraima</option>
+                                            <option value="SC">Santa Catarina</option>
+                                            <option value="SP">São Paulo</option>
+                                            <option value="SE">Sergipe</option>
+                                            <option value="TO">Tocantins</option>
+                                        </select>
+                                  </div>
+                                  <div class="col s3">
+                                      <span class="primary-text">Bairro*</span><input class="obrigatorio-cadastro" name="bairro-cadastro" type="text" id="bairro">
+                                  </div>
+                              </div>
+                              <div class="row">
+                                  <div class="col s9">
+                                      <span class="primary-text">Link da foto*</span><input class="obrigatorio-cadastro" name="foto-cadastro" type="text" id="fototext" onchange="loadFoto()">
+                                  </div>
+                              </div>
+                          </div>
+                          <div id="divfoto" class="offset-l1 offset-s1 offset-m2 col l2 s2">
+                              <img id="foto" src="" alt="imagem nao encontrada" class="foto-manutencao-alunos">
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="modal-footer modal-footer-manutencao-alunos background">
+                  <span class="primary-text"><i>Os campos com * são obrigatórios</i></span><br>
+                  <button class="botaoCancelar modal-close btns waves-effect teal lighten-1 btn">Cancelar</button>
+                  <button class="btns waves-effect blue darken-3 btn" id="btConfirmaCadastro" >Confirmar</button>
+              </div>
+          </div>
+
+         <div id="modal-info" class="modal modal-manutencao-alunos background bakcground modal-fixed-footer">
+              <div class="modal-content-manutencao-campi background">
+                <h4 style="padding: 15pt;">Informações</h4>
+                  <div class="container">
+                      <div class="row">
+                          <div class="col s12 m9">
+                              <div class="row">
+                                  <div class="col s6">
+                                      <span class="primary-text">CPF</span><input readonly class="info" name="cpf-cadastro" type="number" maxlength="11">
+                                  </div>
+                                  <div class="col s6">
+                                      <span class="primary-text">Nome</span><input readonly class="info" name="nome-cadastro" type="text">
+                                  </div>
+                              </div>
+                              <div class="row">
+                                  <div class="col s4">
+                                      <span class="primary-text">Email</span>
+                                      <input readonly class="info" name="email-cadastro" type="email">
+                                  </div>
+                                  <div class="col s4">
+                                      <span class="primary-text">Sexo</span><input class="info" name="sexo-cadastro" type="text" readonly>
+                                  </div>
+                                  <div class="col s4">
+                                      <span class="primary-text">Nascimento</span><input readonly class="info" name="nascimento-cadastro" type="date">
+                                  </div>
+                              </div>
+                              <div class="row">
+                                  <div class="col s4">
+                                      <span class="primary-text">Logradouro</span><input readonly class="info" name="logradouro-cadastro" type="text">
+                                  </div>
+                                  <div class="col s4">
+                                      <span class="primary-text">Número</span><input readonly class="info" name="numero-cadastro" type="number">
+                                  </div>
+                                  <div class="col s4">
+                                      <span class="primary-text">Complemento</span><input readonly class="recomendado-cadastro info" name="complemento-cadastro" type="text">
+                                  </div>
+                              </div>
+                              <div class="row">
+                                <div class="col s3">
+                                    <span class="primary-text">Bairro</span><input readonly class="info" name="bairro-cadastro" type="text">
+                                </div>
+                                  <div class="col s3">
+                                      <span class="primary-text">Cidade</span><input readonly class="info" name="cidade-cadastro" type="text">
+                                  </div>
+                                  <div class="col s3">
+                                      <span class="primary-text">CEP</span><input readonly class="info" name="cep-cadastro" type="number">
+                                  </div>
+                                  <div class="col s3">
+                                      <span class="primary-text">UF</span><input readonly class="info" name="uf-cadastro" type="text">
+                                  </div>
+
+                              </div>
+                              <div class="row">
+                                  <div class="col s9">
+                                      <span class="primary-text">Link da foto</span><input readonly class="info" name="foto-cadastro" type="text">
+                                  </div>
+                              </div>
+                          </div>
+                          <div id="divfoto" class="offset-l1 offset-s1 offset-m2 col l2 s2">
+                              <img id="foto2" class="foto-manutencao-alunos" src="" alt="imagem não encontrada">
+                          </div>
+                      </div>
+                  </div>
+              </div>
+             <div class="modal-footer modal-footer-manutencao-alunos background">
+                  <button class="modal-close btns waves-effect teal lighten-1 btn">Fechar</button>
+             </div>
+          </div>
+
+
+         <div id="modal-editar" class="modal modal-manutencao-alunos background modal-fixed-footer">
+              <div class="modal-content-manutencao-campi background">
+                <h4 style="padding: 15pt;">Editar Aluno</h4>
+                  <div class="container" id="c1">
+                      <div class="row">
+                          <div class="col s12 m9">
+                              <div class="row">
+                                  <div class="col s4">
+                                      <span class="primary-text">CPF*</span><input name="cpf-cadastro" type="number" maxlength="11" class="obrigatorio-editar" id="cpf1" readonly>
+                                  </div>
+                                  <div class="col s4">
+                                      <span class="primary-text">Nome</span><input class="recomendado-editar" name="nome-cadastro" type="text" id="nome1">
+                                  </div>
+                                  <div class="col s4">
+                                      <span class="primary-text">Senha</span><input name="senha-cadastro" type="password" id="senha1">
+                                  </div>
+                              </div>
+                              <div class="row">
+                                  <div class="col s4">
+                                      <span class="primary-text">Sexo</span>
+                                  <select name="sexo-cadastro" class="input-field" id="sexo1">
+                                      <option value="M">Masculino</option>
+                                      <option value="F">Feminino</option>
+                                  </select>
+                                  </div>
+                                  <div class="col s4">
+                                      <span class="primary-text">Nascimento</span><input class="recomendado-editar" name="nascimento-cadastro" type="date" id="data1">
+                                  </div>
+                                  <div class="col s4">
+                                      <span class="primary-text">Email</span><input class="recomendado-editar" name="email-cadastro" type="text" id="email1">
+                                  </div>
+                              </div>
+                              <div class="row">
+                                  <div class="col s4">
+                                      <span class="primary-text">Logradouro</span><input class="recomendado-editar" name="logradouro-cadastro" type="text" id="logradouro1">
+                                  </div>
+                                  <div class="col s4">
+                                      <span class="primary-text">Número</span><input class="recomendado-editar" name="numero-cadastro" type="number" id="number1">
+                                  </div>
+                                  <div class="col s4">
+                                      <span class="primary-text">Complemento</span><input class="recomendado-editar" name="complemento-cadastro" type="text" id="comple1">
+                                  </div>
+                              </div>
+                              <div class="row">
+                                  <div class="col s3">
+                                      <span class="primary-text">Cidade</span><input class="recomendado-editar" name="cidade-cadastro" type="text" id="cidade1">
+                                  </div>
+                                  <div class="col s3">
+                                      <span class="primary-text">CEP</span><input class="recomendado-editar" name="cep-cadastro" type="number" id="cep1">
+                                  </div>
+                                  <div class="col s3">
+                                        <span class="primary-text">UF</span>
+                                        <select name="uf-cadastro" class="input-field" id="uf1">
+                                            <option value="AC">Acre</option>
+                                            <option value="AL">Alagoas</option>
+                                            <option value="AP">Amapá</option>
+                                            <option value="AM">Amazonas</option>
+                                            <option value="BA">Bahia</option>
+                                            <option value="CE">Ceará</option>
+                                            <option value="DF">Distrito Federal</option>
+                                            <option value="ES">Espírito Santo</option>
+                                            <option value="GO">Goiás</option>
+                                            <option value="MA">Maranhão</option>
+                                            <option value="MT">Mato Grosso</option>
+                                            <option value="MS">Mato Grosso do Sul</option>
+                                            <option value="MG">Minas Gerais</option>
+                                            <option value="PA">Pará</option>
+                                            <option value="PB">Paraíba</option>
+                                            <option value="PR">Paraná</option>
+                                            <option value="PE">Pernambuco</option>
+                                            <option value="PI">Piauí</option>
+                                            <option value="RJ">Rio de Janeiro</option>
+                                            <option value="RN">Rio Grande do Norte</option>
+                                            <option value="RS">Rio Grande do Sul</option>
+                                            <option value="RO">Rondônia</option>
+                                            <option value="RR">Roraima</option>
+                                            <option value="SC">Santa Catarina</option>
+                                            <option value="SP">São Paulo</option>
+                                            <option value="SE">Sergipe</option>
+                                            <option value="TO">Tocantins</option>
+                                        </select>
+                                  </div>
+                                  <div class="col s3">
+                                      <span class="primary-text">Bairro</span><input class="recomendado-editar" name="bairro-cadastro" type="text" id="bairro1">
+                                  </div>
+                              </div>
+                              <div class="row">
+                                  <div class="col s9">
+                                      <span class="primary-text">Link da foto</span><input name="foto-cadastro" type="text" id="fototext3" onchange="loadFoto2()">
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="offset-l1 offset-s1 offset-m2 col l2 s2">
+                              <img id="foto3" src="" class="foto-manutencao-alunos">
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="modal-footer modal-footer-manutencao-alunos background">
+                  <span class="primary-text"><i>Os campos com * são obrigatórios</i></span><br>
+                  <span class="primary-text"><i>Os campos vazios não alterarão os valores antigos.</i></span><br>
+                  <button class="botaoCancelar modal-close btns waves-effect teal lighten-1 btn">Cancelar</button>
+                  <button class="waves-effect blue darken-3 btn modal-close" id="btConfirmaEditar">Confirmar</button>
+              </div>
+          </div>
+
+          <div id="modal-deletar-manutencao-campi" class="modal background">
+              <div class="modal-content-manutencao-campi background">
+                <h4 style="padding: 15pt;">Deletar aluno</h4>
+                  <div class="container">
+                      <div class="row">
+                          Tem certeza que deseja deletar este aluno?
+                      </div>
+                  </div>
+              </div>
+              <div class="modal-footer background">
+                  <button class="botaoCancelar modal-close btns waves-effect teal lighten-1 btn">Cancelar</button>
+                  <button class="btns waves-effect red darken-2 btn modal-close" id="delet">Deletar</button>
+              </div>
+          </div>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+        <script src="../../js/materialize.js"></script>
+        <script src="../../js/biblioteca/alunos/tabela.js"></script>
+        <script src="../../js/biblioteca/alunos/filtragem.js"></script>
+        <script src="../../js/biblioteca/alunos/extras.js"></script>
+        <script src="../../js/biblioteca/alunos/inserir.js"></script>
+        <script src="../../js/biblioteca/alunos/resultado.js"></script>
+        <script src="../../js/biblioteca/alunos/info.js"></script>
+        <script src="../../js/biblioteca/alunos/editar.js"></script>
+        <script src="../../js/biblioteca/alunos/deletar.js"></script>
+    </body>
+</html>

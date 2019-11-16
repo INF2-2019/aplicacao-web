@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/materialize.css">
+    <title>Diário Professor</title>
+  </head>
+
+  <body>
+    <nav style="padding-left: 5pt;">
+      <div class="nav-wrapper">
+        <a class="brand-logo">Diário - Professor </a>
+      </div>
+    </nav>
+
+    <main style="margin: 0 10%">
+      <div>
+        <h3> Dados Pessoais </h3>
+        <div class="row area" id="dados_professor">
+            <div class="col s5"> <h6 class="teal-text">ID (SIAPE) </h6> <p class="campo">9999999</p></div>
+            <div class="col s5"> <h6 class="teal-text">ID Departamento</h6><p class="campo">00000001</p> </div>
+            <div class="col s7"> <h6 class="teal-text">Nome</h6> <p class="campo">MARÍLIA MENDONÇA DA SILVA</p> </div>
+            <div class="col s4"> <h6 class="teal-text">Titulação </h6> <p class="campo">DOUTORADO</p> </div>
+        </div>
+
+        <!-- Template com dados do professor para exibição -->
+        <template id="template_professor">
+          
+            <div class="col s5"> <h6 class="teal-text">ID (SIAPE) </h6> <p class="campo">{{id}}</p></div>
+            <div class="col s5"> <h6 class="teal-text">ID Departamento</h6><p class="campo">{{id_depto}}</p> </div>
+            <div class="col s7"> <h6 class="teal-text">Nome</h6> <p class="campo">{{nome}}</p> </div>
+            <div class="col s4"> <h6 class="teal-text">Titulação </h6> <p class="campo">{{titulacao}}</p> </div>
+          
+        </template>
+      </div>
+        
+      <div>
+        <h1>Disciplinas</h1>
+        <div class="row area" id="listagemDisciplinas">
+            <table class="responsive-table" id="diario" style="padding-top: 5%">
+              <colgroup>
+                <col span="1" style="width: 10%">
+                <col span="1" style="width: 50%">
+                <col span="1" style="width: 10%">
+                <col span="1" style="width: 10%">
+                <col span="1" style="width: 20%">
+              </colgroup>
+              
+              <thead>
+                  <th>ID</th>
+                  <th>DISCIPLINA</th>
+                  <th>TURMA</th>
+                  <th>CARGA HORÁRIA</th>
+              </thead>
+            
+              <tbody id="holder_diario">
+                <tr>
+                  <td>001</td>
+                  <td>AULA DE PEBOLIM</td>
+                  <td>A</td>
+                  <td>22</td>
+                  <td><a href="disciplinaver.html?disciplina=1" class="waves-effect waves btn-small left modal-trigger">visualizar</a></td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+      </div>
+    </main>
+
+
+    <!-- Template com as disciplinas do professor -->
+    <template id="template_disciplinas">
+        <tr>
+          <td>{{id}}</td>
+          <td>{{disciplina}}</td>
+          <td>{{turma}}</td>
+          <td>{{carga_horaria}}</td>
+          <td><a href="disciplinaver.html?disciplina={{id}}" class="waves-effect waves-light btn-small modal-trigger">Visualizar</a></td>
+        </tr>
+    </template>
+
+    <!-- Jquery-->
+    <script src="../../js/diario/diario/jquery-3.3.1.min.js"></script>
+    <!-- materialize JS-->
+    <script src="../../js/materialize.min.js"></script>
+    <!-- -->
+    <script src="../../js/diario/diario/ajax.js"></script>
+    <script src="../../js/diario/diario/dados_professor.js"></script>
+  </body>
+</html>

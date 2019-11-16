@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt" dir="ltr">
+
+<head>
+	<link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="../../css/materialize.css">
+	<link rel="stylesheet" href="../../css/estilo.css">
+
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+	<title>Manutenção de Etapas</title>
+</head>
+
+<body onload="consulta()">
+
+	<nav>
+		<div class="nav-wrapper">
+			<a class="brand-logo">S.A. Admin</a>
+		</div>
+	</nav>
+	<!-- fim header -->
+
+	<div id="corpo-manutencao-etapas" class="container row" style="margin-top: 2%">
+
+		<h2 style="margin:0" class="col push-s2">Etapas</h2>
+
+		<div class="row">
+			<a class="btn col s12 m12 l2 offset-l7 waves-effect waves-light primary modal-trigger" href="#AdicionaForm"
+				name="AdicionarEtapa" id="Adiciona">Adicionar</a>
+			<a class="btn col s12 m12 l2 offset-l7 waves-effect waves-light primary modal-trigger" href="#ConsultaForm"
+				name="ConsultarEtapa" id="Consulta" style="margin-top: 1%">Consultar</a>
+		</div>
+
+		<!-- RESPOSTA DA CONSULTA -->
+		<div id="consulta-etapas" class="col s12">
+			<table id="tabela-etapas" class="responsive-table centered highlight">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Ano</th>
+						<th>Valor</th>
+						<th>Ações</th>
+					</tr>
+				</thead>
+				<tbody id="tabela-etapas-corpo">
+
+				</tbody>
+			</table>
+		</div>
+
+		<!-- FORMULÁRIO ADICIONAR -->
+		<div id="AdicionaForm" class="modal">
+			<div class="row modal-content">
+				<h4>Adicionar etapa</h4>
+				<div class="input-field col s4">
+					<input type="number" name="ano" id="adicionaAnoEtapa">
+					<label class="col" for="ano">Ano</label>
+				</div>
+				<div class="input-field col s4">
+					<input type="text" name="valor" id="adicionaValorEtapa">
+					<label class="col" for="valor">Valor</label>
+				</div>
+			</div>
+			<div class="container modal-footer">
+				<a class="modal-close btn utils erro-2" onclick="recarrega()">Cancelar</a>
+				<a class="modal-close btn primary" onclick="adiciona()">Adicionar</a>
+			</div>
+		</div>
+
+		<!-- FIM FORM ADICIONA ETAPA -->
+
+		<!-- FORMULÁRIO CONSULTAR -->
+
+		<div id="ConsultaForm" class="modal">
+			<h4 style="padding: 15pt;">Consultar etapa</h4>
+			<div class="row modal-content">
+				<div class="input-field col s4">
+					<input id="consultaID" type="number" />
+					<label for="consultaID">ID</label>
+				</div>
+				<div class="input-field col s4">
+					<input id="consultaAno" type="number" />
+					<label for="consultaAno">Ano</label>
+				</div>
+				<div class="input-field col s4">
+					<input id="consultaValor" type="text" />
+					<label for="consultaValor">Valor</label>
+				</div>
+			</div>
+			<div class="container modal-footer">
+				<a class="modal-close btn utils erro-2" onclick="recarrega()">Cancelar</a>
+				<a class="modal-close btn primary" onclick="consultaParametro()">Salvar</a>
+			</div>
+		</div>
+
+		<!-- FIM FORM CONSULTA ETAPA -->
+
+		<!-- FORMULÁRIO EDITA ETAPA -->
+		<div class="modal" id="EditaForm">
+			<h4 style="padding: 15pt;">Editar etapa</h4>
+			<div class="row modal-content">
+				<div class="input-field col s4">
+					<input id="editaAno" type="number" />
+					<label for="editaAno">Ano</label>
+				</div>
+				<div class="input-field col s4">
+					<input id="editaValor" type="text" />
+					<label for="editaValor">Valor</label>
+				</div>
+			</div>
+			<div class="container modal-footer">
+				<a class="modal-close btn utils erro-2" onclick="recarrega()">Cancelar</a>
+				<a class="modal-close btn primary" onclick="atualiza()">Salvar</a>
+			</div>
+		</div>
+
+		<!-- FIM FORMULÁRIO EDITA ETAPAS -->
+
+		<!--FORMULÁRIO REMOVER ETAPAS-->
+		<div class="modal" id="RemoveForm">
+			<div id="conteudo" class="modal-content">
+				<h4>Deletar etapa</h4>
+				<h6>Tem certeza que deseja deletar esta etapa?</h6>
+			</div>
+			<div class="modal-footer">
+				<a class="modal-close btn utils erro-2" onclick="recarrega()">Cancelar</a>
+				<a class="modal-close btn primary" onclick="deleta()">Deletar</a>
+			</div>
+		</div>
+
+	</div>
+
+	<!-- IMPORTAÇÕES -->
+	<!-- Arquivos base -->
+	<script src="../../js/jquery-3.4.1.js"></script>
+	<script src="../../js/materialize.js"></script>
+	<script src="../../js/diario/etapas/utils.js"></script>
+	<!-- Arquivos que executam as funções -->
+	<script src="../../js/diario/etapas/adiciona.js"></script>
+	<script src="../../js/diario/etapas/consulta.js"></script>
+	<script src="../../js/diario/etapas/deleta.js"></script>
+	<script src="../../js/diario/etapas/edita.js"></script>
+</body>
+
+</html>
