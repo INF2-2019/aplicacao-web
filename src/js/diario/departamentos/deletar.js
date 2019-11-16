@@ -1,3 +1,4 @@
+
 function deleta() {
   const xhr = new XMLHttpRequest();
 	xhr.withCredentials = true;

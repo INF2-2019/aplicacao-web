@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <meta chart="utf-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../css/materialize.css">
@@ -9,11 +9,16 @@
   </head>
 
   <body id="aluno">
-    <nav style="padding-left: 5pt">
-      <div class="nav-wrapper">
-        <a class="brand-logo">Diário - Aluno</a>
-      </div>
-    </nav>
+    <ul id="dropdown1" class="dropdown-content">
+		</ul>
+		<nav>
+			<div class="nav-wrapper">
+				<a class="brand-logo">Diário</a>
+				<ul id="navbars-itens" class="right hide-on-med-and-down">
+					<li style="width:200px;" id="nav-funcoes"><a class="dropdown-trigger" href="#!" data-target="dropdown1">Funções<i class="material-icons right">arrow_drop_down</i></a></li>
+				</ul>
+			</div>
+		</nav>
 
     <main style="margin: 0 10%">
       <div style="width: 90% !important">
@@ -88,14 +93,14 @@
             <table class="responsive-table" style="padding-top: 5%">
               <colgroup>
                 <col span="1" style="width: 20%">
-                <col span="1" style="width: 80%"> 
+                <col span="1" style="width: 80%">
               </colgroup>
-              
+
               <thead>
                 <th>CONTEUDO</th>
                 <th>DATA</th>
               </thead>
-              
+
               <tbody id="holder_conteudos">
                 <tr>
                   <td>Aula de Forró</td>
@@ -106,7 +111,7 @@
           </div>
         </div>
       </div>
-      
+
       <div class="container secondary lighten-5">
         <div id="modalAtividadeAluno" class="modal" style="padding: 2%">
           <div class="row modal-content" style="padding: 0">
@@ -137,13 +142,16 @@
       </div>
 
     <!-- Jquery-->
-    <script src="../../js/diario/diario/jquery-3.3.1.min.js"></script>
+    <script src="../../js/jquery-3.4.1.js"></script>
     <script>
       $(document).ready(function(){
         $('.modal').modal();
       });
     </script>
     <!-- materialize JS-->
-    <script src="../../js/materialize.min.js"></script>
+		<script src="../../js/materialize.min.js"></script>
+		<script src="../../js/diario/navbars/navbar.js"></script>
+		<script>cargoLogado();</script>
+		<script>$(".dropdown-trigger").dropdown();</script>
   </body>
 </html>

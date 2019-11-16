@@ -8,15 +8,19 @@
       <title>Descartes</title>
     </head>
     <body>
-      <nav style="padding-left: 5pt;">
-        <div class="nav-wrapper">
-          <a class="brand-logo">Admin - Descartes</a>
-        </div>
-      </nav>
-      
+      <ul id="dropdown1" class="dropdown-content"></ul>
+		<nav>
+			<div class="nav-wrapper">
+				<a class="brand-logo">Biblioteca</a>
+				<ul id="navbars-itens" class="right hide-on-med-and-down">
+					<li style="width:200px;" id="nav-funcoes"><a class="dropdown-trigger" href="#!" data-target="dropdown1">Funções<i class="material-icons right">arrow_drop_down</i></a></li>
+				</ul>
+			</div>
+		</nav>
+
       <main style="margin: 0 10%" class="row">
         <h1>Descartes</h1>
-        
+
         <a href="#modalDescartes" class="col s12 m3 waves-effect right waves-light btn-large modal-trigger red darken-1" id="btnDescartes">Descartar</a>
 
         <table class="responsive-table">
@@ -70,14 +74,17 @@
       </div>
     </div>
 
-    <script type="text/javascript" src="../../js/biblioteca/descartes/jquery-3.3.1.min.js"></script>
+		<script src="../../js/jquery-3.4.1.js"></script>
   	<script>
-              $(document).ready(function(){
-                  $('.modal').modal();
-              });
+      $(document).ready(function(){
+        $('.modal').modal();
+      });
   	</script>
     <script type="text/javascript" src="../../js/materialize.min.js"></script>
     <script src="../../js/biblioteca/descartes/ajax.js" charset="utf-8"></script>
-    <script src="../../js/biblioteca/descartes/descarteAcervo.js" charset="utf-8"></script>
+		<script src="../../js/biblioteca/descartes/descarteAcervo.js" charset="utf-8"></script>
+		<script src="../../js/biblioteca/navbars/navbar.js"></script>
+		<script>$(".dropdown-trigger").dropdown();M.AutoInit();</script>
+		<script>cargoLogado();</script>
     </body>
 </html>

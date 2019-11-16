@@ -14,7 +14,7 @@
                   visibility: hidden;
                 }
                 html, body {
-                    height: 99%;    
+                    height: 99%;
                 }
                 img{
                     bottom: 10%;
@@ -30,27 +30,28 @@
                 margin: 0;  /* this affects the margin in the printer settings */
             }
         </style>
-        
+
     </head>
     <body class="background grey lighten-2">
-        <ul id="dropdown1" class="dropdown-content no-print">
+        <ul id="dropdown1" class="dropdown-content">
 		</ul>
-        <nav class="no-print">
-            <div class="nav-wrapper">
-                <a class="brand-logo">Diário</a>
-                <ul id="navbars-itens" class="right hide-on-med-and-down">
-                    <li style="width:200px;" id="nav-funcoes"><a class="dropdown-trigger" href="#!" data-target="dropdown1">Funções<i class="material-icons right">arrow_drop_down</i></a></li>
-                </ul>
-            </div>
-        </nav>
+		<nav>
+			<div class="nav-wrapper">
+				<a class="brand-logo">Diário</a>
+				<ul id="navbars-itens" class="right hide-on-med-and-down">
+					<li style="width:200px;" id="nav-funcoes"><a class="dropdown-trigger" href="#!" data-target="dropdown1">Funções<i class="material-icons right">arrow_drop_down</i></a></li>
+				</ul>
+			</div>
+		</nav>
         <div class="container">
             <div class="row white">
                 <div class="offset-s1 col s10">
                     <h3 class="center-align">Certificado de conclusão de Curso</h3><br>
                     <div class="row">
-                        <p>É através deste documento que a instituição <strong>Centro Federal 
+
+                        <p>É através deste documento que a instituição <strong>Centro Federal
                         de Educação Tecnológica de Minas Gerais</strong> certifica que o aluno
-                        <input id="certificado-nome" readonly placeholder="Nome do aluno" style="text-transform: uppercase;"> 
+                        <input id="certificado-nome" readonly placeholder="Nome do aluno" style="text-transform: uppercase;">
                         foi aprovado em todas as disciplinas em que estava inscrito, ou seja, possui nota igual ou superior a 60 pontos em todas essas
                     </p>
                     </div>
@@ -61,8 +62,12 @@
             </div>
             <a id="imprimir" class="btn right no-print">Imprimir</a>
         </div>
-        <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+
+        <script src="../../js/jquery-3.4.1.js"></script>
         <script src="../../js/materialize.js"></script>
-        <script src="../../js/diario/relatorios/r8.js"></script>
+		<script src="../../js/diario/relatorios/r8.js"></script>
+		<script src="../../js/diario/navbars/navbar.js"></script>
+		<script>cargoLogado();</script>
+		<script>$(".dropdown-trigger").dropdown();</script>
     </body>
 </html>

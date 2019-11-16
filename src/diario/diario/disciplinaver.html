@@ -8,12 +8,17 @@
     <title>Disciplina</title>
   </head>
   <body id="conteudos">
-    <nav style="padding-left: 5pt;">
-      <div class="nav-wrapper">
-        <a class="brand-logo">Diário - Professor</a>
-      </div>
-    </nav>
-    
+    <ul id="dropdown1" class="dropdown-content">
+		</ul>
+		<nav>
+			<div class="nav-wrapper">
+				<a class="brand-logo">Diário</a>
+				<ul id="navbars-itens" class="right hide-on-med-and-down">
+					<li style="width:200px;" id="nav-funcoes"><a class="dropdown-trigger" href="#!" data-target="dropdown1">Funções<i class="material-icons right">arrow_drop_down</i></a></li>
+				</ul>
+			</div>
+		</nav>
+
     <main style="margin: 0 10%">
       <div id="conteudo">
         <h1>Conteúdos Ministrados</h1>
@@ -27,7 +32,7 @@
             <col span="1" style="width: 10%">
             <col span="1" style="width: 10%">
             <col span="1" style="width: 10%">
-          </colgroup>    
+          </colgroup>
              <thead>
                 <tr>
                   <th>CONTEÚDO</th>
@@ -35,7 +40,7 @@
                   <th>DATA</th>
                  </tr>
               </thead>
-              
+
                 <tbody id="holder_conteudos">
                   <tr>
                     <td>Física</td>
@@ -44,13 +49,13 @@
                     <td><a href="#modalLancaFalta" class="waves-effect waves-light btn-small modal-trigger light-blue accent 3 falta">Faltas</a></td>
                     <td><a href="#modalAlteraConteudos" class="waves-effect waves-light btn-small modal-trigger edit">Editar</a></td>
                     <td><a class="waves-effect waves-light btn-small modal-trigger red darken 1 delete">Deletar</a></td>
-                  </tr>                
+                  </tr>
                 </tbody>
           </table>
 
         <a style="margin-top: 2%;" href="#modalConteudos" class="waves-effect waves-light primary btn-large modal-trigger" id="btnConteudos">Adicionar</a>
       </div>
-      
+
 
       <div id="atividade">
         <h1>Atividades</h1>
@@ -65,7 +70,7 @@
             <col span="1" style="width: 10%">
             <col span="1" style="width: 10%">
           </colgroup>
-          
+
           <thead>
             <tr>
               <th>ATIVIDADE</th>
@@ -73,7 +78,7 @@
               <th>VALOR</th>
             </tr>
           </thead>
-              
+
           <tbody id="holder_atividades">
             <tr>
               <td>Física</td>
@@ -104,7 +109,7 @@
           </div>
         </div>
       </div>
-      
+
 
       <!-- Modal para adição de atividade -->
       <div class="container secondary lighten-5">
@@ -121,7 +126,7 @@
           </div>
         </div>
       </div>
-      
+
 
       <!-- Modal para alteração de conteúdo -->
       <div class="container secondary lighten-5">
@@ -138,7 +143,7 @@
           </div>
         </div>
       </div>
-      
+
 
       <!-- Modal para alteração de atividade -->
       <div class="container secondary lighten-5">
@@ -156,7 +161,7 @@
           </div>
         </div>
       </div>
-      
+
       <!-- Modal para lançamento de notas por atividade -->
       <div class="container secondary lighten-5">
         <div id="modalLancaNota" class="modal" style="padding: 2%">
@@ -246,8 +251,8 @@
           <td><a class="waves-effect waves-light btn-small red darken 1 delete">Deletar</a></td>
         </tr>
       </template>
-      
-      <script src="../../js/diario/diario/jquery-3.3.1.min.js"></script>
+
+			<script src="../../js/jquery-3.4.1.js"></script>
       <script>
         $(document).ready(function(){
           $('.modal').modal();
@@ -258,6 +263,8 @@
       <script src="../../js/materialize.min.js"></script>
       <script src="../../js/diario/diario/ajax.js"></script>
       <script src="../../js/diario/diario/conteudo_atividade.js"></script>
-
+			<script src="../../js/diario/navbars/navbar.js"></script>
+			<script>cargoLogado();</script>
+			<script>$(".dropdown-trigger").dropdown();</script>
   </body>
 </html>
