@@ -57,19 +57,19 @@ function adicionaResult(responseStatus,xmlResult){
         //recebe resposta em XML e manipula o XML
                 if(xmlResult.getElementsByTagName("erro").length === 0){
                         atualizaTabela(xmlResult);
-                        div.classList.remove('oculto');
-                        h1.classList.add('oculto');
                 } else {
-                if (xmlResult != "") {
-                        var resp = xmlResult.childNodes[0];
-                        if (exibido === 0) {
-                                M.toast({
-                                html: resp,
-                                classes: "red darken-2"
-                                });
-                                exibido += 1;
+                        h1.classList.remove('oculto');
+                        div.classList.add('oculto');
+                        if (xmlResult != "") {
+                                var resp = xmlResult.childNodes[0];
+                                if (exibido === 0) {
+                                        M.toast({
+                                        html: resp,
+                                        classes: "red darken-2"
+                                        });
+                                        exibido += 1;
+                                }
                         }
-                }
         }
 }
 
