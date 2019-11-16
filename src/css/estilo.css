@@ -51,7 +51,8 @@
 }
 
 .menuRelDoPedrin .oculto{
-  display: none;
+	display: none;
+}
 
 .btn-trasicao{
 	height: 65pt;
