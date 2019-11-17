@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="../../css/materialize.css">
+    <link rel="stylesheet" href="../../css/estilo.css">
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <title>Histórico Escolar</title>
+</head>
+
+<body onload="getId()">
+    <ul id="dropdown1" class="dropdown-content"></ul>
+    <nav>
+        <div class="nav-wrapper">
+            <a class="brand-logo">Diário</a>
+            <ul id="navbars-itens" class="right hide-on-med-and-down">
+                <li style="width:200px;" id="nav-funcoes"><a class="dropdown-trigger" href="#!"
+                        data-target="dropdown1">Funções<i class="material-icons right">arrow_drop_down</i></a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container row" style="margin-top: 2%" id="corpo-historico-escolar">
+        <h2 class="col push-s2">Histórico Escolar</h2>
+
+        <div id="recebeResposta" class="col s12">
+
+        </div>
+
+        <div id="div-tabela-historico" class="col s12">
+            <table id="tabela-historico" class="responsive-table centered highlight">
+
+            </table>
+        </div>
+    </div>
+
+    <!-- Arquivos JavaScript-->
+    <!-- Arquivos base-->
+    <script src="../../js/jquery-3.4.1.js"></script>
+    <script src="../../js/materialize.js"></script>
+
+    <!-- Outros arquivos-->
+    <script src="../../js/diario/relatorios/historico.js"></script>
+    <script src="../../js/diario/navbars/navbar.js"></script>
+    <script>cargoLogado();</script>
+    <script>$(".dropdown-trigger").dropdown();</script>
+
+</body>
+
+</html>
