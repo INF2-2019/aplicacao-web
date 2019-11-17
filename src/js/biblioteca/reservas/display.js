@@ -20,8 +20,18 @@ function criaTabela(elementos) {
 			const elemento = document.createElement("td")
 			elemento.classList.add(elementos[i].children[j].nodeName)
 
-			
+			if(j==2){
+				let acNome = AcervoNome(elementos[i].children[j].innerHTML)
+				acNome.then(valor =>{
+					elemento.innerHTML = valor;
+					deptosConsultados++
+					// se for o último a carregar, recarrega o conteudo da tabela com os nomes dos deptos.
+					if (deptosConsultados == elementos.length)
+						containerTabela.innerHTML = tabela.innerHTML;
+				})
+			}else{
 				elemento.innerHTML = elementos[i].children[j].innerHTML
+			}
 			
 
 			linha.appendChild(elemento)
@@ -148,7 +158,28 @@ function preencherInput() {
 				$("#aluno-atualizar").formSelect()
 			}
 		})
+		fetch('http://localhost:8080/app/biblioteca/acervo/consultar',{
+			credentials: "include",
+		})
+			.then(response => response.text())
+			.then(str => (new window.DOMParser()).parseFromString(str, "text/xml"))
+			.then(xml => {
+				console.log(xml);
+				for (departamento of xml.getElementsByTagName('item')) {
+					console.log(departamento)
+					const id = departamento.getElementsByTagName("id")[0].innerHTML
+					const nome = departamento.getElementsByTagName("nome")[0].innerHTML
 	
+					// cria novo option no select para inserir
+					const inserirOption = $("<option>").attr("value", id).text(nome)
+					$("#acervo-inserir").append(inserirOption)
+					$("#acervo-inserir").formSelect()
+					// cira novo option no select para atualizar
+					const atualizarOption = $("<option>").attr("value", id).text(nome)
+					$("#acervo-atualizar").append(atualizarOption)
+					$("#acervo-atualizar").formSelect()
+				}
+			})
 }
 
 function pesquisarDisciplinas() {

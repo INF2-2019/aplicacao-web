@@ -14,6 +14,20 @@ function postFetch(url, data) {
 		.then(str => (new window.DOMParser()).parseFromString(str, "text/xml"))
 }
 
+function AcervoNome(id){
+	return fetch('http://localhost:8080/app/biblioteca/acervo/consultar?id='+id,{
+			credentials: "include",
+		})
+		.then(response => response.text())
+		.then(str => (new window.DOMParser()).parseFromString(str, "text/xml"))
+		.then(xml => {
+			console.log(xml);
+			let acervo = xml.getElementsByTagName('acervo')[0]
+			let item = acervo.getElementsByTagName('item')[0]
+			return item.getElementsByTagName("nome")[0].innerHTML
+
+		})
+}
 
 function idNome(val) {
 	return fetch('http://localhost:8080/app/biblioteca/alunos/consultar?id='+val,{
@@ -50,12 +64,14 @@ $(document).on('click', '.editar', e => {
 
 	// colocar a opção no atual no select
 	const val = e.currentTarget.parentElement.parentElement.childNodes[1].innerHTML;
+	const valAc = e.currentTarget.parentElement.parentElement.childNodes[2].innerHTML;
 	const id = e.currentTarget.parentElement.parentElement.childNodes[0].innerHTML;
 	let nome = idNome(val)
 	nome.then( valor =>{
 	$('#aluno-atualizar').find('option:contains(' + valor + ')').prop('selected', true);
 	$("#aluno-atualizar").formSelect();
-	$("#emprestou-atualizar")
+	$('#acervo-atualizar').find('option:contains(' + valAc + ')').prop('selected', true);
+	$("#acervo-atualizar").formSelect();
 	fetch('http://localhost:8080/app/biblioteca/reservas/consultarporid?id=' +id,{
 		credentials: "include",
 	})
@@ -70,7 +86,6 @@ $(document).on('click', '.editar', e => {
 			}
 			$('#emprestou-atualizar').find('option:contains(' + valorEmprestou + ')').prop('selected', true);
 			$("#emprestou-atualizar").formSelect();
-			 document.querySelector("#acervo-atualizar").value = xml.getElementsByTagName("reserva")[0].getElementsByTagName("id-acervo")[0].innerHTML
 			 document.querySelector("#data-reserva-atualizar").value =  xml.getElementsByTagName("reserva")[0].getElementsByTagName("data-reserva")[0].innerHTML
 			 document.querySelector("#tempo-espera-atualizar").value = xml.getElementsByTagName("reserva")[0].getElementsByTagName("tempo-espera")[0].innerHTML
 			 document.querySelector("#emprestou-atualizar").value =  xml.getElementsByTagName("reserva")[0].getElementsByTagName("emprestou")[0].innerHTML
