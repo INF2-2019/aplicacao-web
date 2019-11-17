@@ -2,7 +2,7 @@ const infos = {
     inserirDescarte: {
         link: "/biblioteca/descartes/inserir",
         queries: {
-            inputs: "#modalDescartes input, #modalDescartes textarea"
+            inputs: "#modalDescartes input, #modalDescartes textarea, #modalDescartes select"
         },
         ativadores: { evento: "click", query: "#submit_inserir_descarte" },
         callback: atualizarDescarte
@@ -31,6 +31,7 @@ function dataFormatada(data) {
 
 function atualizarDescarte(){
     requisicao("consultarDescarte");
+    pega_acervos();
 }
 
 function consultarDescartePos(info, resposta_dom) {
