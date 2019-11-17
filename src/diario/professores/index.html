@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<link rel="stylesheet" href="../../css/materialize.css" />
+		<title>Listagem de Professores</title>
+	</head>
+	<body>
+		<ul id="dropdown1" class="dropdown-content">
+		</ul>
+		<nav>
+			<div class="nav-wrapper">
+				<a class="brand-logo">Diário</a>
+				<ul id="navbars-itens" class="right hide-on-med-and-down">
+					<li style="width:200px;" id="nav-funcoes"><a class="dropdown-trigger" href="#!" data-target="dropdown1">Funções<i class="material-icons right">arrow_drop_down</i></a></li>
+				</ul>
+			</div>
+		</nav>
+
+		<main style="margin: 0 10%" class="row">
+			<h1>Professores</h1>
+			<p class="red-text flow-text"></p>
+			<a href="#modalInsere" class="btn right primary editar modal-trigger" >Adicionar</a>
+
+			<table class="responsive-table col s12">
+				<colgroup>
+				   <col span="1" style="width: 25%;">
+				   <col span="1" style="width: 25%;">
+				   <col span="1" style="width: 25%;">
+				   <col span="1" style="width: 8.3%;">
+				   <col span="1" style="width: 8.4%;">
+				   <col span="1" style="width: 8.3%;">
+				</colgroup>
+
+				<thead>
+					<th>Nome</th>
+					<th>Departamento</th>
+					<th>SIAPE</th>
+					<th>Ações</th>
+					<th></th>
+					<th></th>
+				</thead>
+				<tbody>
+		</tbody>
+			</table>
+		</main>
+
+
+		<div class="container secondary lighten-5">
+			<div id="modalAltera" class="modal">
+				<div class="modal-content row col s12" style="padding:0;">
+					<h4 style="padding: 15pt;">Editar Professor</h4>
+					<div class="row modal-content" style="margin:0;">
+						<label class="primary-text text-lighten-1 short col s3"> SIAPE: <input type="number" name="id" disabled="true"></label>
+						<label class="primary-text text-lighten-1 short col s7">Nome: <input type="text" name="nome"></label>
+						<label class="primary-text text-lighten-1 short col s2">Id-Depto: <input type="number" name="id-depto"></label>
+						<label class="primary-text text-lighten-1 short validate col s3">Senha: <input type="password" name="senha"></label>
+						<label class="primary-text text-lighten-1 short col s6">E-mail: <input type="text" name="email"></label>
+						<label class="primary-text text-lighten-1 short col s3">Titulação:
+							<select name="titulacao">
+								<option value = "M" >Mestre</option>
+								<option value = "D" >Doutor</option>
+								<option value = "E" >Especialista</option>
+								<option value = "G" >Graduado</option>
+							</select>
+						</label>
+					</div>
+					<div class="row modal-content" style="margin:0;">
+						<button name="alterar" onclick="alterar()" class="btn primary espaco  waves-effect waves-ligth btn modal-close">Confirmar</button>
+						<a class="modal-close btn utils erro-2">Cancelar</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="container secondary lighten-5">
+			<div id="modalDeleta" class="modal">
+				<div class="modal-content row col s12" style="padding:0;">
+					<h4 style="padding: 15pt;">Tem certeza que deseja deletar esse professor?</h4>
+					<div class="row modal-content" style="margin:0;">
+
+					</div>
+					<div class="row modal-content" style="margin:0;">
+						<button onclick="chamaDeletar()"  class="btn primary espaco  waves-effect waves-ligth btn modal-close">Confirmar</button>
+						<a class="modal-close btn utils erro-2">Cancelar</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="container secondary lighten-5">
+			<div id="modalInsere" class="modal">
+				<div class="modal-content row col s12" style="padding:0;">
+					<h4 style="padding: 15pt;">Insere Novo Professor</h4>
+					<div class="row modal-content" style="margin:0;">
+						<label class="primary-text text-lighten-1 short col s3"> SIAPE: <input type="number" name="idInsere"></label>
+						<label class="primary-text text-lighten-1 short col s7">Nome: <input type="text" name="nomeInsere"></label>
+						<label class="primary-text text-lighten-1 short col s2">Id-Depto: <input type="number" name="id-deptoInsere"></label>
+						<label class="primary-text text-lighten-1 short validate col s3">Senha: <input type="password" name="senhaInsere"></label>
+						<label class="primary-text text-lighten-1 short col s6">E-mail: <input type="text" name="emailInsere"></label>
+						<label class="primary-text text-lighten-1 short col s3">Titulação:
+							<select name="titulacaoInsere">
+								<option value = "M" >Mestre</option>
+								<option value = "D" >Doutor</option>
+								<option value = "E" >Especialista</option>
+								<option value = "G" >Graduado</option>
+							</select>
+						</label>
+					</div>
+					<div class="row modal-content" style="margin:0;">
+						<button name="inserir" onclick="inserir()" class="btn primary espaco  waves-effect waves-ligth btn modal-close">Confirmar</button>
+						<a class="modal-close btn utils erro-2">Cancelar</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="container secondary lighten-5">
+			<div id="modalInfo" class="modal">
+				<div class="modal-content row col s12" style="padding:0;">
+					<h4 style="padding: 15pt;">Informações do Professor</h4>
+					<div id="informacoes" class="row modal-content" style="margin:0;" >
+
+					</div>
+					<div class="row modal-content" style="margin:0;">
+						<a class="modal-close btn utils erro-2">Ok</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script type="text/javascript" src="../../js/materialize.min.js"></script>
+		<script src="../../js/diario/professores/consultar.js"></script>
+		<script src="../../js/diario/professores/inserir.js"></script>
+		<script src="../../js/diario/professores/editar.js"></script>
+		<script src="../../js/diario/professores/main.js"></script>
+		<script src="../../js/diario/navbars/navbar.js"></script>
+		<script>cargoLogado();</script>
+		<script>$(".dropdown-trigger").dropdown();</script>
+
+	</body>
+</html>

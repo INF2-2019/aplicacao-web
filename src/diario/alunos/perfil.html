@@ -1,0 +1,131 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Perfil de aluno</title>
+        <link rel="stylesheet" href="../../css/materialize.css">
+        <link rel="stylesheet" href="../../css/estilo.css">
+    </head>
+    <body class="background">
+             <div class="modal-content-manutencao-campi">
+                <ul id="dropdown1" class="dropdown-content">
+				</ul>
+				<nav>
+					<div class="nav-wrapper">
+						<a class="brand-logo">Diário</a>
+						<ul id="navbars-itens" class="right hide-on-med-and-down">
+							<li style="width:200px;" id="nav-funcoes"><a class="dropdown-trigger" href="#!" data-target="dropdown1">Funções<i class="material-icons right">arrow_drop_down</i></a></li>
+						</ul>
+					</div>
+				</nav>
+                <div class="container">
+                    <div class="row">
+                        <h2>Perfil</h2>
+                        <div class="col s12 m9">
+                            <div class="row">
+                                <div class="col s4">
+                                    <span class="primary-text">CPF</span><input class="info" name="cpf" type="number" maxlength="11" readonly>
+                                </div>
+                                <div class="col s8">
+                                    <span class="primary-text">Nome</span><input class="info" name="nome" type="text" readonly>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col s6">
+                                    <span class="primary-text">Email</span><input class="info" name="email" type="email" readonly>
+                                </div>
+                                <div class="col s3">
+                                    <span class="primary-text">Sexo</span>
+                                    <input name="sexo" type="text" readonly class="info">
+                                </div>
+                                <div class="col s3">
+                                    <span class="primary-text">Nascimento</span><input class="info" name="nascimento" type="date" readonly>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col s4">
+                                    <span class="primary-text">Logradouro</span><input class="info" name="logradouro" type="text" readonly>
+                                </div>
+                                <div class="col s4">
+                                    <span class="primary-text">Número</span><input class="info" name="numero" type="number" readonly>
+                                </div>
+                                <div class="col s4">
+                                    <span class="primary-text">Complemento</span><input class="info" name="complemento" type="text" readonly>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col s3">
+                                    <span class="primary-text">Bairro</span><input class="info" name="bairro" type="text" readonly>
+                                </div>
+                                <div class="col s3">
+                                    <span class="primary-text">Cidade</span><input class="info" name="cidade" type="text" readonly>
+                                </div>
+                                <div class="col s3">
+                                    <span class="primary-text">CEP</span><input class="info" name="cep" type="number" readonly>
+                                </div>
+                                <div class="col s3">
+                                    <span class="primary-text">UF</span><input class="info" name="uf" type="text" readonly>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col s9">
+                                    <span class="primary-text">Link da foto*</span><input readonly class="info" name="foto-cadastro" type="text">
+                                </div>
+                            </div>
+                        </div>
+                        <a class="modal-trigger" href="#modal-foto-perfil-alunos">
+                            <div id="divfoto-perfil-alunos" class="offset-l1 offset-s1 offset-m2 col l2 s2">
+                                <img id="foto-perfil-aluno" class="foto-manutencao-alunos" src="" >
+                            </div>
+                        </a>
+                        <footer class="left">
+                            <a class="waves-effect teal darken-4 btn btn-large modal-trigger" href="#divSenha-perfil-alunos">Alterar senha</a>
+                        </footer>
+                    </div>
+                </div>
+            </div>
+
+
+            <div id="modal-foto-perfil-alunos" class="modal modal-fixed-footer">
+                <h4 style="padding: 15pt;">Alterar foto</h4>
+                <img id="fotoAlterada-perfil-alunos" class="foto-manutencao-alunos" src="">
+                <div class="row">
+                    <div class="col s11">
+                        <span class="primary-text">Link da foto</span><input id="link" onchange="loadFoto()" type="text">
+                    </div>
+                </div>
+                <footer class="center">
+                    <button class="waves-effect teal lighten-1 btn btn-large modal-close">Voltar</button>
+                    <a class="waves-effect teal darken-4 btn btn-large modal-close" id="salvar">Salvar</a>
+                </footer>
+            </div>
+
+        <div id="divSenha-perfil-alunos" class="modal ">
+            <div class="modal-content-manutencao-campi">
+                <h4 style="padding: 15pt;">Alterar senha</h4>
+                <div class="container">
+                    <div class="row">
+                        <div class="col s12 m9">
+                            <div class="col s12">
+                                <span>Nova senha</span>
+                                <input id="newsenha" type="password">
+                            </div>
+                                <a class="waves-effect teal lighten-1 btn btn-large modal-close">Voltar</a>
+                                <a class="waves-effect teal darken-4 btn btn-large modal-close" onclick="alterarSenha()">Confirmar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+		<script src="../../js/jquery-3.4.1.js"></script>
+		<script src="../../js/materialize.js"></script>
+         <script src="../../js/diario/alunos/perfil.js"></script>
+         <script src="../../js/diario/alunos/info.js"></script>
+		 <script src="../../js/diario/alunos/resultado.js"></script>
+		 <script src="../../js/diario/navbars/navbar.js"></script>
+		 <script>cargoLogado();</script>
+		 <script>$(".dropdown-trigger").dropdown();</script>
+    </body>
+</html>

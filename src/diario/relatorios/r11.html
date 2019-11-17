@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt" dir="ltr">
+	<head>
+		<meta charset="utf-8">
+		<title>Relação de conteúdos, por disciplina e por etapa</title>
+		<link rel="stylesheet" href="../../css/materialize.css">
+		<link rel="stylesheet" href="../../css/estilo.css">
+	</head>
+	<body><div class="margin-0">
+		<ul id="dropdown1" class="dropdown-content no-print ulFitz">
+		</ul>
+	<nav id="navFitz">
+		<div class="nav-wrapper">
+			<a class="brand-logo">Diário</a>
+			<ul id="navbars-itens" class="right hide-on-med-and-down">
+				<li style="width:200px;" id="nav-funcoes"><a class="dropdown-trigger" href="#!" data-target="dropdown1">Funções<i class="material-icons right">arrow_drop_down</i></a></li>
+			</ul>
+		</div>
+	</nav>
+		<main class="container relDoFitz">
+			<h4>Relação de conteúdos</h4>
+			<div id="esc" class="center-align row no-print">
+				<div>
+					<span class="f">Escolha a disciplina:<select></select></span>
+					<span class="f">Escolha a etapa:<select></select></span>
+					<span class="f"><button class="primary btn" id="gen">Gerar</button><button class="primary btn" id="imp">Imprimir</button></span>
+				</div>
+			</div>
+			<div id="r"></div>
+                </main></div>
+		
+		<script src="../../js/jquery-3.4.1.js"></script>
+		<script src="../../js/materialize.js"></script>
+		<script src="../../js/diario/relatorios/r11.js"></script>
+		<script src="../../js/diario/navbars/navbar.js"></script>
+		<script>cargoLogado();</script>
+		<script>$(".dropdown-trigger").dropdown();</script>
+	</body>
+</html>

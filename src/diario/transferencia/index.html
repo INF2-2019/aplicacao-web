@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<link rel="stylesheet" href="../../css/materialize.css" />
+		<title>Transferência</title>
+	</head>
+	<body>
+		<ul id="dropdown1" class="dropdown-content">
+		</ul>
+		<nav>
+			<div class="nav-wrapper">
+				<a class="brand-logo">Diário</a>
+				<ul id="navbars-itens" class="right hide-on-med-and-down">
+					<li style="width:200px;" id="nav-funcoes"><a class="dropdown-trigger" href="#!" data-target="dropdown1">Funções<i class="material-icons right">arrow_drop_down</i></a></li>
+				</ul>
+			</div>
+		</nav>
+
+		<div class="container" style="margin: 0 10%">
+			<div>
+				<h1>Transferir aluno</h1>
+				<button class="btn right primary">TRANSFERIR</button>
+				<label for="cpf" style="font-size: 24px; color: black">CPF do aluno:</label>
+				<input placeholder="Digite o CPF do aluno aqui" id="cpf" type="text">
+			</div>
+
+			<div class="modal">
+				<div id="conteudo" class="modal-content">
+					<h4>Transferir aluno</h4>
+					<p>Tem certeza que deseja transferir este aluno?</p>
+				</div>
+				<div class="modal-footer">
+					<a class="modal-close btn utils erro-2">Cancelar</a>
+					<a class="modal-close btn primary" onclick="transfere()">Transferir</a>
+				</div>
+			</div>
+		</main>
+
+		<script src="../../js/jquery-3.4.1.js"></script>
+		<script src="../../js/materialize.js"></script>
+		<script src="../../js/diario/transferencia/main.js"></script>
+		<script src="../../js/diario/navbars/navbar.js"></script>
+		<script>cargoLogado();</script>
+		<script>$(".dropdown-trigger").dropdown();</script>
+	</body>
+</html>

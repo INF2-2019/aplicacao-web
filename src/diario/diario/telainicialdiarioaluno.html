@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/materialize.css">
+    <title>Diário Aluno</title>
+  </head>
+
+  <body id="aluno">
+    <ul id="dropdown1" class="dropdown-content">
+		</ul>
+		<nav>
+			<div class="nav-wrapper">
+				<a class="brand-logo">Diário</a>
+				<ul id="navbars-itens" class="right hide-on-med-and-down">
+					<li style="width:200px;" id="nav-funcoes"><a class="dropdown-trigger" href="#!" data-target="dropdown1">Funções<i class="material-icons right">arrow_drop_down</i></a></li>
+				</ul>
+			</div>
+		</nav>
+
+    <main style="margin: 0 10%">
+      <div style="width: 90% !important">
+        <h3>Dados Pessoais</h3>
+        <div class=" row area" id="dados_aluno">
+          <div class="col s3"> <h6 class="teal-text">CPF</h6> <p class="campo">9999999</p></div>
+          <div class="col s9"> <h6 class="teal-text">Nome</h6><p class="campo">JOÃO DE SANTO CRISTO</p> </div>
+          <div class="col s3"> <h6 class="teal-text">Sexo</h6> <p class="campo">MASCULINO</p> </div>
+          <div class="col s3"> <h6 class="teal-text">Nascimento </h6> <p class="campo">22/01/2001</p> </div>
+          <div class="col s6"> <h6 class="teal-text">Email</h6> <p class="campo">joãodesantocristo@legiaourbana.com</p></div>
+        </div>
+      </div>
+
+      <div>
+        <h1>Boletim Acadêmico</h1>
+        <div class="row area" id="boletim">
+          <table class="responsive-table" id="diario" style="padding-top: 5%">
+            <colgroup>
+              <col span="1" style="width: 10%">
+              <col span="1" style="width: 50%">
+              <col span="1" style="width: 10%">
+              <col span="1" style="width: 10%">
+              <col span="1" style="width: 10%">
+              <col span="1" style="width: 10%">
+            </colgroup>
+
+            <thead>
+              <th>ID</th>
+              <th>DISCIPLINA</th>
+              <th>FALTAS</th>
+              <th>NOTA</th>
+            </thead>
+
+            <tbody id="holder_disciplinas">
+              <tr>
+                <td>001</td>
+                <td class="">AULA DE PEBOLIM</td>
+                <td>10</td>
+                <td>60</td>
+                <td><a href="#modalConteudoAluno" class="waves-effect waves-light light-blue accent 3 btn-small left modal-trigger">Conteúdos</a></td>
+                <td><a href="#modalAtividadeAluno" class="waves-effect waves  btn-small left modal-trigger">Atividades</a></td>
+              </tr>
+
+            <tr>
+                <td>001</td>
+                <td class=" ">MATEMÁTICA</td>
+                <td>2</td>
+                <td>75</td>
+                <td><a href="#modalConteudoAluno" class="waves-effect waves-light light-blue accent 3 btn-small left modal-trigger">Conteúdos</a></td>
+                <td><a href="#modalAtividadeAluno" class="waves-effect waves  btn-small left modal-trigger">Atividades</a></td>
+            </tr>
+
+            <tr>
+                <td>001</td>
+                <td class="">PRODUÇÃO DE TIKTOK</td>
+                <td>0</td>
+                <td>100</td>
+                <td><a href="#modalConteudoAluno" class="waves-effect waves-light light-blue accent 3 btn-small left modal-trigger">Conteúdos</a></td>
+                <td><a href="#modalAtividadeAluno" class="waves-effect waves btn-small left modal-trigger">Atividades</a></td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+
+      <!-- Modal que mostra os conteudos de determinada disciplina -->
+      <div class="container secondary lighten-5">
+        <div id="modalConteudoAluno" class="modal" style="padding: 2%">
+          <div class="row modal-content" style="padding: 0">
+            <p>Todos os conteúdos ministrados na disciplina.</p>
+            <table class="responsive-table" style="padding-top: 5%">
+              <colgroup>
+                <col span="1" style="width: 20%">
+                <col span="1" style="width: 80%">
+              </colgroup>
+
+              <thead>
+                <th>CONTEUDO</th>
+                <th>DATA</th>
+              </thead>
+
+              <tbody id="holder_conteudos">
+                <tr>
+                  <td>Aula de Forró</td>
+                  <td>12/10</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="container secondary lighten-5">
+        <div id="modalAtividadeAluno" class="modal" style="padding: 2%">
+          <div class="row modal-content" style="padding: 0">
+            <p>Todas as atividades desta disciplina.</p>
+            <table class="responsive-table" style="padding-top: 5%">
+              <colgroup>
+                <col span="1" style="width: 60%">
+                <col span="1" style="width: 20%">
+                <col span="1" style="width: 20%">
+              </colgroup>
+
+              <thead>
+                <th>ATIVIDADE</th>
+                <th>VALOR</th>
+                <th>NOTA</th>
+              </thead>
+
+              <tbody id="holder_atividades">
+                <tr>
+                  <td>Iniciação ao Forró</td>
+                  <td>10</td>
+                  <td>9,99</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    <!-- Jquery-->
+    <script src="../../js/jquery-3.4.1.js"></script>
+    <script>
+      $(document).ready(function(){
+        $('.modal').modal();
+      });
+    </script>
+    <!-- materialize JS-->
+		<script src="../../js/materialize.min.js"></script>
+		<script src="../../js/diario/navbars/navbar.js"></script>
+		<script>cargoLogado();</script>
+		<script>$(".dropdown-trigger").dropdown();</script>
+  </body>
+</html>

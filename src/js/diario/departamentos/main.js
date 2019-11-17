@@ -1,0 +1,2 @@
+consultaDeptos();
+consultaCampi();

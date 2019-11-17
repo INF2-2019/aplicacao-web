@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt" dir="ltr">
+
+<head>
+	<link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="../../css/materialize.css">
+	<link rel="stylesheet" href="../../css/estilo.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+	<meta charset="utf-8">
+	<title>Relatório de Empréstimos</title>
+</head>
+
+<body onload="consulta()">
+	<ul id="dropdown1" class="dropdown-content"></ul>
+		<nav>
+			<div class="nav-wrapper">
+				<a class="brand-logo">Biblioteca</a>
+				<ul id="navbars-itens" class="right hide-on-med-and-down">
+					<li style="width:200px;" id="nav-funcoes"><a class="dropdown-trigger" href="#!" data-target="dropdown1">Funções<i class="material-icons right">arrow_drop_down</i></a></li>
+				</ul>
+			</div>
+		</nav>
+	<!-- fim header -->
+
+	<!-- DIV PARA RESPOSTA CONSULTA -->
+	<div class="container">
+		<h2>Relatório de Empréstimos</h2>
+		<div class="row">
+			<a id="BotaoImprime" class="btn col primary s12 m12 l2 right">IMPRIMIR</a>
+
+			<div id="resposta-relatorio-biblioteca" class="col s12">
+				<table id="printable" class="responsive-table highlight centered">
+
+				</table>
+			</div>
+		</div>
+	</div>
+
+	<!-- IMPORTAÇÕES -->
+	<script src="../../js/jquery-3.4.1.js"></script>
+	<script src="../../js/materialize.js"></script>
+	<script src="../../js/biblioteca/relatorios/main.js"></script>
+	<script src="../../js/biblioteca/relatorios/consultaEmprestimo.js"></script>
+	<script src="../../js/biblioteca/navbars/navbar.js"></script>
+	<script>$(".dropdown-trigger").dropdown();M.AutoInit();</script>
+	<script>cargoLogado();</script>
+</body>
+
+</html>

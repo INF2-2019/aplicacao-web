@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+    <head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<link rel="stylesheet" href="../../css/materialize.css" />
+        <title>Listagem do Acervo</title>
+    </head>
+    <body>
+		<ul id="dropdown1" class="dropdown-content"></ul>
+		<nav>
+			<div class="nav-wrapper">
+				<a class="brand-logo">Biblioteca</a>
+				<ul id="navbars-itens" class="right hide-on-med-and-down">
+					<li style="width:200px;" id="nav-funcoes"><a class="dropdown-trigger" href="#!" data-target="dropdown1">Funções<i class="material-icons right">arrow_drop_down</i></a></li>
+				</ul>
+			</div>
+		</nav>
+
+		<main style="margin: 0 10%">
+			<div class="container">
+				<h1>Acervo</h1>
+				<p id="saida" class="flow-text red-text" style="font-size:22px;"></p>
+				<a href="#modalAltera" class="btn col s12 m12 l5 offset-l4 waves-effect waves-light primary modal-trigger" onclick="prepararInsercao();">Adicionar</a>
+
+				<table class="responsive-table" style="padding-top: 5%">
+					<colgroup>
+					<col span="1" style="width: 25%;">
+					<col span="1" style="width: 25%;">
+					<col span="1" style="width: 25%;">
+					<col span="1" style="width: 8.3%;">
+					<col span="1" style="width: 8.4%;">
+					<col span="1" style="width: 8.3%;">
+					</colgroup>
+
+					<thead>
+						<th>ID</th>
+						<th>Nome</th>
+						<th>Tipo</th>
+						<th>Ações</th>
+						<th></th>
+						<th></th>
+					</thead>
+					<tbody>
+					</tbody>
+				</table>
+			</div>
+		</main>
+
+		<!-- MODAL DE EDIÇÃO -->
+		<div class="container secondary lighten-5">
+			<div id="modalAltera" class="modal">
+				<div class="modal-content row col s15" style="padding:0;">
+					<h4 style="padding: 15pt;">Editar Item</h4>
+					<div class="row modal-content" style="margin:0;">
+						<label class="primary-text text-lighten-1 short col s2">ID: <input type="number" name="id" disabled="true"></label>
+						<label class="primary-text text-lighten-1 short col s10">Nome: <input type="text" name="nome"></label>
+						<label class="primary-text text-lighten-1 short col m5 s12">Campus:
+							<select name="id-campi"></select>
+						</label>
+						<label class="primary-text text-lighten-1 short col m7 s12">Local: <input type="text" name="local"></label>
+						<label class="primary-text text-lighten-1 short col s6">Editora: <input type="text" name="editora"></label>
+						<label class="primary-text text-lighten-1 short col s3">Ano: <input type="number" name="ano"></label>
+						<label class="primary-text text-lighten-1 short col s3">Páginas: <input type="number" name="paginas"></label>
+						<label class="primary-text text-lighten-1 short col m6 s12">Tipo:
+							<select name="tipo" onchange="tipoChange()">
+								<option value = "invalido">Escolha um tipo</option>
+								<option value = "academicos">Acadêmico</option>
+								<option value = "livros">Livro</option>
+								<option value = "midias">Mídia</option>
+								<option value = "periodicos">Periódico</option>
+							</select>
+						</label>
+						<div id='outrosParametros' class="row modal-content" style="margin:0;padding-left:0;"></div>
+					</div>
+					<div class="row modal-content" style="margin:0;">
+						<button onclick="onconfirmar()" class="btn primary espaco waves-effect waves-ligth btn modal-close" >Confirmar</button>
+						<a class="modal-close btn utils erro-2" style="margin-right: 5%;">Cancelar</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="container secondary lighten-5">
+			<div id="modalDeleta" class="modal bottom-sheet">
+				<div class="modal-content row col s12" style="padding:0;">
+					<h4 style="padding: 15pt;">Tem certeza que deseja deletar esse registro do acervo?</h4>
+					<div class="row modal-content" style="margin:0;">
+						<a class="btn-large primary espaco waves-effect waves-ligth modal-close right">Cancelar</a>
+						<a onclick="deletar()" class="modal-close btn-large utils erro-2 right" style="margin-right: 5%;">Deletar</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script src="../../js/jquery-3.4.1.js"></script>
+		<script type="text/javascript" src="../../js/materialize.min.js"></script>
+		<script src="../../js/biblioteca/navbars/navbar.js"></script>
+		<script src="../../js/biblioteca/acervo/parametros.js"></script>
+		<script src="../../js/biblioteca/acervo/main.js"></script>
+		<script>$(".dropdown-trigger").dropdown();M.AutoInit();</script>
+		<script>cargoLogado();</script>
+		</body>
+</html>
