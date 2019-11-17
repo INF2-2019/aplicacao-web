@@ -8,9 +8,13 @@
         <title>Listagem do Acervo</title>
     </head>
     <body>
-		<nav style="padding-left: 5pt;">
+		<ul id="dropdown1" class="dropdown-content"></ul>
+		<nav>
 			<div class="nav-wrapper">
-				<a class="brand-logo">S.A. Admin</a>
+				<a class="brand-logo">Biblioteca</a>
+				<ul id="navbars-itens" class="right hide-on-med-and-down">
+					<li style="width:200px;" id="nav-funcoes"><a class="dropdown-trigger" href="#!" data-target="dropdown1">Funções<i class="material-icons right">arrow_drop_down</i></a></li>
+				</ul>
 			</div>
 		</nav>
 
@@ -53,11 +57,7 @@
 						<label class="primary-text text-lighten-1 short col s2">ID: <input type="number" name="id" disabled="true"></label>
 						<label class="primary-text text-lighten-1 short col s10">Nome: <input type="text" name="nome"></label>
 						<label class="primary-text text-lighten-1 short col m5 s12">Campus:
-							<select name="id-campi">
-								<option value = "invalido">Escolha um campus</option>
-								<option value = "1">I</option>
-								<option value = "2">II</option>
-							</select>
+							<select name="id-campi"></select>
 						</label>
 						<label class="primary-text text-lighten-1 short col m7 s12">Local: <input type="text" name="local"></label>
 						<label class="primary-text text-lighten-1 short col s6">Editora: <input type="text" name="editora"></label>
@@ -94,15 +94,12 @@
 			</div>
 		</div>
 
-		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script src="../../js/jquery-3.4.1.js"></script>
 		<script type="text/javascript" src="../../js/materialize.min.js"></script>
+		<script src="../../js/biblioteca/navbars/navbar.js"></script>
 		<script src="../../js/biblioteca/acervo/parametros.js"></script>
 		<script src="../../js/biblioteca/acervo/main.js"></script>
-		<script>
-			$(document).ready(function(){
-				$('.modal').modal();
-				$('select').formSelect();
-			});
-		</script>
-    </body>
+		<script>$(".dropdown-trigger").dropdown();M.AutoInit();</script>
+		<script>cargoLogado();</script>
+		</body>
 </html>

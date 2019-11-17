@@ -1,6 +1,5 @@
-const METODO = "POST";
-const ENDERECO= "http://localhost:8080/app/";
-const ROTA = "diario/professores/inserir";
+//const ENDERECO= "http://localhost:8080/app";
+const ROTA_INSERIR = "/diario/professores/inserir";
 
 function inserir(){
 
@@ -20,8 +19,8 @@ function inserir(){
 }
 
 function jqueryAjax(id, idDepto, nome, senha, email, titulacao) {
-	$.ajax(ENDERECO+ROTA, {
-		method: METODO,
+	$.ajax(ENDERECO+ROTA_INSERIR, {
+		method: "POST",
 		xhrFields: { withCredentials: true },
 		data: {
 			id: id,

@@ -26,7 +26,7 @@ function navADMIN() {
 		li_dropdown[i] = document.createElement("li");
 	}
 	li_dropdown[0].innerHTML = "<a href='../acervo/index.html'>Acervos</a>";
-	li_dropdown[1].innerHTML = "<a href='../aluno/index.html'>Aluno</a>";
+	li_dropdown[1].innerHTML = "<a href='../alunos/index.html'>Aluno</a>";
 	li_dropdown[2].innerHTML = "<a href='../campi/index.html'>Campi</a>";
 	li_dropdown[3].innerHTML = "<a href='../descartes/index.html'>Descartes</a>";
 	li_dropdown[4].innerHTML = "<a href='../emprestimos/index.html'>Empréstimos</a>";

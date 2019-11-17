@@ -9,14 +9,15 @@
     <body class="background">
              <div class="modal-content-manutencao-campi">
                 <ul id="dropdown1" class="dropdown-content">
-                </ul>
-                <nav>
-                    <div class="nav-wrapper">
-                        <a class="brand-logo">Diário</a>
-                        <ul class="right hide-on-med-and-down">
-                        </ul>
-                    </div>
-                </nav>
+				</ul>
+				<nav>
+					<div class="nav-wrapper">
+						<a class="brand-logo">Diário</a>
+						<ul id="navbars-itens" class="right hide-on-med-and-down">
+							<li style="width:200px;" id="nav-funcoes"><a class="dropdown-trigger" href="#!" data-target="dropdown1">Funções<i class="material-icons right">arrow_drop_down</i></a></li>
+						</ul>
+					</div>
+				</nav>
                 <div class="container">
                     <div class="row">
                         <h2>Perfil</h2>
@@ -39,7 +40,7 @@
                                 </div>
                                 <div class="col s3">
                                     <span class="primary-text">Nascimento</span><input class="info" name="nascimento" type="date" readonly>
-                                </div>                                
+                                </div>
                             </div>
                             <div class="row">
                                 <div class="col s4">
@@ -70,7 +71,7 @@
                                 <div class="col s9">
                                     <span class="primary-text">Link da foto*</span><input readonly class="info" name="foto-cadastro" type="text">
                                 </div>
-                            </div>    
+                            </div>
                         </div>
                         <a class="modal-trigger" href="#modal-foto-perfil-alunos">
                             <div id="divfoto-perfil-alunos" class="offset-l1 offset-s1 offset-m2 col l2 s2">
@@ -83,8 +84,8 @@
                     </div>
                 </div>
             </div>
-        
-        
+
+
             <div id="modal-foto-perfil-alunos" class="modal modal-fixed-footer">
                 <h4 style="padding: 15pt;">Alterar foto</h4>
                 <img id="fotoAlterada-perfil-alunos" class="foto-manutencao-alunos" src="">
@@ -98,7 +99,7 @@
                     <a class="waves-effect teal darken-4 btn btn-large modal-close" id="salvar">Salvar</a>
                 </footer>
             </div>
-        
+
         <div id="divSenha-perfil-alunos" class="modal ">
             <div class="modal-content-manutencao-campi">
                 <h4 style="padding: 15pt;">Alterar senha</h4>
@@ -110,18 +111,21 @@
                                 <input id="newsenha" type="password">
                             </div>
                                 <a class="waves-effect teal lighten-1 btn btn-large modal-close">Voltar</a>
-                                <a class="waves-effect teal darken-4 btn btn-large modal-close" onclick="alterarSenha()">Confirmar</a> 
+                                <a class="waves-effect teal darken-4 btn btn-large modal-close" onclick="alterarSenha()">Confirmar</a>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>         
-                     
-        
-         <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-         <script src="../../js/materialize.js"></script>
+        </div>
+
+
+		<script src="../../js/jquery-3.4.1.js"></script>
+		<script src="../../js/materialize.js"></script>
          <script src="../../js/diario/alunos/perfil.js"></script>
          <script src="../../js/diario/alunos/info.js"></script>
-         <script src="../../js/diario/alunos/resultado.js"></script>
+		 <script src="../../js/diario/alunos/resultado.js"></script>
+		 <script src="../../js/diario/navbars/navbar.js"></script>
+		 <script>cargoLogado();</script>
+		 <script>$(".dropdown-trigger").dropdown();</script>
     </body>
 </html>

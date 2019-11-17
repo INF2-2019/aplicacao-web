@@ -1,7 +1,7 @@
-const ENDERECO = "http://localhost:8080/app/";
-const ROTA_CONSULTA = "diario/professores/consultar";
-const ROTA_EDICAO = "diario/professores/atualizar";
-const ROTA_EDITAR_SENHA = "diario/professores/atualizar-senha";
+//const ENDERECO = "http://localhost:8080/app";
+const ROTA_CONSULTA = "/diario/professores/consultar";
+const ROTA_EDICAO = "/diario/professores/atualizar";
+const ROTA_EDITAR_SENHA = "/diario/professores/atualizar-senha";
 const REQUISITAR_ID_PROPRIO = -1;
 
 function carregarPerfil() {
@@ -37,7 +37,7 @@ function salvar() {
 	let senha = "";
 	let email = document.getElementById("email").value;
 	let titulacao = document.getElementById("titulacao").value;
-	
+
 	alterarPost(id, idDepto, nome, senha, email, titulacao);
 }
 
