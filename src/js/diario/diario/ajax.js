@@ -99,9 +99,9 @@ async function requisicao(info, parametros, config={}) {
     inputs;
     
     if (info.parametros_default)
-    params = Object.assign(params, info.parametros_default);
+        params = Object.assign(params, info.parametros_default);
     if(parametros)
-    params = Object.assign(params, parametros);        
+        params = Object.assign(params, parametros);        
     
     if (info.queries && info.queries.inputs) {
         inputs = document.querySelectorAll(info.queries.inputs);

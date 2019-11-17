@@ -99,7 +99,7 @@
               <label class="primary-text text-lighten-1 col s12">CONTEÚDO <input name="conteudo" type="text"></label>
               <label class="primary-text text-lighten-1 col s5">DATA <input name="data" type="date"></label>
               <label class="primary-text text-lighten-1 col s6">ETAPA
-                <select class="holder_etapas_lanca_conteudo" style="display: block;">
+                <select name="etapa" id="holder_etapas_lanca_conteudo" style="display: block;">
                   <option value="1">1</option>
                 </select>
               </label>
@@ -120,7 +120,7 @@
               <label class="primary-text text-lighten-1 col s12">ATIVIDADE <input name="conteudo" type="text"></label>
               <label class="primary-text text-lighten-1 col s6">DATA <input name="data" type="date"></label>
               <label class="primary-text text-lighten-1 col s6">ETAPA
-                <select class="holder_etapas_lanca_atividde" style="display: block;">
+                <select name="etapa" id="holder_etapas_lanca_atividade" style="display: block;">
                   <option value="1">1</option>
                 </select>
               </label>
@@ -142,7 +142,7 @@
               <label class="primary-text text-lighten-1 col s12">CONTEÚDO <input name="conteudo" type="text"></label>
               <label class="primary-text text-lighten-1 col s5">DATA <input name="data" type="date"></label>
               <label class="primary-text text-lighten-1 col s6" style="display: block;">ETAPA
-                  <select id="holder_etapas_altera_conteudo" style="display: block;">
+                  <select name="etapa" id="holder_etapas_altera_conteudo" style="display: block;">
                     <option value="1">1</option>
                   </select>
               </label>
@@ -164,7 +164,7 @@
               <label class="primary-text text-lighten-1 col s12">ATIVIDADE <input name="conteudo" type="text"></label>
               <label class="primary-text text-lighten-1 short col s6">DATA <input name="data" type="date"></label>
               <label class="primary-text text-lighten-1 col s6">ETAPA
-                  <select id="holder_etapas_altera_atividade" style="display: block;">
+                  <select name="etapa" id="holder_etapas_altera_atividade" style="display: block;">
                     <option value="1">1</option>
                   </select>
               </label>
@@ -207,7 +207,7 @@
                 </tbody>
               </table>
 
-              <button class="waves-light waves-effect primary btn-large" id="lancarNota">Lançar Notas</button>
+              <button class="waves-light waves-effect primary btn-large modal-close" id="lancarNota">Lançar Notas</button>
             </div>
           </div>
         </div>
@@ -235,12 +235,13 @@
                 <tbody id="holder_faltas" data-conteudo="">
                   <tr>
                     <td>000000100</td>
+                    <td>Reginaura Clevertson Santa Maria</td>
                     <td><input type="number" name="falta" step="1" min="0"></td>
                   </tr>
                 </tbody>
               </table>
 
-              <button class="waves-light waves-effect primary btn-large" id="lancarFalta">Lançar Faltas</button>
+              <button class="waves-light waves-effect primary btn-large modal-close" id="lancarFalta">Lançar Faltas</button>
             </div>
           </div>
         </div>
