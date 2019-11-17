@@ -31,6 +31,14 @@
           <div class="col s6"> <h6 class="teal-text">Email</h6> <p class="campo">joãodesantocristo@legiaourbana.com</p></div>
         </div>
       </div>
+      
+      <template id="template_aluno">
+        <div class="col s3"> <h6 class="teal-text">CPF</h6> <p class="campo">{{id}}</p></div>
+        <div class="col s9"> <h6 class="teal-text">Nome</h6><p class="campo">{{nome}}</p> </div>
+        <div class="col s3"> <h6 class="teal-text">Sexo</h6> <p class="campo">{{sexo}}</p> </div>
+        <div class="col s3"> <h6 class="teal-text">Nascimento </h6> <p class="campo">{{nascimento}}</p> </div>
+        <div class="col s6"> <h6 class="teal-text">Email</h6> <p class="campo">{{email}}</p></div>
+      </template>
 
       <div>
         <h1>Boletim Acadêmico</h1>
@@ -85,6 +93,18 @@
       </div>
     </main>
 
+    <template id="template_disciplina">
+      <tr>
+        <td>{{id}}</td>
+        <td class="">{{disciplina}}</td>
+        <td>{{faltas}}</td>
+        <td>{{nota}}</td>
+        <td><a href="#modalConteudoAluno"
+            class="waves-effect waves-light light-blue accent 3 btn-small left modal-trigger conteudos">Conteúdos</a></td>
+        <td><a href="#modalAtividadeAluno" class="waves-effect waves btn-small left modal-trigger atividades">Atividades</a></td>
+      </tr>
+    </template>
+
       <!-- Modal que mostra os conteudos de determinada disciplina -->
       <div class="container secondary lighten-5">
         <div id="modalConteudoAluno" class="modal" style="padding: 2%">
@@ -92,8 +112,8 @@
             <p>Todos os conteúdos ministrados na disciplina.</p>
             <table class="responsive-table" style="padding-top: 5%">
               <colgroup>
-                <col span="1" style="width: 20%">
                 <col span="1" style="width: 80%">
+                <col span="1" style="width: 20%"> 
               </colgroup>
 
               <thead>
@@ -112,6 +132,13 @@
         </div>
       </div>
 
+      <template id="template_conteudo">
+        <tr>
+          <td>{{nome}}</td>
+          <td>{{data}}</td>
+        </tr>
+      </template>
+      
       <div class="container secondary lighten-5">
         <div id="modalAtividadeAluno" class="modal" style="padding: 2%">
           <div class="row modal-content" style="padding: 0">
@@ -141,6 +168,14 @@
         </div>
       </div>
 
+      <template id="template_atividade">
+        <tr>
+          <td>{{nome}}</td>
+          <td>{{valor}}</td>
+          <td>{{nota}}</td>
+        </tr>
+      </template>
+
     <!-- Jquery-->
     <script src="../../js/jquery-3.4.1.js"></script>
     <script>
@@ -149,7 +184,9 @@
       });
     </script>
     <!-- materialize JS-->
-		<script src="../../js/materialize.min.js"></script>
+    <script src="../../js/materialize.min.js"></script>
+    <script src="../../js/diario/diario/ajax.js"></script>
+    <script src="../../js/diario/diario/dados_aluno.js"></script>
 		<script src="../../js/diario/navbars/navbar.js"></script>
 		<script>cargoLogado();</script>
 		<script>$(".dropdown-trigger").dropdown();</script>

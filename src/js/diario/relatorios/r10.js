@@ -1,6 +1,7 @@
 const t = document.querySelector("#t");
 let sel = document.querySelector("select");
-const btn = document.querySelector("button");
+const gen = document.querySelector("#gen");
+const imp = document.querySelector("#imp");
 const thead = document.querySelector(".head");
 
 function fete(p1, p2 = {}) {
@@ -101,7 +102,7 @@ function xmlToArray(v) {
 	}
 	return ret;
 }
-btn.addEventListener("click", async function() {
+async function gerar() {
 	if (!sel.getSelectedValues) {
 		return;
 	}
@@ -147,4 +148,9 @@ btn.addEventListener("click", async function() {
 	for (let i = 0; i < nmsDisc.length; i++) {
 		makeRow(nmsDisc[i], notas[i]);
 	}
+}
+gen.addEventListener("click", gerar);
+imp.addEventListener("click", async function(){
+	await gerar();
+	print();
 });

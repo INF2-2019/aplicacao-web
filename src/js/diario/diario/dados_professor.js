@@ -1,16 +1,8 @@
-let PROFESSOR;
-
-const stringEInteiro = numero => (/^\d+$/).test(numero);
-
-const BARRA_PESQUISA = new URLSearchParams(window.location.search);
-if(BARRA_PESQUISA.has("professor") && stringEInteiro(BARRA_PESQUISA.get("professor")))
-    PROFESSOR = Number(BARRA_PESQUISA.get("professor"));
-
 const infos = {
     consultarDadosProfessor: {
         link: "/diario/professores/consultar",
         parametros_default: {
-            professor: PROFESSOR
+            id: -1
         },
         queries: {
             holder: "#dados_professor",
@@ -20,9 +12,6 @@ const infos = {
     }, 
     consultarDisciplinaProfessor: {
         link: "/diario/professoresdisciplinas/consultar",
-        parametros_default: {
-            "id-professores": PROFESSOR
-        },
         callback: consultarDisciplinaProfessor
     },
     consultarDisciplina: {
@@ -33,8 +22,14 @@ const infos = {
             template: "#template_disciplinas"
         },
         callback: consultarDisciplina
+    }, 
+    consultarTurma: {
+        link: "/diario/turmas/consultar",
+        parametros_default: {}
     }
 }
+
+
 
 function consultarDadosProfessor(info, resposta_dom) {
     let args;
@@ -42,43 +37,58 @@ function consultarDadosProfessor(info, resposta_dom) {
     holder.innerHTML = "";
     if (resposta_dom == null)
         return;
-    console.log(resposta_dom);
-    for (let conteudosEl of resposta_dom) {
-        let id = conteudosEl.querySelector("id").innerHTML,
-            id_depto = conteudosEl.querySelector("id-depto").innerHTML,
-            nome = conteudosEl.querySelector("nome").innerHTML,
-            titulacao = conteudosEl.querySelector("titulacao").innerHTML;
 
-        args = {
-            id,
-            id_depto,
-            nome,
-            titulacao
-        };
+    if(resposta_dom.length>1)
+        return;
 
-        console.log(args);
+    let professorEl = resposta_dom[0];
 
-        let els = geraElemento(info.queries.template, args);
-        for(let el of els){
-            holder.appendChild(el);
-        }
+    let id = professorEl.querySelector("id").innerHTML,
+    id_depto = professorEl.querySelector("id-depto").innerHTML,
+    nome = professorEl.querySelector("nome").innerHTML,
+    titulacao = professorEl.querySelector("titulacao").innerHTML;
+
+    if(titulacao=="M")
+            titulacao = "Mestre";
+    else if(titulacao=="E")
+            titulacao = "Especialista";
+    else if(titulacao=="D")
+            titulacao = "Doutor";
+    else if(titulacao=="G")
+            titulacao = "Graduado";
+
+    args = {
+        id: formatarNumero(id,9),
+        id_depto,
+        nome,
+        titulacao
+    };
+
+    let els = geraElemento(info.queries.template, args);
+    for(let el of els){
+        holder.appendChild(el);
     }
+
+    requisicao("consultarDisciplinaProfessor",{"id-professores": id});
+    
 }
 
-function consultarDisciplinaProfessor(info, resposta_dom) {
+async function consultarDisciplinaProfessor(info, resposta_dom) {
     if (resposta_dom == null)
         return;
     
-
     for (let disciplinaProfessorEl of resposta_dom) {
         let id_prof = disciplinaProfessorEl.querySelector("id-professores").innerHTML,
             id_disc = disciplinaProfessorEl.querySelector("id-disciplinas").innerHTML;
 
-        requisicao("consultarDisciplina",{id: id_disc});
+        await requisicao("consultarDisciplina",{id: id_disc});
     }
+
+
+    organizaConteudos();
 }
 
-function consultarDisciplina(info, resposta_dom) {
+async function consultarDisciplina(info, resposta_dom) {
     let args;
     const holder = document.querySelector(info.queries.holder);
     if (holder.querySelectorAll("tr > td").length>1 && holder.querySelectorAll("tr > td")[1].innerHTML=="AULA DE PEBOLIM")
@@ -93,9 +103,18 @@ function consultarDisciplina(info, resposta_dom) {
             horaria = disciplinaProfessorEl.querySelector("carga-horaria-min").innerHTML,
             id = disciplinaProfessorEl.querySelector("id").innerHTML;
 
+        let turma_dom = await requisicao("consultarTurma",{id:id_turma});
+        if(turma_dom==null)return;
+        
+        let turma;
+        if(turma_dom[0].querySelector("nome")!=null)
+            turma = turma_dom[0].querySelector("nome").innerHTML;
+        else
+            break;
+
         args = {
             carga_horaria: horaria,
-            turma: id_turma,
+            turma,
             disciplina: nome,
             id
         };
@@ -109,8 +128,16 @@ function consultarDisciplina(info, resposta_dom) {
     }
 }
 
+function organizaConteudos() {
+    const $wrapper = $("#holder_diario");
+
+    $wrapper.find('tr').sort(function (a, b) {
+        return +a.dataset.id - +b.dataset.id;
+    })
+        .appendTo($wrapper);
+
+}
 
 leInfos(infos);
 
 requisicao("consultarDadosProfessor");
-requisicao("consultarDisciplinaProfessor");
