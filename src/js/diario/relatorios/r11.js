@@ -1,6 +1,7 @@
 const t = document.querySelector("#r");
 let sels = document.querySelectorAll("select");
-const gen = document.querySelector("button");
+const gen = document.querySelector("#gen");
+const imp = document.querySelector("#imp");
 let discs, idsEt;
 
 function mostraBunitin(data) {
@@ -63,7 +64,8 @@ fete("http://localhost:8080/app/diario/disciplinas/consultar")
 function getField(node, field) {
 	return node.querySelector(field).textContent;
 }
-gen.addEventListener("click", async function() {
+
+async function gerar() {
 	t.innerHTML = "";
 	sels = M.FormSelect.init(document.querySelectorAll("select"));
 	let et = sels[1].getSelectedValues()[0],
@@ -96,4 +98,9 @@ gen.addEventListener("click", async function() {
 	for (let i = 0; i < ps.length; i++) {
 		t.appendChild(ps[i]);
 	}
+}
+gen.addEventListener("click", gerar);
+imp.addEventListener("click", async function(){
+	await gerar();
+	print();
 });

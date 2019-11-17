@@ -3,6 +3,8 @@
 
 let idSessao;
 let tabela = document.querySelector("table");
+let div = document.querySelector(".container");
+let h1 = document.querySelector("#alerta");
 pegarId();
 function pegarId() {
         let url = "http://localhost:8080/app/diario/cargo";
@@ -56,16 +58,18 @@ function adicionaResult(responseStatus,xmlResult){
                 if(xmlResult.getElementsByTagName("erro").length === 0){
                         atualizaTabela(xmlResult);
                 } else {
-                if (xmlResult != "") {
-                        var resp = xmlResult.childNodes[0];
-                        if (exibido === 0) {
-                                M.toast({
-                                html: resp,
-                                classes: "red darken-2"
-                                });
-                                exibido += 1;
+                        h1.classList.remove('oculto');
+                        div.classList.add('oculto');
+                        if (xmlResult != "") {
+                                var resp = xmlResult.childNodes[0];
+                                if (exibido === 0) {
+                                        M.toast({
+                                        html: resp,
+                                        classes: "red darken-2"
+                                        });
+                                        exibido += 1;
+                                }
                         }
-                }
         }
 }
 

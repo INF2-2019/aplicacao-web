@@ -9,43 +9,22 @@
   <body class="menuRelDoPedrin"><div class="margin-0">
 		<ul id="dropdown1" class="dropdown-content">
 		</ul>
-		<nav>
-			<div class="nav-wrapper">
-				<a class="brand-logo">Diário</a>
-				<ul id="navbars-itens" class="right hide-on-med-and-down">
-					<li style="width:200px;" id="nav-funcoes"><a class="dropdown-trigger" href="#!" data-target="dropdown1">Funções<i class="material-icons right">arrow_drop_down</i></a></li>
-				</ul>
-			</div>
-		</nav>
-    <div class="container row center-align">
-        <div class="input-field">
-          <select>
-            <option disabled selected>Escolha um relatório</option>
-           <option value="0">Histórico escolar</option>
-            <option value="1">Certificados de aprovação</option>
-            <option value="2">Relação de professores</option>
-            <option value="3">Notas dos alunos</option>
-            <option value="4">Relação de conteúdos</option>
-          </select>
-          <a class='waves-effect waves-light primary white-text btn'>Gerar</a>
-        </div>
-        <div class="input-field">
-          <p class='description'></p>
-        </div>
-        <div class="input-field selectsDiv oculto">
-          <select class='selectDisciplinas oculto'>
-          </select>
-          <select class='selectEtapas oculto'>
-          </select>
-        </div>
-        <div class="input-field alunosDiv oculto">
-          <select class='selectAlunos oculto'>
-          </select>
-        </div>
-		</div></div>
+	<nav>
+		<div class="nav-wrapper">
+			<a class="brand-logo">Diário</a>
+			<ul id="navbars-itens" class="right hide-on-med-and-down">
+				<li style="width:200px;" id="nav-funcoes"><a class="dropdown-trigger" href="#!" data-target="dropdown1">Funções<i class="material-icons right">arrow_drop_down</i></a></li>
+			</ul>
+		</div>
+	</nav>
+    <div class="container center-align">
+        <h4 style="margin:50px 0 36px 0">Menu de Relatórios</h4>
+        <p><a class="btn primary" href="r9.html">Relação de professores</a></p>
+        <p><a class="btn primary" href="r10.html">Relação por seleção de aluno</a></p>
+        <p><a class="btn primary" href="r11.html">Relação de conteúdos</a></p>
+    </div></div>
 		<script src="../../js/jquery-3.4.1.js"></script>
     <script src="../../js/materialize.js"></script>
-    <script src="../../js/diario/relatorios/mainRelatorios.js"></script>
 		<script src="../../js/diario/navbars/navbar.js"></script>
 		<script>cargoLogado();</script>
 		<script>$(".dropdown-trigger").dropdown();</script>

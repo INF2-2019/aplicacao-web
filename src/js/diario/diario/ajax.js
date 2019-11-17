@@ -11,6 +11,11 @@ async function pegaTabela(link,parametros,isPost=false) {
 
     */
 
+    for(let nome in parametros){
+        if (parametros[nome]==undefined)
+            delete parametros[nome];
+    }
+
     let config = {
         method: isPost? "POST": "GET",
         credentials: "include"
@@ -19,11 +24,8 @@ async function pegaTabela(link,parametros,isPost=false) {
     if(isPost){ // Parametros para o metodo POST
         config.body = new URLSearchParams(parametros);
         config.headers = new Headers({ 'Content-type': 'application/x-www-form-urlencoded; charset=UTF-8' });
-    } else { // Parametros para o metodo GET
-        let query = [];
-        for(let nome in parametros)
-            query.push(nome+"="+parametros[nome]);
-        link+= '?'+query.join("&");
+    } else { // Parametros para o metodo GET    
+        link += '?' + new URLSearchParams(parametros);
     }
 
     let request = await fetch(link, config); 
@@ -37,39 +39,43 @@ function alertarStatus({ status, mensagem, causa }) {
 }
 
 function analiseXML(xml_string, output_status = true) {
-    let resposta = {};
+    let resposta = null;
     const parser = new DOMParser(),
         doc = parser.parseFromString(xml_string, "text/xml");
 
-    // Se resposta não for um status
-    if (doc.querySelector("erro, sucesso") == null) {
-        const info = doc.children[0];
-        if (info.children.length >= 1)
-            return [...info.children]; // Retorna vetor com todos os filhos
-        else
-            return null;
+    if (doc.querySelector("erro,sucesso")!=null){
+        resposta = {};
+        // As seguintes linhas só serão executadas caso a resposta seja um status (erro ou sucesso)
+
+        // Variavel status é true caso o status seja sucesso e false se for erro
+        let status = (doc.querySelector("erro") == null);
+        resposta.status = status;
+
+        // Já que causa é opcional
+        if (doc.querySelector("erro > causa, sucesso > causa") != null) {
+            let causa = doc.querySelector("erro > causa, sucesso > causa").innerHTML;
+            resposta.causa = causa;
+        }
+
+        // Independentemente do status, sempre haverá uma mensagem
+        
+        let mensagem = doc.querySelector("erro > mensagem, sucesso > mensagem").innerHTML;
+        resposta.mensagem = mensagem;
+        
+        if (output_status)
+            alertarStatus(resposta);
     }
 
-    // As seguintes linhas só serão executadas caso a resposta seja um status (erro ou sucesso)
+    const info = doc.children[0];
 
-    // Variavel status é true caso o status seja sucesso e false se for erro
-    let status = (doc.querySelector("erro") == null);
-    resposta.status = status;
-
-    // Já que causa é opcional
-    if (doc.querySelector("erro > causa, sucesso > causa") != null) {
-        let causa = doc.querySelector("erro > causa, sucesso > causa").innerHTML;
-        resposta.causa = causa;
-    }
-
-    // Independentemente do status, sempre haverá uma mensagem
-    let mensagem = doc.querySelector("erro > mensagem, sucesso > mensagem").innerHTML;
-    resposta.mensagem = mensagem;
-
-    if (output_status)
-        alertarStatus(resposta);
-
-    return resposta;
+    
+    
+    if (info.querySelector(":not(erro):not(sucesso):not(mensagem):not(causa)")==null)
+        return resposta;
+    else if (info.children.length >= 1) 
+        return [...info.children]; // Retorna vetor com todos os filhos
+    else
+        return null;
 }
 
 function geraElemento(query, args) {
@@ -78,40 +84,42 @@ function geraElemento(query, args) {
     return [...$(template)];
 }
 
-async function requisicao(info, parametros) {
+async function requisicao(info, parametros, config={}) {
     if (info.constructor === String) {
-        if (infos[info]) return requisicao(infos[info], parametros);
+        if (infos[info]) return requisicao(infos[info], parametros, config);
         else return null;
     }
-
+    
+    
     if (info.alerta && !window.confirm(info.alert))
-        return null;
+    return null;
     
     const link = info.link;
     let params = {},
-        inputs;
-
+    inputs;
+    
     if (info.parametros_default)
         params = Object.assign(params, info.parametros_default);
     if(parametros)
         params = Object.assign(params, parametros);        
-
+    
     if (info.queries && info.queries.inputs) {
         inputs = document.querySelectorAll(info.queries.inputs);
         inputs.forEach(input => input.value!=""? params[input.name] = input.value:undefined);
     }
 
-    const resposta = await pegaTabela(prefixo + link, params),
-        analise = analiseXML(resposta);
+    const resposta = await pegaTabela(prefixo + link, params, info.post),
+        analise = analiseXML(resposta, config.output!==false);
 
     if (analise && analise.status === true) { // Se deu certo
+        
         if (inputs != undefined)
             inputs.forEach(input => input.value = ""); // Limpa os input
     }
 
 
     if (info.callback) {
-        info.callback(info, analise);
+        info.callback(info, analise, config.params);
     }
     return analise;
 }
@@ -134,4 +142,52 @@ function leInfos(infos) {
                 info_ativador.forEach(i_a => setaAtivadorUnico(info_insere, i_a));
         }
     }
+}
+
+function formatarNumero(num, digitos) {
+    if(typeof num === "string"){
+        num = Number(num);
+        if(digitos===undefined) return num;
+    }
+
+    let str = num + "";
+    if (str.length < digitos) {
+        let faltam = digitos - str.length;
+        for (let i = 0; i < faltam; i++)
+            str = "0" + str;
+    }
+    return str;
+}
+
+// Código baseado na primeira resposta do site: https://pt.stackoverflow.com/questions/6526/como-formatar-data-no-javascript
+function dataFormatada(data) {
+    let pedacos = data.split("-");
+    pedacos = pedacos.map(x => parseInt(x));
+    data = new Date(pedacos[0], pedacos[1] - 1, pedacos[2]);
+
+    let dia = (data.getDate()).toString(), // tive que colocar o +1 por algum motivo que desconheço, mas sei que sem ele não funciona
+        diaF = (dia.length == 1) ? '0' + dia : dia,
+        mes = (data.getMonth() + 1).toString(), //+1 pois no getMonth Janeiro começa com zero.
+        mesF = (mes.length == 1) ? '0' + mes : mes,
+        anoF = data.getFullYear();
+    return diaF + "/" + mesF + "/" + anoF;
+}
+
+function leParametrosXML(xml_dom){
+    let obj = {};
+    let vetor;
+
+    if(xml_dom.constructor == Array)
+        vetor = xml_dom;
+    else
+        vetor = xml_dom.children;
+
+    for (let filho of vetor) {
+        if (filho.children.length > 0)
+            obj[filho.tagName] = leParametrosXML(filho);
+        else
+            obj[filho.tagName] = filho.innerHTML;
+    }
+
+    return obj;
 }
