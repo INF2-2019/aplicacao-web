@@ -37,7 +37,7 @@ function consultarDadosProfessor(info, resposta_dom) {
     holder.innerHTML = "";
     if (resposta_dom == null)
         return;
-    console.log(resposta_dom);
+
     if(resposta_dom.length>1)
         return;
 
@@ -73,17 +73,19 @@ function consultarDadosProfessor(info, resposta_dom) {
     
 }
 
-function consultarDisciplinaProfessor(info, resposta_dom) {
+async function consultarDisciplinaProfessor(info, resposta_dom) {
     if (resposta_dom == null)
         return;
     
-
     for (let disciplinaProfessorEl of resposta_dom) {
         let id_prof = disciplinaProfessorEl.querySelector("id-professores").innerHTML,
             id_disc = disciplinaProfessorEl.querySelector("id-disciplinas").innerHTML;
 
-        requisicao("consultarDisciplina",{id: id_disc});
+        await requisicao("consultarDisciplina",{id: id_disc});
     }
+
+
+    organizaConteudos();
 }
 
 async function consultarDisciplina(info, resposta_dom) {
@@ -126,6 +128,15 @@ async function consultarDisciplina(info, resposta_dom) {
     }
 }
 
+function organizaConteudos() {
+    const $wrapper = $("#holder_diario");
+
+    $wrapper.find('tr').sort(function (a, b) {
+        return +a.dataset.id - +b.dataset.id;
+    })
+        .appendTo($wrapper);
+
+}
 
 leInfos(infos);
 
