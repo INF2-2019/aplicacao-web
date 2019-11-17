@@ -1,0 +1,83 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Relatório de Professores</title>
+        <link rel="stylesheet" href="../../css/materialize.css">
+        <style>
+            @media print {
+                .no-print {
+                  visibility: hidden;
+                }
+                html, body {
+                    height: 99%;
+                }
+                @page {
+                    size: landscape
+                }
+            }
+            table {
+                margin-top: 2%;
+                margin-bottom: 2%;
+            }
+            table caption {
+                font-size: 15pt;
+            }
+            .sel {
+                display: inline !important;
+                width: 22%;
+            }
+            .spanzin {
+                font-size: 15pt;
+            }
+            #divSelect {
+                margin-top: 1%;
+            }
+            .oculto {
+                display: none !important;
+            }
+        </style>
+        <style type="text/css" media="print">
+            @page {
+                size: auto;   /* auto is the initial value */
+                margin: 0;  /* this affects the margin in the printer settings */
+            }
+        </style>
+
+    </head>
+    <body class="background grey lighten-2">
+        <ul id="dropdown1" class="dropdown-content no-print">
+		</ul>
+		<nav class="no-print">
+			<div class="nav-wrapper">
+				<a class="brand-logo">Diário</a>
+				<ul id="navbars-itens" class="right hide-on-med-and-down">
+					<li style="width:200px;" id="nav-funcoes"><a class="dropdown-trigger" href="#!" data-target="dropdown1">Funções<i class="material-icons right">arrow_drop_down</i></a></li>
+				</ul>
+			</div>
+		</nav>
+        <div class="container">
+
+            <div id="divSelect" class="no-print">
+                <span class="oculto spanzin">Selecione a identificação do professor: 
+                    <select class="sel" onchange="mudado()">
+                        <option>Selecione</option>
+                    </select>
+                </span>
+            </div>
+
+            <table class="responsive-table highlight centered">
+
+            </table>
+            <a id="imprimir" class="btn right no-print">Imprimir</a>
+            
+        </div>
+
+        <script src="../../js/jquery-3.4.1.js"></script>
+        <script src="../../js/materialize.js"></script>
+		<script src="../../js/diario/relatorios/r9.js"></script>
+		<script src="../../js/diario/navbars/navbar.js"></script>
+		<script>cargoLogado();</script>
+		<script>$(".dropdown-trigger").dropdown();</script>
+    </body>
+</html>
