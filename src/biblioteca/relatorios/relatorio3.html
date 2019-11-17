@@ -12,11 +12,15 @@
 </head>
 
 <body onload="consulta()">
-	<nav>
-		<div class="nav-wrapper">
-			<a class="brand-logo">Biblioteca</a>
-		</div>
-	</nav>
+	<ul id="dropdown1" class="dropdown-content"></ul>
+		<nav>
+			<div class="nav-wrapper">
+				<a class="brand-logo">Biblioteca</a>
+				<ul id="navbars-itens" class="right hide-on-med-and-down">
+					<li style="width:200px;" id="nav-funcoes"><a class="dropdown-trigger" href="#!" data-target="dropdown1">Funções<i class="material-icons right">arrow_drop_down</i></a></li>
+				</ul>
+			</div>
+		</nav>
 	<!-- fim header -->
 
 	<!-- DIV PARA RESPOSTA CONSULTA -->
@@ -34,10 +38,13 @@
 	</div>
 
 	<!-- IMPORTAÇÕES -->
-	<script src="../../js/materialize.js"></script>
 	<script src="../../js/jquery-3.4.1.js"></script>
+	<script src="../../js/materialize.js"></script>
 	<script src="../../js/biblioteca/relatorios/main.js"></script>
 	<script src="../../js/biblioteca/relatorios/consultaReserva.js"></script>
+	<script src="../../js/biblioteca/navbars/navbar.js"></script>
+	<script>$(".dropdown-trigger").dropdown();M.AutoInit();</script>
+	<script>cargoLogado();</script>
 </body>
 
 </html>

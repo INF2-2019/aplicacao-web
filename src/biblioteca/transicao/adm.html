@@ -12,20 +12,12 @@
 
 <body>
 	<div class="full-heght margin-0">
-		<ul id="dropdown1" class="dropdown-content">
-			<li><a href="../acervo/index.html" >Manutenção de acervos</a></li>
-			<li><a href="../descartes/index.html">Manutenção de descartes</a></li>
-			<li><a href="../emprestimos/index.html" >Manutenção de empréstimos</a></li>
-			<li><a href="../reservas/index.html">Manutenção de reservas</a></li>
-			<li><a href="#modal-relatorios">Menu de relatórios</a></li>
-		</ul>
+		<ul id="dropdown1" class="dropdown-content"></ul>
 		<nav>
-		    <div class="nav-wrapper">
+			<div class="nav-wrapper">
 				<a class="brand-logo">Biblioteca</a>
-				<ul class="right hide-on-med-and-down">
-					<li><a href="../login-adm.html">Login</a></li>
-					<li class="active"><a href="">Página Inicial</a></li>
-					<li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Funções<i class="material-icons right">arrow_drop_down</i></a></li>
+				<ul id="navbars-itens" class="right hide-on-med-and-down">
+					<li style="width:200px;" id="nav-funcoes"><a class="dropdown-trigger" href="#!" data-target="dropdown1">Funções<i class="material-icons right">arrow_drop_down</i></a></li>
 				</ul>
 			</div>
 		</nav>
@@ -34,23 +26,25 @@
 			<h2>Serviços:</h2>
 
 			<div class="center-align row" style="overflow: auto;height:450px">
-				<a class="col s12 l5 btn-trasicao primary alt waves-effect waves-light btn-large" href="../acervo/index.html" >Manutenção de acervos</a>
+				<a class="col s12 l5 btn-trasicao primary alt waves-effect waves-light btn-large" href="../acervo/index.html" >Manutenção de acervo</a>
 				<a class="col s12 l5 offset-l2 btn-trasicao primary alt waves-effect waves-light btn-large" href="../descartes/index.html">Manutenção de descartes</a>
 				<a class="col s12 l5 btn-trasicao primary alt waves-effect waves-light btn-large" href="../emprestimos/index.html" >Manutenção de empréstimos</a>
 				<a class="col s12 l5 offset-l2 btn-trasicao primary alt waves-effect waves-light btn-large" href="../reservas/index.html">Manutenção de reservas</a>
+				<a class="col s12 l5 btn-trasicao primary alt waves-effect waves-light btn-large" href="../alunos/index.html" >Manutenção de alunos</a>
+				<a class="col s12 l5 offset-l2 btn-trasicao primary alt waves-effect waves-light btn-large" href="../campi/index.html">Manutenção de campi</a>
 				<a class="col s12 l5 btn-trasicao modal-trigger primary alt waves-effect waves-light btn-large" href="#modal-relatorios">Menu de relatórios</a>
 			</div>
 		</div>
 
 		<div id="modal-relatorios" class="modal">
-			<div id="conteudo" class="modal-content row">
+			<div style="margin: 0" id="conteudo" class="modal-content row">
 				<h4>Relatórios:</h4>
-				<a class="col s12 m4 offset-m1 btn-trasicao primary alt waves-effect waves-light btn-large" href="../relatorios/relatorio1.html" >Relatório de Acervo</a>
-				<a class="col s12 m4 offset-m1 btn-trasicao primary alt waves-effect waves-light btn-large" href="../relatorios/relatorio2.html" >Relatório de Empréstimos</a>
-				<a class="col s12 m4 offset-m1 btn-trasicao primary alt waves-effect waves-light btn-large" href="../relatorios/relatorio3.html" >Relatório de Reservas</a>
-				<a class="col s12 m4 offset-m1 btn-trasicao primary alt waves-effect waves-light btn-large" href="../relatorios/relatorio4.html" >Relatório de Atrasos</a>
-				<a class="col s12 m4 offset-m1 btn-trasicao primary alt waves-effect waves-light btn-large" href="../relatorios/relatorio5.html" >Relatório de Multas</a>
-				<a class="col s12 m4 offset-m1 btn-trasicao primary alt waves-effect waves-light btn-large" href="../relatorios/relatorio6.html" >Relatório de Descartes</a>
+				<a class="col s12 m4 offset-m1 btn-trasicao primary alt waves-effect waves-light btn-large" href="../relatorios/relatorio1.html" >Acervo</a>
+				<a class="col s12 m4 offset-m1 btn-trasicao primary alt waves-effect waves-light btn-large" href="../relatorios/relatorio2.html" >Empréstimos</a>
+				<a class="col s12 m4 offset-m1 btn-trasicao primary alt waves-effect waves-light btn-large" href="../relatorios/relatorio3.html" >Reservas</a>
+				<a class="col s12 m4 offset-m1 btn-trasicao primary alt waves-effect waves-light btn-large" href="../relatorios/relatorio4.html" >Atrasos</a>
+				<a class="col s12 m4 offset-m1 btn-trasicao primary alt waves-effect waves-light btn-large" href="../relatorios/relatorio5.html" >Multas</a>
+				<a class="col s12 m4 offset-m1 btn-trasicao primary alt waves-effect waves-light btn-large" href="../relatorios/relatorio6.html" >Descartes</a>
 			</div>
 			<div class="modal-footer">
 				<a class="modal-close btn utils erro-2">Fechar</a>
@@ -61,10 +55,9 @@
 	<!--Conexao Servlets-->
 	<script src="../../js/jquery-3.4.1.js"></script>
 	<script src="../../js/materialize.js"></script>
-	<script>
-		$(".dropdown-trigger").dropdown();
-		M.AutoInit();
-	</script>
+	<script src="../../js/biblioteca/navbars/navbar.js"></script>
+	<script>$(".dropdown-trigger").dropdown();M.AutoInit();</script>
+	<script>cargoLogado();</script>
 </body>
 
 </html>

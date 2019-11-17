@@ -8,25 +8,16 @@
     </head>
     <body class="background full-height">
         <ul id="dropdown1" class="dropdown-content">
-                <li><a href="../transferencia/index.html">Transferência</a></li>
-                <li><a href="../professores/index.html">Professores</a></li>
-                <li><a href="../departamentos/index.html">Departamentos</a></li>
-                <li ><a href="../cursos/index.html">Cursos</a></li>
-                <li><a href="../etapas/index.html">Etapas</a></li>
-                <li><a href="../disciplinas/index.html">Disciplinas</a></li>
-                <li><a href="../alunos/index.html">Alunos</a></li>
-                <li class="active"><a href="../campi/index.html">Campi</a></li>
-            </ul>
-            <nav>
-                <div class="nav-wrapper">
-                    <a class="brand-logo">Diário</a>
-                    <ul class="right hide-on-med-and-down">
-                        <li><a href="../login-adm.html">Login</a></li>
-                        <li><a href="../transicao/adm.html">Página Inicial</a></li>
-                        <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Funções<i class="material-icons right">arrow_drop_down</i></a></li>
-                    </ul>
-                </div>
-            </nav>
+		</ul>
+		<nav>
+			<div class="nav-wrapper">
+				<a class="brand-logo">Diário</a>
+				<ul id="navbars-itens" class="right hide-on-med-and-down">
+					<li style="width:200px;" id="nav-funcoes"><a class="dropdown-trigger" href="#!" data-target="dropdown1">Funções<i class="material-icons right">arrow_drop_down</i></a></li>
+				</ul>
+			</div>
+		</nav>
+
       <div class="container">
       <h2>Campi</h2>
            <a id="botao-manutencao-campi" class="btn right primary editar modal-trigger botaoAdicionar right" href="#modal-cadastro">Adicionar</a>
@@ -77,12 +68,41 @@
                             <span class="span-cadastro-manutencao-campi primary-text text-lighten-1">Nome*</span><input name="campus-nome" type="text" class="obrigatorio-cadastro" id="nome">
                         </div>
 
-                        <div class="col offset-s1 s8">
+                        <div class="col offset-s1 s7">
                             <span class="span-cadastro-manutencao-campi primary-text text-lighten-1">Cidade*</span><input name="campus-cidade" type="text" class="obrigatorio-cadastro" id="cidade">
                         </div>
 
-                        <div class="col offset-s1 s2">
-                            <span class="span-cadastro-manutencao-campi primary-text text-lighten-1">UF*</span><input name="campus-UF" type="text" class="obrigatorio-cadastro" id="uf">
+                        <div class="col offset-s1 s3">
+                                <span class="primary-text">UF</span>
+                                <select name="uf-cadastro" class="input-field" id="uf">
+                                    <option value="AC">Acre</option>
+                                    <option value="AL">Alagoas</option>
+                                    <option value="AP">Amapá</option>
+                                    <option value="AM">Amazonas</option>
+                                    <option value="BA">Bahia</option>
+                                    <option value="CE">Ceará</option>
+                                    <option value="DF">Distrito Federal</option>
+                                    <option value="ES">Espírito Santo</option>
+                                    <option value="GO">Goiás</option>
+                                    <option value="MA">Maranhão</option>
+                                    <option value="MT">Mato Grosso</option>
+                                    <option value="MS">Mato Grosso do Sul</option>
+                                    <option value="MG">Minas Gerais</option>
+                                    <option value="PA">Pará</option>
+                                    <option value="PB">Paraíba</option>
+                                    <option value="PR">Paraná</option>
+                                    <option value="PE">Pernambuco</option>
+                                    <option value="PI">Piauí</option>
+                                    <option value="RJ">Rio de Janeiro</option>
+                                    <option value="RN">Rio Grande do Norte</option>
+                                    <option value="RS">Rio Grande do Sul</option>
+                                    <option value="RO">Rondônia</option>
+                                    <option value="RR">Roraima</option>
+                                    <option value="SC">Santa Catarina</option>
+                                    <option value="SP">São Paulo</option>
+                                    <option value="SE">Sergipe</option>
+                                    <option value="TO">Tocantins</option>
+                                </select>
                         </div>
 
                     </div>
@@ -114,12 +134,41 @@
                             <span class="span-cadastro-manutencao-campi primary-text text-lighten-1">Nome</span><input name="campus-nome" type="text" id="nome1">
                         </div>
 
-                        <div class="col offset-s1 s8">
+                        <div class="col offset-s1 s7">
                             <span class="span-cadastro-manutencao-campi primary-text text-lighten-1">Cidade</span><input name="campus-cidade" type="text" id="cidade1">
                         </div>
 
-                        <div class="col offset-s1 s2">
-                            <span class="span-cadastro-manutencao-campi primary-text text-lighten-1">UF</span><input name="campus-UF" type="text" id="uf1">
+                        <div class="col offset-s1 s3">
+                                <span class="primary-text">UF</span>
+                                <select name="uf-cadastro" class="input-field" id="uf1">
+                                    <option value="AC">Acre</option>
+                                    <option value="AL">Alagoas</option>
+                                    <option value="AP">Amapá</option>
+                                    <option value="AM">Amazonas</option>
+                                    <option value="BA">Bahia</option>
+                                    <option value="CE">Ceará</option>
+                                    <option value="DF">Distrito Federal</option>
+                                    <option value="ES">Espírito Santo</option>
+                                    <option value="GO">Goiás</option>
+                                    <option value="MA">Maranhão</option>
+                                    <option value="MT">Mato Grosso</option>
+                                    <option value="MS">Mato Grosso do Sul</option>
+                                    <option value="MG">Minas Gerais</option>
+                                    <option value="PA">Pará</option>
+                                    <option value="PB">Paraíba</option>
+                                    <option value="PR">Paraná</option>
+                                    <option value="PE">Pernambuco</option>
+                                    <option value="PI">Piauí</option>
+                                    <option value="RJ">Rio de Janeiro</option>
+                                    <option value="RN">Rio Grande do Norte</option>
+                                    <option value="RS">Rio Grande do Sul</option>
+                                    <option value="RO">Rondônia</option>
+                                    <option value="RR">Roraima</option>
+                                    <option value="SC">Santa Catarina</option>
+                                    <option value="SP">São Paulo</option>
+                                    <option value="SE">Sergipe</option>
+                                    <option value="TO">Tocantins</option>
+                                </select>
                         </div>
 
                     </div>
@@ -139,8 +188,8 @@
 
 
 
-        <div id="modal-deletar-manutencao-campi" class="modal modal-fixed-footer background">
-            <div class="modal-content-manutencao-campi background ">
+        <div id="modal-deletar-manutencao-campi" class="modal background">
+                <div class="modal-content-manutencao-campi background ">
                 <h4 style="padding: 15pt;">Deletar Campus</h4>
                 <div class="container">
                     <div class="row">
@@ -155,7 +204,7 @@
             </div>
         </div>
 
-        <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+		<script src="../../js/jquery-3.4.1.js"></script>
         <script src="../../js/materialize.js"></script>
         <script src="../../js/diario/campi/tabela.js"></script>
         <script src="../../js/diario/campi/filtragem.js"></script>
@@ -163,6 +212,9 @@
         <script src="../../js/diario/campi/inserir.js"></script>
         <script src="../../js/diario/campi/resultado.js"></script>
         <script src="../../js/diario/campi/editar.js"></script>
-        <script src="../../js/diario/campi/deletar.js"></script>
+		<script src="../../js/diario/campi/deletar.js"></script>
+		<script src="../../js/diario/navbars/navbar.js"></script>
+		<script>cargoLogado();</script>
+		<script>$(".dropdown-trigger").dropdown();</script>
     </body>
 </html>

@@ -11,9 +11,14 @@
 	</head>
 
 	<body>
+		<ul id="dropdown1" class="dropdown-content">
+		</ul>
 		<nav>
 			<div class="nav-wrapper">
-				<a class="brand-logo">S.A.</a>
+				<a class="brand-logo">Diário</a>
+				<ul id="navbars-itens" class="right hide-on-med-and-down">
+					<li style="width:200px;" id="nav-funcoes"><a class="dropdown-trigger" href="#!" data-target="dropdown1">Funções<i class="material-icons right">arrow_drop_down</i></a></li>
+				</ul>
 			</div>
 		</nav>
 
@@ -24,11 +29,11 @@
 			<div class="row">
 				<div class="input-field col s12 m12 l4">
 					<i class="material-icons prefix">search</i>
-					<input id="search" type="text" autocomplete="off">
+					<input id="search" type="text" autocomplete="off" oninput="filtrarTabela()">
 					<label for="search">Pesquisar</label>
 				</div>
 				<a class="btn col s12 m12 l4 offset-l4 waves-effect waves-light primary modal-trigger"
-						href="#modal-add">Adicionar</a>
+						href="#modal-add" onclick="resetarSelects();resetarInputs()">Adicionar</a>
 			</div>
 
 			<div id="consulta-departamentos" class="col s12">
@@ -38,6 +43,8 @@
 							<th>ID</th>
 							<th>Nome</th>
 							<th>Campus</th>
+							<th>Cidade</th>
+							<th>UF</th>
 							<th>Ações</th>
 						</tr>
 					</thead>
@@ -52,7 +59,7 @@
 				</div>
 				<div class="modal-footer">
 					<a class="modal-close btn utils erro-2">Cancelar</a>
-					<a class="modal-close btn primary">Excluir</a>
+					<a class="modal-close btn primary" onclick="deleta()">Excluir</a>
 				</div>
 			</div>
 
@@ -60,19 +67,19 @@
 				<div class="row modal-content">
 					<h4>Adicionar departamento</h4>
 					<div class="input-field col s9">
-						<input id="nome-inserir" type="text" />
+						<input id="nome-inserir" type="text" maxlength="127" value=""/>
 						<label for="nome-inserir">Nome</label>
 					</div>
 					<div class="input-field col s3">
-						<select id="campus-inserir">
-							<option value="" selected>Selecione</option>
+						<select id="campus-inserir" class="materialize-select">
+							<option value="-1" selected disabled>Selecione</option>
 						</select>
 						<label for="campus-inserir">Campus</label>
 					</div>
 				</div>
 				<div class="container modal-footer">
 					<a class="modal-close btn utils erro-2">Cancelar</a>
-					<a class="modal-close btn primary" id="adicionar-departamento">Adicionar</a>
+					<a class="modal-close btn primary" id="adicionar-departamento" onclick="insere()">Adicionar</a>
 				</div>
 			</div>
 
@@ -80,25 +87,32 @@
 				<h4 style="padding: 15pt;">Editar departamento</h4>
 				<div class="row modal-content">
 					<div class="input-field col s8">
-						<input id="nome-atualizar" type="text" />
+						<input id="nome-atualizar" type="text" maxlength="127"/>
 						<label for="nome-atualizar">Nome</label>
 					</div>
 					<div class="input-field col s4">
 						<select id="campus-atualizar">
-							<option value="" disabled selected>Selecione</option>
+							<option value="-1" selected disabled>Selecione</option>
 						</select>
 						<label for="campus-atualizar">Campus</label>
+
 					</div>
 				</div>
 				<div class="container modal-footer">
 					<a class="modal-close btn utils erro-2">Cancelar</a>
-					<a class="modal-close btn primary" id="atualizar-curso">Salvar</a>
+					<a class="modal-close btn primary" id="atualizar-departamento" onclick="edita()" >Salvar</a>
 				</div>
 			</div>
 		</div>
 
+		<script src="../../js/jquery-3.4.1.js"></script>
 		<script>
-			const deptos = [];
+			document.addEventListener('DOMContentLoaded', function() {
+    		var elems = document.querySelectorAll('select');
+    		var instances = M.FormSelect.init(elems, {});
+  		});
+			let deptos = [];
+			let campi = [];
 			let instances;
 			document.addEventListener('DOMContentLoaded', function() {
 				const elems = document.querySelectorAll('.modal');
@@ -106,9 +120,15 @@
 			});
 		</script>
 		<script src="../../js/materialize.js"></script>
-		<script src="../../js/diario/departamentos/tabela.js"></script>
+		<script src="../../js/diario/departamentos/Tabela.js"></script>
+		<script src="../../js/diario/departamentos/Selects.js"></script>
 		<script src="../../js/diario/departamentos/consulta.js"></script>
+		<script src="../../js/diario/departamentos/deletar.js"></script>
+		<script src="../../js/diario/departamentos/editar.js"></script>
+		<script src="../../js/diario/departamentos/inserir.js"></script>
 		<script src="../../js/diario/departamentos/main.js"></script>
+		<script src="../../js/diario/navbars/navbar.js"></script>
+		<script>cargoLogado();</script>
+		<script>$(".dropdown-trigger").dropdown();</script>
 	</body>
-
 </html>

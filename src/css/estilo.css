@@ -1,3 +1,85 @@
+@media print{
+    	@page{
+		size:landscape;
+	}
+	#navFitz,.ulFitz{
+		display:none !important;
+	}
+}
+
+
+.relDoFitz{
+	margin: 50px auto;
+}
+
+.relDoFitz .select-wrapper {
+	display: inline-block;
+	margin-left:8px;
+}
+
+.relDoFitz .select-wrapper,.relDoFitz #gen {
+	margin-right:48px;
+}
+
+.relDoFitz .select-wrapper,.relDoFitz button {
+	margin-bottom:6px;
+}
+
+.relDoFitz .f {
+	white-space:nowrap;
+}
+
+.relDoFitz h4 {
+	margin-bottom:36px;
+}
+
+.relDoFitz #t>* {
+	border-bottom: 1px solid #e0e0e0;
+}
+
+.relDoFitz #t :last-child {
+	border-bottom: none !important;
+}
+
+.relDoFitz .head {
+	font-weight: bold;
+}
+
+.relDoFitz #esc {
+	margin-bottom: 30px;
+}
+
+.relDoFitz #t>* {
+	display: flex;
+}
+
+.relDoFitz #t>*>* {
+	display: flex;
+	flex: 1 1 0;
+}
+
+
+.menuRelDoPedrin h1{
+  font-size: 32px;
+  margin: 0 0 32px;
+  color:white;
+  text-align: center;
+  padding: 16px 8px;
+}
+
+.menuRelDoPedrin .select-wrapper{
+  display:inline-block !important;
+  width:332px !important;
+}
+
+.menuRelDoPedrin .description{
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.menuRelDoPedrin .oculto{
+  display: none;
+}
+
 .btn-trasicao{
 	height: 65pt;
 	line-height: 65pt;
@@ -63,7 +145,57 @@
 	margin-right: 1%;
 }
 
-#modal-deletar-manutencao-campi{
-	width:30%;
-	height: 20%;
+.modal-footer-manutencao-alunos{
+	height: 12% !important;
+}
+
+.modal-manutencao-alunos{
+	width:75%;
+	max-height: 95% !important;
+}
+
+@media only screen and (max-device-height: 900px) {
+	.modal-manutencao-alunos{
+		height: 90% !important;
+		bottom:10%;
+	}
+}
+
+@media only screen and (max-device-height: 1080px) {
+	.modal-manutencao-alunos{
+	}
+}
+
+.foto-manutencao-alunos{
+	height:250px;
+	width:250px;
+	border: 5px solid #29A58C;
+	border-radius: 130px;
+	object-fit: cover;
+	margin-top:20pt;
+}
+
+#divSenha-perfil-alunos{
+	width: 35%;
+}
+
+#modal-foto-perfil-alunos{
+	height: 60%;
+	width: 25%;
+}
+
+#divfoto-perfil-alunos{
+	margin-bottom:10%;
+}
+
+#foto-perfil-aluno:hover{
+	cursor: pointer;
+	opacity: 0.7;
+}
+
+#fotoAlterada-perfil-alunos{
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 20pt;
 }

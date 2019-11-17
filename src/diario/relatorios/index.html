@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Diário Acadêmico</title>
+    <link rel="stylesheet" href="../../css/materialize.css">
+		<link rel="stylesheet" href="../../css/estilo.css">
+  </head>
+  <body class="menuRelDoPedrin"><div class="margin-0">
+		<ul id="dropdown1" class="dropdown-content">
+		</ul>
+	<nav>
+		<div class="nav-wrapper">
+			<a class="brand-logo">Diário</a>
+			<ul id="navbars-itens" class="right hide-on-med-and-down">
+				<li style="width:200px;" id="nav-funcoes"><a class="dropdown-trigger" href="#!" data-target="dropdown1">Funções<i class="material-icons right">arrow_drop_down</i></a></li>
+			</ul>
+		</div>
+	</nav>
+    <div class="container center-align">
+        <h4 style="margin:50px 0 36px 0">Menu de Relatórios</h4>
+        <p><a class="btn primary" href="r7.html">Histórico escolar</a></p>
+        <p><a class="btn primary" href="r9.html">Relação de professores</a></p>
+        <p><a class="btn primary" href="r10.html">Relação por seleção de aluno</a></p>
+        <p><a class="btn primary" href="r11.html">Relação de conteúdos</a></p>
+    </div></div>
+    
+		<script src="../../js/jquery-3.4.1.js"></script>
+    <script src="../../js/materialize.js"></script>
+		<script src="../../js/diario/navbars/navbar.js"></script>
+		<script>cargoLogado();</script>
+		<script>$(".dropdown-trigger").dropdown();</script>
+  </body>
+</html>

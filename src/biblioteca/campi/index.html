@@ -1,0 +1,220 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Manipulação de Campi</title>
+        <link rel="stylesheet" href="../../css/materialize.css">
+        <link rel="stylesheet" href="../../css/estilo.css">
+    </head>
+    <body class="background full-height">
+		<ul id="dropdown1" class="dropdown-content"></ul>
+		<nav>
+			<div class="nav-wrapper">
+				<a class="brand-logo">Biblioteca</a>
+				<ul id="navbars-itens" class="right hide-on-med-and-down">
+					<li style="width:200px;" id="nav-funcoes"><a class="dropdown-trigger" href="#!" data-target="dropdown1">Funções<i class="material-icons right">arrow_drop_down</i></a></li>
+				</ul>
+			</div>
+		</nav>
+
+      <div class="container">
+      <h2>Campi</h2>
+           <a id="botao-manutencao-campi" class="btn right primary editar modal-trigger botaoAdicionar right" href="#modal-cadastro">Adicionar</a>
+
+           <div class="row">
+                 <div class="input-field col s2">
+                   <select id="filtros">
+
+                     <option value="1" selected>ID</option>
+                     <option value="2">Nome</option>
+                     <option value="3">Cidade</option>
+                     <option value="4">UF</option>
+                   </select>
+                   <label>Filtrar por:</label>
+                 </div>
+
+                 <div class="col s5 center-align">
+             			<nav>
+             				<div class="nav-wrapper">
+             					<form>
+             						<div class="input-field">
+             							<input id="search" class="primary" type="search" oninput="pesquisa()" required>
+             							<label class="label-icon" for="search"><i class="  material-icons"></i></label>
+             							<i class="material-icons">close</i>
+             						</div>
+             					</form>
+             				</div>
+             			</nav>
+           		</div>
+              </div>
+
+
+        <div class="">
+            <table id="tabela">
+
+            </table>
+        </div>
+
+
+
+        <div id="modal-cadastro" class="modal background">
+            <div class="modal-content-manutencao-campi">
+                <h4 style="padding: 15pt;">Novo Campus</h4>
+                <div class="container"></div>
+               <div class="row">
+                   <div class="col s12 m9">
+                        <div class="col offset-s1 s10">
+                            <span class="span-cadastro-manutencao-campi primary-text text-lighten-1">Nome*</span><input name="campus-nome" type="text" class="obrigatorio-cadastro" id="nome">
+                        </div>
+
+                        <div class="col offset-s1 s7">
+                            <span class="span-cadastro-manutencao-campi primary-text text-lighten-1">Cidade*</span><input name="campus-cidade" type="text" class="obrigatorio-cadastro" id="cidade">
+                        </div>
+
+                        <div class="col offset-s1 s3">
+                                <span class="primary-text">UF</span>
+                                <select name="uf-cadastro" class="input-field" id="uf">
+                                    <option value="AC">Acre</option>
+                                    <option value="AL">Alagoas</option>
+                                    <option value="AP">Amapá</option>
+                                    <option value="AM">Amazonas</option>
+                                    <option value="BA">Bahia</option>
+                                    <option value="CE">Ceará</option>
+                                    <option value="DF">Distrito Federal</option>
+                                    <option value="ES">Espírito Santo</option>
+                                    <option value="GO">Goiás</option>
+                                    <option value="MA">Maranhão</option>
+                                    <option value="MT">Mato Grosso</option>
+                                    <option value="MS">Mato Grosso do Sul</option>
+                                    <option value="MG">Minas Gerais</option>
+                                    <option value="PA">Pará</option>
+                                    <option value="PB">Paraíba</option>
+                                    <option value="PR">Paraná</option>
+                                    <option value="PE">Pernambuco</option>
+                                    <option value="PI">Piauí</option>
+                                    <option value="RJ">Rio de Janeiro</option>
+                                    <option value="RN">Rio Grande do Norte</option>
+                                    <option value="RS">Rio Grande do Sul</option>
+                                    <option value="RO">Rondônia</option>
+                                    <option value="RR">Roraima</option>
+                                    <option value="SC">Santa Catarina</option>
+                                    <option value="SP">São Paulo</option>
+                                    <option value="SE">Sergipe</option>
+                                    <option value="TO">Tocantins</option>
+                                </select>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="row" id="divbotoes">
+                    <div class="col offset-s1">
+                        <span class="span-cadastro-manutencao-campi primary-text text-lighten-1"><i>Os campos com * são obrigatórios</i></span><br>
+                        <button class="btns waves-effect blue darken-3 btn modal-close" id="btConfirmaCadastro">Confirmar</button>
+                        <button class="modal-close btns waves-effect teal lighten-1 btn botaoCancelar">Cancelar</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div id="modal-editar" class="modal background">
+            <div class="modal-content-manutencao-campi">
+                <h4 style="padding: 15pt;">Editar Campus</h4>
+                <div class="container"></div>
+               <div class="row">
+                   <div class="col s12 m9">
+
+                     <div class="col offset-s1 s1">
+                         <span class="span-cadastro-manutencao-campi primary-text text-lighten-1">ID*</span><input name="campus-id" type="text" id="idEdit" readonly>
+                     </div>
+
+                        <div class="col offset-s1 s8">
+                            <span class="span-cadastro-manutencao-campi primary-text text-lighten-1">Nome</span><input name="campus-nome" type="text" id="nome1">
+                        </div>
+
+                        <div class="col offset-s1 s7">
+                            <span class="span-cadastro-manutencao-campi primary-text text-lighten-1">Cidade</span><input name="campus-cidade" type="text" id="cidade1">
+                        </div>
+
+                        <div class="col offset-s1 s3">
+                                <span class="primary-text">UF</span>
+                                <select name="uf-cadastro" class="input-field" id="uf1">
+                                    <option value="AC">Acre</option>
+                                    <option value="AL">Alagoas</option>
+                                    <option value="AP">Amapá</option>
+                                    <option value="AM">Amazonas</option>
+                                    <option value="BA">Bahia</option>
+                                    <option value="CE">Ceará</option>
+                                    <option value="DF">Distrito Federal</option>
+                                    <option value="ES">Espírito Santo</option>
+                                    <option value="GO">Goiás</option>
+                                    <option value="MA">Maranhão</option>
+                                    <option value="MT">Mato Grosso</option>
+                                    <option value="MS">Mato Grosso do Sul</option>
+                                    <option value="MG">Minas Gerais</option>
+                                    <option value="PA">Pará</option>
+                                    <option value="PB">Paraíba</option>
+                                    <option value="PR">Paraná</option>
+                                    <option value="PE">Pernambuco</option>
+                                    <option value="PI">Piauí</option>
+                                    <option value="RJ">Rio de Janeiro</option>
+                                    <option value="RN">Rio Grande do Norte</option>
+                                    <option value="RS">Rio Grande do Sul</option>
+                                    <option value="RO">Rondônia</option>
+                                    <option value="RR">Roraima</option>
+                                    <option value="SC">Santa Catarina</option>
+                                    <option value="SP">São Paulo</option>
+                                    <option value="SE">Sergipe</option>
+                                    <option value="TO">Tocantins</option>
+                                </select>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="row" id="divbotoes">
+                    <div class="col offset-s1">
+                        <button class="btns waves-effect blue darken-3 btn modal-close" id="btConfirmaEditar">Confirmar</button>
+                        <button class="modal-close btns waves-effect teal lighten-1 btn botaoCancelar">Cancelar</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+        <div id="modal-deletar-manutencao-campi" class="modal background">
+                <div class="modal-content-manutencao-campi background ">
+                <h4 style="padding: 15pt;">Deletar Campus</h4>
+                <div class="container">
+                    <div class="row">
+                        Tem certeza que deseja deletar este campus?
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-close btns waves-effect teal lighten-1 btn">Cancelar</button>
+                <button class="btns waves-effect red darken-2 btn modal-close" id="delet">Deletar</button>
+            </div>
+            </div>
+        </div>
+
+		<script src="../../js/jquery-3.4.1.js"></script>
+        <script src="../../js/materialize.js"></script>
+        <script src="../../js/biblioteca/campi/tabela.js"></script>
+        <script src="../../js/biblioteca/campi/filtragem.js"></script>
+        <script src="../../js/biblioteca/campi/extras.js"></script>
+        <script src="../../js/biblioteca/campi/inserir.js"></script>
+        <script src="../../js/biblioteca/campi/resultado.js"></script>
+        <script src="../../js/biblioteca/campi/editar.js"></script>
+		<script src="../../js/biblioteca/campi/deletar.js"></script>
+		<script src="../../js/biblioteca/navbars/navbar.js"></script>
+		<script>$(".dropdown-trigger").dropdown();M.AutoInit();</script>
+		<script>cargoLogado();</script>
+
+    </body>
+</html>
