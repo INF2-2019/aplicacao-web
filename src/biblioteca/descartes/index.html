@@ -66,11 +66,8 @@
           <div>
             <label class="primary-text text-lighten-1 col s12" style="width: 100%">
               <div class="input-field col s12" name="acervo">
-              <select class="text-lighten-1">
-                <option class="primary-text text-lighten-1" value="" disabled selected><label>Escolha o acervo a ser descartado</label></option>
-                <option name="acvname" id="acvid">Acervo 1</option>
-                <option name="acvname" id="acvid">Acervo 2</option>
-                <option name="acvname" id="acvid">Acervo 3</option>
+              <select class="text-lighten-1" id="acervos_disponiveis" name="acervo">
+                <option class="primary-text text-lighten-1" value="0" disabled selected><label>Escolha o acervo a ser descartado</label></option>
               </select>
               </div>
             </label>
@@ -84,20 +81,18 @@
     </div>
 
 		<script src="../../js/jquery-3.4.1.js"></script>
-  	<script>
-      $(document).ready(function(){
-        $('.modal').modal();
-      });
-              //SELECT
-            $('select').formSelect();
-            $(document).ready(function(){
- });
-    //Parte da Requisição do id acervo (select): fazer uma Requisição pra consultar o acervo do grupo do acervo
-    // e fazer um select com os resultados
-  	</script>
+  	
     <script type="text/javascript" src="../../js/materialize.min.js"></script>
     <script src="../../js/biblioteca/descartes/ajax.js" charset="utf-8"></script>
+    <script src="../../js/biblioteca/descartes/index.js" charset="utf-8"></script>
 		<script src="../../js/biblioteca/descartes/descarteAcervo.js" charset="utf-8"></script>
+    <script>
+      $(document).ready(function () {
+        $('.modal').modal();
+        $('select').formSelect();
+        pega_acervos();
+      });
+    </script>
 		<script src="../../js/biblioteca/navbars/navbar.js"></script>
 		<script>$(".dropdown-trigger").dropdown();M.AutoInit();</script>
 		<script>cargoLogado();</script>
