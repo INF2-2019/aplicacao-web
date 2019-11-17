@@ -13,7 +13,20 @@ function postFetch(url, data) {
 		.then(response => response.text())
 		.then(str => (new window.DOMParser()).parseFromString(str, "text/xml"))
 }
+function AcervoNome(id){
+	return fetch('http://localhost:8080/app/biblioteca/acervo/consultar?id='+id,{
+			credentials: "include",
+		})
+		.then(response => response.text())
+		.then(str => (new window.DOMParser()).parseFromString(str, "text/xml"))
+		.then(xml => {
+			console.log(xml);
+			let acervo = xml.getElementsByTagName('acervo')[0]
+			let item = acervo.getElementsByTagName('item')[0]
+			return item.getElementsByTagName("nome")[0].innerHTML
 
+		})
+}
 
 function idNome(val) {
 	return fetch('http://localhost:8080/app/biblioteca/alunos/consultar?id='+val, {
@@ -50,18 +63,20 @@ $(document).on('click', '.editar', e => {
 
 	// colocar a opção no atual no select
 	const val = e.currentTarget.parentElement.parentElement.childNodes[1].innerHTML;
+	const valAc = e.currentTarget.parentElement.parentElement.childNodes[2].innerHTML;
 	const id = e.currentTarget.parentElement.parentElement.childNodes[0].innerHTML;
 	let nome = idNome(val)
 	nome.then( valor =>{
 	$('#aluno-atualizar').find('option:contains(' + valor + ')').prop('selected', true);
 	$("#aluno-atualizar").formSelect();
+	$('#acervo-atualizar').find('option:contains(' + valAc + ')').prop('selected', true);
+	$("#acervo-atualizar").formSelect();
 	fetch('http://localhost:8080/app/biblioteca/emprestimos/consultarporid?id=' +id , {
 		credentials: "include",
 	})
 		.then(response => response.text())
 		.then(str => (new window.DOMParser()).parseFromString(str, "text/xml"))
 		.then(xml => {
-			 document.querySelector("#acervo-atualizar").value = xml.getElementsByTagName("emprestimo")[0].getElementsByTagName("id-acervo")[0].innerHTML
 			 document.querySelector("#data-emprestimo-atualizar").value =  xml.getElementsByTagName("emprestimo")[0].getElementsByTagName("data-emprestimo")[0].innerHTML
 			 document.querySelector("#data-previa-devolução-atualizar").value = xml.getElementsByTagName("emprestimo")[0].getElementsByTagName("data-prev-devol")[0].innerHTML
 			 document.querySelector("#data-devolução-atualizar").value =  xml.getElementsByTagName("emprestimo")[0].getElementsByTagName("data-devolucao")[0].innerHTML
