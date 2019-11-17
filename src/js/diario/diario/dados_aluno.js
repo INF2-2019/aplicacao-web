@@ -104,35 +104,37 @@ async function consultarMatriculasPos(info, resposta_dom) {
         let conteudos = await requisicao("consultarConteudos", { disciplina: id_disciplina }),
             pontos_distribuidos = 0, nota_total =0, falta_total=0;
 
-        for (let conteudo of conteudos) {
-            let idConteudo= conteudo.querySelector("id").innerHTML,
-                valor = conteudo.querySelector("valor").innerHTML,
-                data = conteudo.querySelector("data").innerHTML,
-                nome = conteudo.querySelector("conteudos").innerHTML;
+        if(conteudos!=null){
+            for (let conteudo of conteudos) {
+                let idConteudo = conteudo.querySelector("id").innerHTML,
+                    valor = conteudo.querySelector("valor").innerHTML,
+                    data = conteudo.querySelector("data").innerHTML,
+                    nome = conteudo.querySelector("conteudos").innerHTML;
 
-            valor = formatarNumero(valor);
-            if(valor==0){
-                DISCIPLINAS[id_disciplina].conteudos.push({nome,data});
+                valor = formatarNumero(valor);
+                if (valor == 0) {
+                    DISCIPLINAS[id_disciplina].conteudos.push({ nome, data });
+                }
+
+                pontos_distribuidos += valor;
+
+                let diario = await requisicao("consultarDiario", { matricula, conteudo: idConteudo });
+                if (diario == null) continue;
+                diario = diario[0];
+
+                let faltas = diario.querySelector("faltas").innerHTML,
+                    nota = diario.querySelector("nota");
+
+
+                falta_total += formatarNumero(faltas);
+
+                if (nota != null && valor > 0) {
+                    nota = nota.innerHTML;
+                    nota_total += formatarNumero(nota);
+                    DISCIPLINAS[id_disciplina].atividades.push({ nome, valor, nota });
+                }
+
             }
-
-            pontos_distribuidos += valor;
-
-            let diario = await requisicao("consultarDiario",{matricula, conteudo: idConteudo});
-            if(diario==null) continue;
-            diario = diario[0];
-            
-            let faltas = diario.querySelector("faltas").innerHTML,
-                nota = diario.querySelector("nota");
-            
-            
-            falta_total += formatarNumero(faltas);
-            
-            if(nota!=null && valor>0){
-                nota = nota.innerHTML;
-                nota_total += formatarNumero(nota);
-                DISCIPLINAS[id_disciplina].atividades.push({ nome, valor, nota });
-            }
-
         }
 
         args = {
