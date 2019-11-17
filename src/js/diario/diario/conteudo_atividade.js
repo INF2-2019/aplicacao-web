@@ -13,10 +13,11 @@ const infos = {
             disciplina: DISCIPLINA
         },
         queries:{
-            inputs: "#inserir_atividade input"
+            inputs: "#inserir_atividade input, #inserir_atividade select"
         },
         ativadores: { evento: "click", query: "#submit_inserir_atividade" },
-        callback: atualizarAtividade
+        callback: atualizarAtividade,
+        post: true
     },
     inserirConteudo:{
         link: "/diario/diario/conteudo/inserir",
@@ -25,10 +26,11 @@ const infos = {
             valor: 0.0
         },
         queries: {
-            inputs: "#inserir_conteudo input"
+            inputs: "#inserir_conteudo input, #inserir_conteudo select"
         },
         ativadores: { evento: "click", query: "#submit_inserir_conteudo" },
-        callback: atualizarConteudo
+        callback: atualizarConteudo,
+        post: true
     },
     consultarConteudo:{
         link: "/diario/diario/conteudo/consulta",
@@ -56,16 +58,39 @@ const infos = {
         },
         callback: consultarAtividadePos
     },
+    consultarMatriculas: {
+        link: "/diario/matriculas/listar",
+        parametros_default: {
+            idDisciplinas: DISCIPLINA
+        },
+        queries: {
+            holder: ["#holder_notas_faltas", "#holder_faltas"],
+            template: ["#template_nota_falta", "#template_falta"]
+        },
+        callback: gerarListaDiario
+    },
+    consultarEtapas: {
+        link: "/diario/etapas/consultar",
+        queries: {
+            holder: ["#holder_etapas_lanca_atividade", "#holder_etapas_lanca_conteudo", "#holder_etapas_altera_atividade", "#holder_etapas_altera_conteudo"],
+            template: ["#template-etapas"]
+        },
+        callback: consultarEtapasPos
+    },
+    consultarAluno: {
+        link: "/diario/alunos/consultar"
+    },
     alterarAtividade: {
         link: "/diario/diario/conteudo/atualizar",
         parametros_default: {
             disciplina: DISCIPLINA
         },
         queries: {
-            inputs: "#modalAlteraAtividade input"
+            inputs: "#modalAlteraAtividade input, #modalAlteraAtividade select"
         },
         ativadores: { evento: "click", query: "#submit_alterar_atividade" },
-        callback: atualizarAtividade
+        callback: atualizarAtividade,
+        post: true
     },
     alterarConteudo: {
         link: "/diario/diario/conteudo/atualizar",
@@ -73,10 +98,11 @@ const infos = {
             disciplina: DISCIPLINA
         },
         queries: {
-            inputs: "#modalAlteraConteudos input"
+            inputs: "#modalAlteraConteudos input, #modalAlteraConteudos select"
         },
         ativadores: { evento: "click", query: "#submit_alterar_conteudo" },
-        callback: atualizarConteudo
+        callback: atualizarConteudo,
+        post: true
     },
     deletarConteudo: {
         link: "/diario/diario/conteudo/deletar",
@@ -87,63 +113,175 @@ const infos = {
         callback: atualizarAtividade
     },
     lancaFalta: {
-                    link: "/diario/diario/diario/inserir",
-                    parametros_default: {
-                        tipo: "conteudo"
-                    },
-                    queries: {
-                        inputs: "input"
-                    },
-                    ativadores: { evento: "click", query: "#lancarFalta" },
-                    callback: console.log
-                }, lancaNota: {
-                    link: "/diario/diario/diario/inserir",
-                    parametros_default: {
-                        tipo: "atividade"
-                    },
-                    queries: {
-                        inputs: "input"
-                    },
-                    ativadores: { evento: "click", query: "#lancarNota" },
-                    callback: console.log
-                }
-    };
+        link: "/diario/diario/diario/inserir",
+        parametros_default: {
+            tipo: "conteudo"
+        },
+        post: true
+    }, 
+    lancaNota: {
+        link: "/diario/diario/diario/inserir",
+        parametros_default: {
+            tipo: "atividade"
+        },
+        post: true
+    },
+    consultaDiario:{
+        link: "/diario/diario/diario/consulta"
+    }
+};
 
-// Código baseado na primeira resposta do site: https://pt.stackoverflow.com/questions/6526/como-formatar-data-no-javascript
-function dataFormatada(data){
-    let pedacos = data.split("-");
-    pedacos = pedacos.map(x=> parseInt(x));
-    data = new Date(pedacos[0],pedacos[1]-1, pedacos[2]);
-    
-    let dia  = (data.getDate()).toString(), // tive que colocar o +1 por algum motivo que desconheço, mas sei que sem ele não funciona
-        diaF = (dia.length == 1) ? '0'+dia : dia,
-        mes  = (data.getMonth()+1).toString(), //+1 pois no getMonth Janeiro começa com zero.
-        mesF = (mes.length == 1) ? '0'+mes : mes,
-        anoF = data.getFullYear();
-    return diaF+"/"+mesF+"/"+anoF;
-}
-
+// Ao clicar no botão de editar conteudo, coloca os valores no placeholder
 function alterarConteudo(info, pai){
     const modal = document.querySelector(info.queries.alterar);
-    const inputs = modal.querySelectorAll("input");
+    const inputs = modal.querySelectorAll("input, select");
+
 
     for(let input of inputs){
         let name = input.name;
         if(name in pai.dataset){
-            if(input.type=="date"||input.type==="hidden") input.value = pai.dataset[name];
+            if (input.type == "date" || input.type === "hidden" || input.type == "select-one") input.value = pai.dataset[name];
             else input.placeholder = pai.dataset[name];
         }
     }
 }
 
 
-function deletarConteudo(info, pai){
-    let id = pai.dataset.id;
 
-    if (window.confirm("Você tem certeza que deseja deletar o conteudo \""+pai.dataset.conteudo+"\"?\nUma vez deletado, não há mais volta."))
-        requisicao("deletarConteudo",{id});
+/* - - -  Conteudos da disciplina - - - */
+
+const CONTEUDOS = {}
+
+// Pega conteudos da disciplina
+function consultarConteudoPos(info,resposta_dom){
+    const holder = document.querySelector(info.queries.holder);
+    holder.innerHTML = "";
+    if (resposta_dom == null) return;
+    
+    for(let conteudosEl of resposta_dom){
+        const parametros = leParametrosXML(conteudosEl);
+        let id = parametros["id"];
+
+        consultaDiario({id});
+
+        let args = {
+            conteudo: parametros["conteudos"],
+            etapa: parametros["id-etapas"],
+            id,
+            data: dataFormatada(parametros["data"]),
+            data_raw: parametros["data"]
+        };
+
+        CONTEUDOS[id] = Object.assign({},args);
+
+        let el = geraConteudoEl(args, info);
+        holder.appendChild(el);
+    }  
+}
+// Gera conteudo da disciplina
+function geraConteudoEl(args, info){
+    const TEMPLATE_QUERY = infos.consultarConteudo.queries.template; 
+    let el = geraElemento(TEMPLATE_QUERY, args)[0];
+
+    let botao_edit = el.querySelector(".edit"),
+        botao_deletar = el.querySelector(".delete"),
+        botao_lanca = el.querySelector(".falta");
+
+    botao_edit.addEventListener("click", () => alterarConteudo(info, el));
+    botao_deletar.addEventListener("click", () => deletarConteudo(info, el));
+    botao_lanca.addEventListener("click", () => consultaDiarioConteudoFalta(info, el));
+    
+    return el;
+}
+// Chama o consultar conteudo
+function atualizarConteudo() {
+    requisicao("consultarConteudo");
 }
 
+async function consultaDiarioConteudoFalta(info, el){
+    let conteudo = el.dataset.id;
+
+    const holder = document.querySelector(infos.consultarMatriculas.queries.holder[1]);
+    holder.dataset.conteudo = conteudo;
+
+    mostraDiario("#holder_faltas",conteudo);
+}
+
+// Pergunta se usuário tem certeza que quer deletar e deleta
+function deletarConteudo(info, pai) {
+    let id = pai.dataset.id;
+
+    if (window.confirm("Você tem certeza que deseja deletar o conteudo \"" + pai.dataset.conteudo + "\"?\nUma vez deletado, não há mais volta."))
+        requisicao("deletarConteudo", { id });
+}
+
+
+
+/* - - -  Atividades da disciplina - - - */
+
+const ATIVIDADES = {};
+
+// Pega atividades da disciplina
+function consultarAtividadePos(info, resposta_dom) {
+    const holder = document.querySelector(info.queries.holder);
+    holder.innerHTML = "";
+    if (resposta_dom == null) return;
+
+    for (let conteudosEl of resposta_dom) {
+        let parametros = leParametrosXML(conteudosEl);
+
+        let id = parametros["id"],
+            valor = parametros["valor"];
+
+        consultaDiario({id, valor});
+
+        let args = {
+            atividade: parametros["conteudos"],
+            etapa: parametros["id-etapas"],
+            id,
+            valor: valor,
+            data: dataFormatada(parametros["data"]),
+            data_raw: parametros["data"]
+        };
+
+        ATIVIDADES[id] = Object.assign({},args);
+
+        let el = geraAtividadeEl(args, info);
+
+        holder.appendChild(el);
+    }
+}
+
+// Gera atividade da disciplina
+function geraAtividadeEl(args, info){
+    let el = geraElemento(infos.consultarAtividade.queries.template, args)[0];
+
+    let botao_edit = el.querySelector(".edit"),
+        botao_deletar = el.querySelector(".delete"),
+        botao_lanca = el.querySelector(".nota");
+
+    botao_edit.addEventListener("click", () => alterarConteudo(info, el));
+    botao_deletar.addEventListener("click", () => deletarAtividade(info, el));
+    botao_lanca.addEventListener("click", () => consultaDiarioConteudoNota(info, el));
+
+    return el;
+}
+
+// Chama o consultar atividade
+function atualizarAtividade() {
+    requisicao("consultarAtividade");
+}
+
+function consultaDiarioConteudoNota(info, el) {
+    let conteudo = el.dataset.id;
+
+    const holder = document.querySelector(infos.consultarMatriculas.queries.holder[0]);
+    holder.dataset.conteudo = conteudo;
+
+    mostraDiario("#holder_notas_faltas",conteudo);
+}
+
+// Pergunta se usuário tem certeza que quer deletar e deleta
 function deletarAtividade(info, pai) {
     let id = pai.dataset.id;
 
@@ -151,82 +289,206 @@ function deletarAtividade(info, pai) {
         requisicao("deletarAtividade", { id });
 }
 
-function consultarConteudoPos(info,resposta_dom){
-    let args;
-    const holder = document.querySelector(info.queries.holder);
-    holder.innerHTML = "";
-    if (resposta_dom == null) return;
+
+
+/* - - - - - - Diario - - - - - - */
+
+const DIARIOS = {}
+
+async function consultaDiario({id,valor}){
     
-    for(let conteudosEl of resposta_dom){
-        let conteudo = conteudosEl.querySelector("conteudos").innerHTML,
-            etapa = conteudosEl.querySelector("id-etapas").innerHTML,
-            data = conteudosEl.querySelector("data").innerHTML,
-            id = conteudosEl.querySelector("id").innerHTML;
+    let conteudo = id;
+    if (DIARIOS[conteudo] == undefined) DIARIOS[conteudo] = {};
+    
+    let objetoDiario = DIARIOS[conteudo];
+    
+    let diarioEls = await requisicao("consultaDiario", { conteudo });
+    if (diarioEls == null) return;
 
-        args = { 
-            conteudo, 
-            etapa, 
-            id,
-            data: dataFormatada(data),
-            data_raw: data
+    for (let diarioEl of diarioEls) {
+        let parametros = leParametrosXML(diarioEl);
+        let args = {
+            matricula: formatarNumero(parametros["id-matriculas"]),
+            faltas: parseInt(parametros["faltas"]),
+            nota: parametros["nota"]
         };
-
-        let el = geraElemento(info.queries.template,args)[0];
-
-        let botao_edit = el.querySelector(".edit"),
-            botao_deletar = el.querySelector(".delete");
         
-        botao_edit.addEventListener("click", () => alterarConteudo(info, el));
-        botao_deletar.addEventListener("click", ()=> deletarConteudo(info, el));
+        if(valor) args.valor = Number(valor);
 
-        holder.appendChild(el);
-
-    }  
-}
-
-function consultarAtividadePos(info, resposta_dom) {
-    let args;
-    const holder = document.querySelector(info.queries.holder);
-    holder.innerHTML = "";
-    if (resposta_dom==null)return;
-
-    for (let conteudosEl of resposta_dom) {
-        let atividade = conteudosEl.querySelector("conteudos").innerHTML,
-            etapa = conteudosEl.querySelector("id-etapas").innerHTML,
-            data = conteudosEl.querySelector("data").innerHTML,
-            valor = conteudosEl.querySelector("valor").innerHTML,
-            id = conteudosEl.querySelector("id").innerHTML;
-
-        args = {
-            atividade,
-            etapa,
-            id,
-            valor,
-            data: (new Date(data)).toLocaleDateString(),
-            data_raw: data
-        };
-
-        let el = geraElemento(info.queries.template, args)[0];
-
-        let botao_edit = el.querySelector(".edit"),
-            botao_deletar = el.querySelector(".delete");
-
-        botao_edit.addEventListener("click", () => alterarConteudo(info, el));
-        botao_deletar.addEventListener("click", () => deletarAtividade(info, el));
-
-        holder.appendChild(el);
+        objetoDiario[args.matricula] = args;
+        
     }
 }
 
-function atualizarAtividade(){
-    requisicao("consultarAtividade");
+
+function mostraDiario(query, id_conteudo) {
+    const holder = document.querySelector(query);
+
+    const linhas = holder.querySelectorAll("tr[data-matricula]");
+    
+
+    for(let linha of linhas){
+        let matricula = linha.dataset.matricula,
+            diario = DIARIOS[id_conteudo][matricula];
+
+        
+        const falta = linha.querySelector("input[name=falta]"),
+            nota = linha.querySelector("input[name=nota]");
+        
+        falta.value = diario? diario.faltas: "";
+        
+        if(nota!=null){
+            nota.value = diario ? diario.nota : ""; 
+
+            if(ATIVIDADES[id_conteudo])
+                nota.max = ATIVIDADES[id_conteudo].valor;
+        }
+
+    }
 }
 
-function atualizarConteudo(){
-    requisicao("consultarConteudo");
+
+
+/* - - - - - - Matriculas - - - - - - */
+
+const MATRICULAS = new Map();
+
+async function gerarListaDiario(info, resposta_dom){
+    let args;
+    const holders = [];
+    for (let holder_query of infos.consultarMatriculas.queries.holder){
+        const holder = document.querySelector(holder_query);
+        holder.innerHTML = "";
+        holders.push(holder);
+    }
+
+    if (resposta_dom == null) return;
+
+    for (let matriculasEl of resposta_dom) {
+        let parametros = leParametrosXML(matriculasEl);
+
+        let matricula = parametros["id"],
+            idAluno = parametros["id-alunos"];
+
+        let alunoEl = await requisicao("consultarAluno",{id: idAluno});
+        parametros = leParametrosXML(alunoEl);
+        let nome = parametros["nome"];
+
+        args = {
+            matricula: formatarNumero(matricula,11),
+            matricula_raw: matricula,
+            nome
+        };
+
+        MATRICULAS.set(matricula,nome);
+
+        for(let i=0; i< holders.length; i++){
+            const holder = holders[i];
+            let template;
+            if (info.queries.template.constructor == Array)
+                template = info.queries.template[i];
+            else
+                template = info.queries.template;
+
+            let el = geraElemento(template, args)[0];
+            holder.appendChild(el);
+        }  
+    }
 }
+
+/* - - - - - - Etapas - - - - - - */
+function consultarEtapasPos(info, resposta_dom) {
+    const holders = [];
+
+    for (let holder_query of info.queries.holder) {
+        const holder = document.querySelector(holder_query);
+        holder.innerHTML = "";
+        holders.push(holder);
+    }
+
+    if (resposta_dom == null) return;
+
+    for (let conteudosEl of resposta_dom) {
+        let parametros = leParametrosXML(conteudosEl);
+
+        let id_etapa = parametros["id"];
+        
+        for (let i = 0; i < holders.length; i++) {
+            const holder = holders[i];
+
+            //CRIA UMA OPTION COM O VALOR DA ETAPA E O NÚMERO DA ETAPA
+            let el = $("<option value=\"" + id_etapa + "\"> " + id_etapa + "</option>")[0];
+            holder.appendChild(el);
+        } 
+    }
+}
+
+
+/* Main */
 
 leInfos(infos);
 
 requisicao("consultarConteudo");
 requisicao("consultarAtividade");
+requisicao("consultarMatriculas");
+requisicao("consultarEtapas");
+
+const botaoLancarNota = document.querySelector("#lancarNota");
+const botaoLancarFalta = document.querySelector("#lancarFalta");
+
+async function lanca(link, query){
+    const holder = document.querySelector(query);
+    const campos = holder.querySelectorAll("tr");
+    let atualizar_no_final = false;
+
+    for (let campo of campos) {
+        
+        let matricula = formatarNumero(campo.dataset.matricula),
+            conteudo = formatarNumero(holder.dataset.conteudo),
+            diario = DIARIOS[conteudo][matricula],
+            config = { matricula, conteudo },
+            falta = campo.querySelector("input[name=falta]").value,
+            nota = campo.querySelector("input[name=nota]");
+        
+        let teve_alteracao = false;
+
+        if (falta != ""){
+            if (!diario || Number(falta) != diario.faltas){
+                config.falta = falta;
+                teve_alteracao = true;
+            }
+        }
+        
+        if (!(nota == null || nota.value == "")){
+            if (!diario || Number(nota.value) != Number(diario.nota)){
+                config.nota = nota.value;
+                teve_alteracao = true;
+            }
+        }
+
+
+        
+        if(teve_alteracao){
+            let res = await requisicao(link, config, {output: false});
+            if(res.status){
+                atualizar_no_final = true;
+            } else if(res.status === false){
+                alertarStatus(res);
+            }
+        }
+    }
+
+
+    if (atualizar_no_final){
+        let conteudo = formatarNumero(holder.dataset.conteudo);
+        consultaDiario({id: conteudo});
+    }
+}
+
+botaoLancarFalta.addEventListener("click",()=>{
+    lanca("lancaFalta", infos.consultarMatriculas.queries.holder[1]);
+});
+
+botaoLancarNota.addEventListener("click", () => {
+    lanca("lancaNota", infos.consultarMatriculas.queries.holder[0]);
+});
