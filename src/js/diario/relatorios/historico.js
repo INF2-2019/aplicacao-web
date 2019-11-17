@@ -123,6 +123,10 @@ function getId() {
 
             if (cargo == "ALUNO") ifAluno();
             else if (cargo == "ADMIN") ifAdm();
-        });
+		});
 
 }
+
+$("#imprimir").click(function(){
+	window.print();
+});
