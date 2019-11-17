@@ -7,30 +7,31 @@
 		<link rel="stylesheet" href="../../css/estilo.css">
 	</head>
 	<body><div class="margin-0">
-		<ul id="dropdown1" class="dropdown-content">
+		<ul id="dropdown1" class="dropdown-content no-print ulFitz">
 		</ul>
-		<nav>
-			<div class="nav-wrapper">
-				<a class="brand-logo">Diário</a>
-				<ul id="navbars-itens" class="right hide-on-med-and-down">
-					<li style="width:200px;" id="nav-funcoes"><a class="dropdown-trigger" href="#!" data-target="dropdown1">Funções<i class="material-icons right">arrow_drop_down</i></a></li>
-				</ul>
-			</div>
-		</nav>
+	<nav id="navFitz">
+		<div class="nav-wrapper">
+			<a class="brand-logo">Diário</a>
+			<ul id="navbars-itens" class="right hide-on-med-and-down">
+				<li style="width:200px;" id="nav-funcoes"><a class="dropdown-trigger" href="#!" data-target="dropdown1">Funções<i class="material-icons right">arrow_drop_down</i></a></li>
+			</ul>
+		</div>
+	</nav>
 		<main class="container relDoFitz">
-			<div id="esc" class="center-align row">
+			<h4>Relação de conteúdos</h4>
+			<div id="esc" class="center-align row no-print">
 				<div>
-					Escolha a disciplina:<select></select>
-					Escolha a etapa:<select></select>
-					<button class="primary btn">Gerar</button>
+					<span class="f">Escolha a disciplina:<select></select></span>
+					<span class="f">Escolha a etapa:<select></select></span>
+					<span class="f"><button class="primary btn" id="gen">Gerar</button><button class="primary btn" id="imp">Imprimir</button></span>
 				</div>
 			</div>
 			<div id="r"></div>
-				</main></div>
+                </main></div>
+		
 		<script src="../../js/jquery-3.4.1.js"></script>
 		<script src="../../js/materialize.js"></script>
 		<script src="../../js/diario/relatorios/r11.js"></script>
-		<script src="../navbars/navbar.js"></script>
 		<script src="../../js/diario/navbars/navbar.js"></script>
 		<script>cargoLogado();</script>
 		<script>$(".dropdown-trigger").dropdown();</script>
