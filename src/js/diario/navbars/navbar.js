@@ -6,11 +6,17 @@ let ul_itens;
 let li_dropdown = [];
 let li_itens = [];
 let ul_funcoes;
+let btn_autenticador;
 
 function navADMIN() {
-    ul_dropdown = document.getElementById("dropdown1");
+  ul_dropdown = document.getElementById("dropdown1");
 	ul_itens = document.getElementById("navbars-itens");
 	ul_funcoes = document.getElementById("nav-funcoes");
+  btn_autenticador = document.getElementById("btn_autenticador");
+
+  if((btn_autenticador.text == "Perfil do Aluno")||(btn_autenticador.text == "Perfil do professor")){
+    window.location.href = "adm.html";
+  }
 
 	for(i=0;i<2;i++){
 		li_itens[i] = document.createElement("li");
@@ -46,6 +52,11 @@ function navALUNO() {
 	ul_dropdown = document.getElementById("dropdown1");
 	ul_itens = document.getElementById("navbars-itens");
 	ul_funcoes = document.getElementById("nav-funcoes");
+  btn_autenticador = document.getElementById("btn_autenticador");
+
+  if((btn_autenticador.text == "Transferência de aluno")||(btn_autenticador.text == "Perfil do professor")){
+    window.location.href = "aluno.html";
+  }
 
 	for(i=0;i<2;i++){
 		li_itens[i] = document.createElement("li");
@@ -73,6 +84,11 @@ function navPROFESSOR() {
 	ul_dropdown = document.getElementById("dropdown1");
 	ul_itens = document.getElementById("navbars-itens");
 	ul_funcoes = document.getElementById("nav-funcoes");
+  btn_autenticador = document.getElementById("btn_autenticador");
+
+  if((btn_autenticador.text == "Transferência de aluno")||(btn_autenticador.text == "Perfil do Aluno")){
+    window.location.href = "professor.html";
+  }
 
 	for(i=0;i<2;i++){
 		li_itens[i] = document.createElement("li");
@@ -105,7 +121,7 @@ function cargoLogado() {
 		if(cargo=="ADMIN")navADMIN();
 		else if(cargo=="ALUNO")navALUNO();
 		else if(cargo=="PROFESSOR")navPROFESSOR();
-		else return;
+		else window.location.href = "../../index.html";
 	})
 	.catch(error => alert("Erro de conexão ao servidor."));
 }
