@@ -2,27 +2,31 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Manipulação de Campi</title>
+        <title>Manutenção de Campi</title>
         <link rel="stylesheet" href="../../css/materialize.css">
         <link rel="stylesheet" href="../../css/estilo.css">
     </head>
+    <style>
+        th, td{
+            text-align: center;
+        }
+    </style>
     <body class="background full-height">
-		<ul id="dropdown1" class="dropdown-content"></ul>
+        <ul id="dropdown1" class="dropdown-content">
+		</ul>
 		<nav>
 			<div class="nav-wrapper">
-				<a class="brand-logo">Biblioteca</a>
+				<a class="brand-logo">Diário</a>
 				<ul id="navbars-itens" class="right hide-on-med-and-down">
 					<li style="width:200px;" id="nav-funcoes"><a class="dropdown-trigger" href="#!" data-target="dropdown1">Funções<i class="material-icons right">arrow_drop_down</i></a></li>
 				</ul>
 			</div>
 		</nav>
 
-      <div class="container">
+      <div class="container ">
       <h2>Campi</h2>
-           <a id="botao-manutencao-campi" class="btn right primary editar modal-trigger botaoAdicionar right" href="#modal-cadastro">Adicionar</a>
-
            <div class="row">
-                 <div class="input-field col s2">
+                 <div class="input-field col s6 l2">
                    <select id="filtros">
 
                      <option value="1" selected>ID</option>
@@ -33,24 +37,20 @@
                    <label>Filtrar por:</label>
                  </div>
 
-                 <div class="col s5 center-align">
-             			<nav>
-             				<div class="nav-wrapper">
-             					<form>
-             						<div class="input-field">
-             							<input id="search" class="primary" type="search" oninput="pesquisa()" required>
-             							<label class="label-icon" for="search"><i class="  material-icons"></i></label>
-             							<i class="material-icons">close</i>
-             						</div>
-             					</form>
-             				</div>
-             			</nav>
-           		</div>
+                        
+                    <div class="input-field col s6 l4">
+                        <i class="material-icons prefix">search</i>
+                        <input id="search" type="text" autocomplete="off" oninput="pesquisa()">
+                        <label for="search">Pesquisar<s/label>
+                    </div>
+                <a id="botao-manutencao-campi" class="btn right primary col s12 l2 editar modal-trigger botaoAdicionar right" href="#modal-cadastro">Adicionar</a>
               </div>
 
 
+
+
         <div class="">
-            <table id="tabela">
+            <table id="tabela" class="responsive-table centered highlight">
 
             </table>
         </div>
@@ -110,8 +110,8 @@
                 <div class="row" id="divbotoes">
                     <div class="col offset-s1">
                         <span class="span-cadastro-manutencao-campi primary-text text-lighten-1"><i>Os campos com * são obrigatórios</i></span><br>
-                        <button class="btns waves-effect blue darken-3 btn modal-close" id="btConfirmaCadastro">Confirmar</button>
-                        <button class="modal-close btns waves-effect teal lighten-1 btn botaoCancelar">Cancelar</button>
+                        <button class="btns waves-effect primary btn modal-close" id="btConfirmaCadastro">Confirmar</button>
+                        <button class="modal-close btns waves-effect utils erro-2 btn botaoCancelar">Cancelar</button>
                     </div>
 
                 </div>
@@ -137,11 +137,11 @@
                             <span class="span-cadastro-manutencao-campi primary-text text-lighten-1">Cidade</span><input name="campus-cidade" type="text" id="cidade1">
                         </div>
 
-                        <div class="col offset-s1 s3">
+                        <div id="divS" class="col offset-s1 s3 input-field">
                                 <span class="primary-text">UF</span>
                                 <select name="uf-cadastro" class="input-field" id="uf1">
                                     <option value="AC">Acre</option>
-                                    <option value="AL">Alagoas</option>
+                                    <option value="AL" selected>Alagoas</option>
                                     <option value="AP">Amapá</option>
                                     <option value="AM">Amazonas</option>
                                     <option value="BA">Bahia</option>
@@ -175,8 +175,8 @@
                 </div>
                 <div class="row" id="divbotoes">
                     <div class="col offset-s1">
-                        <button class="btns waves-effect blue darken-3 btn modal-close" id="btConfirmaEditar">Confirmar</button>
-                        <button class="modal-close btns waves-effect teal lighten-1 btn botaoCancelar">Cancelar</button>
+                        <button class="btns waves-effect primary btn modal-close" id="btConfirmaEditar">Confirmar</button>
+                        <button class="modal-close btns waves-effect utils erro-2 btn botaoCancelar">Cancelar</button>
                     </div>
 
                 </div>
@@ -213,8 +213,7 @@
         <script src="../../js/biblioteca/campi/editar.js"></script>
 		<script src="../../js/biblioteca/campi/deletar.js"></script>
 		<script src="../../js/biblioteca/navbars/navbar.js"></script>
-		<script>$(".dropdown-trigger").dropdown();M.AutoInit();</script>
 		<script>cargoLogado();</script>
-
+		<script>$(".dropdown-trigger").dropdown();</script>
     </body>
 </html>
