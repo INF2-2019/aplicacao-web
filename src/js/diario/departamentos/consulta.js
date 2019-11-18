@@ -20,8 +20,6 @@ function consultaDeptos(reconsulta = false) {
 				}
 				atualizaTabela();
 				if(!reconsulta){
-					if(msg) M.toast({ html: msg, classes: "utils sucesso-2 text-light-text" });
-					else M.toast({ html: "Departamentos consultados com sucesso", classes: "utils sucesso-2 text-light-text" });
 				}
 			} else {
 				if(!reconsulta){
