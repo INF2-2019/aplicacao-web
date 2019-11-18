@@ -6,11 +6,13 @@ let ul_itens;
 let li_dropdown = [];
 let li_itens = [];
 let ul_funcoes;
+let btn_autenticador;
 
 function navADMIN() {
-    ul_dropdown = document.getElementById("dropdown1");
+  ul_dropdown = document.getElementById("dropdown1");
 	ul_itens = document.getElementById("navbars-itens");
 	ul_funcoes = document.getElementById("nav-funcoes");
+  btn_autenticador = document.getElementById("btn_autenticador");
 
 	for(i=0;i<2;i++){
 		li_itens[i] = document.createElement("li");
@@ -40,12 +42,17 @@ function navADMIN() {
 	for(i=0;i<li_dropdown.length;i++){
 		ul_dropdown.appendChild(li_dropdown[i]);
 	}
+
+  if((btn_autenticador.text == "Perfil do Aluno")||(btn_autenticador.text == "Perfil do professor")){
+    window.location.href = "adm.html";
+  }
 }
 
 function navALUNO() {
 	ul_dropdown = document.getElementById("dropdown1");
 	ul_itens = document.getElementById("navbars-itens");
 	ul_funcoes = document.getElementById("nav-funcoes");
+  btn_autenticador = document.getElementById("btn_autenticador");
 
 	for(i=0;i<2;i++){
 		li_itens[i] = document.createElement("li");
@@ -67,12 +74,17 @@ function navALUNO() {
 	for(i=0;i<li_dropdown.length;i++){
 		ul_dropdown.appendChild(li_dropdown[i]);
 	}
+
+  if((btn_autenticador.text == "Transferência de aluno")||(btn_autenticador.text == "Perfil do professor")){
+    window.location.href = "aluno.html";
+  }
 }
 
 function navPROFESSOR() {
 	ul_dropdown = document.getElementById("dropdown1");
 	ul_itens = document.getElementById("navbars-itens");
 	ul_funcoes = document.getElementById("nav-funcoes");
+  btn_autenticador = document.getElementById("btn_autenticador");
 
 	for(i=0;i<2;i++){
 		li_itens[i] = document.createElement("li");
@@ -93,6 +105,10 @@ function navPROFESSOR() {
 	for(i=0;i<li_dropdown.length;i++){
 		ul_dropdown.appendChild(li_dropdown[i]);
 	}
+
+  if((btn_autenticador.text == "Transferência de aluno")||(btn_autenticador.text == "Perfil do Aluno")){
+    window.location.href = "professor.html";
+  }
 }
 
 function cargoLogado() {
@@ -105,7 +121,8 @@ function cargoLogado() {
 		if(cargo=="ADMIN")navADMIN();
 		else if(cargo=="ALUNO")navALUNO();
 		else if(cargo=="PROFESSOR")navPROFESSOR();
-		else return;
+		else window.location.href = "../../index.html";
 	})
-	.catch(error => alert("Erro de conexão ao servidor."));
+  //Esse catch não está funcionando
+	//.catch(error => alert("Erro de conexão ao servidor."));
 }
