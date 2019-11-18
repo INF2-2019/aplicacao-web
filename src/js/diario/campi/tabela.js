@@ -18,19 +18,18 @@ function fazerTabela(doc){
         editar.classList.add("waves-effect");
         editar.classList.add("waves-light");
         editar.classList.add("btnAjuste-manutencao-campi");
-        editar.classList.add("blue");
+        editar.classList.add("secondary");
         editar.classList.add("modal-trigger");
         editar.classList.add("botaoEditar");
         editar.href = "#modal-editar";
-        editar.classList.add("darken-3");
         editar.innerHTML = "EDITAR";
         var deletar = document.createElement("a");
         deletar.classList.add("btn");
         deletar.classList.add("waves-effect");
         deletar.classList.add("waves-light");
         deletar.classList.add("btnAjuste-manutencao-campi");
-        deletar.classList.add("red");
-        deletar.classList.add("darken-2");
+        deletar.classList.add("utils");
+        deletar.classList.add("erro-2");
         deletar.classList.add("modal-trigger");
         deletar.classList.add("botaoDeletar");
         deletar.href = "#modal-deletar-manutencao-campi";
@@ -45,10 +44,10 @@ function fazerTabela(doc){
         var conteudo3 = document.createElement("td");
         conteudo3.innerHTML = lineItems[i].getElementsByTagName("cidade")[0].childNodes[0].nodeValue;
         var conteudo4 = document.createElement("td");
+      
         conteudo4.innerHTML = lineItems[i].getElementsByTagName("uf")[0].childNodes[0].nodeValue;
 
         var botoes = document.createElement("td");
-
         botoes.appendChild(editar);
         botoes.appendChild(deletar);
 
