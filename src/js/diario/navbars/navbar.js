@@ -14,10 +14,6 @@ function navADMIN() {
 	ul_funcoes = document.getElementById("nav-funcoes");
   btn_autenticador = document.getElementById("btn_autenticador");
 
-  if((btn_autenticador.text == "Perfil do Aluno")||(btn_autenticador.text == "Perfil do professor")){
-    window.location.href = "adm.html";
-  }
-
 	for(i=0;i<2;i++){
 		li_itens[i] = document.createElement("li");
 	}
@@ -46,6 +42,10 @@ function navADMIN() {
 	for(i=0;i<li_dropdown.length;i++){
 		ul_dropdown.appendChild(li_dropdown[i]);
 	}
+
+  if((btn_autenticador.text == "Perfil do Aluno")||(btn_autenticador.text == "Perfil do professor")){
+    window.location.href = "adm.html";
+  }
 }
 
 function navALUNO() {
@@ -53,10 +53,6 @@ function navALUNO() {
 	ul_itens = document.getElementById("navbars-itens");
 	ul_funcoes = document.getElementById("nav-funcoes");
   btn_autenticador = document.getElementById("btn_autenticador");
-
-  if((btn_autenticador.text == "Transferência de aluno")||(btn_autenticador.text == "Perfil do professor")){
-    window.location.href = "aluno.html";
-  }
 
 	for(i=0;i<2;i++){
 		li_itens[i] = document.createElement("li");
@@ -78,6 +74,10 @@ function navALUNO() {
 	for(i=0;i<li_dropdown.length;i++){
 		ul_dropdown.appendChild(li_dropdown[i]);
 	}
+
+  if((btn_autenticador.text == "Transferência de aluno")||(btn_autenticador.text == "Perfil do professor")){
+    window.location.href = "aluno.html";
+  }
 }
 
 function navPROFESSOR() {
@@ -85,10 +85,6 @@ function navPROFESSOR() {
 	ul_itens = document.getElementById("navbars-itens");
 	ul_funcoes = document.getElementById("nav-funcoes");
   btn_autenticador = document.getElementById("btn_autenticador");
-
-  if((btn_autenticador.text == "Transferência de aluno")||(btn_autenticador.text == "Perfil do Aluno")){
-    window.location.href = "professor.html";
-  }
 
 	for(i=0;i<2;i++){
 		li_itens[i] = document.createElement("li");
@@ -109,6 +105,10 @@ function navPROFESSOR() {
 	for(i=0;i<li_dropdown.length;i++){
 		ul_dropdown.appendChild(li_dropdown[i]);
 	}
+
+  if((btn_autenticador.text == "Transferência de aluno")||(btn_autenticador.text == "Perfil do Aluno")){
+    window.location.href = "professor.html";
+  }
 }
 
 function cargoLogado() {
@@ -123,5 +123,6 @@ function cargoLogado() {
 		else if(cargo=="PROFESSOR")navPROFESSOR();
 		else window.location.href = "../../index.html";
 	})
-	.catch(error => alert("Erro de conexão ao servidor."));
+  //Esse catch não está funcionando
+	//.catch(error => alert("Erro de conexão ao servidor."));
 }
