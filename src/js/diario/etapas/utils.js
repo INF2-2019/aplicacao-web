@@ -21,7 +21,7 @@ function toast(text, classe) {
 var valorX;
 
 function verificaValor(id, valor) {
-	var soma = getSoma();
+	var soma = getSoma() - valorX;
 	var input = document.getElementById(id);
 	var valorInput = parseInt(input.value);
 
@@ -46,4 +46,8 @@ function pegaValor(linha) {
 	var xxx = document.getElementById("editaValorEtapa");
 	xxx.value = valorX;
 	M.updateTextFields();
+}
+
+function pegaValorAntigo() {
+	return valorX;
 }
