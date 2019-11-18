@@ -7,15 +7,16 @@ $(document).on('click', '.edita', function (e) {
 function atualiza() {
 	//cria conexão com o servlet atualiza
 	var xhttp = new XMLHttpRequest(),
-		method = "GET",
-		url = "http://localhost:8080/app/diario/etapas/atualizar?id=" + id + "&ano=" + document.getElementById('editaAno').value + '&valor=' + document.getElementById('editaValor').value;
+		method = "POST",
+		url = "http://localhost:8080/app/diario/etapas/atualizar?id=" + id + "&ano=" + document.getElementById('editaAno').value + '&valor=' + document.getElementById('editaValorEtapa').value;
 	xhttp.open(method, url, true);
 	xhttp.withCredentials = true;
 
 	var parser = new DOMParser();
 	var exibido = 0; // verifica se a mensagem de erro já foi mostrada
-	
-    var resp;
+
+	var resp;
+
 
 	//recebe resposta em XML e manipula o XML
 	xhttp.onreadystatechange = function () {
@@ -26,7 +27,7 @@ function atualiza() {
 
 			toast(resp, "utils sucesso-2");
 
-			setTimeout(function(){	consulta();}, 20);
+			setTimeout(function () { consulta(); }, 20);
 		} else if (xhttp.status !== 200) {
 			var responseStr = xhttp.responseText;
 			if (responseStr != "") {
@@ -38,12 +39,13 @@ function atualiza() {
 				}
 			}
 
-			setTimeout(function(){	consulta();}, 20);
+			setTimeout(function () { consulta(); }, 20);
 		}
 	};
 	xhttp.send();
 
 	// limpa inputs
-    limpaInputs();
-    
+	limpaInputs();
+
+
 }

@@ -8,13 +8,13 @@ $(document).on('click', '.deleta', function (e) {
 function deleta() {
 	//cria conexão com o servlet deleta
 	var xhttp = new XMLHttpRequest(),
-		method = "GET",
+		method = "POST",
 		url = "http://localhost:8080/app/diario/etapas/deletar?id=" + id;
 	xhttp.open(method, url, true);
 	xhttp.withCredentials = true;
 
 	var parser = new DOMParser();
-	
+
 	var resp;
 
 	//recebe resposta em XML e manipula o XML
@@ -26,7 +26,7 @@ function deleta() {
 
 			toast(resp, "utils sucesso-2");
 
-			setTimeout(function(){	consulta();}, 20);
+			setTimeout(function () { consulta(); }, 20);
 		} else if (xhttp.status !== 200) {
 			var responseStr = xhttp.responseText;
 			if (responseStr != "") {
@@ -36,7 +36,7 @@ function deleta() {
 				toast(resp, "red darken-2");
 			}
 
-			setTimeout(function(){	consulta();}, 20);
+			setTimeout(function () { consulta(); }, 20);
 		}
 	};
 	xhttp.send();

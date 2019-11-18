@@ -21,7 +21,8 @@
 		<div class="nav-wrapper">
 			<a class="brand-logo">Diário</a>
 			<ul id="navbars-itens" class="right hide-on-med-and-down">
-				<li style="width:200px;" id="nav-funcoes"><a class="dropdown-trigger" href="#!" data-target="dropdown1">Funções<i class="material-icons right">arrow_drop_down</i></a></li>
+				<li style="width:200px;" id="nav-funcoes"><a class="dropdown-trigger" href="#!"
+						data-target="dropdown1">Funções<i class="material-icons right">arrow_drop_down</i></a></li>
 			</ul>
 		</div>
 	</nav>
@@ -29,13 +30,16 @@
 
 	<div id="corpo-manutencao-etapas" class="container row" style="margin-top: 2%">
 
-		<h2 style="margin:0" class="col push-s2">Etapas</h2>
+		<h2>Etapas</h2>
 
 		<div class="row">
-			<a class="btn col s12 m12 l2 offset-l7 waves-effect waves-light primary modal-trigger" href="#AdicionaForm"
+			<div class="input-field col s12 m12 l4">
+				<i class="material-icons prefix">search</i>
+				<input id="search" type="number" autocomplete="off" oninput="pesquisarEtapa()">
+				<label for="search">Pesquisar etapa</label>
+			</div>
+			<a class="btn col s12 m12 l4 offset-l4 waves-effect waves-light primary modal-trigger" href="#AdicionaForm"
 				name="AdicionarEtapa" id="Adiciona">Adicionar</a>
-			<a class="btn col s12 m12 l2 offset-l7 waves-effect waves-light primary modal-trigger" href="#ConsultaForm"
-				name="ConsultarEtapa" id="Consulta" style="margin-top: 1%">Consultar</a>
 		</div>
 
 		<!-- RESPOSTA DA CONSULTA -->
@@ -57,66 +61,41 @@
 
 		<!-- FORMULÁRIO ADICIONAR -->
 		<div id="AdicionaForm" class="modal">
-			<div class="row modal-content">
+			<div id="div-adiciona" class="row modal-content">
 				<h4>Adicionar etapa</h4>
 				<div class="input-field col s4">
-					<input type="number" name="ano" id="adicionaAnoEtapa">
+					<input type="number" name="ano" value="2019" id="adicionaAnoEtapa" disabled>
 					<label class="col" for="ano">Ano</label>
 				</div>
 				<div class="input-field col s4">
-					<input type="text" name="valor" id="adicionaValorEtapa">
+					<input type="text" name="valor" id="adicionaValorEtapa"
+						onload="verificaValor('adicionaValorEtapa', this.value)">
 					<label class="col" for="valor">Valor</label>
 				</div>
 			</div>
 			<div class="container modal-footer">
-				<a class="modal-close btn utils erro-2" onclick="recarrega()">Cancelar</a>
+				<a class="modal-close btn utils erro-2">Cancelar</a>
 				<a class="modal-close btn primary" onclick="adiciona()">Adicionar</a>
 			</div>
 		</div>
 
 		<!-- FIM FORM ADICIONA ETAPA -->
 
-		<!-- FORMULÁRIO CONSULTAR -->
-
-		<div id="ConsultaForm" class="modal">
-			<h4 style="padding: 15pt;">Consultar etapa</h4>
-			<div class="row modal-content">
-				<div class="input-field col s4">
-					<input id="consultaID" type="number" />
-					<label for="consultaID">ID</label>
-				</div>
-				<div class="input-field col s4">
-					<input id="consultaAno" type="number" />
-					<label for="consultaAno">Ano</label>
-				</div>
-				<div class="input-field col s4">
-					<input id="consultaValor" type="text" />
-					<label for="consultaValor">Valor</label>
-				</div>
-			</div>
-			<div class="container modal-footer">
-				<a class="modal-close btn utils erro-2" onclick="recarrega()">Cancelar</a>
-				<a class="modal-close btn primary" onclick="consultaParametro()">Salvar</a>
-			</div>
-		</div>
-
-		<!-- FIM FORM CONSULTA ETAPA -->
-
 		<!-- FORMULÁRIO EDITA ETAPA -->
 		<div class="modal" id="EditaForm">
 			<h4 style="padding: 15pt;">Editar etapa</h4>
 			<div class="row modal-content">
 				<div class="input-field col s4">
-					<input id="editaAno" type="number" />
+					<input id="editaAno" type="number" value="2019" disabled />
 					<label for="editaAno">Ano</label>
 				</div>
 				<div class="input-field col s4">
-					<input id="editaValor" type="text" />
-					<label for="editaValor">Valor</label>
+					<input id="editaValorEtapa" type="text" oninput="verificaValor('editaValorEtapa', this.value)" />
+					<label for="editaValorEtapa">Valor</label>
 				</div>
 			</div>
 			<div class="container modal-footer">
-				<a class="modal-close btn utils erro-2" onclick="recarrega()">Cancelar</a>
+				<a class="modal-close btn utils erro-2">Cancelar</a>
 				<a class="modal-close btn primary" onclick="atualiza()">Salvar</a>
 			</div>
 		</div>
@@ -130,7 +109,7 @@
 				<h6>Tem certeza que deseja deletar esta etapa?</h6>
 			</div>
 			<div class="modal-footer">
-				<a class="modal-close btn utils erro-2" onclick="recarrega()">Cancelar</a>
+				<a class="modal-close btn utils erro-2">Cancelar</a>
 				<a class="modal-close btn primary" onclick="deleta()">Deletar</a>
 			</div>
 		</div>
