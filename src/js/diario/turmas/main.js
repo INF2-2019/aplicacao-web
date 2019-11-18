@@ -1,27 +1,24 @@
 const baseURL = 'http://localhost:8080/app/diario/turmas/';
 let currentId;
 
-function postFetch(url, data) {
-	return fetch(url, {
-		method: 'POST',
-		body: new URLSearchParams(data),
-                credentials: "include", // <-- Essa linha resolve o problema!
-                mode: "no-cors", // <-- Essa linha é pra quem a primeira não resolver ou seja, o servl
+function postFetch(url, data={},m="POST") {
+	//console.log(""+new URLSearchParams(data))
+	let obj={
+		method: m,
+		credentials: "include", // <-- Essa linha resolve o problema!
+		mode: "no-cors", // <-- Essa linha é pra quem a primeira não resolver ou seja, o servl
 		headers: new Headers({
 			'Content-type': 'application/x-www-form-urlencoded; charset=UTF-8'
 		}),
-	})
+	};
+        if(m=="POST") obj.body=new URLSearchParams(data);
+	return fetch(url, obj)
 		.then(response => response.text())
 		.then(str => (new window.DOMParser()).parseFromString(str, "text/xml"))
 }
 
 function nomeTurma(id) {
-	return fetch('http://localhost:8080/app/diario/cursos/consultar',{
-		credentials: "include", // <-- Essa linha resolve o problema!
-		mode: "no-cors" // <-- Essa linha é pra quem a primeira não resolver ou seja, o servl
-                })
-		.then(response => {return response.text()})
-		.then(str => (new window.DOMParser()).parseFromString(str, "text/xml"))
+	return postFetch('http://localhost:8080/app/diario/cursos/consultar',{},"GET")
 		.then(xml => {
 			let cn=xml.querySelectorAll("curso");
 			for(let i=0; i<cn.length; i++){
@@ -37,7 +34,6 @@ function nomeTurma(id) {
 }
 
 function retornaResposta(xml) {
-    console.log(xml);
 	let resposta = xml.childNodes[0].innerHTML;
 	return resposta
 }

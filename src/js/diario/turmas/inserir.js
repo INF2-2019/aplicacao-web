@@ -16,7 +16,6 @@ function inserir(idCursos, nome) {
 	postFetch(baseURL + 'inserir',{id,idCursos, nome})
 		.then(data => (retornaResposta(data)))
 		.then(resposta => {
-                    console.log(resposta);
 			if (resposta.indexOf("sucesso")!=-1) {
 				M.toast({ html: 'Adicionado com sucesso.', classes: 'utils sucesso-2 text-light-text' })
 			} else {
@@ -24,7 +23,7 @@ function inserir(idCursos, nome) {
 			}
 		})
 		.then(() => consultar())
-		.then(() => limpaInputs('inserir'))
+		.then(() => limpaInputs())
 		.catch(error => console.error(error))
 		$("#Seleciona-add").prop('selected', true);
 		$("#turma-inserir").formSelect();

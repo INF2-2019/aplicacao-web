@@ -18,6 +18,5 @@ function atualizar(turma, nome) {
 			}
 		})
 		.then(() => consultar())
-		.then(() => limpaInputs('atualizar'))
 		.catch(error => console.error(error))
 }

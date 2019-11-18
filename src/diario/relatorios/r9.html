@@ -2,13 +2,9 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Certificado de aluno</title>
+        <title>Relatório de Professores</title>
         <link rel="stylesheet" href="../../css/materialize.css">
         <style>
-            #certificado-nome{
-                width:35%;
-                text-align: center;
-            }
             @media print {
                 .no-print {
                   visibility: hidden;
@@ -16,16 +12,30 @@
                 html, body {
                     height: 99%;
                 }
-                img{
-                    bottom: 10%;
-                }
                 @page {
                     size: landscape
                 }
             }
+            table {
+                margin-top: 2%;
+                margin-bottom: 2%;
+            }
+            table caption {
+                font-size: 15pt;
+            }
+            .sel {
+                display: inline !important;
+                width: 22%;
+            }
+            .spanzin {
+                font-size: 15pt;
+            }
+            #divSelect {
+                margin-top: 1%;
+            }
             .oculto {
-                    display: none !important;
-                }
+                display: none !important;
+            }
         </style>
         <style type="text/css" media="print">
             @page {
@@ -47,30 +57,25 @@
 			</div>
 		</nav>
         <div class="container">
-            <div class="row white">
-                <div class="offset-s1 col s10">
-                    <h3 class="center-align">Certificado de conclusão de Curso</h3><br>
-                    <div class="row">
 
-                        <p>É através deste documento que a instituição <strong>Centro Federal
-                        de Educação Tecnológica de Minas Gerais</strong> certifica que o aluno
-                        <input id="certificado-nome" readonly placeholder="Nome do aluno" style="text-transform: uppercase;">
-                        foi aprovado em todas as disciplinas em que estava inscrito, ou seja, possui nota igual ou superior a 60 pontos em todas essas
-                    </p>
-                    </div>
-                    <div class="row">
-                        <img class="responsive-img right" src="https://www.cefetmg.br/galeria/imagens/Logo_Assinatura_CEFET_Rodape.png">
-                    </div>
-                </div>
+            <div id="divSelect" class="no-print">
+                <span class="oculto spanzin">Selecione a identificação do professor: 
+                    <select class="sel" onchange="mudado()">
+                        <option>Selecione</option>
+                    </select>
+                </span>
             </div>
-            <a id="imprimir" class="btn right no-print">Imprimir</a>
-        </div>
 
-        <h1 id="alerta" class="no-print oculto" style="text-align: center">Não foi possível gerar o certificado</h1>
+            <table class="responsive-table highlight centered">
+
+            </table>
+            <a id="imprimir" class="btn right no-print">Imprimir</a>
+            
+        </div>
 
         <script src="../../js/jquery-3.4.1.js"></script>
         <script src="../../js/materialize.js"></script>
-		<script src="../../js/diario/relatorios/r8.js"></script>
+		<script src="../../js/diario/relatorios/r9.js"></script>
 		<script src="../../js/diario/navbars/navbar.js"></script>
 		<script>cargoLogado();</script>
 		<script>$(".dropdown-trigger").dropdown();</script>

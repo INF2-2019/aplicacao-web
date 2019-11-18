@@ -62,27 +62,37 @@
     <!-- Modal para efetuar Descarte -->
     <div class="container secondar lighten-5">
       <div id="modalDescartes" class="modal" style="padding: 2%">
-        <div class="row modal-content" style="padding: 0">
+        <div class="row modal-content" style="padding: 0"><h4>Descartar Acervo</h4>
           <div>
-            <label class="primary-text text-lighten-1 col s12">ACERVO<input type="number" name="acervo"></label>
-            <label class="primary-text text-lighten-1 col s5">DATA<input type="date" name="data"></label>
-            <label class="primary-text text-lighten-1 col s6">ID FUNCIONARIO<input type="text" name="funcionario"></label>
-            <label class="primary-text text-lighten-1 col s12">MOTIVAÇÃO<textarea name="motivacao" placeholder="Insira aqui a motivação do descarte deste acervo."></textarea></label>
-            <button class="waves-effect waves-light btn-large modal-close red darken-1" id="submit_inserir_descarte">Descartar</button>
+            <label class="primary-text text-lighten-1 col s12" style="width: 100%">
+              <div class="input-field col s12" name="acervo">
+              <select class="text-lighten-1" id="acervos_disponiveis" name="acervo">
+                <option class="primary-text text-lighten-1" value="0" disabled selected><label>Escolha o acervo a ser descartado</label></option>
+              </select>
+              </div>
+            </label>
+            <label class="primary-text text-lighten-1 col s5 left"><h6>DATA</h6><input type="date" name="data"></label>
+            <label class="primary-text text-lighten-1 col s6 left"><h6>ID FUNCIONÁRIO</h6><input type="text" name="funcionario"></label>
+            <label class="primary-text text-lighten-1 col s12 "><h6 style="padding-top: 1% ">MOTIVAÇÃO</h6><textarea name="motivacao"placeholder="Insira aqui a motivação do descarte deste acervo."></textarea></label>
+            <button class="waves-effect waves-light btn-large modal-close red darken-1 m3 right " style="margin-top: 3%" id="submit_inserir_descarte">Descartar</button>
           </div>
         </div>
       </div>
     </div>
 
 		<script src="../../js/jquery-3.4.1.js"></script>
-  	<script>
-      $(document).ready(function(){
-        $('.modal').modal();
-      });
-  	</script>
+  	
     <script type="text/javascript" src="../../js/materialize.min.js"></script>
     <script src="../../js/biblioteca/descartes/ajax.js" charset="utf-8"></script>
+    <script src="../../js/biblioteca/descartes/index.js" charset="utf-8"></script>
 		<script src="../../js/biblioteca/descartes/descarteAcervo.js" charset="utf-8"></script>
+    <script>
+      $(document).ready(function () {
+        $('.modal').modal();
+        $('select').formSelect();
+        pega_acervos();
+      });
+    </script>
 		<script src="../../js/biblioteca/navbars/navbar.js"></script>
 		<script>$(".dropdown-trigger").dropdown();M.AutoInit();</script>
 		<script>cargoLogado();</script>

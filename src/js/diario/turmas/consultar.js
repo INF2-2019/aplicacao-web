@@ -1,6 +1,4 @@
 function consultar() {
-	fetch(baseURL + 'consultar')
-		.then(response => response.text())
-		.then(str => (new window.DOMParser()).parseFromString(str, "text/xml"))
+	postFetch(baseURL + 'consultar')
 		.then(xml => criaTabela(xml))
 }

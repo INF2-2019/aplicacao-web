@@ -47,8 +47,8 @@
             <table class="responsive-table" id="diario" style="padding-top: 5%">
               <colgroup>
                 <col span="1" style="width: 10%">
-                <col span="1" style="width: 50%">
-                <col span="1" style="width: 10%">
+                <col span="1" style="width: 40%">
+                <col span="1" style="width: 20%">
                 <col span="1" style="width: 10%">
                 <col span="1" style="width: 20%">
               </colgroup>
@@ -77,7 +77,7 @@
 
     <!-- Template com as disciplinas do professor -->
     <template id="template_disciplinas">
-        <tr>
+        <tr data-id="{{id}}">
           <td>{{id}}</td>
           <td>{{disciplina}}</td>
           <td>{{turma}}</td>
