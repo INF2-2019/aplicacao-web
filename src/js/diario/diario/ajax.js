@@ -191,3 +191,14 @@ function leParametrosXML(xml_dom){
 
     return obj;
 }
+
+function confirmDeletar(classe,mensagem,callback){
+    let el = geraElemento("#modal-deletar", {classe,mensagem})[0],
+        confirma = el.querySelector("#confirmar_deletar");
+    
+    confirma.addEventListener("click", ()=> callback());
+    $(el).modal();
+    
+    document.body.appendChild(el);
+    el.M_Modal.open();
+}

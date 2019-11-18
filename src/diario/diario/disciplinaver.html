@@ -19,7 +19,13 @@
 			</div>
 		</nav>
 
-    <main style="margin: 0 10%">
+    <main class="row" style="margin: 5% 10%">
+      <div class="col s12" style="margin-bottom: 5%">
+        <ul class="tabs">
+          <li class="tab col s6"><a class="active" href="#conteudo">Conteudos</a></li>
+          <li class="tab col s6"><a href="#atividade">Atividades</a></li>
+        </ul>
+      </div>
       <div id="conteudo">
         <h1>Conteúdos Ministrados</h1>
         <p>Todos os conteúdos ministrados nesta disciplina.</p>
@@ -47,7 +53,6 @@
 
         <a style="margin-top: 2%;" href="#modalConteudos" class="waves-effect waves-light primary btn-large modal-trigger" id="btnConteudos">Adicionar</a>
       </div>
-
 
       <div id="atividade">
         <h1>Atividades</h1>
@@ -92,8 +97,12 @@
                 </select>
               </label>
               <!--<label class="primary-text text-lighten-1 col s6">ETAPA <input name="etapa" type="number"></label>-->
-              <button style="margin-left: 2%; margin-top: 2%" class="btn primary espaco waves-effect waves-light btn-large modal-close" id="submit_inserir_conteudo">Enviar</button>
+              
             </div>
+          </div>
+          <div class="modal-footer">
+            <button class="waves-light waves-effect primary btn-large modal-close utils erro-2">Cancelar</button> 
+            <button class="btn primary espaco waves-effect waves-light btn-large modal-close" id="submit_inserir_conteudo">Enviar</button>
           </div>
         </div>
       </div>
@@ -112,9 +121,13 @@
                 </select>
               </label>
               <label class="primary-text text-lighten-1 col s6">VALOR<input name="valor" type="number"></label>
-              <button style="margin-left: 2%; margin-top: 2%" class="btn primary espaco waves-effect waves-light btn-large modal-close" id="submit_inserir_atividade">Enviar</button>
+              
             </div>
           </div>
+          <div class="modal-footer">
+            <button class="waves-light waves-effect primary btn-large modal-close utils erro-2">Cancelar</button> 
+            <button class="btn primary espaco waves-effect waves-light btn-large modal-close" id="submit_inserir_atividade">Enviar</button>
+          </div> 
         </div>
       </div>
 
@@ -132,9 +145,13 @@
                   <select name="etapa" id="holder_etapas_altera_conteudo" style="display: block;">
                   </select>
               </label>
-              <button style="margin-left: 2%; margin-top: 2%" class="btn primary espaco waves-effect waves-light btn-large modal-close" id="submit_alterar_conteudo">Editar</button>
+              
             </div>
           </div>
+          <div class="modal-footer">
+            <button class="waves-light waves-effect primary btn-large modal-close utils erro-2">Cancelar</button> 
+            <button class="btn primary espaco waves-effect waves-light btn-large modal-close" id="submit_alterar_conteudo">Editar</button>
+          </div> 
         </div>
       </div>
 
@@ -153,9 +170,13 @@
                   </select>
               </label>
               <label class="primary-text text-lighten-1 short col s6">VALOR<input name="valor" type="number"></label>
-              <button style="margin-left: 2%; margin-top: 2%" class="btn primary espaco waves-effect waves-light btn-large modal-close" id="submit_alterar_atividade">Editar</button>
+              
             </div>
           </div>
+          <div class="modal-footer">
+              <button class="waves-light waves-effect primary btn-large modal-close utils erro-2">Cancelar</button> 
+              <button class="btn primary espaco waves-effect waves-light btn-large modal-close" id="submit_alterar_atividade">Editar</button>
+          </div> 
         </div>
       </div>
 
@@ -184,7 +205,12 @@
                 </tbody>
               </table>
 
-              <button class="waves-light waves-effect primary btn-large modal-close" id="lancarNota">Lançar Notas</button>
+              <div class="modal-footer">
+                  <button class="waves-light waves-effect primary btn-large modal-close utils erro-2">Cancelar</button> 
+                <button class="waves-light waves-effect primary btn-large modal-close" id="lancarNota">Lançar Notas</button>
+                
+              </div> 
+              
             </div>
           </div>
         </div>
@@ -212,12 +238,28 @@
                 <tbody id="holder_faltas" data-conteudo="">
                 </tbody>
               </table>
-
-              <button class="waves-light waves-effect primary btn-large modal-close" id="lancarFalta">Lançar Faltas</button>
             </div>
           </div>
+          <div class="modal-footer">
+              <button class="waves-light waves-effect primary btn-large modal-close utils erro-2">Cancelar</button>
+              <button class="waves-light waves-effect primary btn-large modal-close" id="lancarFalta">Lançar Faltas</button>
+          </div> 
         </div>
       </div>
+
+      <!-- Modal de certeza para deletar -->
+      <template id="modal-deletar">
+        <div class="modal open" tabindex="0" style="top: 10%;">
+          <div id="conteudo" class="modal-content">
+            <h4>Deletar {{classe}}</h4>
+            <h6>Tem certeza que deseja deletar {{mensagem}}?</h6>
+          </div>
+          <div class="modal-footer">
+            <a class="modal-close btn utils erro-2">Cancelar</a>
+            <a class="modal-close btn primary" id="confirmar_deletar">Deletar</a>
+          </div>
+        </div>
+      </template>
 
       <!-- Template de linha da tabela conteudos -->
       <template id="template_conteudos">
@@ -248,8 +290,8 @@
         <tr data-matricula="{{matricula_raw}}">
           <td>{{matricula}}</td>
           <td>{{nome}}</td>
-          <td><input type="number" name="falta" data-falta_inicial="" step="1" min="0"></td>
-          <td><input type="number" name="nota" data-nota_inicial="" min="0"></td>
+          <td><input type="number" name="falta" step="1" min="0"></td>
+          <td><input type="number" name="nota" min="0"></td>
         </tr>
       </template>
 
@@ -258,7 +300,7 @@
         <tr data-matricula="{{matricula_raw}}">
           <td>{{matricula}}</td>
           <td>{{nome}}</td>
-          <td><input type="number" name="falta" data-falta_inicial="" step="1" min="0"></td>
+          <td><input type="number" name="falta" step="1" min="0"></td>
         </tr>
       </template>
 
@@ -271,6 +313,7 @@
       <script>
         $(document).ready(function(){
           $('.modal').modal();
+          $('.tabs').tabs();
         });
       </script>
       <script src="../../js/materialize.min.js"></script>

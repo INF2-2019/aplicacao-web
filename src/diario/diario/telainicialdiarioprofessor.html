@@ -18,21 +18,24 @@
 					<li style="width:200px;" id="nav-funcoes"><a class="dropdown-trigger" href="#!" data-target="dropdown1">Funções<i class="material-icons right">arrow_drop_down</i></a></li>
 				</ul>
 			</div>
-		</nav>
+    </nav>
+    
+    <!-- Template com dados do professor para exibição -->
+    <template id="template_professor">
+        <div class="col s5"> <h6 class="teal-text">ID (SIAPE) </h6> <p class="campo">{{id}}</p></div>
+        <div class="col s5"> <h6 class="teal-text">ID Departamento</h6><p class="campo">{{id_depto}}</p> </div>
+        <div class="col s7"> <h6 class="teal-text">Nome</h6> <p class="campo">{{nome}}</p> </div>
+        <div class="col s4"> <h6 class="teal-text">Titulação </h6> <p class="campo">{{titulacao}}</p> </div>
+    </template>
 
     <main style="margin: 0 10%">
       <div>
         <h3> Dados Pessoais </h3>
         <div class="row area" id="dados_professor">
-            <!-- Template com dados do professor para exibição -->
-            <template class="row area" id="template_professor">
-              <div class="col s5"> <h6 class="teal-text">ID (SIAPE) </h6> <p class="campo">{{id}}</p></div>
-              <div class="col s5"> <h6 class="teal-text">ID Departamento</h6><p class="campo">{{id_depto}}</p> </div>
-              <div class="col s7"> <h6 class="teal-text">Nome</h6> <p class="campo">{{nome}}</p> </div>
-              <div class="col s4"> <h6 class="teal-text">Titulação </h6> <p class="campo">{{titulacao}}</p> </div>
-          </template>
+            
         </div>
       </div>
+      
 
       <div>
         <h1>Disciplinas</h1>

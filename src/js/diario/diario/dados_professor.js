@@ -30,7 +30,6 @@ const infos = {
 }
 
 
-
 function consultarDadosProfessor(info, resposta_dom) {
     let args;
     const holder = document.querySelector(info.queries.holder);
