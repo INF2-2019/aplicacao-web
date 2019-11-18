@@ -4,7 +4,7 @@ let deptosConsultados;
 function criaTabela(elementos) {
 	const tabela = document.createElement("table")
 	deptosConsultados = 0
-	elementos = elementos.childNodes[0].children
+	elementos = elementos.childNodes[0].querySelectorAll("turma")
 	tabela.classList.add("highlight")
 
 	for (let i = 0; i < elementos.length; i++) {
