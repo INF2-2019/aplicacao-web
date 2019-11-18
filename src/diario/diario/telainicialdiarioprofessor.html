@@ -24,21 +24,14 @@
       <div>
         <h3> Dados Pessoais </h3>
         <div class="row area" id="dados_professor">
-            <div class="col s5"> <h6 class="teal-text">ID (SIAPE) </h6> <p class="campo">9999999</p></div>
-            <div class="col s5"> <h6 class="teal-text">ID Departamento</h6><p class="campo">00000001</p> </div>
-            <div class="col s7"> <h6 class="teal-text">Nome</h6> <p class="campo">MARÍLIA MENDONÇA DA SILVA</p> </div>
-            <div class="col s4"> <h6 class="teal-text">Titulação </h6> <p class="campo">DOUTORADO</p> </div>
+            <!-- Template com dados do professor para exibição -->
+            <template class="row area" id="template_professor">
+              <div class="col s5"> <h6 class="teal-text">ID (SIAPE) </h6> <p class="campo">{{id}}</p></div>
+              <div class="col s5"> <h6 class="teal-text">ID Departamento</h6><p class="campo">{{id_depto}}</p> </div>
+              <div class="col s7"> <h6 class="teal-text">Nome</h6> <p class="campo">{{nome}}</p> </div>
+              <div class="col s4"> <h6 class="teal-text">Titulação </h6> <p class="campo">{{titulacao}}</p> </div>
+          </template>
         </div>
-
-        <!-- Template com dados do professor para exibição -->
-        <template id="template_professor">
-
-            <div class="col s5"> <h6 class="teal-text">ID (SIAPE) </h6> <p class="campo">{{id}}</p></div>
-            <div class="col s5"> <h6 class="teal-text">ID Departamento</h6><p class="campo">{{id_depto}}</p> </div>
-            <div class="col s7"> <h6 class="teal-text">Nome</h6> <p class="campo">{{nome}}</p> </div>
-            <div class="col s4"> <h6 class="teal-text">Titulação </h6> <p class="campo">{{titulacao}}</p> </div>
-
-        </template>
       </div>
 
       <div>
@@ -61,13 +54,6 @@
               </thead>
 
               <tbody id="holder_diario">
-                <tr>
-                  <td>001</td>
-                  <td>AULA DE PEBOLIM</td>
-                  <td>A</td>
-                  <td>22</td>
-                  <td><a href="disciplinaver.html?disciplina=1" class="waves-effect waves btn-small left modal-trigger">visualizar</a></td>
-                </tr>
               </tbody>
             </table>
         </div>
