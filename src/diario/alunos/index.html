@@ -3,10 +3,15 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Manipulação de Alunos</title>
+        <title>Manutenção de Alunos</title>
         <link rel="stylesheet" href="../../css/materialize.css">
         <link rel="stylesheet" href="../../css/estilo.css">
     </head>
+    <style>
+            td, th {
+                text-align: center;
+            }
+        </style>
     <body class="background">
         <ul id="dropdown1" class="dropdown-content">
 		</ul>
@@ -22,7 +27,7 @@
       <div class="container" >
         <div class="row">
           <h2 class="col s5">Alunos</h2>
-          <a  class="botaoAdicionar btn primary editar modal-trigger col right" style="margin-top: 6vh" href="#modal-cadastro">Adicionar</a>
+          
         </div>
         <div class="row">
           <div class="input-field col s2">
@@ -34,19 +39,12 @@
             <label>Filtrar por:</label>
           </div>
 
-          <div class="col s5 center-align">
-      			<nav>
-      				<div class="nav-wrapper">
-      					<form>
-      						<div class="input-field">
-      							<input id="search" class="primary" type="search" oninput="pesquisa()" required>
-      							<label class="label-icon" for="search"><i class="  material-icons"></i></label>
-      							<i class="material-icons">close</i>
-      						</div>
-      					</form>
-      				</div>
-      			</nav>
-    		</div>
+          <div class="input-field col s6 l4">
+                <i class="material-icons prefix">search</i>
+                <input id="search" type="text" autocomplete="off" oninput="pesquisa()">
+                <label for="search">Pesquisar</label>
+            </div>
+        <a id="botao-manutencao-campi" class="btn right primary col s12 l2 editar modal-trigger botaoAdicionar right" href="#modal-cadastro">Adicionar</a>
        </div>
 
           <div id="divTabela">
@@ -55,7 +53,7 @@
             </table>
           </div>
 
-         <div id="modal-cadastro" class="modal modal-manutencao-alunos background modal-fixed-footer">
+         <div id="modal-cadastro" class="modal modal-manutencao-alunos background ">
               <div class="modal-content-manutencao-campi background">
                 <h4 style="padding: 15pt;">Novo Aluno</h4>
                   <div class="container">
@@ -143,7 +141,7 @@
                               </div>
                               <div class="row">
                                   <div class="col s9">
-                                      <span class="primary-text">Link da foto*</span><input class="obrigatorio-cadastro" name="foto-cadastro" type="text" id="fototext" onchange="loadFoto()">
+                                      <span class="primary-text">Link da foto</span><input class="" name="foto-cadastro" type="text" id="fototext" onchange="loadFoto()">
                                   </div>
                               </div>
                           </div>
@@ -155,12 +153,12 @@
               </div>
               <div class="modal-footer modal-footer-manutencao-alunos background">
                   <span class="primary-text"><i>Os campos com * são obrigatórios</i></span><br>
-                  <button class="botaoCancelar modal-close btns waves-effect teal lighten-1 btn">Cancelar</button>
-                  <button class="btns waves-effect blue darken-3 btn" id="btConfirmaCadastro" >Confirmar</button>
+                  <button class="botaoCancelar modal-close btns waves-effect red darken-2 btn">Cancelar</button>
+                  <button class="btns waves-effect primary btn" id="btConfirmaCadastro" >Confirmar</button>
               </div>
           </div>
 
-         <div id="modal-info" class="modal modal-manutencao-alunos background bakcground modal-fixed-footer">
+         <div id="modal-info" class="modal modal-manutencao-alunos background bakcground ">
               <div class="modal-content-manutencao-campi background">
                 <h4 style="padding: 15pt;">Informações</h4>
                   <div class="container">
@@ -225,12 +223,12 @@
                   </div>
               </div>
              <div class="modal-footer modal-footer-manutencao-alunos background">
-                  <button class="modal-close btns waves-effect teal lighten-1 btn">Fechar</button>
+                  <button class="modal-close btns waves-effect primary btn">Fechar</button>
              </div>
           </div>
 
 
-         <div id="modal-editar" class="modal modal-manutencao-alunos background modal-fixed-footer">
+         <div id="modal-editar" class="modal modal-manutencao-alunos background ">
               <div class="modal-content-manutencao-campi background">
                 <h4 style="padding: 15pt;">Editar Aluno</h4>
                   <div class="container" id="c1">
@@ -331,8 +329,8 @@
               <div class="modal-footer modal-footer-manutencao-alunos background">
                   <span class="primary-text"><i>Os campos com * são obrigatórios</i></span><br>
                   <span class="primary-text"><i>Os campos vazios não alterarão os valores antigos.</i></span><br>
-                  <button class="botaoCancelar modal-close btns waves-effect teal lighten-1 btn">Cancelar</button>
-                  <button class="waves-effect blue darken-3 btn modal-close" id="btConfirmaEditar">Confirmar</button>
+                  <button class="botaoCancelar modal-close btns waves-effect red darken-2 btn">Cancelar</button>
+                  <button class="waves-effect primary btn modal-close" id="btConfirmaEditar">Confirmar</button>
               </div>
           </div>
 
