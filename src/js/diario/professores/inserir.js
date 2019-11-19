@@ -33,6 +33,7 @@ function jqueryAjax(id, idDepto, nome, senha, email, titulacao) {
 	})
 	.then(
 		function success(name) {
+			M.toast({ html: "Professor inserido com sucesso!", classes: "utils sucesso-2 text-light-text" });
 			atualizarTabela();
 		},
 

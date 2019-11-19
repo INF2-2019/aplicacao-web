@@ -1,8 +1,12 @@
 //const ENDERECO = "http://localhost:8080/app";
 const ROTA_CONSULTA = "/diario/professores/consultar";
+const ROTA_CONSULTA_DEPTO = "/diario/departamentos/consulta";
 const ROTA_EDICAO = "/diario/professores/atualizar";
 const ROTA_EDITAR_SENHA = "/diario/professores/atualizar-senha";
 const REQUISITAR_ID_PROPRIO = -1;
+
+let depto;
+let titu;
 
 function carregarPerfil() {
 	let xhttp = new XMLHttpRequest();
@@ -18,8 +22,49 @@ function carregarPerfil() {
 				let inputs = document.getElementsByTagName('input');
 				var dados = elemento.children;
 				for(i in dados) {
-					inputs[i].value = dados[i].textContent;
+					if(i == 4) inputs[i].value = titulacao(dados[i].textContent);
+					else inputs[i].value = dados[i].textContent;
+					if(i == 1) obterNomeDepto(dados[i].textContent);
 				}
+				M.updateTextFields();
+			}
+			else {
+				window.alert(xhttp.status +": "+ raiz.firstElementChild.textContent);
+			}
+		}
+	};
+	xhttp.send();
+}
+
+function titulacao(titulacao) {
+	titu = titulacao
+	switch(titulacao) {
+		case "g":
+		case "G": return "Gradudado";
+		case "e":
+		case "E": return "Especializado";
+		case "d":
+		case "D": return "Doutorado";
+		case "m":
+		case "M": return "Mestrado";
+	}
+	return titulacao;
+}
+
+function obterNomeDepto(idDepto) {
+	depto = idDepto;
+	let xhttp = new XMLHttpRequest();
+
+	xhttp.open("GET", ENDERECO + ROTA_CONSULTA_DEPTO + "?id=" + idDepto, true);
+	xhttp.withCredentials = true;
+	xhttp.onreadystatechange = function() {
+		if(xhttp.readyState === xhttp.DONE) {
+			let raiz = xhttp.responseXML.firstElementChild;
+			if(xhttp.status === 200) {
+				let elemento = raiz.firstElementChild;
+				let inputs = document.getElementsByTagName('input');
+				var dados = elemento.children;
+				inputs[1].value = dados[2].textContent;
 				M.updateTextFields();
 			}
 			else {
@@ -32,13 +77,11 @@ function carregarPerfil() {
 
 function salvar() {
 	let id = document.getElementById("siape").value;
-	let idDepto = document.getElementById("depto").value;
 	let nome = document.getElementById("nome").value;
 	let senha = "";
 	let email = document.getElementById("email").value;
-	let titulacao = document.getElementById("titulacao").value;
 
-	alterarPost(id, idDepto, nome, senha, email, titulacao);
+	alterarPost(id, depto, nome, senha, email, titu);
 }
 
 function alterarPost(id, idDepto, nome, senha, email, titulacao) {

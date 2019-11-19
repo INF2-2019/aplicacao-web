@@ -53,12 +53,12 @@
 				<div class="modal-content row col s12" style="padding:0;">
 					<h4 style="padding: 15pt;">Editar Professor</h4>
 					<div class="row modal-content" style="margin:0;">
-						<label class="primary-text text-lighten-1 short col s3"> SIAPE: <input type="number" name="id" disabled="true"></label>
-						<label class="primary-text text-lighten-1 short col s7">Nome: <input type="text" name="nome"></label>
-						<label class="primary-text text-lighten-1 short col s2">Id-Depto: <input type="number" name="id-depto"></label>
-						<label class="primary-text text-lighten-1 short validate col s3">Senha: <input type="password" name="senha"></label>
-						<label class="primary-text text-lighten-1 short col s6">E-mail: <input type="text" name="email"></label>
-						<label class="primary-text text-lighten-1 short col s3">Titulação:
+						<label class="primary-text text-lighten-1 short col m3 s12"> SIAPE: <input type="number" name="id" disabled="true"></label>
+						<label class="primary-text text-lighten-1 short col m6 s12">Nome: <input type="text" name="nome"></label>
+						<label class="primary-text text-lighten-1 short col m3 s12">Id-Depto: <input type="number" name="id-depto"></label>
+						<label class="primary-text text-lighten-1 short validate col m3 s12">Senha: <input type="password" placeholder="Inalterada" name="senha"></label>
+						<label class="primary-text text-lighten-1 short col m6 s12">E-mail: <input type="text" name="email"></label>
+						<label class="primary-text text-lighten-1 short col m3 s12">Titulação:
 							<select name="titulacao">
 								<option value = "M" >Mestre</option>
 								<option value = "D" >Doutor</option>
@@ -68,8 +68,8 @@
 						</label>
 					</div>
 					<div class="row modal-content" style="margin:0;">
-						<button name="alterar" onclick="alterar()" class="btn primary espaco  waves-effect waves-ligth btn modal-close">Confirmar</button>
-						<a class="modal-close btn utils erro-2">Cancelar</a>
+						<a class="modal-close btn utils erro-2 col s5 m3 offset-m5">Cancelar</a>
+						<button name="alterar" onclick="alterar()" class="btn primary waves-effect waves-ligth modal-close col s6 offset-s1 m3 offset-m1">Salvar</button>
 					</div>
 				</div>
 			</div>
@@ -78,13 +78,13 @@
 		<div class="container secondary lighten-5">
 			<div id="modalDeleta" class="modal">
 				<div class="modal-content row col s12" style="padding:0;">
-					<h4 style="padding: 15pt;">Tem certeza que deseja deletar esse professor?</h4>
+					<h4 style="padding: 15pt;">Deletar professor</h4>
 					<div class="row modal-content" style="margin:0;">
-
+						<p class="flow-text black-text">Tem certeza que deseja deletar este professor?</p>
 					</div>
 					<div class="row modal-content" style="margin:0;">
-						<button onclick="chamaDeletar()"  class="btn primary espaco  waves-effect waves-ligth btn modal-close">Confirmar</button>
-						<a class="modal-close btn utils erro-2">Cancelar</a>
+						<a class="modal-close btn utils erro-2 col s5 m3 offset-m5">Cancelar</a>
+						<button onclick="chamaDeletar()"  class="primary waves-effect waves-ligth btn modal-close col s6 offset-s1 m3 offset-m1">Confirmar</button>
 					</div>
 				</div>
 			</div>
@@ -95,12 +95,12 @@
 				<div class="modal-content row col s12" style="padding:0;">
 					<h4 style="padding: 15pt;">Insere Novo Professor</h4>
 					<div class="row modal-content" style="margin:0;">
-						<label class="primary-text text-lighten-1 short col s3"> SIAPE: <input type="number" name="idInsere"></label>
-						<label class="primary-text text-lighten-1 short col s7">Nome: <input type="text" name="nomeInsere"></label>
-						<label class="primary-text text-lighten-1 short col s2">Id-Depto: <input type="number" name="id-deptoInsere"></label>
-						<label class="primary-text text-lighten-1 short validate col s3">Senha: <input type="password" name="senhaInsere"></label>
-						<label class="primary-text text-lighten-1 short col s6">E-mail: <input type="text" name="emailInsere"></label>
-						<label class="primary-text text-lighten-1 short col s3">Titulação:
+						<label class="primary-text text-lighten-1 short col m3 s12"> SIAPE: <input type="number" name="idInsere"></label>
+						<label class="primary-text text-lighten-1 short col m6 s12">Nome: <input type="text" name="nomeInsere"></label>
+						<label class="primary-text text-lighten-1 short col m3 s12">Id-Depto: <input type="number" name="id-deptoInsere"></label>
+						<label class="primary-text text-lighten-1 short validate col m3 s12">Senha: <input type="password" name="senhaInsere"></label>
+						<label class="primary-text text-lighten-1 short col m6 s12">E-mail: <input type="text" name="emailInsere"></label>
+						<label class="primary-text text-lighten-1 short col m3 s12">Titulação:
 							<select name="titulacaoInsere">
 								<option value = "M" >Mestre</option>
 								<option value = "D" >Doutor</option>
@@ -110,8 +110,8 @@
 						</label>
 					</div>
 					<div class="row modal-content" style="margin:0;">
-						<button name="inserir" onclick="inserir()" class="btn primary espaco  waves-effect waves-ligth btn modal-close">Confirmar</button>
-						<a class="modal-close btn utils erro-2">Cancelar</a>
+						<a class="modal-close btn utils erro-2 col s5 m3 offset-m5">Cancelar</a>
+						<button name="inserir" onclick="inserir()" class="primary waves-effect waves-ligth btn modal-close col s6 offset-s1 m3 offset-m1">Confirmar</button>
 					</div>
 				</div>
 			</div>
@@ -126,7 +126,7 @@
 
 					</div>
 					<div class="row modal-content" style="margin:0;">
-						<a class="modal-close btn utils erro-2">Ok</a>
+						<a class="modal-close btn utils erro-2 right">Fechar</a>
 					</div>
 				</div>
 			</div>
