@@ -24,21 +24,15 @@
       <div style="width: 90% !important">
         <h3>Dados Pessoais</h3>
         <div class=" row area" id="dados_aluno">
-          <div class="col s3"> <h6 class="teal-text">CPF</h6> <p class="campo">9999999</p></div>
-          <div class="col s9"> <h6 class="teal-text">Nome</h6><p class="campo">JOÃO DE SANTO CRISTO</p> </div>
-          <div class="col s3"> <h6 class="teal-text">Sexo</h6> <p class="campo">MASCULINO</p> </div>
-          <div class="col s3"> <h6 class="teal-text">Nascimento </h6> <p class="campo">22/01/2001</p> </div>
-          <div class="col s6"> <h6 class="teal-text">Email</h6> <p class="campo">joãodesantocristo@legiaourbana.com</p></div>
+          <template id="template_aluno">
+            <div class="col s3"> <h6 class="teal-text">CPF</h6> <p class="campo">{{id}}</p></div>
+            <div class="col s9"> <h6 class="teal-text">Nome</h6><p class="campo">{{nome}}</p> </div>
+            <div class="col s3"> <h6 class="teal-text">Sexo</h6> <p class="campo">{{sexo}}</p> </div>
+            <div class="col s3"> <h6 class="teal-text">Nascimento </h6> <p class="campo">{{nascimento}}</p> </div>
+            <div class="col s6"> <h6 class="teal-text">Email</h6> <p class="campo">{{email}}</p></div>
+          </template>
         </div>
       </div>
-      
-      <template id="template_aluno">
-        <div class="col s3"> <h6 class="teal-text">CPF</h6> <p class="campo">{{id}}</p></div>
-        <div class="col s9"> <h6 class="teal-text">Nome</h6><p class="campo">{{nome}}</p> </div>
-        <div class="col s3"> <h6 class="teal-text">Sexo</h6> <p class="campo">{{sexo}}</p> </div>
-        <div class="col s3"> <h6 class="teal-text">Nascimento </h6> <p class="campo">{{nascimento}}</p> </div>
-        <div class="col s6"> <h6 class="teal-text">Email</h6> <p class="campo">{{email}}</p></div>
-      </template>
 
       <div>
         <h1>Boletim Acadêmico</h1>
@@ -61,32 +55,6 @@
             </thead>
 
             <tbody id="holder_disciplinas">
-              <tr>
-                <td>001</td>
-                <td class="">AULA DE PEBOLIM</td>
-                <td>10</td>
-                <td>60</td>
-                <td><a href="#modalConteudoAluno" class="waves-effect waves-light light-blue accent 3 btn-small left modal-trigger">Conteúdos</a></td>
-                <td><a href="#modalAtividadeAluno" class="waves-effect waves  btn-small left modal-trigger">Atividades</a></td>
-              </tr>
-
-            <tr>
-                <td>001</td>
-                <td class=" ">MATEMÁTICA</td>
-                <td>2</td>
-                <td>75</td>
-                <td><a href="#modalConteudoAluno" class="waves-effect waves-light light-blue accent 3 btn-small left modal-trigger">Conteúdos</a></td>
-                <td><a href="#modalAtividadeAluno" class="waves-effect waves  btn-small left modal-trigger">Atividades</a></td>
-            </tr>
-
-            <tr>
-                <td>001</td>
-                <td class="">PRODUÇÃO DE TIKTOK</td>
-                <td>0</td>
-                <td>100</td>
-                <td><a href="#modalConteudoAluno" class="waves-effect waves-light light-blue accent 3 btn-small left modal-trigger">Conteúdos</a></td>
-                <td><a href="#modalAtividadeAluno" class="waves-effect waves btn-small left modal-trigger">Atividades</a></td>
-            </tr>
             </tbody>
           </table>
         </div>
@@ -122,10 +90,6 @@
               </thead>
 
               <tbody id="holder_conteudos">
-                <tr>
-                  <td>Aula de Forró</td>
-                  <td>12/10</td>
-                </tr>
               </tbody>
             </table>
           </div>
@@ -157,11 +121,6 @@
               </thead>
 
               <tbody id="holder_atividades">
-                <tr>
-                  <td>Iniciação ao Forró</td>
-                  <td>10</td>
-                  <td>9,99</td>
-                </tr>
               </tbody>
             </table>
           </div>

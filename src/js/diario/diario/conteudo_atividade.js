@@ -211,8 +211,9 @@ async function consultaDiarioConteudoFalta(info, el){
 function deletarConteudo(info, pai) {
     let id = pai.dataset.id;
 
-    if (window.confirm("Você tem certeza que deseja deletar o conteudo \"" + pai.dataset.conteudo + "\"?\nUma vez deletado, não há mais volta."))
+    confirmDeletar("conteudo",pai.dataset.conteudo,()=>{
         requisicao("deletarConteudo", { id });
+    });   
 }
 
 
@@ -285,8 +286,9 @@ function consultaDiarioConteudoNota(info, el) {
 function deletarAtividade(info, pai) {
     let id = pai.dataset.id;
 
-    if (window.confirm("Você tem certeza que deseja deletar a atividade \"" + pai.dataset.atividade + "\"?\nUma vez deletada, não há mais volta."))
+    confirmDeletar("atividade",pai.dataset.atividade,()=>{
         requisicao("deletarAtividade", { id });
+    });  
 }
 
 

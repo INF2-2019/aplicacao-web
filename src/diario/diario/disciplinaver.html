@@ -19,7 +19,13 @@
 			</div>
 		</nav>
 
-    <main style="margin: 0 10%">
+    <main class="row" style="margin: 5% 10%">
+      <div class="col s12" style="margin-bottom: 5%">
+        <ul class="tabs">
+          <li class="tab col s6"><a class="active" href="#conteudo">Conteudos</a></li>
+          <li class="tab col s6"><a href="#atividade">Atividades</a></li>
+        </ul>
+      </div>
       <div id="conteudo">
         <h1>Conteúdos Ministrados</h1>
         <p>Todos os conteúdos ministrados nesta disciplina.</p>
@@ -42,20 +48,11 @@
               </thead>
 
                 <tbody id="holder_conteudos">
-                  <tr>
-                    <td>Física</td>
-                    <td>1</td>
-                    <td>29/10/2019</td>
-                    <td><a href="#modalLancaFalta" class="waves-effect waves-light btn-small modal-trigger light-blue accent 3 falta">Faltas</a></td>
-                    <td><a href="#modalAlteraConteudos" class="waves-effect waves-light btn-small modal-trigger edit">Editar</a></td>
-                    <td><a class="waves-effect waves-light btn-small modal-trigger red darken 1 delete">Deletar</a></td>
-                  </tr>
                 </tbody>
           </table>
 
         <a style="margin-top: 2%;" href="#modalConteudos" class="waves-effect waves-light primary btn-large modal-trigger" id="btnConteudos">Adicionar</a>
       </div>
-
 
       <div id="atividade">
         <h1>Atividades</h1>
@@ -80,14 +77,6 @@
           </thead>
 
           <tbody id="holder_atividades">
-            <tr>
-              <td>Física</td>
-              <td>1</td>
-              <td>10</td>
-              <td><a href="#modalLancaNota" class="waves-effect waves-light btn-small modal-trigger light-blue accent 3 falta">Notas</a></td>
-              <td><a href="#modalAlteraAtividade" class="waves-effect waves-light btn-small modal-trigger edit">Editar</a></td>
-              <td><a class="waves-effect waves-light btn-small modal-trigger red darken-1 delete">Deletar</a></td>
-            </tr>
           </tbody>
         </table>
 
@@ -105,12 +94,15 @@
               <label class="primary-text text-lighten-1 col s5">DATA <input name="data" type="date"></label>
               <label class="primary-text text-lighten-1 col s6">ETAPA
                 <select name="etapa" id="holder_etapas_lanca_conteudo" style="display: block;">
-                  <option value="1">1</option>
                 </select>
               </label>
               <!--<label class="primary-text text-lighten-1 col s6">ETAPA <input name="etapa" type="number"></label>-->
-              <button style="margin-left: 2%; margin-top: 2%" class="btn primary espaco waves-effect waves-light btn-large modal-close" id="submit_inserir_conteudo">Enviar</button>
+              
             </div>
+          </div>
+          <div class="modal-footer">
+            <button class="waves-light waves-effect primary btn-large modal-close utils erro-2">Cancelar</button> 
+            <button class="btn primary espaco waves-effect waves-light btn-large modal-close" id="submit_inserir_conteudo">Enviar</button>
           </div>
         </div>
       </div>
@@ -126,13 +118,16 @@
               <label class="primary-text text-lighten-1 col s6">DATA <input name="data" type="date"></label>
               <label class="primary-text text-lighten-1 col s6">ETAPA
                 <select name="etapa" id="holder_etapas_lanca_atividade" style="display: block;">
-                  <option value="1">1</option>
                 </select>
               </label>
               <label class="primary-text text-lighten-1 col s6">VALOR<input name="valor" type="number"></label>
-              <button style="margin-left: 2%; margin-top: 2%" class="btn primary espaco waves-effect waves-light btn-large modal-close" id="submit_inserir_atividade">Enviar</button>
+              
             </div>
           </div>
+          <div class="modal-footer">
+            <button class="waves-light waves-effect primary btn-large modal-close utils erro-2">Cancelar</button> 
+            <button class="btn primary espaco waves-effect waves-light btn-large modal-close" id="submit_inserir_atividade">Enviar</button>
+          </div> 
         </div>
       </div>
 
@@ -148,13 +143,15 @@
               <label class="primary-text text-lighten-1 col s5">DATA <input name="data" type="date"></label>
               <label class="primary-text text-lighten-1 col s6" style="display: block;">ETAPA
                   <select name="etapa" id="holder_etapas_altera_conteudo" style="display: block;">
-                    <option value="1">1</option>
                   </select>
               </label>
-              <!--<label class="primary-text text-lighten-1 col s6">ETAPA <input name="etapa" type="number"></label>-->
-              <button style="margin-left: 2%; margin-top: 2%" class="btn primary espaco waves-effect waves-light btn-large modal-close" id="submit_alterar_conteudo">Editar</button>
+              
             </div>
           </div>
+          <div class="modal-footer">
+            <button class="waves-light waves-effect primary btn-large modal-close utils erro-2">Cancelar</button> 
+            <button class="btn primary espaco waves-effect waves-light btn-large modal-close" id="submit_alterar_conteudo">Editar</button>
+          </div> 
         </div>
       </div>
 
@@ -170,14 +167,16 @@
               <label class="primary-text text-lighten-1 short col s6">DATA <input name="data" type="date"></label>
               <label class="primary-text text-lighten-1 col s6">ETAPA
                   <select name="etapa" id="holder_etapas_altera_atividade" style="display: block;">
-                    <option value="1">1</option>
                   </select>
               </label>
-              <!--<label class="primary-text text-lighten-1 short col s6">ETAPA<input name="etapa" type="number"></label>-->
               <label class="primary-text text-lighten-1 short col s6">VALOR<input name="valor" type="number"></label>
-              <button style="margin-left: 2%; margin-top: 2%" class="btn primary espaco waves-effect waves-light btn-large modal-close" id="submit_alterar_atividade">Editar</button>
+              
             </div>
           </div>
+          <div class="modal-footer">
+              <button class="waves-light waves-effect primary btn-large modal-close utils erro-2">Cancelar</button> 
+              <button class="btn primary espaco waves-effect waves-light btn-large modal-close" id="submit_alterar_atividade">Editar</button>
+          </div> 
         </div>
       </div>
 
@@ -203,16 +202,15 @@
                 </thead>
 
                 <tbody id="holder_notas_faltas" data-conteudo="">
-                  <tr>
-                    <td>000000100</td>
-                    <td>Reginaura Clevertson Santa Maria</td>
-                    <td><input type="number" name="falta" step="1" min="0"></td>
-                    <td><input type="number" name="nota"></td>
-                  </tr>
                 </tbody>
               </table>
 
-              <button class="waves-light waves-effect primary btn-large modal-close" id="lancarNota">Lançar Notas</button>
+              <div class="modal-footer">
+                  <button class="waves-light waves-effect primary btn-large modal-close utils erro-2">Cancelar</button> 
+                <button class="waves-light waves-effect primary btn-large modal-close" id="lancarNota">Lançar Notas</button>
+                
+              </div> 
+              
             </div>
           </div>
         </div>
@@ -238,19 +236,30 @@
                 </thead>
 
                 <tbody id="holder_faltas" data-conteudo="">
-                  <tr>
-                    <td>000000100</td>
-                    <td>Reginaura Clevertson Santa Maria</td>
-                    <td><input type="number" name="falta" step="1" min="0"></td>
-                  </tr>
                 </tbody>
               </table>
-
-              <button class="waves-light waves-effect primary btn-large modal-close" id="lancarFalta">Lançar Faltas</button>
             </div>
           </div>
+          <div class="modal-footer">
+              <button class="waves-light waves-effect primary btn-large modal-close utils erro-2">Cancelar</button>
+              <button class="waves-light waves-effect primary btn-large modal-close" id="lancarFalta">Lançar Faltas</button>
+          </div> 
         </div>
       </div>
+
+      <!-- Modal de certeza para deletar -->
+      <template id="modal-deletar">
+        <div class="modal open" tabindex="0" style="top: 10%;">
+          <div id="conteudo" class="modal-content">
+            <h4>Deletar {{classe}}</h4>
+            <h6>Tem certeza que deseja deletar {{mensagem}}?</h6>
+          </div>
+          <div class="modal-footer">
+            <a class="modal-close btn utils erro-2">Cancelar</a>
+            <a class="modal-close btn primary" id="confirmar_deletar">Deletar</a>
+          </div>
+        </div>
+      </template>
 
       <!-- Template de linha da tabela conteudos -->
       <template id="template_conteudos">
@@ -281,8 +290,8 @@
         <tr data-matricula="{{matricula_raw}}">
           <td>{{matricula}}</td>
           <td>{{nome}}</td>
-          <td><input type="number" name="falta" data-falta_inicial="" step="1" min="0"></td>
-          <td><input type="number" name="nota" data-nota_inicial="" min="0"></td>
+          <td><input type="number" name="falta" step="1" min="0"></td>
+          <td><input type="number" name="nota" min="0"></td>
         </tr>
       </template>
 
@@ -291,7 +300,7 @@
         <tr data-matricula="{{matricula_raw}}">
           <td>{{matricula}}</td>
           <td>{{nome}}</td>
-          <td><input type="number" name="falta" data-falta_inicial="" step="1" min="0"></td>
+          <td><input type="number" name="falta" step="1" min="0"></td>
         </tr>
       </template>
 
@@ -304,6 +313,7 @@
       <script>
         $(document).ready(function(){
           $('.modal').modal();
+          $('.tabs').tabs();
         });
       </script>
       <script src="../../js/materialize.min.js"></script>
