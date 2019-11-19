@@ -18,7 +18,7 @@ function cadastrar(){
 }
 
 function salvar() {
-	$.ajax(ENDERECO+"/diario/admin/cadastrar", {
+	$.ajax(ENDERECO+"/biblioteca/admin/cadastrar", {
 		data : {
 			nome : nome,
 			usuario : usuario,

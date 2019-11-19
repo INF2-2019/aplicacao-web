@@ -24,7 +24,7 @@ function navADMIN() {
   	ul_itens.insertBefore(li_itens[i],ul_funcoes);
   }
 
-  for(i=0;i<6;i++){
+  for(i=0;i<7;i++){
   	li_dropdown[i] = document.createElement("li");
   }
   li_dropdown[0].innerHTML = "<a href='../acervo/index.html'>Acervos</a>";
@@ -33,6 +33,7 @@ function navADMIN() {
   li_dropdown[3].innerHTML = "<a href='../descartes/index.html'>Descartes</a>";
   li_dropdown[4].innerHTML = "<a href='../emprestimos/index.html'>Empréstimos</a>";
   li_dropdown[5].innerHTML = "<a href='../reservas/index.html'>Reservas</a>";
+  li_dropdown[6].innerHTML = "<a href='../adm/index.html'>Cadastro de admin</a>";
   for(i=0;i<li_dropdown.length;i++){
   	ul_dropdown.appendChild(li_dropdown[i]);
   }
