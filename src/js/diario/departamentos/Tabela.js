@@ -1,5 +1,6 @@
 const tbody = document.querySelector("tbody");
 let idAtual;
+let dados;
 function atualizaTabela() {
 	tbody.innerHTML = "";
 	for(let depto of deptos) {
@@ -26,7 +27,7 @@ function atualizaTabela() {
 		tr.appendChild(uf);
 
 		const acoes = document.createElement("td");
-		acoes.appendChild(botaoEditar(depto.id));
+		acoes.appendChild(botaoEditar(depto));
 		acoes.appendChild(botaoExcluir(depto.id));
 		tr.appendChild(acoes);
 
@@ -34,12 +35,16 @@ function atualizaTabela() {
 	}
 }
 
-function botaoEditar(id) {
+function botaoEditar(depto) {
 	const botao = document.createElement("a");
 	botao.setAttribute("href", "#modal-atualizar");
 	botao.classList = "btn-small secondary editar modal-trigger";
 	botao.style = "margin-right: 20px";
-	botao.setAttribute("onclick", "setId("+id+");resetarSelects();resetarInputs()")
+	botao.addEventListener('click', ev => {
+		setId(depto.id);
+		resetarSelectsEdit(depto.campus);
+		resetarInputsEdit(depto.nome);
+	});
 	botao.innerHTML = "EDITAR";
 	return botao;
 }
