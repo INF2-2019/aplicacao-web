@@ -18,11 +18,10 @@ function fazerTabela(doc){
         editar.classList.add("waves-effect");
         editar.classList.add("waves-light");
         editar.classList.add("btnAjuste-manutencao-campi");
-        editar.classList.add("blue");
+        editar.classList.add("secondary");
         editar.classList.add("modal-trigger");
         editar.classList.add("botaoEditar");
         editar.href = "#modal-editar";
-        editar.classList.add("darken-3");
         editar.innerHTML = "EDITAR";
         var deletar = document.createElement("a");
         deletar.classList.add("btn");

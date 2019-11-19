@@ -3,10 +3,15 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Manipulação de Alunos</title>
+        <title>Manutenção de Alunos</title>
         <link rel="stylesheet" href="../../css/materialize.css">
         <link rel="stylesheet" href="../../css/estilo.css">
     </head>
+    <style>
+        td, th {
+            text-align: center;
+        }
+    </style>
     <body class="background">
 		<ul id="dropdown1" class="dropdown-content"></ul>
 		<nav>
@@ -21,7 +26,6 @@
       <div class="container" >
         <div class="row">
           <h2 class="col s5">Alunos</h2>
-          <a  class="botaoAdicionar btn primary editar modal-trigger col right" style="margin-top: 6vh" href="#modal-cadastro">Adicionar</a>
         </div>
         <div class="row">
           <div class="input-field col s2">
@@ -33,19 +37,12 @@
             <label>Filtrar por:</label>
           </div>
 
-          <div class="col s5 center-align">
-      			<nav>
-      				<div class="nav-wrapper">
-      					<form>
-      						<div class="input-field">
-      							<input id="search" class="primary" type="search" oninput="pesquisa()" required>
-      							<label class="label-icon" for="search"><i class="  material-icons"></i></label>
-      							<i class="material-icons">close</i>
-      						</div>
-      					</form>
-      				</div>
-      			</nav>
-    		</div>
+                <div class="input-field col s6 l4">
+                        <i class="material-icons prefix">search</i>
+                        <input id="search" type="text" autocomplete="off" oninput="pesquisa()">
+                        <label for="search">Pesquisar</label>
+                    </div>
+                <a id="botao-manutencao-campi" class="btn right primary col s12 l2 editar modal-trigger botaoAdicionar right" href="#modal-cadastro">Adicionar</a>
        </div>
 
           <div id="divTabela">
@@ -54,7 +51,7 @@
             </table>
           </div>
 
-         <div id="modal-cadastro" class="modal modal-manutencao-alunos background modal-fixed-footer">
+         <div id="modal-cadastro" class="modal modal-manutencao-alunos background ">
               <div class="modal-content-manutencao-campi background">
                 <h4 style="padding: 15pt;">Novo Aluno</h4>
                   <div class="container">
@@ -94,7 +91,7 @@
                                       <span class="primary-text">Número*</span><input class="obrigatorio-cadastro" name="numero-cadastro" type="number" id="number">
                                   </div>
                                   <div class="col s4">
-                                      <span class="primary-text">Complemento</span><input class="" name="complemento-cadastro" type="text" id="comple">
+                                      <span class="primary-text">Complemento</span><input class="obrigatorio-editar" name="complemento-cadastro" type="text" id="comple">
                                   </div>
                               </div>
                               <div class="row">
@@ -142,24 +139,24 @@
                               </div>
                               <div class="row">
                                   <div class="col s9">
-                                      <span class="primary-text">Link da foto*</span><input class="obrigatorio-cadastro" name="foto-cadastro" type="text" id="fototext" onchange="loadFoto()">
+                                      <span class="primary-text">Link da foto</span><input class="obrigatorio-editar" name="foto-cadastro" type="text" id="fototext" onchange="loadFoto()">
                                   </div>
                               </div>
                           </div>
                           <div id="divfoto" class="offset-l1 offset-s1 offset-m2 col l2 s2">
-                              <img id="foto" src="" alt="imagem nao encontrada" class="foto-manutencao-alunos">
+                              <img id="foto" src="https://uploads.metropoles.com/wp-content/uploads/2019/08/05090905/perfilsemfoto.jpg" alt="imagem nao encontrada" class="foto-manutencao-alunos">
                           </div>
                       </div>
                   </div>
               </div>
               <div class="modal-footer modal-footer-manutencao-alunos background">
                   <span class="primary-text"><i>Os campos com * são obrigatórios</i></span><br>
-                  <button class="botaoCancelar modal-close btns waves-effect teal lighten-1 btn">Cancelar</button>
-                  <button class="btns waves-effect blue darken-3 btn" id="btConfirmaCadastro" >Confirmar</button>
+                  <button class="botaoCancelar modal-close btns waves-effect red darken-2 btn">Cancelar</button>
+                  <button class="btns waves-effect primary btn" id="btConfirmaCadastro" >Confirmar</button>
               </div>
           </div>
 
-         <div id="modal-info" class="modal modal-manutencao-alunos background bakcground modal-fixed-footer">
+         <div id="modal-info" class="modal modal-manutencao-alunos background bakcground ">
               <div class="modal-content-manutencao-campi background">
                 <h4 style="padding: 15pt;">Informações</h4>
                   <div class="container">
@@ -193,7 +190,7 @@
                                       <span class="primary-text">Número</span><input readonly class="info" name="numero-cadastro" type="number">
                                   </div>
                                   <div class="col s4">
-                                      <span class="primary-text">Complemento</span><input readonly class="recomendado-cadastro info" name="complemento-cadastro" type="text">
+                                      <span class="primary-text">Complemento</span><input readonly class="info" name="complemento-cadastro" type="text">
                                   </div>
                               </div>
                               <div class="row">
@@ -218,18 +215,18 @@
                               </div>
                           </div>
                           <div id="divfoto" class="offset-l1 offset-s1 offset-m2 col l2 s2">
-                              <img id="foto2" class="foto-manutencao-alunos" src="" alt="imagem não encontrada">
+                              <img id="foto2" class="foto-manutencao-alunos" src="https://uploads.metropoles.com/wp-content/uploads/2019/08/05090905/perfilsemfoto.jpg" alt="imagem não encontrada">
                           </div>
                       </div>
                   </div>
               </div>
              <div class="modal-footer modal-footer-manutencao-alunos background">
-                  <button class="modal-close btns waves-effect teal lighten-1 btn">Fechar</button>
+                  <button class="modal-close btns waves-effect primary btn">Fechar</button>
              </div>
           </div>
 
 
-         <div id="modal-editar" class="modal modal-manutencao-alunos background modal-fixed-footer">
+         <div id="modal-editar" class="modal modal-manutencao-alunos background ">
               <div class="modal-content-manutencao-campi background">
                 <h4 style="padding: 15pt;">Editar Aluno</h4>
                   <div class="container" id="c1">
@@ -237,28 +234,28 @@
                           <div class="col s12 m9">
                               <div class="row">
                                   <div class="col s4">
-                                      <span class="primary-text">CPF*</span><input name="cpf-cadastro" type="number" maxlength="11" class="obrigatorio-editar" id="cpf1" readonly>
+                                      <span class="primary-text">CPF*</span><input name="cpf-cadastro" type="number" maxlength="11" class="recomendado-editar" id="cpf1" readonly>
                                   </div>
                                   <div class="col s4">
                                       <span class="primary-text">Nome</span><input class="recomendado-editar" name="nome-cadastro" type="text" id="nome1">
                                   </div>
                                   <div class="col s4">
-                                      <span class="primary-text">Senha</span><input name="senha-cadastro" type="password" id="senha1">
-                                  </div>
+                                    <span class="primary-text">Senha</span><input class="obrigatorio-editar" name="senha-cadastro" type="password" id="senha1">
+                                </div>
                               </div>
                               <div class="row">
-                                  <div class="col s4">
-                                      <span class="primary-text">Sexo</span>
-                                  <select name="sexo-cadastro" class="input-field" id="sexo1">
-                                      <option value="M">Masculino</option>
-                                      <option value="F">Feminino</option>
-                                  </select>
-                                  </div>
+                                    <div class="col s4">
+                                            <span class="primary-text">Email</span><input class="recomendado-editar" name="email-cadastro" type="text" id="email1">
+                                        </div>
+                                    <div class="col s4">
+                                            <span class="primary-text">Sexo</span>
+                                        <select name="sexo-cadastro" class="input-field recomendado-editar" id="sexo1">
+                                            <option value="M">Masculino</option>
+                                            <option value="F">Feminino</option>
+                                        </select>
+                                        </div>
                                   <div class="col s4">
                                       <span class="primary-text">Nascimento</span><input class="recomendado-editar" name="nascimento-cadastro" type="date" id="data1">
-                                  </div>
-                                  <div class="col s4">
-                                      <span class="primary-text">Email</span><input class="recomendado-editar" name="email-cadastro" type="text" id="email1">
                                   </div>
                               </div>
                               <div class="row">
@@ -273,6 +270,9 @@
                                   </div>
                               </div>
                               <div class="row">
+                                <div class="col s3">
+                                        <span class="primary-text">Bairro</span><input class="recomendado-editar" name="bairro-cadastro" type="text" id="bairro1">
+                                    </div>
                                   <div class="col s3">
                                       <span class="primary-text">Cidade</span><input class="recomendado-editar" name="cidade-cadastro" type="text" id="cidade1">
                                   </div>
@@ -281,7 +281,7 @@
                                   </div>
                                   <div class="col s3">
                                         <span class="primary-text">UF</span>
-                                        <select name="uf-cadastro" class="input-field" id="uf1">
+                                        <select name="uf-cadastro" class="input-field recomendado-editar" id="uf1">
                                             <option value="AC">Acre</option>
                                             <option value="AL">Alagoas</option>
                                             <option value="AP">Amapá</option>
@@ -311,18 +311,15 @@
                                             <option value="TO">Tocantins</option>
                                         </select>
                                   </div>
-                                  <div class="col s3">
-                                      <span class="primary-text">Bairro</span><input class="recomendado-editar" name="bairro-cadastro" type="text" id="bairro1">
-                                  </div>
                               </div>
                               <div class="row">
                                   <div class="col s9">
-                                      <span class="primary-text">Link da foto</span><input name="foto-cadastro" type="text" id="fototext3" onchange="loadFoto2()">
+                                      <span class="primary-text">Link da foto</span><input class="recomendado-editar" name="foto-cadastro" type="text" id="fototext3" onchange="loadFoto2()">
                                   </div>
                               </div>
                           </div>
                           <div class="offset-l1 offset-s1 offset-m2 col l2 s2">
-                              <img id="foto3" src="" class="foto-manutencao-alunos">
+                              <img id="foto3" src="https://uploads.metropoles.com/wp-content/uploads/2019/08/05090905/perfilsemfoto.jpg" class="foto-manutencao-alunos">
                           </div>
                       </div>
                   </div>
@@ -330,8 +327,8 @@
               <div class="modal-footer modal-footer-manutencao-alunos background">
                   <span class="primary-text"><i>Os campos com * são obrigatórios</i></span><br>
                   <span class="primary-text"><i>Os campos vazios não alterarão os valores antigos.</i></span><br>
-                  <button class="botaoCancelar modal-close btns waves-effect teal lighten-1 btn">Cancelar</button>
-                  <button class="waves-effect blue darken-3 btn modal-close" id="btConfirmaEditar">Confirmar</button>
+                  <button class="botaoCancelar modal-close btns waves-effect red darken-2 btn">Cancelar</button>
+                  <button class="waves-effect primary btn modal-close" id="btConfirmaEditar">Confirmar</button>
               </div>
           </div>
 
