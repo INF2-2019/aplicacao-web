@@ -1,11 +1,21 @@
+M.AutoInit();
 var btConfirmaEditar;
 let idParaEditar;
 let vetEditar;
+let divS = document.querySelector("#divS");
 
 function listenerEdit(e) {
   idParaEditar = (e.currentTarget.parentNode.previousSibling.previousSibling.previousSibling.previousSibling.innerHTML);
   let inpID = document.querySelector("#idEdit");
-  inpID.value=idParaEditar;
+  let inpC = document.querySelector("#cidade1");
+  let inpN = document.querySelector("#nome1");
+  inpN.value = e.currentTarget.parentNode.previousSibling.previousSibling.previousSibling.innerHTML
+  inpC.value = e.currentTarget.parentNode.previousSibling.previousSibling.innerHTML
+  let val = e.currentTarget.parentNode.previousSibling.innerHTML;
+  $('#uf1').find('option:contains('+val+')').prop('selected',true);
+  $('#uf1').formSelect();
+   inpID.value=idParaEditar;
+   M.updateTextFields();
 }
 
 function prepareEditar() {
@@ -17,7 +27,7 @@ btConfirmaEditar.addEventListener("click", editar);
   vetEditar = document.querySelectorAll(".botaoEditar");
 
   for (var i = 0; i < vetEditar.length; i++) {
-    vetEditar[i].addEventListener("click", listenerEdit, true);
+    vetEditar[i].addEventListener("click", listenerEdit);
   }
 }
 
@@ -27,10 +37,6 @@ function editar() {
   let nome = document.querySelector("#nome1").value;
   let cidade = document.querySelector("#cidade1").value;
   let uf = document.querySelector("#uf1").value;
-  let dataF;
-  console.log(nome);
-  console.log(cidade);
-  console.log(uf);
   let url = "http://localhost:8080/app/diario/campi/alterar?id="+idParaEditar
   +"&nome="+nome+
   "&cidade="+cidade+

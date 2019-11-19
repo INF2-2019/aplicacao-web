@@ -28,8 +28,8 @@ function fazerTabela(doc){
         deletar.classList.add("waves-effect");
         deletar.classList.add("waves-light");
         deletar.classList.add("btnAjuste-manutencao-campi");
-        deletar.classList.add("red");
-        deletar.classList.add("darken-2");
+        deletar.classList.add("utils");
+        deletar.classList.add("erro-2");
         deletar.classList.add("modal-trigger");
         deletar.classList.add("botaoDeletar");
         deletar.href = "#modal-deletar-manutencao-campi";
@@ -44,10 +44,10 @@ function fazerTabela(doc){
         var conteudo3 = document.createElement("td");
         conteudo3.innerHTML = lineItems[i].getElementsByTagName("cidade")[0].childNodes[0].nodeValue;
         var conteudo4 = document.createElement("td");
+      
         conteudo4.innerHTML = lineItems[i].getElementsByTagName("uf")[0].childNodes[0].nodeValue;
 
         var botoes = document.createElement("td");
-
         botoes.appendChild(editar);
         botoes.appendChild(deletar);
 
