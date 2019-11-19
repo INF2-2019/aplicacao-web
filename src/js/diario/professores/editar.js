@@ -2,7 +2,7 @@ const paramNomes = ["id", "id-depto", "nome", "senha", "email", "titulacao"];
 const ROTA_EDICAO = "/diario/professores/atualizar";
 const ROTA_REMOCAO = "/diario/professores/deletar";
 const ROTA_CONSULTA = "/diario/professores/consultar";
-const LABEL_ATRIBUTOS = 'class="primary-text text-lighten-1 short col s12" style="font-size:18px;"'
+//const LABEL_ATRIBUTOS = 'class="primary-text text-lighten-1 short col s12" style="font-size:18px;"'
 
 function info(id){
 	if(id == ""){
@@ -25,11 +25,11 @@ function info(id){
 				informacoes.innerHTML = "";
 				for(let i = 0; i < elementos.length; i++) {
 					var dados = elementos[i].children;
-					informacoes.innerHTML += "<label " + LABEL_ATRIBUTOS + " id=\"id\"> SIAPE: " + dados[0].textContent + "</label>";
-					informacoes.innerHTML += "<label " + LABEL_ATRIBUTOS + " id=\"nome\"> Nome: " + dados[2].textContent + "</label>";
-					informacoes.innerHTML += "<label " + LABEL_ATRIBUTOS + " id=\"idDepto\"> id-Depto: " + dados[1].textContent + "</label>";
-					informacoes.innerHTML += "<label " + LABEL_ATRIBUTOS + " id=\"email\"> E-mail: " + dados[3].textContent + "</label>";
-					informacoes.innerHTML += "<label " + LABEL_ATRIBUTOS + " id=\"titulacao\"> Titulação: " + dados[4].textContent + "</label>";
+					informacoes.innerHTML +="<label class=\"primary-text text-lighten-1 short col s12 m6\"> SIAPE: <input type=\"number\" name=\"id\" disabled value=\"" + dados[0].textContent + "\"></label>";
+					informacoes.innerHTML += "<label class=\"primary-text text-lighten-1 short col s12 m6\">Nome: <input type=\"text\" name=\"nome\" disabled value=\"" + dados[2].textContent + "\"></label>";
+					informacoes.innerHTML += "<label class=\"primary-text text-lighten-1 short col s12 m3\">Id-Depto: <input type=\"number\" name=\"id-depto\" disabled value=\"" + dados[1].textContent + "\"></label>";
+					informacoes.innerHTML += "<label class=\"primary-text text-lighten-1 short col s12 m6\">E-mail: <input type=\"text\" name=\"email\" disabled value=\"" + dados[3].textContent + "\"></label>";
+					informacoes.innerHTML += "<label class=\"primary-text text-lighten-1 short col s12 m3\">Titulação:<input type=\"text\" name=\"titulacao\" disabled value=\"" + dados[4].textContent + "\"></label>";
 				}
 			} else if(xhttp.status == 404) {
 				document.getElementsByTagName("p")[0].innerHTML = ("Servidor offline");
