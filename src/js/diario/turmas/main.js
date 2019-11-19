@@ -6,7 +6,6 @@ function postFetch(url, data={},m="POST") {
 	let obj={
 		method: m,
 		credentials: "include", // <-- Essa linha resolve o problema!
-		mode: "no-cors", // <-- Essa linha é pra quem a primeira não resolver ou seja, o servl
 		headers: new Headers({
 			'Content-type': 'application/x-www-form-urlencoded; charset=UTF-8'
 		}),
