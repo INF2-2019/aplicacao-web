@@ -7,7 +7,7 @@ var exibido = 0; //verifica se a mensagem de erro ja foi mostrada
     var resp = xmlResult.childNodes[0]
     M.toast({
       html: resp,
-      classes: "green darken-2"
+      classes: "utils sucesso-2"
     });
   }else if(responseStatus === 400){
     if (xmlResult != "") {
@@ -15,7 +15,7 @@ var exibido = 0; //verifica se a mensagem de erro ja foi mostrada
       if (exibido === 0) {
         M.toast({
           html: resp,
-          classes: "red darken-2"
+          classes: "utils erro-2"
         });
         exibido += 1;
       }
@@ -26,7 +26,7 @@ var exibido = 0; //verifica se a mensagem de erro ja foi mostrada
     if (exibido === 0) {
       M.toast({
         html: resp,
-        classes: "red darken-2"
+        classes: "utils erro-2"
       });
       exibido += 1;
     }
