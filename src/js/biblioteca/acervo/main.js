@@ -307,7 +307,7 @@ function prepararInfo(id) {
 	nomeModal.innerHTML = "Informações";
 	let xhttp = new XMLHttpRequest();
 
-	url= ENDERECO + "biblioteca/acervo/consultar?id=" + id;
+	url= ENDERECO + ROTA_CONSULTA + "?id=" + id;
 
 	xhttp.open("GET", url, true);
 	xhttp.withCredentials = true;
