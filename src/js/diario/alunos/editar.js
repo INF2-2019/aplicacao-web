@@ -3,10 +3,20 @@ let idParaEditar;
 let vetEditar;
 
 function listenerEdit(e) {
+  var foto = document.querySelector("#foto3");
   idParaEditar = (e.currentTarget.parentNode.previousSibling.previousSibling.previousSibling.innerHTML);
-  let inpCpf = document.querySelector("#cpf1");
-  inpCpf.value=idParaEditar;
-  preencherEmail(idParaEditar);
+  let url = "http://localhost:8080/app/diario/alunos/consultar?id="+idParaEditar;
+  fetch(url, { credentials: 'include' })
+  .then(resposta => {
+    return resposta.text();
+  })
+  .then(text => {
+    parser = new DOMParser();
+    xmlDoc = parser.parseFromString(text, "text/xml");
+    preencherEdit(xmlDoc, foto);
+    let inpCpf = document.querySelector("#cpf1");
+    inpCpf.value=idParaEditar;
+  });
 }
 
 function prepareEditar() {
@@ -70,19 +80,24 @@ function editar() {
     });
 }
 
-function preencherEmail(id) {
-  let email = document.querySelector("#email1");
-
-  let url = "http://localhost:8080/app/diario/alunos/consultar?id="+id;
-  fetch(url, { credentials: 'include' })
-    .then(resposta => {
-      return resposta.text();
-    })
-    .then(text => {
-      parser = new DOMParser();
-      xmlDoc = parser.parseFromString(text, "text/xml");
-      let lineItems = xmlDoc.getElementsByTagName("aluno")[0];
-      email.value = lineItems.childNodes[2].childNodes[0].nodeValue;
-    });
-
+function preencherEdit(doc, foto) {
+  let camposInfo = document.querySelectorAll(".recomendado-editar");
+  let lineItems = doc.getElementsByTagName("aluno")[0];
+  for (let i = 1; i < camposInfo.length; i++) {
+    if (i ==3) {
+      if (lineItems.childNodes[i].childNodes[0].nodeValue == "M")
+        camposInfo[i].value= "Masculino";
+      else
+        camposInfo[i].value= "Feminino";
+    } else if (i == 4) {
+      let a = lineItems.childNodes[i].childNodes[0].nodeValue;
+      var resultDate = stringToDate(a);
+      resultDate.setDate( resultDate.getDate()+1 );
+      var result = dateToString( resultDate );
+      camposInfo[i].value = formataStringData(result);
+    } else if (lineItems.childNodes[i].childNodes[0] != undefined)
+      camposInfo[i].value = (lineItems.childNodes[i].childNodes[0].nodeValue);
+  }
+  foto.src=camposInfo[(camposInfo.length)-1].value;
+  $("#foto3").on('error', function() {fotoBasica(foto) });
   }

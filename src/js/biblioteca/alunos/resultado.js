@@ -8,7 +8,7 @@
 			var resp = xmlResult.childNodes[0]
 			M.toast({
 				html: resp,
-				classes: "green darken-2"
+				classes: "utils sucesso-2"
 			});
 		}else if(responseStatus === 400){
 			if (xmlResult != "") {
@@ -16,7 +16,7 @@
 				if (exibido === 0) {
 					M.toast({
 						html: resp,
-						classes: "red darken-2"
+						classes: "utils erro-2"
 					});
 					exibido += 1;
 				}
@@ -27,7 +27,7 @@
 			if (exibido === 0) {
 				M.toast({
 					html: resp,
-					classes: "red darken-2"
+					classes: "utils erro-2"
 				});
 				exibido += 1;
 			}

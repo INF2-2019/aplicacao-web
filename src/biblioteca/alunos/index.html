@@ -91,7 +91,7 @@
                                       <span class="primary-text">Número*</span><input class="obrigatorio-cadastro" name="numero-cadastro" type="number" id="number">
                                   </div>
                                   <div class="col s4">
-                                      <span class="primary-text">Complemento</span><input class="" name="complemento-cadastro" type="text" id="comple">
+                                      <span class="primary-text">Complemento</span><input class="obrigatorio-editar" name="complemento-cadastro" type="text" id="comple">
                                   </div>
                               </div>
                               <div class="row">
@@ -139,7 +139,7 @@
                               </div>
                               <div class="row">
                                   <div class="col s9">
-                                      <span class="primary-text">Link da foto*</span><input class="obrigatorio-cadastro" name="foto-cadastro" type="text" id="fototext" onchange="loadFoto()">
+                                      <span class="primary-text">Link da foto</span><input class="obrigatorio-editar" name="foto-cadastro" type="text" id="fototext" onchange="loadFoto()">
                                   </div>
                               </div>
                           </div>
@@ -190,7 +190,7 @@
                                       <span class="primary-text">Número</span><input readonly class="info" name="numero-cadastro" type="number">
                                   </div>
                                   <div class="col s4">
-                                      <span class="primary-text">Complemento</span><input readonly class="recomendado-cadastro info" name="complemento-cadastro" type="text">
+                                      <span class="primary-text">Complemento</span><input readonly class="info" name="complemento-cadastro" type="text">
                                   </div>
                               </div>
                               <div class="row">
@@ -234,28 +234,28 @@
                           <div class="col s12 m9">
                               <div class="row">
                                   <div class="col s4">
-                                      <span class="primary-text">CPF*</span><input name="cpf-cadastro" type="number" maxlength="11" class="obrigatorio-editar" id="cpf1" readonly>
+                                      <span class="primary-text">CPF*</span><input name="cpf-cadastro" type="number" maxlength="11" class="recomendado-editar" id="cpf1" readonly>
                                   </div>
                                   <div class="col s4">
                                       <span class="primary-text">Nome</span><input class="recomendado-editar" name="nome-cadastro" type="text" id="nome1">
                                   </div>
                                   <div class="col s4">
-                                      <span class="primary-text">Senha</span><input name="senha-cadastro" type="password" id="senha1">
-                                  </div>
+                                    <span class="primary-text">Senha</span><input class="obrigatorio-editar" name="senha-cadastro" type="password" id="senha1">
+                                </div>
                               </div>
                               <div class="row">
-                                  <div class="col s4">
-                                      <span class="primary-text">Sexo</span>
-                                  <select name="sexo-cadastro" class="input-field" id="sexo1">
-                                      <option value="M">Masculino</option>
-                                      <option value="F">Feminino</option>
-                                  </select>
-                                  </div>
+                                    <div class="col s4">
+                                            <span class="primary-text">Email</span><input class="recomendado-editar" name="email-cadastro" type="text" id="email1">
+                                        </div>
+                                    <div class="col s4">
+                                            <span class="primary-text">Sexo</span>
+                                        <select name="sexo-cadastro" class="input-field recomendado-editar" id="sexo1">
+                                            <option value="M">Masculino</option>
+                                            <option value="F">Feminino</option>
+                                        </select>
+                                        </div>
                                   <div class="col s4">
                                       <span class="primary-text">Nascimento</span><input class="recomendado-editar" name="nascimento-cadastro" type="date" id="data1">
-                                  </div>
-                                  <div class="col s4">
-                                      <span class="primary-text">Email</span><input class="recomendado-editar" name="email-cadastro" type="text" id="email1">
                                   </div>
                               </div>
                               <div class="row">
@@ -270,6 +270,9 @@
                                   </div>
                               </div>
                               <div class="row">
+                                <div class="col s3">
+                                        <span class="primary-text">Bairro</span><input class="recomendado-editar" name="bairro-cadastro" type="text" id="bairro1">
+                                    </div>
                                   <div class="col s3">
                                       <span class="primary-text">Cidade</span><input class="recomendado-editar" name="cidade-cadastro" type="text" id="cidade1">
                                   </div>
@@ -278,7 +281,7 @@
                                   </div>
                                   <div class="col s3">
                                         <span class="primary-text">UF</span>
-                                        <select name="uf-cadastro" class="input-field" id="uf1">
+                                        <select name="uf-cadastro" class="input-field recomendado-editar" id="uf1">
                                             <option value="AC">Acre</option>
                                             <option value="AL">Alagoas</option>
                                             <option value="AP">Amapá</option>
@@ -308,13 +311,10 @@
                                             <option value="TO">Tocantins</option>
                                         </select>
                                   </div>
-                                  <div class="col s3">
-                                      <span class="primary-text">Bairro</span><input class="recomendado-editar" name="bairro-cadastro" type="text" id="bairro1">
-                                  </div>
                               </div>
                               <div class="row">
                                   <div class="col s9">
-                                      <span class="primary-text">Link da foto</span><input name="foto-cadastro" type="text" id="fototext3" onchange="loadFoto2()">
+                                      <span class="primary-text">Link da foto</span><input class="recomendado-editar" name="foto-cadastro" type="text" id="fototext3" onchange="loadFoto2()">
                                   </div>
                               </div>
                           </div>
