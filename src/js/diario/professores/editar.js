@@ -58,6 +58,7 @@ function deletar(id) {
 			var xml = (new DOMParser()).parseFromString(this.responseText, "application/xml");
 			var raiz = xml.firstElementChild;
 			if(xhttp.status === 200) {
+				M.toast({ html: "Professor deletado com sucesso!", classes: "utils sucesso-2 text-light-text" });
 				atualizarTabela();
 			} else if(xhttp.status == 404) {
 				document.getElementsByTagName("p")[0].innerHTML = ("Servidor offline");
@@ -102,6 +103,7 @@ function requisicaoPost(id, idDepto, nome, senha, email, titulacao) {
 	})
 	.then(
 		function success(name) {
+			M.toast({ html: "Professor atualizado com sucesso!", classes: "utils sucesso-2 text-light-text" });
 			atualizarTabela();
 		},
 
