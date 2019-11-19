@@ -1,5 +1,6 @@
 //const ENDERECO = "http://localhost:8080/app";
 const ROTA_CONSULTA = "/diario/professores/consultar";
+const ROTA_CONSULTA_DEPTO = "/diario/departamentos/consulta";
 const ROTA_EDICAO = "/diario/professores/atualizar";
 const ROTA_EDITAR_SENHA = "/diario/professores/atualizar-senha";
 const REQUISITAR_ID_PROPRIO = -1;
@@ -19,7 +20,31 @@ function carregarPerfil() {
 				var dados = elemento.children;
 				for(i in dados) {
 					inputs[i].value = dados[i].textContent;
+					if(i == 1) obterNomeDepto(dados[i].textContent);
 				}
+				M.updateTextFields();
+			}
+			else {
+				window.alert(xhttp.status +": "+ raiz.firstElementChild.textContent);
+			}
+		}
+	};
+	xhttp.send();
+}
+
+function obterNomeDepto(idDepto) {
+	let xhttp = new XMLHttpRequest();
+
+	xhttp.open("GET", ENDERECO + ROTA_CONSULTA_DEPTO + "?id=" + idDepto, true);
+	xhttp.withCredentials = true;
+	xhttp.onreadystatechange = function() {
+		if(xhttp.readyState === xhttp.DONE) {
+			let raiz = xhttp.responseXML.firstElementChild;
+			if(xhttp.status === 200) {
+				let elemento = raiz.firstElementChild;
+				let inputs = document.getElementsByTagName('input');
+				var dados = elemento.children;
+				inputs[1].value = dados[2].textContent;
 				M.updateTextFields();
 			}
 			else {
