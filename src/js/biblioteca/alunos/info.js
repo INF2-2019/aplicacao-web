@@ -51,6 +51,7 @@ function preencher(doc, foto) {
       camposInfo[i].value = (lineItems.childNodes[i].childNodes[0].nodeValue);
   }
   foto.src=camposInfo[(camposInfo.length)-1].value;
+  $("#foto2").on('error', function() {fotoBasica(foto) });
 }
 
 

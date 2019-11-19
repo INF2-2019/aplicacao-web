@@ -1,16 +1,25 @@
 var modal = document.getElementById("modal-cadastro");
 var btn = document.getElementById("botaoAdicionar");
 
+function fotoBasica(output) {
+    setTimeout(function() {output.src = "https://uploads.metropoles.com/wp-content/uploads/2019/08/05090905/perfilsemfoto.jpg";}, 30);
+
+}
+
+document.querySelector("#botao-manutencao-campi").addEventListener("click", function() {fotoBasica(document.querySelector("#foto"))});
+
 function loadFoto() {
   var link = document.querySelector("#fototext").value;
   var output = document.getElementById('foto');
   output.src = link;
+  $("#foto").on('error', function() {fotoBasica(output) });
 }
 
 function loadFoto2() {
   var link = document.querySelector("#fototext3").value;
   var output = document.getElementById('foto3');
   output.src = link;
+  $("#foto3").on('error', function() {fotoBasica(output) });
 }
 
 

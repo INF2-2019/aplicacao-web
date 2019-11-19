@@ -1,12 +1,16 @@
 M.AutoInit();
 
-$(".btVoltar").click(function(){
-    window.history.back();
-});
 
 let idSessao; 
 pegarId();
 var link = "";
+
+function fotoBasica(output) {
+    setTimeout(function() {output.src = "https://uploads.metropoles.com/wp-content/uploads/2019/08/05090905/perfilsemfoto.jpg";}, 30);
+
+}
+
+document.querySelector("#butFoto").addEventListener("click", function() {fotoBasica(document.querySelector("#fotoAlterada-perfil-alunos"))});
 
 
 function pegarId() {
@@ -33,6 +37,8 @@ function loadFoto() {
     link = document.querySelector("#link").value;
     var output = document.getElementById('fotoAlterada-perfil-alunos');
     output.src = link;
+    $("#fotoAlterada-perfil-alunos").on('error', function() {fotoBasica(output) });
+
 }
 
 let butAltFoto = document.querySelector("#salvar");
