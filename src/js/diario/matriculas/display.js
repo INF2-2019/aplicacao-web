@@ -72,27 +72,17 @@ function criarBotaoDeletar() {
 	return deletar
 }
 
-function limpaInputs(inputType) {
-	if (inputType == 'inserir') {
-		document.querySelector("#turma-inserir").value = '';
-		document.querySelector("#nome-inserir").value = '';
-		document.querySelector("#turma-inserir2").value = '';
-	} else if (inputType == 'atualizar') {
-		document.querySelector("#turma-atualizar").value = '';
-		document.querySelector("#nome-atualizar").value = '';
-		document.querySelector("#turma-atualizar2").value = '';
-	}
-
+function limpaInputs() {
+	document.querySelector("#turma-inserir").value = '';
+	document.querySelector("#nome-inserir").value = '';
+	document.querySelector("#turma-inserir2").value = '';
 	M.updateTextFields();
+	$("#turma-inserir").formSelect();
+	$("#turma-inserir2").formSelect();
 }
 
 function preencherInput() {
-	fetch('http://localhost:8080/app/diario/alunos/listar', {
-			credentials: "include", // <-- Essa linha resolve o problema!
-			mode: "no-cors", // <-- Essa linha é pra quem a primeira não resolver ou seja, o servl
-		})
-		.then(response => response.text())
-		.then(str => (new window.DOMParser()).parseFromString(str, "text/xml"))
+	postFetch('http://localhost:8080/app/diario/alunos/listar',{},"GET")
 		.then(xml => {
 			for (departamento of xml.getElementsByTagName('aluno')) {
 				const id = departamento.getElementsByTagName("id")[0].innerHTML
@@ -108,12 +98,7 @@ function preencherInput() {
 				$("#turma-atualizar").formSelect()
 			}
 		})
-	fetch('http://localhost:8080/app/diario/disciplinas/consultar', {
-			credentials: "include", // <-- Essa linha resolve o problema!
-			mode: "no-cors", // <-- Essa linha é pra quem a primeira não resolver ou seja, o servl
-		})
-		.then(response => response.text())
-		.then(str => (new window.DOMParser()).parseFromString(str, "text/xml"))
+	postFetch('http://localhost:8080/app/diario/disciplinas/consultar',{},"GET")
 		.then(xml => {
 			for (departamento of xml.getElementsByTagName('disciplina')) {
 				const id = departamento.getElementsByTagName("id")[0].innerHTML

@@ -1,7 +1,5 @@
 function deletar() {
-	fetch(baseURL + 'deletar?id=' + currentId)
-		.then(response => response.text())
-		.then(str => (new window.DOMParser()).parseFromString(str, "text/xml"))
+	postFetch(baseURL + 'deletar?id=' + currentId,{},"GET")
 		.then(xml => (retornaResposta(xml)))
 		.then(resposta => {
 			if (resposta.indexOf("sucesso")!=-1) {

@@ -4,7 +4,7 @@ let deptosConsultados;
 function criaTabela(elementos) {
 	const tabela = document.createElement("table")
 	deptosConsultados = 0
-	elementos = elementos.childNodes[0].children
+	elementos = elementos.childNodes[0].querySelectorAll("turma")
 	tabela.classList.add("highlight")
 
 	for (let i = 0; i < elementos.length; i++) {
@@ -67,26 +67,16 @@ function criarBotaoDeletar() {
 	return deletar
 }
 
-function limpaInputs(inputType) {
-	if (inputType == 'inserir') {
-		document.querySelector("#turma-inserir").value = '';
-		document.querySelector("#nome-inserir").value = '';
-	}
-	else if (inputType == 'atualizar') {
-		document.querySelector("#turma-atualizar").value = '';
-		document.querySelector("#nome-atualizar").value = '';
-	}
-
+function limpaInputs() {
+	document.querySelector("#turma-inserir").value = '';
+	document.querySelector("#nome-inserir").value = '';
 	M.updateTextFields();
+	$("#turma-inserir").formSelect();
 }
 
 function preencherInput() {
-	console.log("AAAAA")
-	fetch('http://localhost:8080/app/diario/cursos/consultar')
-		.then(response => response.text())
-		.then(str => (new window.DOMParser()).parseFromString(str, "text/xml"))
+	postFetch('http://localhost:8080/app/diario/cursos/consultar',{},"GET")
 		.then(xml => {
-			console.log(xml);
 			for (departamento of xml.getElementsByTagName('curso')) {
 				const id = departamento.getElementsByTagName("id")[0].innerHTML
 				const nome = departamento.getElementsByTagName("nome")[0].innerHTML

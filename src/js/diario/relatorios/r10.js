@@ -8,7 +8,6 @@ function fete(p1, p2 = {}) {
 	return fetch(p1, {
 		...p2,
 		credentials: "include", // <-- Essa linha resolve o problema!
-		mode: "no-cors", // <-- Essa linha é pra quem a primeira não resolver ou seja, o servl
 	});
 }
 

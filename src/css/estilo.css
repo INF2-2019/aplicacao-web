@@ -2,8 +2,11 @@
     	@page{
 		size:landscape;
 	}
-	#navFitz,.ulFitz{
+	.relDoFitz .no-print{
 		display:none !important;
+	}
+        .relDoFitz, .relDoFitz *{
+		visibility:visible !important;
 	}
 }
 

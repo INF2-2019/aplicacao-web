@@ -1,30 +1,23 @@
 const baseURL = 'http://localhost:8080/app/diario/matriculas/';
 let currentId;
 
-function postFetch(url, data) {
+function postFetch(url, data={},m="POST") {
 	//console.log(""+new URLSearchParams(data))
-	return fetch(url, {
-			method: 'POST',
-			body: new URLSearchParams(data),
-			credentials: "include", // <-- Essa linha resolve o problema!
-			mode: "no-cors", // <-- Essa linha é pra quem a primeira não resolver ou seja, o servl
-			headers: new Headers({
-				'Content-type': 'application/x-www-form-urlencoded; charset=UTF-8'
-			}),
-		})
+	let obj={
+		method: m,
+		credentials: "include", // <-- Essa linha resolve o problema!
+		headers: new Headers({
+			'Content-type': 'application/x-www-form-urlencoded; charset=UTF-8'
+		}),
+	};
+        if(m=="POST") obj.body=new URLSearchParams(data);
+	return fetch(url, obj)
 		.then(response => response.text())
 		.then(str => (new window.DOMParser()).parseFromString(str, "text/xml"))
 }
 
 function nomeTurma(id) {
-	return fetch('http://localhost:8080/app/diario/alunos/listar', {
-			credentials: "include", // <-- Essa linha resolve o problema!
-			mode: "no-cors" // <-- Essa linha é pra quem a primeira não resolver ou seja, o servl
-		})
-		.then(response => {
-			return response.text()
-		})
-		.then(str => (new window.DOMParser()).parseFromString(str, "text/xml"))
+	return postFetch('http://localhost:8080/app/diario/alunos/listar',{},"get")
 		.then(xml => {
 			let cn = xml.querySelectorAll("aluno");
 			for (let i = 0; i < cn.length; i++) {
@@ -40,14 +33,7 @@ function nomeTurma(id) {
 }
 
 function nomeTurma2(id) {
-	return fetch('http://localhost:8080/app/diario/disciplinas/consultar', {
-			credentials: "include", // <-- Essa linha resolve o problema!
-			mode: "no-cors" // <-- Essa linha é pra quem a primeira não resolver ou seja, o servl
-		})
-		.then(response => {
-			return response.text()
-		})
-		.then(str => (new window.DOMParser()).parseFromString(str, "text/xml"))
+	return postFetch('http://localhost:8080/app/diario/disciplinas/consultar',{},"get")
 		.then(xml => {
 			let cn = xml.querySelectorAll("disciplina");
 			for (let i = 0; i < cn.length; i++) {

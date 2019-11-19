@@ -42,8 +42,10 @@
 				<thead>
 					<tr>
 						<th>ID</th>
-						<th>Curso</th>
-						<th>Nome</th>
+						<th>Aluno</th>
+						<th>Disciplina</th>
+						<th>Ano</th>
+						<th>Ativo</th>
 						<th>Ações</th>
 					</tr>
 				</thead>
@@ -65,15 +67,21 @@
 		<div id="modal-add" class="modal">
 			<div class="row modal-content">
 				<h4>Inserir matrícula</h4>
-				<div class="input-field col s3">
+				<div class="input-field col s4">
 					<select id="turma-inserir">
-						<option  id ="Seleciona-add" value="" disabled selected>Selecione</option>
+						<option class="Seleciona-add" value="" disabled selected>Selecione</option>
 					</select>
-					<label for="turma-inserir">Curso</label>
+					<label for="turma-inserir">Aluno</label>
 				</div>
-				<div class="input-field col s9">
-					<input id="nome-inserir" type="text" />
-					<label for="nome-inserir">Nome</label>
+				<div class="input-field col s4">
+					<select id="turma-inserir2">
+						<option class="Seleciona-add" value="" disabled selected>Selecione</option>
+					</select>
+					<label for="turma-inserir2">Disciplina</label>
+				</div>
+				<div class="input-field col s4">
+					<input id="nome-inserir" type="number" />
+					<label for="nome-inserir">Ano</label>
 				</div>
 			</div>
 			<div class="container modal-footer">
@@ -85,15 +93,28 @@
 		<div id="modal-atualizar" class="modal">
 			<h4 style="padding: 15pt;">Atualizar matrícula</h4>
 			<div class="row modal-content">
-				<div class="input-field col s4">
+				<div class="input-field col s3">
 					<select id="turma-atualizar">
 						<option value="" disabled selected>Selecione</option>
 					</select>
-					<label for="turma-atualizar">Novo curso</label>
+					<label for="turma-atualizar">Aluno</label>
 				</div>
-				<div class="input-field col s8">
+				<div class="input-field col s3">
+					<select id="turma-atualizar2">
+						<option value="" disabled selected>Selecione</option>
+					</select>
+					<label for="turma-atualizar2">Disciplina</label>
+				</div>
+				<div class="input-field col s3">
 					<input id="nome-atualizar" type="text" />
-					<label for="nome-atualizar">Novo nome</label>
+					<label for="nome-atualizar">Ano</label>
+				</div>
+				<div class="input-field col s3">
+					<select id="nome-atualizar2">
+						<option>true</option>
+						<option>false</option>
+					</select>
+					<label for="nome-atualizar2">Ativo</label>
 				</div>
 			</div>
 			<div class="container modal-footer">

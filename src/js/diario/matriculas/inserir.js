@@ -21,7 +21,6 @@ function inserir(idAlunos, idDisciplinas, ano) {
 		})
 		.then(data => (retornaResposta(data)))
 		.then(resposta => {
-			console.log(resposta);
 			if (resposta.indexOf("sucesso") != -1) {
 				M.toast({
 					html: 'Adicionado com sucesso.',
@@ -35,8 +34,7 @@ function inserir(idAlunos, idDisciplinas, ano) {
 			}
 		})
 		.then(() => consultar())
-		.then(() => limpaInputs('inserir'))
-		.catch(error => console.error(error))
-	$("#Seleciona-add").prop('selected', true);
+		.then(() => limpaInputs())
+		.catch(error => console.error(error));
 	$("#turma-inserir").formSelect();
 }
