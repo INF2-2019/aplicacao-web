@@ -4,6 +4,7 @@ function consulta() {
 		method = "GET",
 		url = baseURL + "/emprestimos/consultar";
 	xhttp.open(method, url, true);
+	xhttp.withCredentials = true;
 	var parser = new DOMParser();
 
 	//recebe resposta em XML e manipula o XML para criar a tabela
