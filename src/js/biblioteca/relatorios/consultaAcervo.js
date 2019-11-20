@@ -4,6 +4,7 @@ function consulta() {
 		method = "GET",
 		url = baseURL + "/acervo/consultar";
 	xhttp.open(method, url, true);
+	xhttp.withCredentials = true;
 	var parser = new DOMParser();
 	var divResposta = document.getElementsByClassName("resposta-relatorio-biblioteca");
 
