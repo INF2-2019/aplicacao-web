@@ -2,9 +2,9 @@
 
 Esse repositório é dedicado à parte de `front-end` web da aplicação a ser desenvolvida.
 
-## Como executar
+## Como _buildar_ o projeto
 
-Suba os arquivos dentro de `src` para um servidor qualquer.
+Basta rodar um servidor em cima da pasta `src` ou copiar seu conteúdo para um servidor.
 
 ## Instruções para IDEs e Editores recomendados
 
@@ -45,10 +45,6 @@ insert_final_newline = true
 - Notepad++
 - WebStorm
 - etc.
-
-## Como _buildar_ o projeto
-
-O projeto ~~ainda~~ não foi portado para o WebPack, portanto basta rodar um servidor em cima da pasta src.
 
 ### Como buildar o SASS, `.scss`
 
