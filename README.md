@@ -2,14 +2,9 @@
 
 Esse repositório é dedicado à parte de `front-end` web da aplicação a ser desenvolvida.
 
-## Figma
+## Como executar
 
-[Projeto no Figma](https://www.figma.com/file/Fsj2sBRsuzV7IB6XUHHjKv/Trabalho-Final-INF2?node-id=0%3A1)
-- Um projeto no Figma onde adicionarei as telas solicitadas
-
-## Aviso
-
-Esse repositório tem afazeres globais, caso queira ajudar verifique o [`TO-DO`](TO-DO.md).
+Suba os arquivos dentro de `src` para um servidor qualquer.
 
 ## Instruções para IDEs e Editores recomendados
 
